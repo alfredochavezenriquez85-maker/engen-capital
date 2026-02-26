@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Mercado — Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            body {
+                font-size: 9pt;
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+
+            .document {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .no-print { display: none !important; }
+
+            .page-break {
+                page-break-before: always;
+                break-before: page;
+            }
+
+            .cover-page {
+                height: 100vh;
+                min-height: 100vh;
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .toc-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .content-page {
+                padding: 40px 50px;
+                page-break-inside: avoid;
+            }
+
+            table {
+                font-size: 8pt;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            h2 { font-size: 16pt; }
+            h3 {
+                font-size: 11pt;
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            .section-header {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            .exec-grid,
+            .kpi-banner,
+            .callout,
+            .tier-section,
+            .tier-cards {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .cover-page,
+            .kpi-banner,
+            .kpi-item,
+            thead th,
+            .exec-card,
+            .callout,
+            .callout-green,
+            .callout-orange,
+            .tier-badge,
+            .tag,
+            .bar-fill,
+            .bar-track,
+            .timeline-dot {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .cover-logo-lcg img,
+            .cover-logo-engen img {
+                display: inline-block !important;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, var(--lcg-navy) 0%, var(--lcg-blue) 40%, #1e4a7a 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.06);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.08);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg {
+            display: flex;
+            align-items: center;
+        }
+
+        .cover-logo-lcg img {
+            height: 45px;
+            filter: brightness(0) invert(1);
+        }
+
+        .cover-logo-engen {
+            display: flex;
+            align-items: center;
+        }
+
+        .cover-logo-engen img {
+            height: 65px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item {
+            font-size: 13px;
+        }
+
+        .cover-meta-label {
+            color: rgba(255,255,255,0.5);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .cover-meta-value {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== TABLE OF CONTENTS ======================== */
+        .toc-page {
+            padding: 60px;
+        }
+
+        .toc-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            margin-bottom: 8px;
+        }
+
+        .toc-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .toc-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--lcg-accent);
+            width: 50px;
+            flex-shrink: 0;
+        }
+
+        .toc-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .toc-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+        }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 20px 0 10px;
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== EXECUTIVE SUMMARY CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full {
+            grid-column: 1 / -1;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 22px 20px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--engen-green);
+        }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        thead th:first-child { border-radius: 6px 0 0 0; }
+        thead th:last-child { border-radius: 0 6px 0 0; }
+
+        tbody td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tbody tr:hover { background: var(--bg-light); }
+
+        tbody tr:last-child td:first-child { border-radius: 0 0 0 6px; }
+        tbody tr:last-child td:last-child { border-radius: 0 0 6px 0; }
+
+        .table-highlight {
+            font-weight: 700;
+            color: var(--lcg-navy);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .tag-alta { background: #ffe0e6; color: #c41e3a; }
+        .tag-media-alta { background: #fff3e0; color: #e65100; }
+        .tag-media { background: #e3f2fd; color: #1565c0; }
+        .tag-green { background: #e8f5e9; color: #2e7d32; }
+        .tag-blue { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+
+        /* ======================== TIER CARDS ======================== */
+        .tier-section {
+            margin: 20px 0;
+        }
+
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tier-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .tier-1 { background: var(--engen-green); }
+        .tier-2 { background: var(--lcg-accent); }
+        .tier-3 { background: var(--text-muted); }
+
+        .tier-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .tier-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .tier-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .tier-card-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            margin-bottom: 6px;
+        }
+
+        .tier-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ======================== CALLOUT BOXES ======================== */
+        .callout {
+            background: var(--lcg-light-blue);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+            margin: 20px 0;
+        }
+
+        .callout-green {
+            background: #e8f7f2;
+            border-left-color: var(--engen-green);
+        }
+
+        .callout-orange {
+            background: #fff8ed;
+            border-left-color: var(--warning);
+        }
+
+        .callout-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 6px;
+        }
+
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout-orange .callout-label { color: #e65100; }
+
+        .callout p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* ======================== COMPARISON BAR ======================== */
+        .comparison-bar {
+            margin: 16px 0;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .bar-track {
+            height: 24px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .bar-fill-blue { background: var(--lcg-accent); }
+        .bar-fill-green { background: var(--engen-green); }
+        .bar-fill-navy { background: var(--lcg-navy); }
+
+        /* ======================== TIMELINE ======================== */
+        .timeline {
+            margin: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            padding: 12px 0;
+        }
+
+        .timeline-year {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--lcg-accent);
+            width: 50px;
+            flex-shrink: 0;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--engen-green);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .timeline-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* ======================== PAGE HEADER WITH LOGOS ======================== */
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0 16px 0;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header-logos img.logo-lcg-sm {
+            height: 24px;
+            opacity: 0.85;
+            filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(2500%) hue-rotate(200deg) brightness(90%) contrast(100%);
+        }
+
+        .page-header-logos img.logo-engen-sm {
+            height: 26px;
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+
+        .page-header-logos .header-divider {
+            flex: 1;
+            text-align: center;
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ======================== FOOTER ======================== */
+        .page-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 60px;
+            border-top: 1px solid var(--border);
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .footer-brand {
+            font-weight: 600;
+            color: var(--lcg-navy);
+        }
+
+        .footer-brand img {
+            height: 22px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        /* ======================== PRINT BUTTON ======================== */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--lcg-navy);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(11,31,63,0.3);
+            z-index: 100;
+            transition: all 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--lcg-accent);
+            transform: translateY(-2px);
+        }
+
+        /* ======================== SOURCE LIST ======================== */
+        .source-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .source-list li {
+            font-size: 11px;
+            color: var(--text-secondary);
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .source-list li a {
+            color: var(--lcg-accent);
+            text-decoration: none;
+        }
+
+        .source-category {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            margin: 16px 0 8px;
+        }
+
+        ul.bullet-list {
+            padding-left: 20px;
+            margin: 8px 0 16px;
+        }
+
+        ul.bullet-list li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+        /* ======================== PRINT HELPER OVERLAY ======================== */
+        .print-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11,31,63,0.85);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .print-overlay.active { display: flex; }
+
+        .print-dialog {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .print-dialog h2 {
+            font-size: 20px;
+            color: var(--lcg-navy);
+            margin-bottom: 16px;
+        }
+
+        .print-dialog .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            text-align: left;
+            margin: 12px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .print-dialog .step-num {
+            background: var(--engen-green);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .print-dialog .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+            justify-content: center;
+        }
+
+        .print-dialog button {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--lcg-navy);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="showPrintHelper()">Descargar PDF</button>
+
+<div class="print-overlay no-print" id="printOverlay">
+    <div class="print-dialog">
+        <h2>Descargar como PDF</h2>
+        <div class="step">
+            <span class="step-num">1</span>
+            <span>En el dialogo que se abre, selecciona <strong>"Guardar como PDF"</strong> como destino</span>
+        </div>
+        <div class="step">
+            <span class="step-num">2</span>
+            <span>En <strong>"Mas opciones"</strong>, activa la casilla <strong>"Graficos de fondo"</strong> para que se vean los colores y fondos</span>
+        </div>
+        <div class="step">
+            <span class="step-num">3</span>
+            <span>Margenes: selecciona <strong>"Ninguno"</strong></span>
+        </div>
+        <div class="step">
+            <span class="step-num">4</span>
+            <span>Clic en <strong>"Guardar"</strong></span>
+        </div>
+        <div class="btn-row">
+            <button class="btn-secondary" onclick="closePrintHelper()">Cancelar</button>
+            <button class="btn-primary" onclick="doPrint()">Continuar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPrintHelper() {
+        document.getElementById('printOverlay').classList.add('active');
+    }
+    function closePrintHelper() {
+        document.getElementById('printOverlay').classList.remove('active');
+    }
+    function doPrint() {
+        closePrintHelper();
+        setTimeout(function() { window.print(); }, 300);
+    }
+
+    // Convert external images to base64 so they always appear in PDF
+    window.addEventListener('load', function() {
+        var imgs = document.querySelectorAll('img');
+        imgs.forEach(function(img) {
+            if (img.complete && img.naturalWidth > 0) {
+                convertToBase64(img);
+            } else {
+                img.addEventListener('load', function() {
+                    convertToBase64(img);
+                });
+            }
+        });
+    });
+
+    function convertToBase64(img) {
+        try {
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            img.src = canvas.toDataURL('image/png');
+        } catch(e) {
+            // CORS blocked — image stays as external URL
+        }
+    }
+</script>
+
+<div class="document">
+
+    <!-- ============================================================ -->
+    <!-- COVER PAGE                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page">
+        <div class="cover-logos">
+            <div class="cover-logo-lcg">
+                <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:4px;&quot;>London Consulting Group</span>'">
+            </div>
+            <div class="cover-logo-engen">
+                <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:600;color:#00B388;letter-spacing:1px;&quot;>engen capital</span>'">
+            </div>
+        </div>
+
+        <div class="cover-content">
+            <div class="cover-label">Estudio de Mercado</div>
+            <h1 class="cover-title">Arrendamiento Financiero y Financiamiento Empresarial B2B en Mexico</h1>
+            <p class="cover-subtitle">Diagnostico de mercado, segmentacion y oportunidades estrategicas para el crecimiento en el segmento medio</p>
+            <div class="cover-divider"></div>
+            <div class="cover-meta">
+                <div class="cover-meta-item">
+                    <div class="cover-meta-label">Preparado por</div>
+                    <div class="cover-meta-value">London Consulting Group</div>
+                </div>
+                <div class="cover-meta-item">
+                    <div class="cover-meta-label">Cliente</div>
+                    <div class="cover-meta-value">Engen Capital</div>
+                </div>
+                <div class="cover-meta-item">
+                    <div class="cover-meta-label">Fecha</div>
+                    <div class="cover-meta-value">Febrero 2026</div>
+                </div>
+                <div class="cover-meta-item">
+                    <div class="cover-meta-label">Clasificacion</div>
+                    <div class="cover-meta-value">Confidencial</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            <span>&copy; 2026 London Consulting Group. Todos los derechos reservados.</span>
+            <span>Confidencial</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TABLE OF CONTENTS                                             -->
+    <!-- ============================================================ -->
+    <div class="toc-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="toc-title">Contenido</div>
+        <div class="toc-subtitle">Estructura del estudio de mercado</div>
+        <ul class="toc-list">
+            <li class="toc-item">
+                <span class="toc-number" style="color: var(--engen-green);">00</span>
+                <div>
+                    <div class="toc-text">Marco Metodologico</div>
+                    <div class="toc-desc">Enfoque analitico, fuentes de datos y modelo de priorizacion</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">01</span>
+                <div>
+                    <div class="toc-text">Resumen Ejecutivo</div>
+                    <div class="toc-desc">Hallazgos clave y oportunidad estrategica</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">02</span>
+                <div>
+                    <div class="toc-text">Dimension del Mercado</div>
+                    <div class="toc-desc">SOFOMs, penetracion del leasing, brecha de financiamiento</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">03</span>
+                <div>
+                    <div class="toc-text">Segmentacion Mid-Market y Sectores de Alto CAPEX</div>
+                    <div class="toc-desc">Perfil de empresas medianas, 7 sectores prioritarios, TAM</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">04</span>
+                <div>
+                    <div class="toc-text">Landscape Competitivo</div>
+                    <div class="toc-desc">Reconfiguracion post-Unifin, principales jugadores</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">05</span>
+                <div>
+                    <div class="toc-text">Posicionamiento de Engen Capital</div>
+                    <div class="toc-desc">Datos financieros, productos, estructura corporativa</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">06</span>
+                <div>
+                    <div class="toc-text">Tendencias y Drivers del Mercado</div>
+                    <div class="toc-desc">Nearshoring, tasas, factoraje digital, regulacion</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">07</span>
+                <div>
+                    <div class="toc-text">Benchmarks de Modelo Comercial</div>
+                    <div class="toc-desc">Tiempos de respuesta, conversion, casos de referencia</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">08</span>
+                <div>
+                    <div class="toc-text">Insights y Oportunidades</div>
+                    <div class="toc-desc">5 lineas de consultoria sustentadas con datos</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 00: MARCO METODOLOGICO                                -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Marco Metodologico</div>
+            <div class="section-title">Enfoque Analitico y Modelo de Investigacion</div>
+        </div>
+
+        <p>Este estudio fue desarrollado bajo el <strong>modelo propietario de Diagnostico Estrategico de Mercado de London Consulting Group</strong>, disenado para construir una base de evidencia solida que sustente decisiones de crecimiento en servicios financieros B2B. El enfoque integra multiples capas de analisis convergente para minimizar sesgos y maximizar la accionabilidad de los hallazgos.</p>
+
+        <h3>Arquitectura del estudio</h3>
+
+        <div style="background: var(--bg-light); border-radius: 10px; padding: 28px; margin: 20px 0;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; text-align: center;">
+                <div>
+                    <div style="width: 56px; height: 56px; background: var(--lcg-navy); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800;">1</div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px;">OUTSIDE-IN</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Dimension de mercado, tendencias macro, dinamicas sectoriales y entorno regulatorio</div>
+                </div>
+                <div>
+                    <div style="width: 56px; height: 56px; background: var(--lcg-accent); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800;">2</div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px;">COMPETITIVE INTELLIGENCE</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Mapeo de jugadores, analisis de propuesta de valor, benchmarks operativos y comerciales</div>
+                </div>
+                <div>
+                    <div style="width: 56px; height: 56px; background: var(--engen-green); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800;">3</div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px;">OPPORTUNITY SIZING</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Segmentacion del TAM, priorizacion sectorial y cuantificacion de la oportunidad especifica</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <div style="display: inline-block; background: var(--lcg-navy); color: white; padding: 8px 20px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px;">CONVERGENCIA &rarr; INSIGHTS ACCIONABLES &rarr; RECOMENDACIONES PRIORIZADAS</div>
+            </div>
+        </div>
+
+        <h3>Fuentes de datos y triangulacion</h3>
+
+        <p>Cada hallazgo del estudio fue construido mediante <strong>triangulacion de al menos dos fuentes independientes</strong> para garantizar robustez. Las fuentes se clasifican en cuatro categorias:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Fuentes</th>
+                    <th>Uso principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Regulatorias y oficiales</td>
+                    <td>CNBV, Banco de Mexico, INEGI (Censos Economicos 2024, ENAPROCE, ENAFIN), SHCP</td>
+                    <td>Dimension de mercado, estructura del sector, datos demograficos empresariales</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Calificadoras y mercado de capitales</td>
+                    <td>PCR Verum, HR Ratings, Moody's Local, BMV (eventos relevantes, prospectos de colocacion)</td>
+                    <td>Metricas financieras de competidores, calidad de cartera, estructura de fondeo</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Gremiales y sectoriales</td>
+                    <td>ASOFOM, AMFE, AMPIP, IMCO, CIEP</td>
+                    <td>Tendencias del sector, posicionamiento competitivo, dinamicas de nearshoring</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Inteligencia primaria LCG</td>
+                    <td>Sesion de Discovery con el cliente (Feb 2026), base de conocimiento de proyectos LCG (HDI, Banregio, Banbajio)</td>
+                    <td>Contexto estrategico, pain points del cliente, benchmarks operativos propietarios</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Modelo de priorizacion sectorial</h3>
+
+        <p>La identificacion de los 7 sectores prioritarios se realizo mediante un <strong>scoring multivariable</strong> que pondera cinco dimensiones:</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
+                <div style="background: var(--lcg-navy); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">25%</div>
+                <div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Intensidad de CAPEX</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">Inversion en activos fijos como % del ingreso sectorial</div>
+                </div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
+                <div style="background: var(--lcg-accent); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">20%</div>
+                <div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Masa critica mid-market</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">Numero de empresas medianas activas en el sector</div>
+                </div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
+                <div style="background: var(--engen-green); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">20%</div>
+                <div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Propension al arrendamiento</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">Penetracion actual y afinidad del activo con leasing</div>
+                </div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
+                <div style="background: var(--warning); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">20%</div>
+                <div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Momentum de crecimiento</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">Tasa de crecimiento sectorial y drivers estructurales</div>
+                </div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; grid-column: 1 / -1;">
+                <div style="background: var(--lcg-navy); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">15%</div>
+                <div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Perfil de riesgo crediticio</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">NPLs historicos del sector, formalidad fiscal y disponibilidad de informacion para scoring</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Calculo del TAM (Total Addressable Market)</h3>
+
+        <p>La cuantificacion de la oportunidad sigue un modelo <strong>top-down con validacion bottom-up</strong>:</p>
+
+        <div style="background: var(--lcg-light-blue); border-radius: 10px; padding: 22px; margin: 16px 0;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">CAPEX sectorial total (INEGI/FBCF)</div>
+                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
+                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Filtro: empresas medianas (~15%)</div>
+                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
+                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Financiable via leasing (60-70%)</div>
+                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
+                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Mercado servido actual</div>
+                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
+                <div style="background: var(--engen-green); padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">GAP = Oportunidad</div>
+            </div>
+        </div>
+
+        <h3>Alcance y limitaciones</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Alcance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Geografia</td>
+                    <td>Mexico — enfasis en corredores industriales del norte, Bajio y centro del pais</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Segmento</td>
+                    <td>Empresas medianas (facturacion $100M-$2,000M MXN) con necesidades de CAPEX recurrente</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Productos</td>
+                    <td>Arrendamiento puro/financiero, credito empresarial, factoraje — no incluye consumo ni hipotecario</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Horizonte temporal</td>
+                    <td>Datos 2022-2025 con proyecciones a 2028 donde aplica</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Limitaciones</td>
+                    <td>Las cifras de empresas medianas por sector son estimaciones basadas en Censos Economicos 2024 y ENAPROCE. El TAM incluye supuestos sobre proporcion financiable que deberan validarse con datos internos del cliente</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <div class="callout-label">Nota metodologica</div>
+            <p>Este documento es un <strong>diagnostico de mercado de primer nivel</strong> disenado para sustentar la propuesta de consultoria. Durante la fase de proyecto se profundizara con datos internos del cliente (distribucion de cartera, funnel de conversion, tiempos de proceso) para calibrar las recomendaciones con precision operativa.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: RESUMEN EJECUTIVO                                  -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 01</div>
+            <div class="section-title">Resumen Ejecutivo</div>
+        </div>
+
+        <p>El mercado de arrendamiento y financiamiento empresarial en Mexico presenta una <strong>oportunidad estructural de crecimiento</strong> para Engen Capital, sustentada por cinco factores convergentes que se refuerzan mutuamente.</p>
+
+        <div class="exec-grid">
+            <div class="exec-card">
+                <div class="exec-card-label">Mercado subpenetrado</div>
+                <div class="exec-card-value">1.5-2.0%</div>
+                <div class="exec-card-desc">Leasing como % del PIB en Mexico vs. 3-5% en economias desarrolladas</div>
+            </div>
+            <div class="exec-card green">
+                <div class="exec-card-label">Brecha de financiamiento PyME</div>
+                <div class="exec-card-value">~$85,000 MDD</div>
+                <div class="exec-card-desc">Solo ~32% de las empresas medianas acceden a financiamiento formal (IFC/Banco Mundial)</div>
+            </div>
+            <div class="exec-card green">
+                <div class="exec-card-label">Nearshoring acelerador</div>
+                <div class="exec-card-value">$40,871 MDD</div>
+                <div class="exec-card-desc">IED record 2025. Mexico concentra 72% de la relocalizacion en LatAm</div>
+            </div>
+            <div class="exec-card orange">
+                <div class="exec-card-label">Consolidacion post-crisis</div>
+                <div class="exec-card-value">$120,000+ MDP</div>
+                <div class="exec-card-desc">Cartera redistribuida tras caida de Unifin, Credito Real y Alphacredit</div>
+            </div>
+            <div class="exec-card exec-card-full">
+                <div class="exec-card-label">Oportunidad identificada en segmento medio (7 sectores prioritarios)</div>
+                <div class="exec-card-value" style="color: var(--engen-green);">$50,000 - $85,000 MDP</div>
+                <div class="exec-card-desc">Arrendamiento no atendido en manufactura, autotransporte, construccion, logistica, agroindustria, salud y tecnologia</div>
+            </div>
+        </div>
+
+        <div class="kpi-banner">
+            <div class="kpi-item">
+                <div class="kpi-value">Ps$27,791M</div>
+                <div class="kpi-label">Portafolio Engen (2T25)</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">AA-/M</div>
+                <div class="kpi-label">Calificacion PCR Verum</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">1.3%</div>
+                <div class="kpi-label">Cartera vencida</div>
+            </div>
+        </div>
+
+        <div class="callout-green callout">
+            <div class="callout-label">Posicion de Engen</div>
+            <p><strong>Segunda financiera independiente mas grande de Mexico en su segmento.</strong> Con 30+ anios de trayectoria (GE Capital), cartera sana, calificacion solida y capacidad tecnologica (Engen Factoraje con IA). El momento de mercado y la posicion competitiva son favorables para un crecimiento agresivo pero disciplinado en el mid-market.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: DIMENSION DEL MERCADO                              -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 02</div>
+            <div class="section-title">Dimension del Mercado</div>
+        </div>
+
+        <h3>2.1 El sector de SOFOMs en Mexico</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Dato</th>
+                    <th>Fuente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SOFOMs activas</td>
+                    <td class="table-highlight">~1,500 entidades</td>
+                    <td>CNBV</td>
+                </tr>
+                <tr>
+                    <td>Cartera total SOFOMs</td>
+                    <td class="table-highlight">$655,432 MDP (cierre 2025)</td>
+                    <td>El Cronista</td>
+                </tr>
+                <tr>
+                    <td>Crecimiento real anual 2025</td>
+                    <td>6.4%</td>
+                    <td>El Cronista</td>
+                </tr>
+                <tr>
+                    <td>Utilidades del sector 2025</td>
+                    <td>$22,544 MDP (+12.8%)</td>
+                    <td>El Cronista</td>
+                </tr>
+                <tr>
+                    <td>Cartera ASOFOM (247 agremiadas)</td>
+                    <td>$161,954 MDP (+7.2%)</td>
+                    <td>DPL News</td>
+                </tr>
+                <tr>
+                    <td>Concentracion</td>
+                    <td>80% cartera en top 12% de empresas</td>
+                    <td>Margin.mx</td>
+                </tr>
+                <tr>
+                    <td>Top 20 SOFOMs — crecimiento anual</td>
+                    <td class="table-highlight">+22% (12pp arriba de banca)</td>
+                    <td>Margin.mx</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <div class="callout-label">Dato clave</div>
+            <p>Las SOFOMs representan el <strong>20% de la cartera total de credito</strong> en Mexico. El 65% de las PyMEs obtienen su primer credito en una SOFOM. 7 de cada 10 PyMEs son financiadas por una SOFOM.</p>
+        </div>
+
+        <h3>2.2 Penetracion del arrendamiento (Leasing)</h3>
+
+        <div class="comparison-bar">
+            <div class="bar-label">
+                <span>Leasing como % del PIB</span>
+            </div>
+            <div class="bar-track" style="margin-bottom: 8px;">
+                <div class="bar-fill bar-fill-navy" style="width: 35%;">Mexico: 1.5-2.0%</div>
+            </div>
+            <div class="bar-track">
+                <div class="bar-fill bar-fill-green" style="width: 85%;">Economias desarrolladas: 3-5%</div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Segmento</th>
+                    <th>Participacion en arrendamiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bancos</td>
+                    <td>55-60%</td>
+                </tr>
+                <tr>
+                    <td>SOFOMs / Independientes</td>
+                    <td class="table-highlight">25-30%</td>
+                </tr>
+                <tr>
+                    <td>Cautivas (fabricantes)</td>
+                    <td>10-15%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.3 La brecha de financiamiento</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Dato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Penetracion crediticia (credito/PIB)</td>
+                    <td>~35-38% (vs. ~100% OCDE)</td>
+                </tr>
+                <tr>
+                    <td>Empresas con financiamiento formal</td>
+                    <td>~32% (ENAFIN 2021)</td>
+                </tr>
+                <tr>
+                    <td>Uso de arrendamiento en empresas medianas</td>
+                    <td class="table-highlight">18.7%</td>
+                </tr>
+                <tr>
+                    <td>Uso de arrendamiento en empresas pequenias</td>
+                    <td>7.3%</td>
+                </tr>
+                <tr>
+                    <td>Brecha de financiamiento PyME (IFC)</td>
+                    <td class="table-highlight">~$85,000 MDD</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>La <strong>subpenetracion del leasing</strong> es una de las oportunidades estructurales mas relevantes. Solo 18.7% de las empresas medianas usan arrendamiento vs. 40-60% en mercados maduros.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: SEGMENTACION MID-MARKET                            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 03</div>
+            <div class="section-title">Segmentacion del Mid-Market y Sectores de Alto CAPEX</div>
+        </div>
+
+        <h3>3.1 Perfil de las empresas medianas en Mexico</h3>
+
+        <div class="kpi-banner">
+            <div class="kpi-item">
+                <div class="kpi-value">0.7%</div>
+                <div class="kpi-label">De establecimientos</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">14.4%</div>
+                <div class="kpi-label">Del empleo total</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">21.8%</div>
+                <div class="kpi-label">De los ingresos totales</div>
+            </div>
+        </div>
+
+        <div class="callout-orange callout">
+            <div class="callout-label">El "Missing Middle"</div>
+            <p>Las empresas medianas son pocas pero desproporcionadamente grandes en impacto economico. Son demasiado grandes para fintechs de microcredito, demasiado pequenias para la banca corporativa. <strong>El 28% de su financiamiento se destina a compra de maquinaria y equipo</strong> — el producto core de Engen.</p>
+        </div>
+
+        <h3>3.2 Los 7 sectores mas atractivos</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Sector</th>
+                    <th>Empresas medianas (est.)</th>
+                    <th>CAPEX anual (MDP)</th>
+                    <th>Penetracion leasing</th>
+                    <th>Driver</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">1</td>
+                    <td class="table-highlight">Manufactura</td>
+                    <td>6,500-7,500</td>
+                    <td>650,000-750,000</td>
+                    <td>20-30%</td>
+                    <td>Nearshoring</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">2</td>
+                    <td class="table-highlight">Autotransporte</td>
+                    <td>4,000-6,000</td>
+                    <td>80,000-100,000</td>
+                    <td>35-45%</td>
+                    <td>Renovacion flota</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">3</td>
+                    <td class="table-highlight">Construccion</td>
+                    <td>1,800-2,500</td>
+                    <td>120,000-150,000</td>
+                    <td>25-35%</td>
+                    <td>Obra industrial</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Logistica</td>
+                    <td>1,500-2,500</td>
+                    <td>40,000-60,000</td>
+                    <td>20-25%</td>
+                    <td>E-commerce + nearshoring</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Agroindustria</td>
+                    <td>3,000-5,000</td>
+                    <td>35,000-45,000</td>
+                    <td>15-25%</td>
+                    <td>Exportacion</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Salud privada</td>
+                    <td>800-1,200</td>
+                    <td>50,000-65,000</td>
+                    <td>15-20%</td>
+                    <td>Demanda + tecnologia</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Tecnologia / Data Centers</td>
+                    <td>2,000-3,000</td>
+                    <td>120,000-150,000</td>
+                    <td>15-20%</td>
+                    <td>Digitalizacion</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.3 Priorizacion por Tier</h3>
+
+        <div class="tier-section">
+            <div class="tier-header">
+                <span class="tier-badge tier-1">TIER 1</span>
+                <span class="tier-title">Maxima Prioridad</span>
+            </div>
+            <div class="tier-cards">
+                <div class="tier-card">
+                    <div class="tier-card-name">Manufactura</div>
+                    <div class="tier-card-desc">Mayor masa critica. Beneficio directo de nearshoring (proveedores T2/T3). Tickets de $2-20 MDP en el sweet spot del arrendamiento.</div>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-card-name">Autotransporte de Carga</div>
+                    <div class="tier-card-desc">Sector conocido por Engen (TIP Mexico). Parque vehicular con edad promedio de 17 anios = renovacion obligada.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tier-section">
+            <div class="tier-header">
+                <span class="tier-badge tier-2">TIER 2</span>
+                <span class="tier-title">Alta Prioridad</span>
+            </div>
+            <div class="tier-cards">
+                <div class="tier-card">
+                    <div class="tier-card-name">Construccion Industrial</div>
+                    <div class="tier-card-desc">Boom por nearshoring. Arrendamiento por proyecto. Tickets altos.</div>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-card-name">Logistica y Almacenamiento</div>
+                    <div class="tier-card-desc">Demanda derivada de nearshoring y e-commerce. Automatizacion de almacenes.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tier-section">
+            <div class="tier-header">
+                <span class="tier-badge tier-3">TIER 3</span>
+                <span class="tier-title">Oportunidad de Nicho</span>
+            </div>
+            <div class="tier-cards">
+                <div class="tier-card">
+                    <div class="tier-card-name">Salud Privada</div>
+                    <div class="tier-card-desc">Tickets altos en imagenologia. Excelente calidad crediticia.</div>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-card-name">Tecnologia / Data Centers</div>
+                    <div class="tier-card-desc">Obsolescencia rapida hace el arrendamiento puro ideal.</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>3.4 Mercado Total Direccionable (TAM)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepto</th>
+                    <th>Estimacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CAPEX anual total (7 sectores)</td>
+                    <td>~$1.1-$1.3 billones MXN</td>
+                </tr>
+                <tr>
+                    <td>CAPEX de empresas medianas (~15%)</td>
+                    <td>~$165,000-$195,000 MDP</td>
+                </tr>
+                <tr>
+                    <td>Porcion financiable via arrendamiento (60-70%)</td>
+                    <td>~$100,000-$136,000 MDP</td>
+                </tr>
+                <tr>
+                    <td>Mercado servido actual</td>
+                    <td>~$35,000-$50,000 MDP</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Oportunidad no atendida (GAP)</td>
+                    <td class="table-highlight" style="color: var(--engen-green); font-size: 16px;">~$50,000-$85,000 MDP</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: LANDSCAPE COMPETITIVO                              -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 04</div>
+            <div class="section-title">Landscape Competitivo</div>
+        </div>
+
+        <h3>4.1 Reconfiguracion post-Unifin</h3>
+
+        <p>La caida de <strong>Unifin</strong> (suspension de pagos agosto 2022, ~$80,000 MDP en pasivos), junto con las quiebras de <strong>Credito Real</strong> y <strong>Alphacredit</strong>, eliminaron ~$120,000 MDP de cartera del sector no bancario. Este fue el evento mas transformador de la decada.</p>
+
+        <div class="callout">
+            <div class="callout-label">Consecuencias</div>
+            <p>Inversionistas institucionales mas selectivos. SOFOMs con buena gobernanza capturaron cartera. Mayor prima de confianza para jugadores con calificaciones solidas. <strong>Engen Capital fue una de las principales beneficiarias de esta redistribucion.</strong></p>
+        </div>
+
+        <h3>4.2 Principales jugadores</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Tipo</th>
+                    <th>Segmento</th>
+                    <th>Diferenciador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Engen Capital</td>
+                    <td>SOFOM (indep.)</td>
+                    <td>Mid-market, leasing + factoraje</td>
+                    <td>Escala GE Capital + agilidad + tecnologia</td>
+                </tr>
+                <tr>
+                    <td>Value Arrendadora</td>
+                    <td>SOFOM E.R.</td>
+                    <td>Arrendamiento corporativo/mid</td>
+                    <td>Cartera $6,447 MDP, CAGR 19.7%</td>
+                </tr>
+                <tr>
+                    <td>Arrendadora Afirme</td>
+                    <td>SOFOM E.R.</td>
+                    <td>Arrendamiento</td>
+                    <td>Respaldo bancario</td>
+                </tr>
+                <tr>
+                    <td>Start Banregio</td>
+                    <td>SOFOM E.R.</td>
+                    <td>Credito PyME</td>
+                    <td>Fabrica de credito (referencia LCG)</td>
+                </tr>
+                <tr>
+                    <td>Konfio</td>
+                    <td>Fintech/ITF</td>
+                    <td>Credito PyME digital</td>
+                    <td>100% digital, tickets pequenios</td>
+                </tr>
+                <tr>
+                    <td>Covalto (ex-Credijusto)</td>
+                    <td>Banco digital</td>
+                    <td>Credito empresarial</td>
+                    <td>Licencia bancaria, digital</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4.3 Sweet spot competitivo de Engen</h3>
+
+        <div class="callout-green callout">
+            <div class="callout-label">Posicion unica</div>
+            <p>Los <strong>bancos</strong> desatienden al mid-market con productos de arrendamiento. Las <strong>fintechs</strong> no alcanzan tickets de $5-50 MDP. Las <strong>arrendadoras pequenias</strong> no tienen escala ni calificacion crediticia. Los <strong>jugadores caidos</strong> dejaron un vacio. Engen opera en el centro exacto de esta oportunidad.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: POSICIONAMIENTO ENGEN                              -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 05</div>
+            <div class="section-title">Posicionamiento de Engen Capital</div>
+        </div>
+
+        <h3>5.1 Datos financieros clave</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Dato</th>
+                    <th>Periodo</th>
+                    <th>Fuente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Portafolio total</td>
+                    <td class="table-highlight">Ps$27,791 millones</td>
+                    <td>2T25</td>
+                    <td>PCR Verum</td>
+                </tr>
+                <tr>
+                    <td>Arrendamiento Puro</td>
+                    <td class="table-highlight">79.5%</td>
+                    <td>2T25</td>
+                    <td>PCR Verum</td>
+                </tr>
+                <tr>
+                    <td>Arrendamientos Financieros</td>
+                    <td>11.8%</td>
+                    <td>2T25</td>
+                    <td>PCR Verum</td>
+                </tr>
+                <tr>
+                    <td>Creditos</td>
+                    <td>8.7%</td>
+                    <td>2T25</td>
+                    <td>PCR Verum</td>
+                </tr>
+                <tr>
+                    <td>Utilidad neta 2024</td>
+                    <td class="table-highlight">Ps$970 millones</td>
+                    <td>2024</td>
+                    <td>PCR Verum</td>
+                </tr>
+                <tr>
+                    <td>Indice de cartera vencida</td>
+                    <td class="table-highlight" style="color: var(--engen-green);">1.3%</td>
+                    <td>1T25</td>
+                    <td>PCR Verum</td>
+                </tr>
+                <tr>
+                    <td>Calificacion crediticia</td>
+                    <td class="table-highlight">AA-/M (Perspectiva Estable)</td>
+                    <td>Jul 2025</td>
+                    <td>PCR Verum</td>
+                </tr>
+                <tr>
+                    <td>ROAA / ROAE</td>
+                    <td>2.6% / 13.7%</td>
+                    <td>2024</td>
+                    <td>PCR Verum</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>5.2 Historia corporativa</h3>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-year">~1993</span>
+                <div class="timeline-dot"></div>
+                <span class="timeline-text">Origen como GE Capital Solutions Mexico</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2016</span>
+                <div class="timeline-dot"></div>
+                <span class="timeline-text">Adquisicion por Linzor Capital Partners. Rebranding a Engen Capital</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2019</span>
+                <div class="timeline-dot"></div>
+                <span class="timeline-text">Adquisicion de 51% de TIP Mexico (remolques/semirremolques)</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2023</span>
+                <div class="timeline-dot"></div>
+                <span class="timeline-text">Lanzamiento de Engen Factoraje — 100% digital con IA integrada</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2025</span>
+                <div class="timeline-dot"></div>
+                <span class="timeline-text">Portafolio de Ps$27,791M. Calificacion AA-/M. >$121,800 MDP acumulados</span>
+            </div>
+        </div>
+
+        <h3>5.3 Posicionamiento de marca</h3>
+
+        <div style="background: var(--lcg-navy); color: white; padding: 30px; border-radius: 10px; text-align: center; margin: 20px 0;">
+            <div style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px;">Tagline</div>
+            <div style="font-size: 24px; font-weight: 700; color: var(--engen-green);">"El financiamiento mas facil. Punto."</div>
+            <div style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 10px;">Compania de tecnologia de financiamiento — no financiera tradicional</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: TENDENCIAS Y DRIVERS                               -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 06</div>
+            <div class="section-title">Tendencias y Drivers del Mercado</div>
+        </div>
+
+        <h3>6.1 Nearshoring: el mega-driver</h3>
+
+        <div class="kpi-banner">
+            <div class="kpi-item">
+                <div class="kpi-value">$40,871 MDD</div>
+                <div class="kpi-label">IED Mexico 2025 (record)</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">72%</div>
+                <div class="kpi-label">Relocalizacion LatAm en Mexico</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">400-450</div>
+                <div class="kpi-label">Nuevas empresas esperadas 2025</div>
+            </div>
+        </div>
+
+        <p>Las empresas que se relocalizan optan por arrendamiento en lugar de compra directa. Sus proveedores mexicanos T2/T3 (tipicamente empresas medianas) necesitan invertir en CAPEX rapidamente — el segmento exacto de Engen.</p>
+
+        <h3>6.2 Sintesis de drivers</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Driver</th>
+                    <th>Impacto para Engen</th>
+                    <th>Horizonte</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Nearshoring</td>
+                    <td>Demanda directa en mid-market CAPEX</td>
+                    <td><span class="tag tag-green">En curso</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Baja de tasas Banxico</td>
+                    <td>Menor costo de fondeo + mayor demanda</td>
+                    <td><span class="tag tag-green">2024-2026</span></td>
+                </tr>
+                <tr>
+                    <td>Post-Unifin</td>
+                    <td>Captura de clientes y mercado</td>
+                    <td><span class="tag tag-blue">Ya materializado</span></td>
+                </tr>
+                <tr>
+                    <td>Factoraje digital</td>
+                    <td>+30% anual, Engen bien posicionado</td>
+                    <td><span class="tag tag-green">En curso</span></td>
+                </tr>
+                <tr>
+                    <td>Mayor regulacion</td>
+                    <td>Favorece a jugadores grandes y formales</td>
+                    <td><span class="tag tag-blue">Gradual</span></td>
+                </tr>
+                <tr>
+                    <td>Open Banking</td>
+                    <td>Mejor scoring, menor friccion onboarding</td>
+                    <td><span class="tag tag-blue">2026-2028</span></td>
+                </tr>
+                <tr>
+                    <td>IA / Tecnologia</td>
+                    <td>Diferenciador si se extiende a toda la fabrica</td>
+                    <td><span class="tag tag-green">2025-2027</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>6.3 Factoraje digital</h3>
+
+        <div class="exec-grid">
+            <div class="exec-card green">
+                <div class="exec-card-label">Volumen 2024</div>
+                <div class="exec-card-value">$66,000 MDD</div>
+                <div class="exec-card-desc">Mercado de factoraje en Mexico</div>
+            </div>
+            <div class="exec-card green">
+                <div class="exec-card-label">Proyeccion 2033</div>
+                <div class="exec-card-value">$126,000 MDD</div>
+                <div class="exec-card-desc">Crecimiento esperado ~30% anual en digital</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: BENCHMARKS                                         -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 07</div>
+            <div class="section-title">Benchmarks de Modelo Comercial</div>
+        </div>
+
+        <h3>7.1 Tiempos de respuesta del sector</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Benchmark actual</th>
+                    <th>Best-in-class</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pre-calificacion</td>
+                    <td>24-72 horas</td>
+                    <td class="table-highlight" style="color: var(--engen-green);">&lt;4 horas</td>
+                </tr>
+                <tr>
+                    <td>Analisis de credito completo</td>
+                    <td>5-15 dias</td>
+                    <td class="table-highlight" style="color: var(--engen-green);">2-3 dias</td>
+                </tr>
+                <tr>
+                    <td>Aprobacion</td>
+                    <td>3-10 dias</td>
+                    <td class="table-highlight" style="color: var(--engen-green);">1-2 dias</td>
+                </tr>
+                <tr>
+                    <td>Documentacion y firma</td>
+                    <td>5-10 dias</td>
+                    <td class="table-highlight" style="color: var(--engen-green);">1-3 dias</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Total: solicitud a desembolso</td>
+                    <td class="table-highlight">20-45 dias</td>
+                    <td class="table-highlight" style="color: var(--engen-green); font-size: 14px;">5-10 dias</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>7.2 Funnel de conversion</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Ratio tipico</th>
+                    <th>Best-in-class</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Leads &rarr; Solicitudes formales</td>
+                    <td>15-25%</td>
+                    <td>30-40%</td>
+                </tr>
+                <tr>
+                    <td>Solicitudes &rarr; Aprobaciones</td>
+                    <td>40-60%</td>
+                    <td>65-75%</td>
+                </tr>
+                <tr>
+                    <td>Aprobaciones &rarr; Desembolsos</td>
+                    <td>70-85%</td>
+                    <td>85-95%</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Lead &rarr; Desembolso (end-to-end)</td>
+                    <td class="table-highlight">4-12%</td>
+                    <td class="table-highlight" style="color: var(--engen-green);">17-28%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>7.3 Casos de referencia LCG</h3>
+
+        <div class="exec-grid">
+            <div class="exec-card">
+                <div class="exec-card-label">Banregio — 6 Proyectos</div>
+                <div class="exec-card-value" style="font-size: 16px;">Fabrica de Credito PyME</div>
+                <div class="exec-card-desc">Proceso estandarizado, scoring automatico, ejecutivos especializados. Escalaron originacion sin escalar headcount proporcionalmente.</div>
+            </div>
+            <div class="exec-card green">
+                <div class="exec-card-label">HDI Seguros — Transformacion</div>
+                <div class="exec-card-value" style="font-size: 16px;">80% reduccion tiempos</div>
+                <div class="exec-card-desc">Excelencia operativa + transformacion digital + mindset agil. 24% reduccion en tramites devueltos. Alta afinidad con Engen.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8: INSIGHTS Y OPORTUNIDADES                           -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 08</div>
+            <div class="section-title">Insights y Oportunidades para Engen Capital</div>
+        </div>
+
+        <h3>8.1 Oportunidades de consultoria identificadas</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Oportunidad</th>
+                    <th>Prioridad</th>
+                    <th>Sustento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">1</td>
+                    <td class="table-highlight">Estrategia Go-to-Market segmento medio</td>
+                    <td><span class="tag tag-alta">ALTA</span></td>
+                    <td>GAP de $50,000-$85,000 MDP; nearshoring como acelerador; 7 sectores prioritarios</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">2</td>
+                    <td class="table-highlight">Optimizacion de la Fabrica de Originacion</td>
+                    <td><span class="tag tag-alta">ALTA</span></td>
+                    <td>Best-in-class en 5-10 dias vs. 20-45 dias; casos HDI + Banregio</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Calibracion del Modelo de Riesgo</td>
+                    <td><span class="tag tag-media-alta">MEDIA-ALTA</span></td>
+                    <td>NPLs de 1.3% (saludables); espacio para abrir al mid-market</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Transformacion Digital de Procesos</td>
+                    <td><span class="tag tag-media">MEDIA</span></td>
+                    <td>Engen Factoraje como modelo para extender a arrendamiento</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Gestion del Cambio y Mindset</td>
+                    <td><span class="tag tag-media">MEDIA</span></td>
+                    <td>Critico para sostener la transformacion; caso HDI</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8.2 Preguntas para profundizar con el cliente</h3>
+
+        <ul class="bullet-list">
+            <li>Cual es la distribucion actual de la cartera de Engen por sector?</li>
+            <li>Cual es el ticket promedio actual y el rango target en mid-market?</li>
+            <li>Cual es la cobertura geografica actual y donde ven oportunidad?</li>
+            <li>Que capacidad de originacion tiene la fabrica hoy (solicitudes/mes)?</li>
+            <li>Cual es el NPL historico por sector en su portafolio?</li>
+            <li>Cuantos ejecutivos comerciales operan hoy y con que ratio de cartera?</li>
+            <li>Que tan avanzada esta la digitalizacion del proceso de arrendamiento (vs. factoraje)?</li>
+        </ul>
+
+        <div class="callout-green callout" style="margin-top: 30px;">
+            <div class="callout-label">Conclusion</div>
+            <p>Engen Capital enfrenta una <strong>ventana de oportunidad unica</strong>: un mercado subpenetrado, un entorno macro favorable (nearshoring + baja de tasas), un landscape competitivo en reconfiguracion, y una posicion financiera solida. El reto no es si crecer, sino <strong>como estructurar el crecimiento</strong> — en que sectores, con que modelo comercial, y con que nivel de riesgo. Exactamente donde London Consulting Group puede agregar mayor valor.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SOURCES PAGE                                                  -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Anexo</div>
+            <div class="section-title">Fuentes</div>
+        </div>
+
+        <div class="source-category">Fuentes oficiales</div>
+        <ul class="source-list">
+            <li>CNBV — Portafolio de Informacion (portafolioinfo.cnbv.gob.mx)</li>
+            <li>CNBV — Informe Anual 2024</li>
+            <li>Banco de Mexico — Reporte de Estabilidad Financiera 1S2024</li>
+            <li>INEGI — Estadisticas MiPyMEs 2024/2025 (Censos Economicos)</li>
+            <li>CNBV/INEGI — ENAFIN 2024</li>
+        </ul>
+
+        <div class="source-category">Calificadoras y sector financiero</div>
+        <ul class="source-list">
+            <li>PCR Verum — Calificacion Engen Capital AA-/M (Jul 2025)</li>
+            <li>HR Ratings — Reporte Sectorial Arrendadoras</li>
+            <li>Moody's Local — Value Arrendadora (Abr 2025)</li>
+            <li>BMV — Eventos Engen Capital (Ago 2024, Ene 2025)</li>
+            <li>HR Ratings — Arrendadora Afirme 2024</li>
+        </ul>
+
+        <div class="source-category">Mercado y tendencias</div>
+        <ul class="source-list">
+            <li>ASOFOM — El Sector SOFOM en Mexico</li>
+            <li>DPL News — Cartera ASOFOM crece 7.2%</li>
+            <li>El Cronista — Sofomes aceleran crecimiento</li>
+            <li>Margin.mx — Las SOFOMs mas grandes de Mexico</li>
+            <li>El Financiero — IED record 2025: $40,871 MDD</li>
+            <li>IMCO — Nearshoring e IED</li>
+            <li>CIEP — Plan Mexico y Decretos de Relocalizacion</li>
+            <li>Modern Machine Shop Mexico — Inversion en maquinaria 2023-2025</li>
+            <li>Aklara — Factoraje digital tendencias</li>
+            <li>Fintech Mexico — Reporte 2025</li>
+            <li>Reporte Indigo — SOFOMs y Plan Mexico</li>
+        </ul>
+
+        <div class="source-category">Fuentes del cliente</div>
+        <ul class="source-list">
+            <li>Engen Capital (engen.com.mx)</li>
+            <li>Engen Capital — Informe de Sostenibilidad 2024</li>
+            <li>Reunion Discovery LCG — Febrero 2026</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- BACK COVER                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page" style="min-height: 40vh; justify-content: center; align-items: center; text-align: center;">
+        <div style="position: relative; z-index: 1;">
+            <div style="margin-bottom: 30px;">
+                <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group" style="height: 50px; filter: brightness(0) invert(1);" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:4px;display:inline-block;&quot;>London Consulting Group</span>'">
+            </div>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Este documento es confidencial y fue preparado exclusivamente para Engen Capital.</p>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 30px;">Su reproduccion o distribucion requiere autorizacion escrita de London Consulting Group.</p>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.3);">&copy; 2026 London Consulting Group. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
