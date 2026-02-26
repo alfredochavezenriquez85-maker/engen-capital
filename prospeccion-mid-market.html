@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook de Prospeccion Mid-Market — Engen Capital | LCG</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            body { font-size: 9pt; background: white !important; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; page-break-after: always; }
+            table { font-size: 8pt; page-break-inside: avoid; }
+            h3 { page-break-after: avoid; }
+            .section-header, .kpi-banner, .exec-grid, .callout, .action-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body { font-family: 'Inter', sans-serif; color: var(--text-primary); line-height: 1.6; background: #eef1f5; }
+        .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+
+        /* COVER */
+        .cover-page { background: linear-gradient(135deg, #004D40 0%, #00695C 40%, #00897B 100%); color: white; padding: 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: rgba(0,179,136,0.1); }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-logos img.logo-lcg { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logos img.logo-engen { height: 65px; border-radius: 6px; }
+        .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 40px; }
+        .cover-divider { width: 80px; height: 3px; background: white; margin-bottom: 40px; opacity: 0.5; }
+        .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .cover-meta-label { color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; font-size: 13px; }
+        .cover-footer { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.3); display: flex; justify-content: space-between; }
+
+        /* PAGE HEADER */
+        .page-header-logos { display: flex; justify-content: space-between; align-items: center; padding: 0 0 16px 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+        .page-header-logos img.logo-lcg-sm { height: 24px; opacity: 0.85; filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(2500%) hue-rotate(200deg) brightness(90%) contrast(100%); }
+        .page-header-logos img.logo-engen-sm { height: 26px; border-radius: 4px; opacity: 0.8; }
+        .page-header-logos .header-divider { flex: 1; text-align: center; font-size: 9px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* CONTENT */
+        .content-page { padding: 50px 60px; }
+        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--engen-dark); }
+        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--engen-green); margin-bottom: 8px; }
+        .section-title { font-size: 26px; font-weight: 700; color: var(--lcg-navy); }
+        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-blue); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--engen-green); }
+        h4 { font-size: 14px; font-weight: 600; color: var(--text-primary); margin: 20px 0 10px; }
+        p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 12px; }
+        thead th { background: var(--lcg-navy); color: white; font-weight: 600; padding: 10px 14px; text-align: left; font-size: 11px; }
+        thead th:first-child { border-radius: 6px 0 0 0; }
+        thead th:last-child { border-radius: 0 6px 0 0; }
+        tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+        tbody tr:hover { background: var(--bg-light); }
+        .table-highlight { font-weight: 700; color: var(--lcg-navy); }
+
+        /* TAGS */
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+        .tag-t1 { background: #e0f2f1; color: #004D40; }
+        .tag-t2 { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .tag-t3 { background: #f3e5f5; color: #6a1b9a; }
+        .tag-hot { background: #fce4ec; color: #c62828; }
+        .tag-warm { background: #fff3e0; color: #e65100; }
+        .tag-green { background: #e8f5e9; color: #2e7d32; }
+
+        /* KPI BANNER */
+        .kpi-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--engen-dark); border-radius: 10px; overflow: hidden; margin: 24px 0; }
+        .kpi-item { padding: 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .kpi-item:last-child { border-right: none; }
+        .kpi-value { font-size: 24px; font-weight: 800; color: var(--engen-green); }
+        .kpi-label { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+        /* CALLOUT */
+        .callout { border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 20px 0; background: var(--lcg-light-blue); }
+        .callout-green { background: #e8f7f2; border-left-color: var(--engen-green); }
+        .callout-orange { background: #fff8ed; border-left-color: var(--warning); }
+        .callout-red { background: #fce4ec; border-left-color: var(--danger); }
+        .callout-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 6px; }
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout-orange .callout-label { color: #e65100; }
+        .callout-red .callout-label { color: #c62828; }
+        .callout p { margin: 0; font-size: 13px; }
+
+        /* ACTION CARDS */
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+        .action-card { background: var(--bg-light); border-radius: 10px; padding: 20px; border-top: 4px solid var(--engen-green); }
+        .action-card.blue { border-top-color: var(--lcg-accent); }
+        .action-card.orange { border-top-color: var(--warning); }
+        .action-card.navy { border-top-color: var(--lcg-navy); }
+        .action-card-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 6px; }
+        .action-card-value { font-size: 22px; font-weight: 800; color: var(--engen-green); margin-bottom: 4px; }
+        .action-card-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+
+        /* SECTOR CARD */
+        .sector-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 22px; margin: 14px 0; }
+        .sector-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .sector-name { font-size: 16px; font-weight: 700; color: var(--lcg-navy); }
+        .sector-tag { font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+        .sector-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 12px 0; }
+        .sector-metric { text-align: center; }
+        .sector-metric-value { font-size: 16px; font-weight: 800; color: var(--engen-dark); }
+        .sector-metric-label { font-size: 9px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+        .sector-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+
+        /* GEOGRAPHY CARD */
+        .geo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 16px 0; }
+        .geo-card { background: var(--bg-light); border-radius: 8px; padding: 16px; text-align: center; }
+        .geo-card-region { font-size: 13px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px; }
+        .geo-card-states { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; }
+        .geo-card-detail { font-size: 10px; color: var(--text-muted); }
+        .geo-card-priority { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-top: 6px; }
+
+        /* TIMELINE */
+        .roadmap { margin: 20px 0; }
+        .roadmap-phase { display: flex; gap: 16px; margin-bottom: 16px; }
+        .roadmap-time { width: 90px; flex-shrink: 0; text-align: right; padding-top: 4px; }
+        .roadmap-time-label { font-size: 11px; font-weight: 700; color: var(--lcg-accent); }
+        .roadmap-time-range { font-size: 9px; color: var(--text-muted); }
+        .roadmap-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+        .roadmap-content { flex: 1; background: var(--bg-light); border-radius: 8px; padding: 14px 16px; }
+        .roadmap-title { font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px; }
+        .roadmap-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+
+        /* BULLET LIST */
+        ul.bullet-list { padding-left: 20px; margin: 8px 0 16px; }
+        ul.bullet-list li { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+
+        /* PRINT BTN */
+        .print-btn { position: fixed; bottom: 30px; right: 30px; background: var(--engen-dark); color: white; border: none; padding: 14px 28px; border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 20px rgba(0,77,64,0.3); z-index: 100; }
+        .print-btn:hover { background: var(--engen-green); }
+
+        /* Full width action card */
+        .action-card-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Descargar PDF</button>
+
+<div class="document">
+
+    <!-- COVER -->
+    <div class="cover-page">
+        <div class="cover-logos">
+            <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="cover-content">
+            <div class="cover-label">Playbook de Prospeccion</div>
+            <h1 class="cover-title">Estrategia de Penetracion Mid-Market: Guia Operativa</h1>
+            <p class="cover-subtitle">Fichas sectoriales, perfiles de prospeccion, geografia prioritaria y plan de accion a 90 dias para el equipo comercial de Engen Capital</p>
+            <div class="cover-divider"></div>
+            <div class="cover-meta">
+                <div><div class="cover-meta-label">Preparado por</div><div class="cover-meta-value">London Consulting Group</div></div>
+                <div><div class="cover-meta-label">Para</div><div class="cover-meta-value">Equipo Comercial — Engen Capital</div></div>
+                <div><div class="cover-meta-label">Fecha</div><div class="cover-meta-value">Febrero 2026</div></div>
+                <div><div class="cover-meta-label">Clasificacion</div><div class="cover-meta-value">Uso Interno</div></div>
+            </div>
+        </div>
+        <div class="cover-footer">
+            <span>&copy; 2026 London Consulting Group</span>
+            <span>Documento operativo — Uso interno Engen Capital</span>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1: RESUMEN DE OPORTUNIDAD ===== -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 01</div>
+            <div class="section-title">La Oportunidad: Por Que Ahora</div>
+        </div>
+
+        <p>Engen Capital enfrenta una <strong>ventana de oportunidad sin precedentes</strong> para crecer en el segmento de empresas medianas. Este playbook traduce el analisis estrategico en acciones concretas para el equipo comercial.</p>
+
+        <div class="kpi-banner">
+            <div class="kpi-item">
+                <div class="kpi-value">$50-85K</div>
+                <div class="kpi-label">MDP en GAP de mercado</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">7</div>
+                <div class="kpi-label">Sectores prioritarios</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">5</div>
+                <div class="kpi-label">Corredores geograficos</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value">90</div>
+                <div class="kpi-label">Dias para primeros resultados</div>
+            </div>
+        </div>
+
+        <h3>Por que el mid-market y por que ahora</h3>
+
+        <div class="action-grid">
+            <div class="action-card">
+                <div class="action-card-title">Nearshoring disparando CAPEX</div>
+                <div class="action-card-value">$4,161 MDD</div>
+                <div class="action-card-desc">Invertidos en parques industriales en 2025. Ocupacion >95%. 400+ nuevas empresas esperadas. Los proveedores T2/T3 mexicanos necesitan equipo YA.</div>
+            </div>
+            <div class="action-card blue">
+                <div class="action-card-title">Autotransporte en expansion</div>
+                <div class="action-card-value">+40%</div>
+                <div class="action-card-desc">Crecimiento esperado del financiamiento a transporte en 2026 (Amsofac). +94% de las 38,000 empresas son PyMEs. Edad promedio de flota: 17 anios.</div>
+            </div>
+            <div class="action-card orange">
+                <div class="action-card-title">Espacio post-Unifin</div>
+                <div class="action-card-value">$120K MDP</div>
+                <div class="action-card-desc">De cartera que salio del mercado. Clientes corporativos ya migrados. Falta capturar el mid-market huerfano que busca arrendadora confiable.</div>
+            </div>
+            <div class="action-card navy">
+                <div class="action-card-title">Tasas a la baja</div>
+                <div class="action-card-value">Ciclo bajista</div>
+                <div class="action-card-desc">Banxico en trayectoria de recortes. Menor costo de fondeo = mejores tasas para el cliente = mayor demanda de arrendamiento sobre compra.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2: PERFIL DE CLIENTE IDEAL ===== -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 02</div>
+            <div class="section-title">Perfil de Cliente Ideal (ICP)</div>
+        </div>
+
+        <p>Definicion del <strong>Ideal Customer Profile</strong> para la estrategia de penetracion en el segmento medio. Cada ejecutivo comercial debe usar estos criterios como filtro de calificacion.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Criterio</th>
+                    <th>Rango ideal</th>
+                    <th>Minimo aceptable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Facturacion anual</td>
+                    <td class="table-highlight">$150M - $2,000M MXN</td>
+                    <td>$100M MXN</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Empleados</td>
+                    <td>50 - 500</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Antiguedad</td>
+                    <td>5+ anios operando</td>
+                    <td>3 anios</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Necesidad de CAPEX</td>
+                    <td>Recurrente (anual)</td>
+                    <td>Al menos 1 evento en proximos 12 meses</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Ticket de arrendamiento</td>
+                    <td class="table-highlight">$2M - $50M MXN</td>
+                    <td>$1M MXN</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Formalidad fiscal</td>
+                    <td>e.firma activa, CFDIs, cumplimiento SAT</td>
+                    <td>Al menos CFDIs regulares</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Sector</td>
+                    <td>Tier 1 o Tier 2 (ver fichas)</td>
+                    <td>Cualquier sector con activo arrendable</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Geografia</td>
+                    <td>Corredores prioritarios (ver mapa)</td>
+                    <td>Cualquier zona urbana/industrial</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout-green callout">
+            <div class="callout-label">Regla de oro para calificacion rapida</div>
+            <p>Si la empresa tiene <strong>e.firma</strong>, factura <strong>>$100M/anio</strong>, y necesita <strong>maquinaria, equipo o vehiculos</strong> en los proximos 12 meses = <strong>prospecto calificado</strong>. Pasarlo a analisis.</p>
+        </div>
+
+        <h3>Seniales de compra: como detectar prospectos activos</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Senial</th>
+                    <th>Donde detectarla</th>
+                    <th>Temperatura</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ganaron contrato de proveedor T2/T3 nearshoring</td>
+                    <td>Noticias, LinkedIn, camaras industriales</td>
+                    <td><span class="tag tag-hot">HOT</span></td>
+                </tr>
+                <tr>
+                    <td>Expansion de planta o nueva linea de produccion</td>
+                    <td>Permisos de construccion, noticias locales</td>
+                    <td><span class="tag tag-hot">HOT</span></td>
+                </tr>
+                <tr>
+                    <td>Renovacion de flota vehicular obligatoria (NOM)</td>
+                    <td>SCT, CANACAR, antigueedad de flota</td>
+                    <td><span class="tag tag-hot">HOT</span></td>
+                </tr>
+                <tr>
+                    <td>Vencimiento de contrato de leasing con otro proveedor</td>
+                    <td>CRM, referidos, visitas comerciales</td>
+                    <td><span class="tag tag-warm">WARM</span></td>
+                </tr>
+                <tr>
+                    <td>Certificaciones nuevas (ISO, IATF) que requieren equipo</td>
+                    <td>Publicaciones sectoriales, LinkedIn</td>
+                    <td><span class="tag tag-warm">WARM</span></td>
+                </tr>
+                <tr>
+                    <td>Crecimiento de ventas >15% anual (comprobable SAT)</td>
+                    <td>Analisis CFDIs (post-contacto)</td>
+                    <td><span class="tag tag-warm">WARM</span></td>
+                </tr>
+                <tr>
+                    <td>Publicaciones de empleo para roles operativos/produccion</td>
+                    <td>LinkedIn, Indeed, OCC</td>
+                    <td><span class="tag tag-green">SEÑAL</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== SECTION 3: FICHAS SECTORIALES ===== -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 03</div>
+            <div class="section-title">Fichas Sectoriales de Prospeccion</div>
+        </div>
+
+        <p>Cada ficha contiene el perfil del sector, tipo de activos a financiar, argumentos de venta y fuentes de prospectos.</p>
+
+        <!-- MANUFACTURA -->
+        <div class="sector-card" style="border-left: 4px solid var(--engen-green);">
+            <div class="sector-header">
+                <span class="sector-name">1. Manufactura (Autopartes, Metalmecanica, Alimentos)</span>
+                <span class="sector-tag tag-t1">TIER 1</span>
+            </div>
+            <div class="sector-grid">
+                <div class="sector-metric"><div class="sector-metric-value">6,500+</div><div class="sector-metric-label">Empresas medianas</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">$2-20M</div><div class="sector-metric-label">Ticket promedio</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">20-30%</div><div class="sector-metric-label">Penetracion leasing</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">+8-12%</div><div class="sector-metric-label">Crecimiento anual</div></div>
+            </div>
+            <div class="sector-detail">
+                <strong>Activos a financiar:</strong> CNC, tornos, prensas, inyectoras, lineas de ensamble, robots industriales, equipo de inspeccion<br>
+                <strong>Argumento clave:</strong> "Deduccion al 100% + no comprometes lineas de credito + renuevas tecnologia cada ciclo"<br>
+                <strong>Driver:</strong> Nearshoring — proveedores T2/T3 necesitan invertir para cumplir con OEMs<br>
+                <strong>Donde encontrarlos:</strong> CANACINTRA, INDEX (maquiladoras), AMPIP (parques industriales), Modern Machine Shop Mexico, Cluster Industrial, ferias FABTECH Mexico
+            </div>
+        </div>
+
+        <!-- AUTOTRANSPORTE -->
+        <div class="sector-card" style="border-left: 4px solid var(--engen-green);">
+            <div class="sector-header">
+                <span class="sector-name">2. Autotransporte de Carga</span>
+                <span class="sector-tag tag-t1">TIER 1</span>
+            </div>
+            <div class="sector-grid">
+                <div class="sector-metric"><div class="sector-metric-value">4,000+</div><div class="sector-metric-label">Empresas medianas</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">$1.5-3M</div><div class="sector-metric-label">Ticket promedio</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">35-45%</div><div class="sector-metric-label">Penetracion leasing</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">+40%</div><div class="sector-metric-label">Crecimiento financiamiento</div></div>
+            </div>
+            <div class="sector-detail">
+                <strong>Activos a financiar:</strong> Tractocamiones, remolques, semirremolques, equipo de refrigeracion, GPS/telematica<br>
+                <strong>Argumento clave:</strong> "Renueva tu flota sin descapitalizarte. Engen tiene 30+ anios financiando transporte (TIP Mexico)"<br>
+                <strong>Driver:</strong> Edad promedio flota 17 anios. NOM de emisiones. Crecimiento +7% anual del parque vehicular. Empresas medianas (31-100 unidades) crecieron +10%<br>
+                <strong>Donde encontrarlos:</strong> CANACAR, ANTP, ferias Expo Transporte ANPACT, distribuidores Kenworth/Freightliner/International, SCT (padron federal)
+            </div>
+        </div>
+
+        <!-- CONSTRUCCION -->
+        <div class="sector-card" style="border-left: 4px solid var(--lcg-accent);">
+            <div class="sector-header">
+                <span class="sector-name">3. Construccion Industrial</span>
+                <span class="sector-tag tag-t2">TIER 2</span>
+            </div>
+            <div class="sector-grid">
+                <div class="sector-metric"><div class="sector-metric-value">1,800+</div><div class="sector-metric-label">Empresas medianas</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">$2-15M</div><div class="sector-metric-label">Ticket promedio</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">25-35%</div><div class="sector-metric-label">Penetracion leasing</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">+12-15%</div><div class="sector-metric-label">Crecimiento anual</div></div>
+            </div>
+            <div class="sector-detail">
+                <strong>Activos a financiar:</strong> Excavadoras, retroexcavadoras, gruas, plantas de concreto, generadores, vehiculos de obra<br>
+                <strong>Argumento clave:</strong> "Arrienda por proyecto — devuelves al terminar. Sin activo ocioso en tu balance"<br>
+                <strong>Driver:</strong> +100 nuevos parques industriales en construccion. Nearshoring generando obra industrial record<br>
+                <strong>Donde encontrarlos:</strong> CMIC, distribuidores Caterpillar/John Deere/Volvo CE, licitaciones publicas, Expo CIHAC
+            </div>
+        </div>
+    </div>
+
+    <!-- FICHAS CONT -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 03 (cont.)</div>
+            <div class="section-title">Fichas Sectoriales — Tier 2 y Tier 3</div>
+        </div>
+
+        <!-- LOGISTICA -->
+        <div class="sector-card" style="border-left: 4px solid var(--lcg-accent);">
+            <div class="sector-header">
+                <span class="sector-name">4. Logistica y Almacenamiento</span>
+                <span class="sector-tag tag-t2">TIER 2</span>
+            </div>
+            <div class="sector-grid">
+                <div class="sector-metric"><div class="sector-metric-value">1,500+</div><div class="sector-metric-label">Empresas medianas</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">$1-10M</div><div class="sector-metric-label">Ticket promedio</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">20-25%</div><div class="sector-metric-label">Penetracion leasing</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">+10-15%</div><div class="sector-metric-label">Crecimiento anual</div></div>
+            </div>
+            <div class="sector-detail">
+                <strong>Activos:</strong> Montacargas, racks automatizados, bandas transportadoras, sorters, vehiculos de reparto<br>
+                <strong>Argumento:</strong> "Automatiza tu almacen sin inversion inicial. Crece tu capacidad al ritmo de la demanda"<br>
+                <strong>Donde encontrarlos:</strong> Expo Logistica, ANTAD (para 3PL de retail), zonas industriales CDMX/Monterrey/Guadalajara
+            </div>
+        </div>
+
+        <!-- AGROINDUSTRIA -->
+        <div class="sector-card" style="border-left: 4px solid var(--lcg-accent);">
+            <div class="sector-header">
+                <span class="sector-name">5. Agroindustria Tecnificada</span>
+                <span class="sector-tag tag-t2">TIER 2</span>
+            </div>
+            <div class="sector-grid">
+                <div class="sector-metric"><div class="sector-metric-value">3,000+</div><div class="sector-metric-label">Empresas medianas</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">$1-8M</div><div class="sector-metric-label">Ticket promedio</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">15-25%</div><div class="sector-metric-label">Penetracion leasing</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">+4-6%</div><div class="sector-metric-label">Crecimiento anual</div></div>
+            </div>
+            <div class="sector-detail">
+                <strong>Activos:</strong> Tractores, cosechadoras, sistemas de riego, invernaderos, empacadoras, camaras de frio<br>
+                <strong>Argumento:</strong> "Deduccion al 100% para agroindustria exportadora. Financiamiento en USD para equipo importado"<br>
+                <strong>Donde encontrarlos:</strong> SAGARPA/SADER, Consejo Nacional Agropecuario, Expo AgroAlimentaria (Irapuato), distribuidores John Deere/Case/New Holland, zonas: Sinaloa, Sonora, Jalisco, Guanajuato
+            </div>
+        </div>
+
+        <!-- SALUD -->
+        <div class="sector-card" style="border-left: 4px solid var(--text-muted);">
+            <div class="sector-header">
+                <span class="sector-name">6. Salud Privada</span>
+                <span class="sector-tag tag-t3">TIER 3</span>
+            </div>
+            <div class="sector-grid">
+                <div class="sector-metric"><div class="sector-metric-value">800+</div><div class="sector-metric-label">Empresas medianas</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">$2-40M</div><div class="sector-metric-label">Ticket promedio</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">15-20%</div><div class="sector-metric-label">Penetracion leasing</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">+6-8%</div><div class="sector-metric-label">Crecimiento anual</div></div>
+            </div>
+            <div class="sector-detail">
+                <strong>Activos:</strong> Resonancia magnetica, tomografos, rayos X, ultrasonidos, equipo de laboratorio, ambulancias<br>
+                <strong>Argumento:</strong> "Equipo de imagenologia de ultima generacion sin inversion millonaria. Tickets altos, excelente calidad crediticia"<br>
+                <strong>Donde encontrarlos:</strong> Distribuidores GE Healthcare / Siemens Healthineers / Philips, Expo Med, hospitales privados medianos, cadenas de laboratorios
+            </div>
+        </div>
+
+        <!-- TECNOLOGIA -->
+        <div class="sector-card" style="border-left: 4px solid var(--text-muted);">
+            <div class="sector-header">
+                <span class="sector-name">7. Tecnologia / Data Centers</span>
+                <span class="sector-tag tag-t3">TIER 3</span>
+            </div>
+            <div class="sector-grid">
+                <div class="sector-metric"><div class="sector-metric-value">2,000+</div><div class="sector-metric-label">Empresas medianas</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">$0.5-10M</div><div class="sector-metric-label">Ticket promedio</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">15-20%</div><div class="sector-metric-label">Penetracion leasing</div></div>
+                <div class="sector-metric"><div class="sector-metric-value">+8-12%</div><div class="sector-metric-label">Crecimiento anual</div></div>
+            </div>
+            <div class="sector-detail">
+                <strong>Activos:</strong> Servidores, storage, networking, UPS, aires de precision, equipos de computo empresarial<br>
+                <strong>Argumento:</strong> "Obsolescencia rapida = arrendamiento puro ideal. Renuevas cada 3 anios sin activos depreciados en balance"<br>
+                <strong>Donde encontrarlos:</strong> Distribuidores Dell/HP/Lenovo enterprise, Expo Datacenter Dynamics, CANIETI, integradores de TI
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4: MAPA GEOGRAFICO ===== -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 04</div>
+            <div class="section-title">Geografia Prioritaria</div>
+        </div>
+
+        <p>La prospeccion debe concentrarse en los <strong>5 corredores industriales</strong> con mayor densidad de empresas medianas, inversion nearshoring y actividad de CAPEX.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Corredor</th>
+                    <th>Estados</th>
+                    <th>Sectores dominantes</th>
+                    <th>Dato clave</th>
+                    <th>Prioridad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Noreste</td>
+                    <td>Nuevo Leon, Coahuila, Tamaulipas</td>
+                    <td>Automotriz, metalmecanica, electronica, transporte</td>
+                    <td>NL: $876 MDD en parques industriales. 28% absorcion industrial nacional</td>
+                    <td><span class="tag tag-hot">P1</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Bajio</td>
+                    <td>Queretaro, Guanajuato, Aguascalientes, SLP</td>
+                    <td>Automotriz, aeroespacial, alimentos, logistica</td>
+                    <td>400+ empresas automotrices en GTO. 50% inversion aeroespacial en QRO</td>
+                    <td><span class="tag tag-hot">P1</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Noroeste</td>
+                    <td>Chihuahua, Sonora, Baja California</td>
+                    <td>Maquilas, electronica, dispositivos medicos, agro</td>
+                    <td>Corredor maquilador mas grande de Mexico. Ciudad Juarez, Tijuana, Hermosillo</td>
+                    <td><span class="tag tag-warm">P2</span></td>
+                </tr>
+                <tr>
+                    <td>Centro</td>
+                    <td>CDMX, EdoMex, Puebla, Tlaxcala</td>
+                    <td>Manufactura diversa, logistica, servicios, salud</td>
+                    <td>Mayor concentracion de empresas medianas del pais</td>
+                    <td><span class="tag tag-warm">P2</span></td>
+                </tr>
+                <tr>
+                    <td>Occidente</td>
+                    <td>Jalisco, Sinaloa</td>
+                    <td>Alimentos, tecnologia, agro, electronica</td>
+                    <td>JAL: $1,249 MDD en parques industriales (2do lugar nacional). SIN: $1,335 MDD (1er lugar)</td>
+                    <td><span class="tag tag-green">P3</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout-green callout">
+            <div class="callout-label">Recomendacion</div>
+            <p><strong>Fase 1 (dias 1-30):</strong> Concentrar el 70% del esfuerzo comercial en <strong>Noreste + Bajio</strong>. Mayor densidad de oportunidades y nearshoring activo. <strong>Fase 2 (dias 31-60):</strong> Abrir Noroeste y Centro. <strong>Fase 3 (dias 61-90):</strong> Occidente y oportunidades emergentes.</p>
+        </div>
+
+        <h3>Fuentes de prospectos por corredor</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Fuente</th>
+                    <th>Tipo</th>
+                    <th>Que buscar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">AMPIP (parques industriales)</td>
+                    <td>Directorio digital</td>
+                    <td>Empresas instaladas en cada parque. Filtrar por tamano mediano</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Camaras industriales (CANACINTRA, CMIC, CANACAR)</td>
+                    <td>Directorios de agremiados</td>
+                    <td>Empresas medianas por region y sector</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">DENUE (INEGI)</td>
+                    <td>Base de datos publica</td>
+                    <td>298,115 empresas manufactura con ubicacion y tamano</td>
+                </tr>
+                <tr>
+                    <td>LinkedIn Sales Navigator</td>
+                    <td>Prospeccion digital</td>
+                    <td>Directores Finanzas / Operaciones en empresas 50-500 empleados</td>
+                </tr>
+                <tr>
+                    <td>Distribuidores de equipo</td>
+                    <td>Alianzas</td>
+                    <td>Clientes que cotizan equipo pero no tienen financiamiento</td>
+                </tr>
+                <tr>
+                    <td>Ferias industriales</td>
+                    <td>Presencial</td>
+                    <td>FABTECH, Expo Transporte, CIHAC, Expo Med, AgroAlimentaria</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== SECTION 5: PROPUESTA DE VALOR ===== -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 05</div>
+            <div class="section-title">Propuesta de Valor por Perfil de Cliente</div>
+        </div>
+
+        <p>Argumentos diferenciados segun el tipo de empresa que estamos prospectando. <strong>No es el mismo mensaje para todos.</strong></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Perfil del prospecto</th>
+                    <th>Su dolor</th>
+                    <th>Mensaje Engen</th>
+                    <th>Producto lead</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Proveedor T2/T3 de OEM nearshoring</td>
+                    <td>Necesita equipo nuevo rapido para cumplir contrato. No tiene tiempo para tramites bancarios</td>
+                    <td>"30 anios financiando manufactura. Respuesta en dias, no semanas. Arrendamiento puro 100% deducible"</td>
+                    <td>Arrendamiento Puro</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Transportista mediano (31-100 unidades)</td>
+                    <td>Flota vieja, costos de mantenimiento altos, riesgo NOM. No quiere descapitalizarse</td>
+                    <td>"Engen financia transporte desde hace 30 anios (TIP Mexico). Renueva sin descapitalizarte"</td>
+                    <td>Arrendamiento Puro / Financiero</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Constructora mediana con proyecto adjudicado</td>
+                    <td>Necesita maquinaria pesada para un proyecto de 12-18 meses. No quiere comprar</td>
+                    <td>"Arrendamiento por proyecto. Usas el equipo y lo devuelves. Sin activo ocioso al terminar"</td>
+                    <td>Arrendamiento Puro</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Agroindustria exportadora</td>
+                    <td>Ciclos de inversion en USD. Necesita equipo importado. Bancos no entienden el sector</td>
+                    <td>"Financiamiento en USD y MXN. Especialistas en tu sector. Deduccion al 100%"</td>
+                    <td>Arrendamiento + Credito USD</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Hospital/clinica privada</td>
+                    <td>Equipo de imagenologia caro. Obsolescencia rapida. Quiere tecnologia de punta sin invertir millones</td>
+                    <td>"Equipa tu hospital con lo ultimo en tecnologia. Renuevas cada ciclo"</td>
+                    <td>Arrendamiento Puro</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Empresa con liquidez atrapada en activos</td>
+                    <td>Balance pesado. Necesita liberar capital de trabajo sin vender activos operativos</td>
+                    <td>"Sale &amp; Lease Back: convierte tus activos en liquidez sin dejar de usarlos"</td>
+                    <td>Sale &amp; Lease Back</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">Diferenciadores Engen vs. Competencia</div>
+            <p><strong>vs. Bancos:</strong> "Mas rapidos, sin requisito de cuenta, especializados en arrendamiento"<br>
+            <strong>vs. Fintechs:</strong> "Tickets de $2-50M, 30 anios de experiencia, calificacion AA-/M"<br>
+            <strong>vs. Arrendadoras chicas:</strong> "Respaldo financiero solido, fondeo institucional, portafolio de $27,791M"<br>
+            <strong>vs. Ex-clientes Unifin:</strong> "Estabilidad y confianza. Calificacion AA-/M. No somos una apuesta"</p>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6: PLAN DE ACCION 90 DIAS ===== -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 06</div>
+            <div class="section-title">Plan de Accion a 90 Dias</div>
+        </div>
+
+        <div class="roadmap">
+            <div class="roadmap-phase">
+                <div class="roadmap-time"><div class="roadmap-time-label">FASE 1</div><div class="roadmap-time-range">Dias 1-30</div></div>
+                <div class="roadmap-dot" style="background: var(--danger);"></div>
+                <div class="roadmap-content" style="border-left: 3px solid var(--danger);">
+                    <div class="roadmap-title">Preparacion y Primeros Contactos</div>
+                    <div class="roadmap-desc">
+                        &bull; Construir base de prospectos: 200 empresas del DENUE + camaras (Noreste + Bajio)<br>
+                        &bull; Segmentar por sector y ticket estimado usando criterios ICP<br>
+                        &bull; Identificar 50 prospectos "hot" con seniales de compra activas<br>
+                        &bull; Primer contacto a los 50 hot: llamada + email con propuesta sectorial<br>
+                        &bull; Agendar 15-20 reuniones de presentacion<br>
+                        &bull; Establecer 3-5 alianzas con distribuidores de equipo clave
+                    </div>
+                </div>
+            </div>
+            <div class="roadmap-phase">
+                <div class="roadmap-time"><div class="roadmap-time-label">FASE 2</div><div class="roadmap-time-range">Dias 31-60</div></div>
+                <div class="roadmap-dot" style="background: var(--warning);"></div>
+                <div class="roadmap-content" style="border-left: 3px solid var(--warning);">
+                    <div class="roadmap-title">Aceleracion de Pipeline</div>
+                    <div class="roadmap-desc">
+                        &bull; Expandir base a Noroeste + Centro (200 prospectos adicionales)<br>
+                        &bull; Convertir reuniones en solicitudes formales: meta 30-40 solicitudes<br>
+                        &bull; Participar en 1-2 eventos sectoriales (feria, camara industrial)<br>
+                        &bull; Activar referidos de clientes actuales satisfechos<br>
+                        &bull; Medir tiempos de respuesta internos y reportar cuellos de botella<br>
+                        &bull; Primeras aprobaciones y cotizaciones enviadas
+                    </div>
+                </div>
+            </div>
+            <div class="roadmap-phase">
+                <div class="roadmap-time"><div class="roadmap-time-label">FASE 3</div><div class="roadmap-time-range">Dias 61-90</div></div>
+                <div class="roadmap-dot" style="background: var(--engen-green);"></div>
+                <div class="roadmap-content" style="border-left: 3px solid var(--engen-green);">
+                    <div class="roadmap-title">Primeros Cierres y Aprendizaje</div>
+                    <div class="roadmap-desc">
+                        &bull; Meta: 8-12 operaciones cerradas en segmento medio<br>
+                        &bull; Primeros desembolsos del nuevo segmento<br>
+                        &bull; Documentar aprendizajes: que funciono, que no, donde hay friccion<br>
+                        &bull; Ajustar parametrico si se detectaron rechazos evitables<br>
+                        &bull; Presentar resultados y business case para escalar<br>
+                        &bull; Definir estructura comercial permanente para mid-market
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>KPIs del plan a 90 dias</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>KPI</th>
+                    <th>Meta Fase 1</th>
+                    <th>Meta Fase 2</th>
+                    <th>Meta Fase 3</th>
+                    <th>Acumulado 90d</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Prospectos en base</td>
+                    <td>200</td>
+                    <td>+200</td>
+                    <td>+100</td>
+                    <td class="table-highlight">500</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Contactos efectivos</td>
+                    <td>50</td>
+                    <td>+60</td>
+                    <td>+40</td>
+                    <td class="table-highlight">150</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Reuniones / presentaciones</td>
+                    <td>15-20</td>
+                    <td>+20-25</td>
+                    <td>+15-20</td>
+                    <td class="table-highlight">50-65</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Solicitudes formales</td>
+                    <td>5-8</td>
+                    <td>+15-20</td>
+                    <td>+10-15</td>
+                    <td class="table-highlight">30-43</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Aprobaciones</td>
+                    <td>—</td>
+                    <td>8-12</td>
+                    <td>+10-15</td>
+                    <td class="table-highlight">18-27</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Operaciones cerradas</td>
+                    <td>—</td>
+                    <td>2-4</td>
+                    <td>+6-8</td>
+                    <td class="table-highlight" style="color: var(--engen-green); font-size: 14px;">8-12</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Monto colocado (MDP)</td>
+                    <td>—</td>
+                    <td>$10-20</td>
+                    <td>+$30-50</td>
+                    <td class="table-highlight" style="color: var(--engen-green); font-size: 14px;">$40-70</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Alianzas con distribuidores</td>
+                    <td>3-5</td>
+                    <td>+3-5</td>
+                    <td>+2-3</td>
+                    <td class="table-highlight">8-13</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout-green callout">
+            <div class="callout-label">Meta a 90 dias</div>
+            <p><strong>8-12 operaciones cerradas</strong> en segmento medio por <strong>$40-70 MDP</strong> colocados. Esto valida el modelo y genera el business case para escalar con estructura comercial dedicada.</p>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 7: QUICK WINS ===== -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="section-header">
+            <div class="section-number">Seccion 07</div>
+            <div class="section-title">Quick Wins: Acciones Inmediatas</div>
+        </div>
+
+        <p>Las siguientes acciones se pueden ejecutar <strong>esta semana</strong> sin necesidad de aprobaciones adicionales ni cambios de proceso.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Accion</th>
+                    <th>Responsable</th>
+                    <th>Plazo</th>
+                    <th>Resultado esperado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">1</td>
+                    <td>Descargar DENUE de INEGI y filtrar empresas medianas manufactura en NL + Bajio</td>
+                    <td>Inteligencia comercial</td>
+                    <td>2 dias</td>
+                    <td>Base de 200+ prospectos con nombre, ubicacion, tamano</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">2</td>
+                    <td>Contactar a 5 distribuidores de equipo industrial en Monterrey para proponer alianza</td>
+                    <td>Dir. Comercial</td>
+                    <td>1 semana</td>
+                    <td>2-3 distribuidores interesados en referir clientes</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">3</td>
+                    <td>Identificar 20 ex-clientes Unifin en cartera de Engen o en mercado abierto</td>
+                    <td>Ejecutivos senior</td>
+                    <td>3 dias</td>
+                    <td>20 prospectos "warm" con necesidad real de nueva arrendadora</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">4</td>
+                    <td>Crear pitch deck de 5 slides por sector (usa las fichas de este documento)</td>
+                    <td>Marketing + Comercial</td>
+                    <td>1 semana</td>
+                    <td>Material comercial listo para primeras reuniones</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">5</td>
+                    <td>Pedir al equipo de riesgo los criterios minimos actuales para mid-market</td>
+                    <td>Dir. Comercial</td>
+                    <td>2 dias</td>
+                    <td>Parametrico claro para pre-calificar prospectos en campo</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">6</td>
+                    <td>Revisar calendario de ferias industriales proximos 90 dias y registrarse</td>
+                    <td>Marketing</td>
+                    <td>3 dias</td>
+                    <td>Presencia confirmada en 2-3 eventos sectoriales</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout-red callout">
+            <div class="callout-label">Atencion</div>
+            <p>Cada dia que pasa sin actuar, los prospectos del nearshoring estan cerrando con otros proveedores de financiamiento. La ventana de oportunidad es <strong>ahora</strong>. Los primeros 30 dias definen el momentum del programa.</p>
+        </div>
+    </div>
+
+    <!-- BACK COVER -->
+    <div class="cover-page page-break" style="min-height: 40vh; justify-content: center; align-items: center; text-align: center;">
+        <div style="position: relative; z-index: 1;">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" style="height: 50px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+            <p style="font-size: 20px; font-weight: 700; color: white; margin-bottom: 8px;">"El mejor momento para empezar fue ayer.<br>El segundo mejor momento es hoy."</p>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 30px;">Documento preparado por London Consulting Group para Engen Capital.<br>Uso interno — equipo comercial.</p>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.3);">&copy; 2026 London Consulting Group</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
