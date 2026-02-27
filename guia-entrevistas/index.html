@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Entrevistas — Prediagnostico Engen Capital | LCG</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --diag-primary: #E65100;
+            --diag-secondary: #FF8F00;
+            --diag-light: #FFF3E0;
+            --diag-bg: #fff8f0;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            body { font-size: 9pt; background: white !important; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; page-break-after: always; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; }
+            h3 { page-break-after: avoid; }
+            .section-header, .kpi-banner, .callout, .area-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body { font-family: 'Inter', sans-serif; color: var(--text-primary); line-height: 1.6; background: #eef1f5; }
+        .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+
+        /* COVER — Amber/Orange gradient for diagnostic documents */
+        .cover-page { background: linear-gradient(135deg, #BF360C 0%, #E65100 40%, #FF8F00 100%); color: white; padding: 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: rgba(255,143,0,0.12); }
+        .cover-page::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 400px; height: 400px; border-radius: 50%; background: rgba(230,81,0,0.1); }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-logos img.logo-lcg { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logos img.logo-engen { height: 65px; border-radius: 6px; }
+        .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 40px; }
+        .cover-divider { width: 80px; height: 3px; background: white; margin-bottom: 40px; opacity: 0.5; }
+        .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .cover-meta-label { color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; font-size: 13px; }
+        .cover-footer { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.3); display: flex; justify-content: space-between; }
+
+        /* PAGE HEADER */
+        .page-header-logos { display: flex; justify-content: space-between; align-items: center; padding: 0 0 16px 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+        .page-header-logos img.logo-lcg-sm { height: 24px; opacity: 0.85; filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(2500%) hue-rotate(200deg) brightness(90%) contrast(100%); }
+        .page-header-logos img.logo-engen-sm { height: 26px; border-radius: 4px; opacity: 0.8; }
+        .page-header-logos .header-divider { flex: 1; text-align: center; font-size: 9px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* CONTENT */
+        .content-page { padding: 50px 60px; }
+        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--diag-primary); }
+        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--diag-primary); margin-bottom: 8px; }
+        .section-title { font-size: 26px; font-weight: 700; color: var(--lcg-navy); }
+        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-blue); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--diag-primary); }
+        h4 { font-size: 14px; font-weight: 600; color: var(--text-primary); margin: 20px 0 10px; }
+        p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 12px; }
+        thead th { background: var(--lcg-navy); color: white; font-weight: 600; padding: 10px 14px; text-align: left; font-size: 11px; }
+        thead th:first-child { border-radius: 6px 0 0 0; }
+        thead th:last-child { border-radius: 0 6px 0 0; }
+        tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+        tbody tr:hover { background: var(--bg-light); }
+        .table-highlight { font-weight: 700; color: var(--lcg-navy); }
+
+        /* TAGS */
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+        .tag-priority { background: #fce4ec; color: #c62828; }
+        .tag-important { background: #fff3e0; color: #e65100; }
+        .tag-explore { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .tag-green { background: #e8f5e9; color: #2e7d32; }
+
+        /* CALLOUT */
+        .callout { border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 20px 0; background: var(--lcg-light-blue); }
+        .callout-amber { background: var(--diag-light); border-left-color: var(--diag-primary); }
+        .callout-green { background: #e8f7f2; border-left-color: var(--engen-green); }
+        .callout-orange { background: #fff8ed; border-left-color: var(--warning); }
+        .callout-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 6px; }
+        .callout-amber .callout-label { color: var(--diag-primary); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout-orange .callout-label { color: #e65100; }
+        .callout p { margin: 0; font-size: 13px; }
+
+        /* KPI BANNER */
+        .kpi-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--lcg-navy); border-radius: 10px; overflow: hidden; margin: 24px 0; }
+        .kpi-item { padding: 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .kpi-item:last-child { border-right: none; }
+        .kpi-value { font-size: 24px; font-weight: 800; color: var(--diag-secondary); }
+        .kpi-label { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+        /* AREA CARDS */
+        .area-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin: 18px 0; border-top: 4px solid var(--diag-primary); }
+        .area-card.commercial { border-top-color: var(--engen-green); }
+        .area-card.origination { border-top-color: var(--lcg-accent); }
+        .area-card.risk { border-top-color: var(--danger); }
+        .area-card.operations { border-top-color: var(--warning); }
+        .area-card.technology { border-top-color: #7B1FA2; }
+        .area-card.strategy { border-top-color: var(--lcg-navy); }
+        .area-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .area-name { font-size: 18px; font-weight: 700; color: var(--lcg-navy); }
+        .area-tag { font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 20px; color: white; }
+        .area-tag.commercial { background: var(--engen-green); }
+        .area-tag.origination { background: var(--lcg-accent); }
+        .area-tag.risk { background: var(--danger); }
+        .area-tag.operations { background: var(--warning); }
+        .area-tag.technology { background: #7B1FA2; }
+        .area-tag.strategy { background: var(--lcg-navy); }
+
+        /* TOPIC ITEMS */
+        .topic-list { margin: 0; padding: 0; list-style: none; }
+        .topic-item { padding: 14px 0; border-bottom: 1px solid #f0f2f5; display: flex; gap: 14px; }
+        .topic-item:last-child { border-bottom: none; }
+        .topic-number { width: 28px; height: 28px; background: var(--diag-light); color: var(--diag-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+        .topic-content { flex: 1; }
+        .topic-question { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .topic-explore { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+        .topic-evidence { display: inline-block; margin-top: 6px; font-size: 10px; font-weight: 600; color: var(--diag-primary); background: var(--diag-light); padding: 2px 8px; border-radius: 4px; }
+
+        /* BULLET LIST */
+        ul.bullet-list { padding-left: 20px; margin: 8px 0 16px; }
+        ul.bullet-list li { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+
+        /* PRINT BTN */
+        .print-btn { position: fixed; bottom: 30px; right: 30px; background: var(--diag-primary); color: white; border: none; padding: 14px 28px; border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 20px rgba(230,81,0,0.3); z-index: 100; }
+        .print-btn:hover { background: var(--diag-secondary); }
+
+        /* PRINT HELPER */
+        .print-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(11,31,63,0.85); z-index: 200; display: none; align-items: center; justify-content: center; }
+        .print-overlay.active { display: flex; }
+        .print-dialog { background: white; border-radius: 16px; padding: 40px; max-width: 480px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .print-dialog h2 { font-size: 20px; color: var(--lcg-navy); margin-bottom: 16px; }
+        .print-dialog .step { display: flex; align-items: flex-start; gap: 12px; text-align: left; margin: 12px 0; font-size: 13px; color: var(--text-secondary); }
+        .print-dialog .step-num { background: var(--diag-primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+        .print-dialog .btn-row { display: flex; gap: 10px; margin-top: 24px; justify-content: center; }
+        .print-dialog button { padding: 10px 24px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+        .btn-primary { background: var(--lcg-navy); color: white; }
+        .btn-secondary { background: var(--bg-light); color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="showPrintHelper()">Descargar PDF</button>
+
+<div class="print-overlay no-print" id="printOverlay">
+    <div class="print-dialog">
+        <h2>Descargar como PDF</h2>
+        <div class="step">
+            <span class="step-num">1</span>
+            <span>En el dialogo que se abre, selecciona <strong>"Guardar como PDF"</strong> como destino</span>
+        </div>
+        <div class="step">
+            <span class="step-num">2</span>
+            <span>En <strong>"Mas opciones"</strong>, activa la casilla <strong>"Graficos de fondo"</strong></span>
+        </div>
+        <div class="step">
+            <span class="step-num">3</span>
+            <span>Margenes: selecciona <strong>"Ninguno"</strong></span>
+        </div>
+        <div class="step">
+            <span class="step-num">4</span>
+            <span>Clic en <strong>"Guardar"</strong></span>
+        </div>
+        <div class="btn-row">
+            <button class="btn-secondary" onclick="closePrintHelper()">Cancelar</button>
+            <button class="btn-primary" onclick="doPrint()">Continuar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPrintHelper() { document.getElementById('printOverlay').classList.add('active'); }
+    function closePrintHelper() { document.getElementById('printOverlay').classList.remove('active'); }
+    function doPrint() { closePrintHelper(); setTimeout(function() { window.print(); }, 300); }
+    window.addEventListener('load', function() {
+        document.querySelectorAll('img').forEach(function(img) {
+            if (img.complete && img.naturalWidth > 0) { convertToBase64(img); }
+            else { img.addEventListener('load', function() { convertToBase64(img); }); }
+        });
+    });
+    function convertToBase64(img) {
+        try { var c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight; c.getContext('2d').drawImage(img, 0, 0); img.src = c.toDataURL('image/png'); } catch(e) {}
+    }
+</script>
+
+<div class="document">
+
+    <!-- ============================================================ -->
+    <!-- COVER PAGE                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page">
+        <div class="cover-logos">
+            <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="cover-content">
+            <div class="cover-label">Herramienta de Diagnostico</div>
+            <h1 class="cover-title">Guia de Entrevistas para el Prediagnostico</h1>
+            <p class="cover-subtitle">Temas clave, preguntas guia y evidencia a recopilar por area — para las entrevistas de campo en Engen Capital</p>
+            <div class="cover-divider"></div>
+            <div class="cover-meta">
+                <div><div class="cover-meta-label">Preparado por</div><div class="cover-meta-value">London Consulting Group</div></div>
+                <div><div class="cover-meta-label">Para</div><div class="cover-meta-value">Equipo de Diagnostico LCG</div></div>
+                <div><div class="cover-meta-label">Fecha</div><div class="cover-meta-value">Febrero 2026</div></div>
+                <div><div class="cover-meta-label">Clasificacion</div><div class="cover-meta-value">Uso Interno LCG</div></div>
+            </div>
+        </div>
+        <div class="cover-footer">
+            <span>&copy; 2026 London Consulting Group</span>
+            <span>Herramienta de trabajo — Uso interno</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 01: ANTES DE LA ENTREVISTA                            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 01</div>
+            <div class="section-title">Tips para las Entrevistas</div>
+        </div>
+
+        <div class="kpi-banner">
+            <div class="kpi-item"><div class="kpi-value">+10</div><div class="kpi-label">Entrevistas</div></div>
+            <div class="kpi-item"><div class="kpi-value">6</div><div class="kpi-label">Areas a cubrir</div></div>
+            <div class="kpi-item"><div class="kpi-value">2</div><div class="kpi-label">Dimensiones</div></div>
+            <div class="kpi-item"><div class="kpi-value">45-60</div><div class="kpi-label">Min / entrevista</div></div>
+        </div>
+
+        <h3>Principios de la entrevista diagnostica</h3>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Regla de oro</div>
+            <p>Busca el <strong>"como realmente funciona"</strong>, no el <strong>"como deberia funcionar"</strong>. La brecha entre ambos es donde vive la oportunidad de mejora.</p>
+        </div>
+
+        <table>
+            <thead><tr><th style="width:30%">Principio</th><th>Que hacer</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Escucha activa</td>
+                    <td>Deja que el entrevistado hable 80% del tiempo. Haz preguntas abiertas y profundiza con "por que" y "como"</td>
+                    <td>"Cuentame como es un dia tipico cuando llega una solicitud nueva..."</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Pide ejemplos concretos</td>
+                    <td>No aceptes generalidades. Pide el ultimo caso, el mas reciente, el mas complicado</td>
+                    <td>"Dame un ejemplo del ultimo caso que se atoro... que paso exactamente?"</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Sigue los documentos</td>
+                    <td>Pide que te muestren los sistemas, formatos, correos. Lo tangible revela mas que las palabras</td>
+                    <td>"Me puedes mostrar como se ve eso en el sistema?"</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Detecta handoffs</td>
+                    <td>Los problemas viven en las fronteras entre areas. Presta atencion a quien pasa que a quien</td>
+                    <td>"Y despues de que tu terminas tu parte, que pasa? Quien recibe esto?"</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Captura verbatims</td>
+                    <td>Anota frases textuales poderosas que resuman un insight. Seran oro para el reporte</td>
+                    <td>"Aqui el cuello de botella somos nosotros mismos" — textual del entrevistado</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Toma fotos/capturas</td>
+                    <td>Cada vez que veas algo relevante en pantalla, pizarron o documento, capturalo. Pide permiso antes</td>
+                    <td>Captura de pantalla del CRM, foto de flujo en pizarron, formato de solicitud</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Estructura sugerida de la entrevista</h3>
+        <table>
+            <thead><tr><th style="width:20%">Momento</th><th style="width:15%">Duracion</th><th>Que hacer</th></tr></thead>
+            <tbody>
+                <tr><td class="table-highlight">Apertura</td><td>5 min</td><td>Presentarte, explicar el proposito ("entender para mejorar, no auditar"), pedir permiso para grabar/tomar notas</td></tr>
+                <tr><td class="table-highlight">Contexto</td><td>5 min</td><td>Que hace la persona, su rol, cuanto tiempo lleva, con quien interactua</td></tr>
+                <tr><td class="table-highlight">Exploracion</td><td>30-40 min</td><td>Los temas clave de su area (ver fichas siguientes). Seguir el flujo natural de la conversacion</td></tr>
+                <tr><td class="table-highlight">Evidencia</td><td>5-10 min</td><td>Pedir que muestre sistemas, documentos, reportes. Tomar fotos/capturas</td></tr>
+                <tr><td class="table-highlight">Cierre</td><td>5 min</td><td>"Si pudieras cambiar una sola cosa de como trabajan hoy, que seria?" + agradecer</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-green">
+            <div class="callout-label">Tip de cierre</div>
+            <p>La pregunta <strong>"si pudieras cambiar una sola cosa..."</strong> es la mas reveladora. Muchas veces lo que la persona dice al final es lo que mas le importa — y lo que no se atrevio a decir antes.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 02: AREA COMERCIAL / VENTAS                           -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 02</div>
+            <div class="section-title">Comercial / Ventas</div>
+        </div>
+
+        <div class="area-card commercial">
+            <div class="area-header">
+                <div class="area-name">Dimension Comercial — Go-to-Market</div>
+                <span class="area-tag commercial">Comercial</span>
+            </div>
+            <p>Esta area es critica para entender como Engen prospecta, califica y cierra clientes hoy. Los hallazgos alimentan directamente la oportunidad #1: <strong>Estrategia Go-to-Market segmento PyME/Medianas</strong>.</p>
+
+            <ol class="topic-list">
+                <li class="topic-item">
+                    <span class="topic-number">1</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Proceso de prospeccion actual</div>
+                        <div class="topic-explore">Como identifican nuevos clientes? Que canales usan (referidos, frio, digital, alianzas con distribuidores)? Que porcentaje viene de cada canal? Hay un proceso definido o es mas organico?</div>
+                        <span class="topic-evidence">Evidencia: CRM, lista de canales, reportes de pipeline</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">2</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Criterios de calificacion de prospectos</div>
+                        <div class="topic-explore">Que hace que un prospecto sea "bueno"? Tienen un ICP (Ideal Customer Profile) definido? Usan algun scoring? Como filtran antes de invertir tiempo?</div>
+                        <span class="topic-evidence">Evidencia: checklist de calificacion, criterios escritos o informales</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">3</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Ciclo de venta y tiempos</div>
+                        <div class="topic-explore">Cuanto tarda desde primer contacto hasta desembolso? Donde se atora mas? Cuantas interacciones se necesitan? Que documentacion pide el cliente vs. lo que pide Engen?</div>
+                        <span class="topic-evidence">Evidencia: funnel de conversion, tiempos por etapa</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">4</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Segmentacion y cobertura</div>
+                        <div class="topic-explore">Como esta organizado el equipo comercial? Por region, por sector, por tamano? Cuantos ejecutivos hay? Que territorios cubren? Estan especializados o son generalistas?</div>
+                        <span class="topic-evidence">Evidencia: organigrama comercial, mapa de cobertura</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">5</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Herramientas y sistemas comerciales</div>
+                        <div class="topic-explore">Que CRM usan? Es efectivo? Que informacion capturan? Tienen dashboards o reportes? Que herramientas les faltan?</div>
+                        <span class="topic-evidence">Evidencia: captura de pantalla del CRM, ejemplo de reporte</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">6</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Metricas y resultados</div>
+                        <div class="topic-explore">Cuantas solicitudes entran al mes? Cual es la tasa de conversion? Ticket promedio? Que sectores generan mas volumen? Como miden el desempeno del equipo?</div>
+                        <span class="topic-evidence">Evidencia: dashboard de KPIs, reporte mensual</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">7</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Pain points y frustraciones</div>
+                        <div class="topic-explore">Que les impide vender mas? Donde pierden oportunidades? Que les gustaria que fuera diferente? Que quejas reciben de los clientes?</div>
+                        <span class="topic-evidence">Evidencia: verbatims, ejemplos de oportunidades perdidas</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Contexto del Estudio de Mercado</div>
+            <p>Segun nuestro analisis, el "missing middle" representa un gap de <strong>$50,000-$85,000 MDP</strong> en el segmento medio no atendido. Las entrevistas comerciales deben validar si el equipo percibe esta oportunidad y que barreras ven para capturarla.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 03: ORIGINACION / CREDITO                             -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 03</div>
+            <div class="section-title">Originacion / Credito</div>
+        </div>
+
+        <div class="area-card origination">
+            <div class="area-header">
+                <div class="area-name">Dimension Operativa — Fabrica de Originacion</div>
+                <span class="area-tag origination">Originacion</span>
+            </div>
+            <p>El corazon del negocio. Entender este flujo end-to-end es fundamental para la oportunidad #2: <strong>Optimizacion de la Fabrica de Originacion</strong>. Referencia directa: casos Banregio y HDI.</p>
+
+            <ol class="topic-list">
+                <li class="topic-item">
+                    <span class="topic-number">1</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Flujo de originacion end-to-end</div>
+                        <div class="topic-explore">Describeme el camino de una solicitud desde que entra hasta que se desembolsa. Cuantas etapas tiene? Quien interviene en cada una? Cuantos sistemas toca?</div>
+                        <span class="topic-evidence">Evidencia: diagrama de flujo, mapa de proceso actual</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">2</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Parametrico de credito actual</div>
+                        <div class="topic-explore">Como funciona el modelo de scoring? Que variables pesa? Cuanto es automatico vs. manual? Que tan frecuente se ajusta? Como se diferencia para distintos segmentos/productos?</div>
+                        <span class="topic-evidence">Evidencia: matriz de aprobacion, reglas del parametrico</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">3</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Tiempos por etapa</div>
+                        <div class="topic-explore">Cuanto tarda cada etapa en promedio? Donde se acumula mas tiempo? Cuanto es el "tiempo de espera" vs. "tiempo de trabajo real"? Cual es el SLA comprometido vs. el real?</div>
+                        <span class="topic-evidence">Evidencia: SLAs, reportes de tiempos, backlog</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">4</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Cuellos de botella y retrabajo</div>
+                        <div class="topic-explore">Donde se atoran las cosas mas seguido? Cuantas solicitudes regresan por documentacion incompleta? Cuantas excepciones se manejan al mes? Que causa mas retrabajo?</div>
+                        <span class="topic-evidence">Evidencia: tasa de devolucion, motivos de rechazo, estadisticas de excepciones</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">5</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Documentacion y requisitos</div>
+                        <div class="topic-explore">Que documentos piden al cliente? Son los mismos para todos los productos? Cuales generan mas friccion? Se podrian simplificar? Cuantos son realmente necesarios vs. historicos?</div>
+                        <span class="topic-evidence">Evidencia: checklist de documentos, formato de solicitud</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">6</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Capacidad y volumen</div>
+                        <div class="topic-explore">Cuantas solicitudes procesan al mes? Cual es la capacidad maxima del equipo? Que pasa cuando hay picos de demanda? Hay estacionalidad?</div>
+                        <span class="topic-evidence">Evidencia: volumenes mensuales, capacidad instalada vs. utilizada</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="callout">
+            <div class="callout-label">Benchmark de referencia (Estudio de Mercado, Sec. 07)</div>
+            <p>Las mejores practicas del mercado muestran: <strong>pre-calificacion en &lt;4 hrs</strong>, analisis completo en <strong>24-48 hrs</strong>, desembolso en <strong>&lt;5 dias</strong>. Usa estos benchmarks como referencia durante la entrevista para dimensionar la brecha.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 04: RIESGOS                                           -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 04</div>
+            <div class="section-title">Riesgos</div>
+        </div>
+
+        <div class="area-card risk">
+            <div class="area-header">
+                <div class="area-name">Calibracion de Riesgo para Mid-Market</div>
+                <span class="area-tag risk">Riesgos</span>
+            </div>
+            <p>Directamente vinculado a la oportunidad #3: <strong>Calibracion del Modelo de Riesgo</strong>. El reto es abrir la llave al mid-market sin comprometer los NPLs saludables que tienen hoy.</p>
+
+            <ol class="topic-list">
+                <li class="topic-item">
+                    <span class="topic-number">1</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Modelo de scoring y apetito de riesgo</div>
+                        <div class="topic-explore">Como evaluan el riesgo hoy? Que variables son mas determinantes? El modelo esta calibrado para el segmento medio o solo para clientes grandes? Donde sienten que el modelo es demasiado conservador?</div>
+                        <span class="topic-evidence">Evidencia: matriz de riesgo, scorecard, politica de credito</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">2</span>
+                    <div class="topic-content">
+                        <div class="topic-question">NPLs y desempeno por segmento</div>
+                        <div class="topic-explore">Cual es la tasa de NPL actual? Como se compara entre segmentos (grande vs. medio)? Ha habido sorpresas negativas? Que sectores tienen mejor comportamiento de pago?</div>
+                        <span class="topic-evidence">Evidencia: reporte de cartera vencida, NPL por segmento/sector</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">3</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Criterios para el mid-market</div>
+                        <div class="topic-explore">Que tan diferente es evaluar una empresa mediana vs. una grande? Que informacion les falta para tomar decisiones? Hay fuentes de datos alternativas que podrian usar?</div>
+                        <span class="topic-evidence">Evidencia: politica de excepciones, tasas de aprobacion por tamano</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">4</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Proceso de comites</div>
+                        <div class="topic-explore">Como funciona el comite de credito? Cuantos niveles de aprobacion hay? Que montos requieren que nivel? Cuanto se tarda un caso en comite? Hay cuellos de botella?</div>
+                        <span class="topic-evidence">Evidencia: matriz de autonomias, calendario de comites</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">5</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Limites de autonomia y excepciones</div>
+                        <div class="topic-explore">Quien puede aprobar que montos sin escalar? Cuantas excepciones se procesan al mes? Que tipo de excepciones son las mas comunes? El proceso de excepciones es agil o burocratico?</div>
+                        <span class="topic-evidence">Evidencia: politica de autonomias, log de excepciones</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">Dato del Discovery</div>
+            <p>El propio cliente confirmo que los <strong>NPLs del low-mid market estan saludables</strong> — lo que sugiere que hay espacio para crecer en ese segmento. La entrevista de riesgos debe validar y cuantificar este dato.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 05: OPERACIONES / MESA DE CONTROL                     -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 05</div>
+            <div class="section-title">Operaciones / Mesa de Control</div>
+        </div>
+
+        <div class="area-card operations">
+            <div class="area-header">
+                <div class="area-name">Onboarding y Formalizacion</div>
+                <span class="area-tag operations">Operaciones</span>
+            </div>
+            <p>Donde el Discovery revelo friccion y perdida de oportunidades. Se conecta con la oportunidad #2 (Fabrica de Originacion) y #4 (Transformacion Digital). El caso <strong>HDI</strong> — donde se logro 80% de reduccion en tiempos — es la referencia directa.</p>
+
+            <ol class="topic-list">
+                <li class="topic-item">
+                    <span class="topic-number">1</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Proceso de onboarding de clientes</div>
+                        <div class="topic-explore">Una vez aprobado el credito, que pasa? Cuantos pasos tiene la formalizacion? Que documentos se generan? Cuantas firmas se necesitan? Es digital o presencial?</div>
+                        <span class="topic-evidence">Evidencia: flujo de onboarding, tiempos promedio, formatos</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">2</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Handoffs entre areas</div>
+                        <div class="topic-explore">Como pasa un caso de comercial a credito a operaciones? Hay un sistema unico o hay que re-capturar informacion? Donde se pierde informacion o tiempo en la transicion?</div>
+                        <span class="topic-evidence">Evidencia: diagrama de handoffs, puntos de friccion</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">3</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Retrabajo y devoluciones</div>
+                        <div class="topic-explore">Que porcentaje de expedientes regresan por errores o faltantes? Cuales son las causas mas comunes? Se mide? Cuanto impacta en los tiempos totales?</div>
+                        <span class="topic-evidence">Evidencia: estadisticas de devolucion, top 5 causas de retrabajo</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">4</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Sistemas y herramientas</div>
+                        <div class="topic-explore">Que sistemas usan para gestionar la operacion? Como se conectan entre si? Cuanto es manual vs. automatizado? Que hacen en Excel que deberia estar en un sistema?</div>
+                        <span class="topic-evidence">Evidencia: capturas de sistemas, mapa de herramientas</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">5</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Visibilidad y seguimiento</div>
+                        <div class="topic-explore">Si el director pregunta "donde esta el caso X", como lo rastrean? Tienen visibilidad en tiempo real o hay que preguntar? El cliente puede ver el estatus de su tramite?</div>
+                        <span class="topic-evidence">Evidencia: dashboard operativo, mecanismo de tracking</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">6</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Experiencia del cliente en el proceso</div>
+                        <div class="topic-explore">Que feedback reciben de los clientes sobre el proceso? Que quejas son mas comunes? Pierden clientes por la lentitud del proceso? Miden NPS o satisfaccion?</div>
+                        <span class="topic-evidence">Evidencia: encuestas de satisfaccion, quejas recurrentes</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Referencia HDI (Caso LCG)</div>
+            <p>En HDI logramos <strong>80% de reduccion en tiempos de cotizacion/suscripcion</strong> y <strong>24% de reduccion en tramites devueltos</strong>. Busca cuantificar metricas equivalentes en Engen para construir el business case.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 06: TECNOLOGIA / SISTEMAS                             -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 06</div>
+            <div class="section-title">Tecnologia / Sistemas</div>
+        </div>
+
+        <div class="area-card technology">
+            <div class="area-header">
+                <div class="area-name">Capacidades Digitales y Stack Tecnologico</div>
+                <span class="area-tag technology">Tecnologia</span>
+            </div>
+            <p>Engen se posiciona como "compania de tecnologia de financiamiento". La entrevista debe validar que tan real es esa ambicion vs. la capacidad actual. Se conecta con oportunidad #4: <strong>Transformacion Digital de Procesos</strong>.</p>
+
+            <ol class="topic-list">
+                <li class="topic-item">
+                    <span class="topic-number">1</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Stack tecnologico actual</div>
+                        <div class="topic-explore">Que sistemas core usan? (Core bancario, CRM, BPM, scoring, ERP) Cuales son propios vs. terceros? Que tan modernos son? Cuando fue la ultima actualizacion mayor?</div>
+                        <span class="topic-evidence">Evidencia: mapa de arquitectura, lista de sistemas</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">2</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Integraciones y flujo de datos</div>
+                        <div class="topic-explore">Los sistemas hablan entre si? Que integraciones existen? Donde hay re-captura manual? Como fluye la informacion desde la solicitud hasta el desembolso?</div>
+                        <span class="topic-evidence">Evidencia: diagrama de integraciones, puntos de quiebre</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">3</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Engen Factoraje y capacidades digitales</div>
+                        <div class="topic-explore">Como funciona la plataforma digital de factoraje? Que tanto se puede replicar para otros productos? Que aprendieron del desarrollo de esa plataforma? Que rol juega la IA que mencionan?</div>
+                        <span class="topic-evidence">Evidencia: demo de la plataforma, metricas de uso</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">4</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Datos y analitica</div>
+                        <div class="topic-explore">Que datos tienen disponibles? Tienen data warehouse o data lake? Usan analitica avanzada para algo? Que informacion les gustaria tener y no tienen?</div>
+                        <span class="topic-evidence">Evidencia: reportes de BI, fuentes de datos disponibles</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">5</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Roadmap tecnologico y limitantes</div>
+                        <div class="topic-explore">Que proyectos de tecnologia tienen planeados? Que les limita hoy (presupuesto, talento, deuda tecnica)? Que priorizarian si tuvieran recursos ilimitados?</div>
+                        <span class="topic-evidence">Evidencia: roadmap de TI, presupuesto tech</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 07: DIRECCION / ESTRATEGIA                            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 07</div>
+            <div class="section-title">Direccion / Estrategia</div>
+        </div>
+
+        <div class="area-card strategy">
+            <div class="area-header">
+                <div class="area-name">Vision Estrategica y Definicion de Exito</div>
+                <span class="area-tag strategy">Estrategia</span>
+            </div>
+            <p>Las entrevistas con directivos anclan todo el diagnostico. Aqui defines el "norte" contra el que mediris todos los hallazgos. Se conecta con <strong>todas las oportunidades</strong> — especialmente con la #5: Gestion del Cambio y Mindset.</p>
+
+            <ol class="topic-list">
+                <li class="topic-item">
+                    <span class="topic-number">1</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Vision de crecimiento</div>
+                        <div class="topic-explore">Donde ven a Engen en 3-5 anos? Que tamano de cartera buscan? Que mercados quieren penetrar? Como se comparan con su competencia? Que los frena hoy?</div>
+                        <span class="topic-evidence">Evidencia: plan estrategico, targets de crecimiento</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">2</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Prioridades estrategicas actuales</div>
+                        <div class="topic-explore">Cuales son las 3 prioridades del ano? Como se asignan recursos? Hay tension entre crecer y controlar riesgo? Como equilibran corto plazo vs. largo plazo?</div>
+                        <span class="topic-evidence">Evidencia: plan operativo anual, OKRs o KPIs estrategicos</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">3</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Expectativas de este proyecto</div>
+                        <div class="topic-explore">Que esperan del diagnostico? Que seria un resultado exitoso? Que les preocupa? Han tenido experiencias anteriores con consultoria? Que funciono y que no?</div>
+                        <span class="topic-evidence">Evidencia: expectativas documentadas</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">4</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Cultura y disposicion al cambio</div>
+                        <div class="topic-explore">Como describirian la cultura de Engen? Que tan abiertos estan los equipos a cambiar procesos? Han intentado cambios antes que no funcionaron? Que hace que un cambio "pegue" aqui?</div>
+                        <span class="topic-evidence">Evidencia: iniciativas de cambio previas, lectura cultural</span>
+                    </div>
+                </li>
+                <li class="topic-item">
+                    <span class="topic-number">5</span>
+                    <div class="topic-content">
+                        <div class="topic-question">Rol de Linzor (fondo de inversion)</div>
+                        <div class="topic-explore">Que influencia tiene Linzor Capital en las decisiones operativas? Tienen mandatos de crecimiento especificos? Hay horizonte de salida (exit) que presione la estrategia?</div>
+                        <span class="topic-evidence">Evidencia: governance, mandatos del board</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="callout callout-green">
+            <div class="callout-label">Definicion de exito</div>
+            <p>Al final de la entrevista con directivos, debes poder responder: <strong>"Si este diagnostico es exitoso, que va a ser diferente en Engen en 12 meses?"</strong> Esa respuesta ancla toda la propuesta.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 08: CHECKLIST DE EVIDENCIA                            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Uso Interno LCG</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 08</div>
+            <div class="section-title">Checklist de Evidencia a Recopilar</div>
+        </div>
+
+        <p>Usa esta tabla como checklist durante las entrevistas. Marca lo que consigas y anota donde lo guardaste para facilitar la integracion posterior.</p>
+
+        <table>
+            <thead>
+                <tr><th style="width:28%">Evidencia</th><th style="width:15%">Area</th><th style="width:12%">Tipo</th><th>Para que sirve</th><th style="width:12%">Prioridad</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="table-highlight">Funnel de conversion comercial</td><td>Comercial</td><td>Dato</td><td>Dimensionar la eficiencia comercial actual y la oportunidad de mejora</td><td><span class="tag tag-priority">Critica</span></td></tr>
+                <tr><td class="table-highlight">Tiempos por etapa de originacion</td><td>Originacion</td><td>Dato</td><td>Comparar contra benchmarks y construir el mapa de proceso as-is</td><td><span class="tag tag-priority">Critica</span></td></tr>
+                <tr><td class="table-highlight">Tasa de NPL por segmento</td><td>Riesgos</td><td>Dato</td><td>Validar que el mid-market tiene NPLs saludables y hay espacio para crecer</td><td><span class="tag tag-priority">Critica</span></td></tr>
+                <tr><td class="table-highlight">Captura del CRM / sistemas</td><td>Comercial / TI</td><td>Foto</td><td>Evidenciar el estado actual de herramientas y posible brecha tecnologica</td><td><span class="tag tag-important">Alta</span></td></tr>
+                <tr><td class="table-highlight">Flujo de originacion documentado</td><td>Originacion</td><td>Documento</td><td>Base para el mapa de proceso as-is que incluiremos en el prediagnostico</td><td><span class="tag tag-important">Alta</span></td></tr>
+                <tr><td class="table-highlight">Tasa de devolucion de expedientes</td><td>Operaciones</td><td>Dato</td><td>Cuantificar retrabajo — referencia directa con reduccion del 24% en HDI</td><td><span class="tag tag-important">Alta</span></td></tr>
+                <tr><td class="table-highlight">Organigrama comercial</td><td>Comercial</td><td>Documento</td><td>Entender estructura y modelo de cobertura actual</td><td><span class="tag tag-important">Alta</span></td></tr>
+                <tr><td class="table-highlight">Matriz de autonomias/aprobacion</td><td>Riesgos</td><td>Documento</td><td>Entender cuellos de botella en aprobacion y oportunidad de simplificacion</td><td><span class="tag tag-important">Alta</span></td></tr>
+                <tr><td class="table-highlight">Dashboard de KPIs comerciales</td><td>Comercial</td><td>Foto</td><td>Evaluar madurez de gestion por indicadores y calidad de datos</td><td><span class="tag tag-explore">Media</span></td></tr>
+                <tr><td class="table-highlight">Mapa de arquitectura de sistemas</td><td>Tecnologia</td><td>Documento</td><td>Evaluar integraciones y capacidad digital real</td><td><span class="tag tag-explore">Media</span></td></tr>
+                <tr><td class="table-highlight">Plan estrategico / targets</td><td>Direccion</td><td>Documento</td><td>Anclar el diagnostico al norte estrategico del cliente</td><td><span class="tag tag-explore">Media</span></td></tr>
+                <tr><td class="table-highlight">Encuesta de satisfaccion (NPS)</td><td>Operaciones</td><td>Dato</td><td>Medir experiencia del cliente como baseline para mejora</td><td><span class="tag tag-explore">Media</span></td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Como me pasas el material</div>
+            <p>Despues de cada bloque de entrevistas, pasame: <strong>(1)</strong> el transcript o notas, <strong>(2)</strong> las fotos/capturas con una linea de que evidencian, y <strong>(3)</strong> el objetivo que quieres demostrar con esa pieza. Yo sintetizo y voy armando el prediagnostico.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- BACK COVER                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page" style="min-height: 40vh; justify-content: center; align-items: center; text-align: center;">
+        <div style="position: relative; z-index: 1;">
+            <div style="margin-bottom: 30px;">
+                <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group" style="height: 50px; filter: brightness(0) invert(1);" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:4px;display:inline-block;&quot;>London Consulting Group</span>'">
+            </div>
+            <p style="font-size: 15px; color: rgba(255,255,255,0.8); font-weight: 300; font-style: italic; margin-bottom: 20px; max-width: 400px;">"El diagnostico correcto es la mitad de la solucion."</p>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 6px;">Documento de uso interno — London Consulting Group</p>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.3);">&copy; 2026 London Consulting Group. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

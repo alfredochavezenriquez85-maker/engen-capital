@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediagnostico — Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --diag-primary: #E65100;
+            --diag-secondary: #FF8F00;
+            --diag-light: #FFF3E0;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            body { font-size: 9pt; background: white !important; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; page-break-after: always; }
+            .content-page { padding: 40px 50px; page-break-inside: avoid; }
+            table { font-size: 8pt; page-break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; }
+            .section-header { page-break-after: avoid; }
+            .exec-grid, .kpi-banner, .callout, .evidence-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body { font-family: 'Inter', sans-serif; color: var(--text-primary); line-height: 1.6; background: #eef1f5; }
+        .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+
+        /* COVER — Amber/Orange gradient for diagnostic */
+        .cover-page { background: linear-gradient(135deg, #BF360C 0%, #E65100 40%, #FF8F00 100%); color: white; padding: 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: rgba(255,143,0,0.12); }
+        .cover-page::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 400px; height: 400px; border-radius: 50%; background: rgba(230,81,0,0.1); }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-logos img.logo-lcg { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logos img.logo-engen { height: 65px; border-radius: 6px; }
+        .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 42px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 40px; }
+        .cover-divider { width: 80px; height: 3px; background: white; margin-bottom: 40px; opacity: 0.5; }
+        .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .cover-meta-label { color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; font-size: 13px; }
+        .cover-footer { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.3); display: flex; justify-content: space-between; }
+
+        /* PAGE HEADER */
+        .page-header-logos { display: flex; justify-content: space-between; align-items: center; padding: 0 0 16px 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+        .page-header-logos img.logo-lcg-sm { height: 24px; opacity: 0.85; filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(2500%) hue-rotate(200deg) brightness(90%) contrast(100%); }
+        .page-header-logos img.logo-engen-sm { height: 26px; border-radius: 4px; opacity: 0.8; }
+        .page-header-logos .header-divider { flex: 1; text-align: center; font-size: 9px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* TOC */
+        .toc-page { padding: 60px; }
+        .toc-title { font-size: 28px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 8px; }
+        .toc-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 40px; }
+        .toc-list { list-style: none; }
+        .toc-item { display: flex; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .toc-number { font-size: 28px; font-weight: 800; color: var(--diag-primary); width: 50px; flex-shrink: 0; }
+        .toc-text { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+        .toc-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        /* CONTENT */
+        .content-page { padding: 50px 60px; }
+        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--diag-primary); }
+        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--diag-primary); margin-bottom: 8px; }
+        .section-title { font-size: 26px; font-weight: 700; color: var(--lcg-navy); line-height: 1.3; }
+        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-blue); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--diag-primary); }
+        h4 { font-size: 14px; font-weight: 600; color: var(--text-primary); margin: 20px 0 10px; }
+        p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+
+        /* EXEC CARDS */
+        .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .exec-card { background: var(--bg-light); border-radius: 8px; padding: 20px; border-left: 4px solid var(--lcg-accent); }
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--diag-primary); }
+        .exec-card.red { border-left-color: var(--danger); }
+        .exec-card.amber { border-left-color: var(--diag-secondary); }
+        .exec-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+        .exec-card-value { font-size: 22px; font-weight: 800; color: var(--lcg-navy); margin-bottom: 4px; }
+        .exec-card-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+        .exec-card-full { grid-column: 1 / -1; }
+
+        /* KPI BANNER */
+        .kpi-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--lcg-navy); border-radius: 10px; overflow: hidden; margin: 24px 0; }
+        .kpi-banner-3 { grid-template-columns: repeat(3, 1fr); }
+        .kpi-item { padding: 22px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .kpi-item:last-child { border-right: none; }
+        .kpi-value { font-size: 24px; font-weight: 800; color: var(--diag-secondary); }
+        .kpi-label { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 12px; }
+        thead th { background: var(--lcg-navy); color: white; font-weight: 600; padding: 10px 14px; text-align: left; font-size: 11px; letter-spacing: 0.5px; }
+        thead th:first-child { border-radius: 6px 0 0 0; }
+        thead th:last-child { border-radius: 0 6px 0 0; }
+        tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+        tbody tr:hover { background: var(--bg-light); }
+        tbody tr:last-child td:first-child { border-radius: 0 0 0 6px; }
+        tbody tr:last-child td:last-child { border-radius: 0 0 6px 0; }
+        .table-highlight { font-weight: 700; color: var(--lcg-navy); }
+
+        /* TAGS */
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+        .tag-alta { background: #ffe0e6; color: #c41e3a; }
+        .tag-media-alta { background: #fff3e0; color: #e65100; }
+        .tag-media { background: #e3f2fd; color: #1565c0; }
+        .tag-green { background: #e8f5e9; color: #2e7d32; }
+        .tag-blue { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .tag-new { background: #f3e5f5; color: #6a1b9a; }
+
+        /* CALLOUT */
+        .callout { border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 20px 0; background: var(--lcg-light-blue); }
+        .callout-amber { background: var(--diag-light); border-left-color: var(--diag-primary); }
+        .callout-green { background: #e8f7f2; border-left-color: var(--engen-green); }
+        .callout-orange { background: #fff8ed; border-left-color: var(--warning); }
+        .callout-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 6px; }
+        .callout-amber .callout-label { color: var(--diag-primary); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout-orange .callout-label { color: #e65100; }
+        .callout p { margin: 0; font-size: 13px; }
+
+        /* EVIDENCE CARD — new component */
+        .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .evidence-card { background: var(--bg-light); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        .evidence-card-full { grid-column: 1 / -1; }
+        .evidence-img { width: 100%; height: 200px; object-fit: cover; background: #e0e4ea; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; }
+        .evidence-img img { width: 100%; height: 200px; object-fit: cover; }
+        .evidence-body { padding: 14px 16px; }
+        .evidence-area { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--diag-primary); margin-bottom: 4px; }
+        .evidence-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px; }
+        .evidence-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+
+        /* VERBATIM QUOTE — new component */
+        .verbatim { background: var(--bg-light); border-radius: 8px; padding: 18px 22px; margin: 16px 0; border-left: 4px solid var(--diag-secondary); position: relative; }
+        .verbatim::before { content: '\201C'; position: absolute; top: 8px; left: 12px; font-size: 36px; color: var(--diag-secondary); opacity: 0.3; font-family: Georgia, serif; }
+        .verbatim-text { font-size: 14px; font-weight: 500; color: var(--text-primary); font-style: italic; padding-left: 20px; line-height: 1.6; }
+        .verbatim-source { font-size: 11px; color: var(--text-muted); margin-top: 8px; padding-left: 20px; }
+
+        /* FINDING CARD — new component */
+        .finding-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 14px 0; }
+        .finding-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .finding-title { font-size: 15px; font-weight: 700; color: var(--lcg-navy); }
+        .finding-dimension { font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+        .finding-dimension.comercial { background: #e8f5e9; color: #2e7d32; }
+        .finding-dimension.operativa { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .finding-dimension.riesgo { background: #fce4ec; color: #c62828; }
+        .finding-dimension.digital { background: #f3e5f5; color: #6a1b9a; }
+        .finding-dimension.cultural { background: #fff8e1; color: #f57f17; }
+        .finding-body { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+        .finding-evidence { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-muted); }
+
+        /* HEAT MAP — new component */
+        .heatmap { margin: 20px 0; }
+        .heatmap-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f2f5; }
+        .heatmap-label { width: 180px; font-size: 12px; font-weight: 600; color: var(--text-primary); flex-shrink: 0; }
+        .heatmap-bar { flex: 1; height: 28px; border-radius: 6px; position: relative; overflow: hidden; }
+        .heatmap-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 10px; font-weight: 700; color: white; }
+        .heatmap-fill.critical { background: linear-gradient(90deg, #c62828, #e53935); }
+        .heatmap-fill.high { background: linear-gradient(90deg, #e65100, #ff8f00); }
+        .heatmap-fill.medium { background: linear-gradient(90deg, #f9a825, #fdd835); color: var(--text-primary); }
+        .heatmap-fill.low { background: linear-gradient(90deg, #2e7d32, #43a047); }
+        .heatmap-score { width: 50px; text-align: center; font-size: 12px; font-weight: 700; }
+
+        /* PROCESS MAP — new component */
+        .process-flow { display: flex; align-items: center; gap: 0; margin: 20px 0; flex-wrap: wrap; justify-content: center; }
+        .process-step { background: var(--bg-light); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; text-align: center; min-width: 100px; }
+        .process-step.bottleneck { border-color: var(--danger); background: #fce4ec; }
+        .process-step-name { font-size: 10px; font-weight: 700; color: var(--lcg-navy); text-transform: uppercase; letter-spacing: 0.5px; }
+        .process-step-time { font-size: 16px; font-weight: 800; color: var(--text-primary); margin: 4px 0; }
+        .process-step-time.slow { color: var(--danger); }
+        .process-step-benchmark { font-size: 9px; color: var(--text-muted); }
+        .process-arrow { font-size: 18px; color: var(--border); padding: 0 4px; }
+
+        /* BULLET LIST */
+        ul.bullet-list { padding-left: 20px; margin: 8px 0 16px; }
+        ul.bullet-list li { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+
+        /* SOURCE LIST */
+        .source-list { list-style: none; padding: 0; }
+        .source-list li { font-size: 11px; color: var(--text-secondary); padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
+        .source-category { font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin: 16px 0 8px; }
+
+        /* PRINT BTN */
+        .print-btn { position: fixed; bottom: 30px; right: 30px; background: var(--diag-primary); color: white; border: none; padding: 14px 28px; border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 20px rgba(230,81,0,0.3); z-index: 100; }
+        .print-btn:hover { background: var(--diag-secondary); }
+
+        /* PRINT HELPER */
+        .print-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(11,31,63,0.85); z-index: 200; display: none; align-items: center; justify-content: center; }
+        .print-overlay.active { display: flex; }
+        .print-dialog { background: white; border-radius: 16px; padding: 40px; max-width: 480px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .print-dialog h2 { font-size: 20px; color: var(--lcg-navy); margin-bottom: 16px; }
+        .print-dialog .step { display: flex; align-items: flex-start; gap: 12px; text-align: left; margin: 12px 0; font-size: 13px; color: var(--text-secondary); }
+        .print-dialog .step-num { background: var(--diag-primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+        .print-dialog .btn-row { display: flex; gap: 10px; margin-top: 24px; justify-content: center; }
+        .print-dialog button { padding: 10px 24px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+        .btn-primary { background: var(--lcg-navy); color: white; }
+        .btn-secondary { background: var(--bg-light); color: var(--text-secondary); }
+
+        /* ONE PAGER */
+        .onepager-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+        .onepager-card { background: var(--bg-light); border-radius: 8px; padding: 14px; border-left: 3px solid var(--diag-primary); }
+        .onepager-card.green { border-left-color: var(--engen-green); }
+        .onepager-card.blue { border-left-color: var(--lcg-accent); }
+        .onepager-card.red { border-left-color: var(--danger); }
+        .onepager-card-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+        .onepager-card-text { font-size: 11px; color: var(--text-primary); font-weight: 500; line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="showPrintHelper()">Descargar PDF</button>
+
+<div class="print-overlay no-print" id="printOverlay">
+    <div class="print-dialog">
+        <h2>Descargar como PDF</h2>
+        <div class="step"><span class="step-num">1</span><span>En el dialogo que se abre, selecciona <strong>"Guardar como PDF"</strong> como destino</span></div>
+        <div class="step"><span class="step-num">2</span><span>En <strong>"Mas opciones"</strong>, activa <strong>"Graficos de fondo"</strong></span></div>
+        <div class="step"><span class="step-num">3</span><span>Margenes: selecciona <strong>"Ninguno"</strong></span></div>
+        <div class="step"><span class="step-num">4</span><span>Clic en <strong>"Guardar"</strong></span></div>
+        <div class="btn-row">
+            <button class="btn-secondary" onclick="closePrintHelper()">Cancelar</button>
+            <button class="btn-primary" onclick="doPrint()">Continuar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPrintHelper() { document.getElementById('printOverlay').classList.add('active'); }
+    function closePrintHelper() { document.getElementById('printOverlay').classList.remove('active'); }
+    function doPrint() { closePrintHelper(); setTimeout(function() { window.print(); }, 300); }
+    window.addEventListener('load', function() {
+        document.querySelectorAll('img').forEach(function(img) {
+            if (img.complete && img.naturalWidth > 0) { convertToBase64(img); }
+            else { img.addEventListener('load', function() { convertToBase64(img); }); }
+        });
+    });
+    function convertToBase64(img) {
+        try { var c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight; c.getContext('2d').drawImage(img, 0, 0); img.src = c.toDataURL('image/png'); } catch(e) {}
+    }
+</script>
+
+<div class="document">
+
+    <!-- ============================================================ -->
+    <!-- COVER PAGE                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page">
+        <div class="cover-logos">
+            <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+        <div class="cover-content">
+            <div class="cover-label">Prediagnostico</div>
+            <h1 class="cover-title">Hallazgos de Campo y Oportunidades Detectadas</h1>
+            <p class="cover-subtitle">Sintesis de entrevistas, evidencia de procesos y analisis de oportunidades para la transformacion comercial y operativa de Engen Capital</p>
+            <div class="cover-divider"></div>
+            <div class="cover-meta">
+                <div><div class="cover-meta-label">Preparado por</div><div class="cover-meta-value">London Consulting Group</div></div>
+                <div><div class="cover-meta-label">Cliente</div><div class="cover-meta-value">Engen Capital</div></div>
+                <div><div class="cover-meta-label">Fecha</div><div class="cover-meta-value">Marzo 2026</div></div>
+                <div><div class="cover-meta-label">Clasificacion</div><div class="cover-meta-value">Confidencial</div></div>
+            </div>
+        </div>
+        <div class="cover-footer">
+            <span>&copy; 2026 London Consulting Group</span>
+            <span>Documento confidencial — Engen Capital</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TABLE OF CONTENTS                                             -->
+    <!-- ============================================================ -->
+    <div class="toc-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="toc-title">Contenido</div>
+        <div class="toc-subtitle">Prediagnostico Engen Capital — Hallazgos y oportunidades</div>
+
+        <ul class="toc-list">
+            <li class="toc-item">
+                <span class="toc-number">00</span>
+                <div><div class="toc-text">Metodologia del Diagnostico</div><div class="toc-desc">Enfoque, mapa de entrevistados y marco de analisis</div></div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">01</span>
+                <div><div class="toc-text">Resumen Ejecutivo</div><div class="toc-desc">Hallazgos principales y mapa de oportunidades</div></div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">02</span>
+                <div><div class="toc-text">Dimension Comercial (Go-to-Market)</div><div class="toc-desc">Hallazgos de la fuerza de venta, canales, segmentacion y proceso comercial</div></div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">03</span>
+                <div><div class="toc-text">Dimension Operativa (Fabrica de Originacion)</div><div class="toc-desc">Proceso de originacion, onboarding, tiempos, retrabajo y cuellos de botella</div></div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">04</span>
+                <div><div class="toc-text">Galeria de Evidencias</div><div class="toc-desc">Fotos, capturas y documentos organizados por hallazgo</div></div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">05</span>
+                <div><div class="toc-text">Oportunidades Detectadas</div><div class="toc-desc">Mapa de oportunidades con impacto, complejidad y prioridad</div></div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">06</span>
+                <div><div class="toc-text">Conclusiones y Recomendaciones</div><div class="toc-desc">Integracion de hallazgos de campo con analisis de mercado</div></div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">07</span>
+                <div><div class="toc-text">One-Pager Ejecutivo</div><div class="toc-desc">Sintesis de una pagina para compartir con el cliente</div></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 00: METODOLOGIA                                       -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 00</div>
+            <div class="section-title">Metodologia del Diagnostico</div>
+        </div>
+
+        <p>Este prediagnostico integra tres fuentes de informacion complementarias para construir una vision completa de la situacion actual de Engen Capital y las oportunidades de mejora.</p>
+
+        <div class="exec-grid">
+            <div class="exec-card orange">
+                <div class="exec-card-label">Fuente 1</div>
+                <div class="exec-card-value">Entrevistas</div>
+                <div class="exec-card-desc">Entrevistas en profundidad con equipos de Engen Capital en las areas comercial, originacion, riesgos, operaciones, tecnologia y direccion</div>
+            </div>
+            <div class="exec-card">
+                <div class="exec-card-label">Fuente 2</div>
+                <div class="exec-card-value">Estudio de Mercado</div>
+                <div class="exec-card-desc">Analisis outside-in del mercado de arrendamiento y financiamiento B2B en Mexico, benchmarks competitivos y dimensionamiento de oportunidad</div>
+            </div>
+            <div class="exec-card green">
+                <div class="exec-card-label">Fuente 3</div>
+                <div class="exec-card-value">Playbook Mid-Market</div>
+                <div class="exec-card-desc">Fichas sectoriales, perfil de cliente ideal y plan de accion para la penetracion del segmento medio — referencia operativa</div>
+            </div>
+            <div class="exec-card amber">
+                <div class="exec-card-label">Fuente 4</div>
+                <div class="exec-card-value">Evidencia Visual</div>
+                <div class="exec-card-desc">Fotos de procesos, capturas de sistemas, documentos internos y evidencia de campo recopilada durante las visitas</div>
+            </div>
+        </div>
+
+        <h3>Mapa de entrevistados</h3>
+
+        <p><em>Esta seccion se completara con la informacion de las entrevistas realizadas.</em></p>
+
+        <!-- PLACEHOLDER: Tabla de entrevistados se llenara por area, rol, fecha -->
+        <table>
+            <thead><tr><th>#</th><th>Area</th><th>Rol</th><th>Formato</th><th>Fecha</th></tr></thead>
+            <tbody>
+                <tr><td colspan="5" style="text-align:center; color: var(--text-muted); font-style: italic; padding: 20px;">Se completara conforme se realicen las entrevistas</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Nota metodologica</div>
+            <p>Los hallazgos se presentan anonimizados — se referencia el area y nivel del entrevistado, nunca el nombre. Los verbatims textuales se incluyen por su valor ilustrativo y se presentan siempre sin atribucion personal.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 01: RESUMEN EJECUTIVO (placeholder)                   -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 01</div>
+            <div class="section-title">Resumen Ejecutivo</div>
+        </div>
+
+        <p><em>Esta seccion se construira al completar el analisis de todas las entrevistas. Incluira:</em></p>
+
+        <ul class="bullet-list">
+            <li>KPI banner con metricas clave descubiertas en campo</li>
+            <li>Exec cards con los hallazgos principales por dimension</li>
+            <li>Mapa de calor de madurez/oportunidad por area</li>
+            <li>Los 3-5 insights mas relevantes del diagnostico</li>
+        </ul>
+
+        <!-- PLACEHOLDER: KPI Banner -->
+        <div class="kpi-banner" style="opacity: 0.4;">
+            <div class="kpi-item"><div class="kpi-value">—</div><div class="kpi-label">Entrevistas realizadas</div></div>
+            <div class="kpi-item"><div class="kpi-value">—</div><div class="kpi-label">Hallazgos clave</div></div>
+            <div class="kpi-item"><div class="kpi-value">—</div><div class="kpi-label">Oportunidades detectadas</div></div>
+            <div class="kpi-item"><div class="kpi-value">—</div><div class="kpi-label">Quick wins identificados</div></div>
+        </div>
+
+        <!-- PLACEHOLDER: Exec grid de hallazgos principales -->
+        <div class="exec-grid" style="opacity: 0.4;">
+            <div class="exec-card orange">
+                <div class="exec-card-label">Dimension Comercial</div>
+                <div class="exec-card-value">Pendiente</div>
+                <div class="exec-card-desc">Hallazgo principal del area comercial se completara con datos de entrevistas</div>
+            </div>
+            <div class="exec-card">
+                <div class="exec-card-label">Dimension Operativa</div>
+                <div class="exec-card-value">Pendiente</div>
+                <div class="exec-card-desc">Hallazgo principal de la fabrica de originacion se completara con datos de entrevistas</div>
+            </div>
+        </div>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">En construccion</div>
+            <p>Este resumen se ira completando conforme se procesen los bloques de entrevistas. Cada bloque de material anade hallazgos a esta seccion.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 02: DIMENSION COMERCIAL (placeholder)                 -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 02</div>
+            <div class="section-title">Dimension Comercial (Go-to-Market)</div>
+        </div>
+
+        <p>Hallazgos de las entrevistas con el area comercial, contrastados con los benchmarks del Estudio de Mercado y el Playbook de Prospeccion Mid-Market.</p>
+
+        <p><em>Esta seccion se completara con los hallazgos de las entrevistas del area comercial. Incluira:</em></p>
+
+        <ul class="bullet-list">
+            <li>Proceso de prospeccion actual vs. modelo propuesto en el Playbook</li>
+            <li>Criterios de calificacion vs. ICP definido</li>
+            <li>Ciclo de venta real vs. benchmarks del mercado</li>
+            <li>Estructura comercial y modelo de cobertura</li>
+            <li>Pain points y verbatims del equipo</li>
+            <li>Evidencia visual de herramientas y procesos</li>
+        </ul>
+
+        <!-- Example of how findings will look when populated -->
+        <!--
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-title">Titulo del hallazgo</div>
+                <span class="finding-dimension comercial">Comercial</span>
+            </div>
+            <div class="finding-body">
+                Descripcion del hallazgo basado en entrevistas...
+            </div>
+            <div class="finding-evidence">Evidencia: captura CRM, entrevista Ejecutivo Comercial</div>
+        </div>
+
+        <div class="verbatim">
+            <div class="verbatim-text">"Cita textual del entrevistado aqui..."</div>
+            <div class="verbatim-source">— Ejecutivo, Area Comercial</div>
+        </div>
+        -->
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 03: DIMENSION OPERATIVA (placeholder)                 -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 03</div>
+            <div class="section-title">Dimension Operativa (Fabrica de Originacion)</div>
+        </div>
+
+        <p>Hallazgos de las entrevistas con originacion, riesgos, operaciones y tecnologia. Incluye el mapeo de proceso as-is con tiempos reales vs. benchmarks.</p>
+
+        <p><em>Esta seccion se completara con los hallazgos de las entrevistas operativas. Incluira:</em></p>
+
+        <ul class="bullet-list">
+            <li>Mapeo de proceso as-is de originacion con tiempos por etapa</li>
+            <li>Cuellos de botella identificados y cuantificados</li>
+            <li>Tiempos reales vs. benchmarks best-in-class (Estudio de Mercado, Sec. 07)</li>
+            <li>Retrabajo y devoluciones — causas y magnitud</li>
+            <li>Gaps en sistemas y herramientas</li>
+            <li>Modelo de riesgo y apertura al mid-market</li>
+            <li>Evidencia visual de procesos y sistemas</li>
+        </ul>
+
+        <!-- Example of process map when populated -->
+        <!--
+        <h3>Proceso de Originacion As-Is</h3>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-step-name">Pre-calif.</div>
+                <div class="process-step-time">X hrs</div>
+                <div class="process-step-benchmark">Benchmark: &lt;4 hrs</div>
+            </div>
+            <span class="process-arrow">→</span>
+            <div class="process-step bottleneck">
+                <div class="process-step-name">Analisis</div>
+                <div class="process-step-time slow">X dias</div>
+                <div class="process-step-benchmark">Benchmark: 24-48 hrs</div>
+            </div>
+            <span class="process-arrow">→</span>
+            ...
+        </div>
+        -->
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 04: GALERIA DE EVIDENCIAS (placeholder)               -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 04</div>
+            <div class="section-title">Galeria de Evidencias</div>
+        </div>
+
+        <p>Evidencia visual recopilada durante las entrevistas y visitas de campo. Cada pieza esta vinculada al hallazgo que sustenta.</p>
+
+        <p><em>Esta seccion se completara con las fotos, capturas y documentos que se recopilen durante las entrevistas.</em></p>
+
+        <!-- Example of evidence cards when populated -->
+        <!--
+        <div class="evidence-grid">
+            <div class="evidence-card">
+                <div class="evidence-img"><img src="ruta-a-imagen.jpg" alt="Descripcion"></div>
+                <div class="evidence-body">
+                    <div class="evidence-area">Comercial</div>
+                    <div class="evidence-title">Titulo de la evidencia</div>
+                    <div class="evidence-desc">Que demuestra esta evidencia y a que hallazgo se vincula.</div>
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 05: OPORTUNIDADES DETECTADAS (placeholder)            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 05</div>
+            <div class="section-title">Oportunidades Detectadas</div>
+        </div>
+
+        <p>Consolidado de oportunidades identificadas, combinando los hallazgos de campo con las oportunidades previamente identificadas en el Estudio de Mercado.</p>
+
+        <h3>Oportunidades del Estudio de Mercado (validacion de campo)</h3>
+
+        <p>Las siguientes oportunidades fueron identificadas en el analisis de escritorio. Las entrevistas de campo validaran, ajustaran o complementaran cada una:</p>
+
+        <table>
+            <thead><tr><th>#</th><th>Oportunidad</th><th>Prioridad (escritorio)</th><th>Validacion campo</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td class="table-highlight">Estrategia Go-to-Market segmento PyME/Medianas</td><td><span class="tag tag-alta">Alta</span></td><td><em>Pendiente</em></td></tr>
+                <tr><td>2</td><td class="table-highlight">Optimizacion de la Fabrica de Originacion</td><td><span class="tag tag-alta">Alta</span></td><td><em>Pendiente</em></td></tr>
+                <tr><td>3</td><td class="table-highlight">Calibracion del Modelo de Riesgo</td><td><span class="tag tag-media-alta">Media-Alta</span></td><td><em>Pendiente</em></td></tr>
+                <tr><td>4</td><td class="table-highlight">Transformacion Digital de Procesos</td><td><span class="tag tag-media">Media</span></td><td><em>Pendiente</em></td></tr>
+                <tr><td>5</td><td class="table-highlight">Gestion del Cambio y Mindset</td><td><span class="tag tag-media">Media</span></td><td><em>Pendiente</em></td></tr>
+            </tbody>
+        </table>
+
+        <h3>Nuevas oportunidades descubiertas en campo</h3>
+
+        <p><em>Esta sub-seccion capturara cualquier oportunidad nueva que surja de las entrevistas y no estuviera contemplada en el analisis de escritorio.</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 06: CONCLUSIONES Y RECOMENDACIONES (placeholder)      -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 06</div>
+            <div class="section-title">Conclusiones y Recomendaciones</div>
+        </div>
+
+        <p><em>Esta seccion integrara todos los hallazgos de campo con el analisis de mercado para formular las conclusiones y recomendaciones finales. Incluira:</em></p>
+
+        <ul class="bullet-list">
+            <li>Sintesis de hallazgos clave por dimension (comercial + operativa)</li>
+            <li>Triangulacion: que dicen los datos de mercado + que dicen las entrevistas + que muestra la evidencia</li>
+            <li>Argumentacion para la propuesta de consultoria (vinculada a los casos HDI y Banregio)</li>
+            <li>Proximos pasos recomendados con horizonte temporal</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 07: ONE-PAGER EJECUTIVO (placeholder)                 -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 07</div>
+            <div class="section-title">One-Pager Ejecutivo</div>
+        </div>
+
+        <p style="text-align: center; color: var(--text-muted); padding: 40px 0;"><em>Esta pagina se generara al completar el diagnostico.<br>Contendra la sintesis de todo el prediagnostico en una sola pagina:<br>KPIs clave + hallazgos top + oportunidades priorizadas + recomendacion.</em></p>
+
+        <!-- Template for when populated:
+        <div class="kpi-banner">
+            <div class="kpi-item"><div class="kpi-value">X</div><div class="kpi-label">KPI 1</div></div>
+            ...
+        </div>
+
+        <div class="onepager-grid">
+            <div class="onepager-card">
+                <div class="onepager-card-label">Hallazgo 1</div>
+                <div class="onepager-card-text">Descripcion breve...</div>
+            </div>
+            ...
+        </div>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Recomendacion</div>
+            <p>Texto de la recomendacion final...</p>
+        </div>
+        -->
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- BACK COVER                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page" style="min-height: 40vh; justify-content: center; align-items: center; text-align: center;">
+        <div style="position: relative; z-index: 1;">
+            <div style="margin-bottom: 30px;">
+                <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group" style="height: 50px; filter: brightness(0) invert(1);" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:4px;display:inline-block;&quot;>London Consulting Group</span>'">
+            </div>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Este documento es confidencial y fue preparado exclusivamente para Engen Capital.</p>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 30px;">Su reproduccion o distribucion requiere autorizacion escrita de London Consulting Group.</p>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.3);">&copy; 2026 London Consulting Group. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
