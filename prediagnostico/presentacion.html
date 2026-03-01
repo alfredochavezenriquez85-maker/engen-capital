@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediagnostico — Engen Capital | Presentacion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --diag-primary: #E65100;
+            --diag-secondary: #FF8F00;
+            --diag-light: #FFF3E0;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --danger: #E74C5E;
+            --warning: #F5A623;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: 'Inter', sans-serif; color: var(--text-primary); background: #2a2a2a; }
+
+        /* SLIDE SYSTEM — 16:9 */
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 56px;
+        }
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body { background: white; }
+            .slide { box-shadow: none; margin: 0 auto; page-break-after: always; page-break-inside: avoid; }
+            .no-print { display: none !important; }
+        }
+
+        /* SLIDE HEADER */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--diag-primary);
+        }
+        .slide-header img { height: 26px; }
+        .slide-header img.logo-lcg { filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(2500%) hue-rotate(200deg) brightness(90%) contrast(100%); }
+        .slide-header img.logo-engen { border-radius: 3px; }
+        .slide-header .slide-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+
+        /* SLIDE TITLE */
+        .slide-title { font-size: 30px; font-weight: 800; color: var(--lcg-navy); margin-bottom: 4px; line-height: 1.2; }
+        .slide-subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 18px; font-weight: 400; }
+
+        /* COVER SLIDE */
+        .slide-cover {
+            background: linear-gradient(135deg, #BF360C 0%, #E65100 40%, #FF8F00 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .slide-cover::before { content: ''; position: absolute; top: -150px; right: -150px; width: 500px; height: 500px; border-radius: 50%; background: rgba(255,143,0,0.12); }
+        .slide-cover::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 350px; height: 350px; border-radius: 50%; background: rgba(230,81,0,0.1); }
+        .cover-top { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-top img { height: 48px; }
+        .cover-top img.logo-lcg { filter: brightness(0) invert(1); }
+        .cover-top img.logo-engen { border-radius: 6px; }
+        .cover-center { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .cover-label { font-size: 13px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 18px; }
+        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 52px; font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
+        .cover-sub { font-size: 20px; font-weight: 300; color: rgba(255,255,255,0.7); }
+        .cover-bottom { position: relative; z-index: 1; display: flex; gap: 60px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px; }
+        .cover-meta-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+        .cover-meta-value { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 500; }
+
+        /* KPI BANNER */
+        .kpi-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--lcg-navy); border-radius: 10px; overflow: hidden; margin: 16px 0; }
+        .kpi-banner-5 { grid-template-columns: repeat(5, 1fr); }
+        .kpi-item { padding: 22px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .kpi-item:last-child { border-right: none; }
+        .kpi-value { font-size: 34px; font-weight: 800; color: var(--diag-secondary); }
+        .kpi-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+        /* 2-COL LAYOUT */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+        .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+        /* EXEC CARDS */
+        .exec-card { background: var(--bg-light); border-radius: 8px; padding: 18px; border-left: 4px solid var(--lcg-accent); }
+        .exec-card.orange { border-left-color: var(--diag-primary); }
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.red { border-left-color: var(--danger); }
+        .exec-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
+        .exec-card-value { font-size: 18px; font-weight: 800; color: var(--lcg-navy); margin-bottom: 4px; line-height: 1.2; }
+        .exec-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+        thead th { background: var(--lcg-navy); color: white; font-weight: 600; padding: 10px 14px; text-align: left; font-size: 12px; letter-spacing: 0.3px; }
+        thead th:first-child { border-radius: 4px 0 0 0; }
+        thead th:last-child { border-radius: 0 4px 0 0; }
+        tbody td { padding: 8px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 13px; }
+        .table-highlight { font-weight: 700; color: var(--lcg-navy); }
+
+        /* TAGS */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        .tag-alta { background: #ffe0e6; color: #c41e3a; }
+        .tag-media-alta { background: #fff3e0; color: #e65100; }
+        .tag-media { background: #e3f2fd; color: #1565c0; }
+
+        /* CALLOUT */
+        .callout { border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 14px 0; background: var(--lcg-light-blue); }
+        .callout-amber { background: var(--diag-light); border-left-color: var(--diag-primary); }
+        .callout-green { background: #e8f7f2; border-left-color: var(--engen-green); }
+        .callout-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 5px; }
+        .callout-amber .callout-label { color: var(--diag-primary); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--text-secondary); }
+
+        /* FINDING MINI */
+        .finding-mini { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin: 8px 0; }
+        .finding-mini-title { font-size: 14px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 5px; }
+        .finding-mini-body { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+        .finding-mini-tag { font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: 10px; float: right; }
+        .finding-mini-tag.comercial { background: #e8f5e9; color: #2e7d32; }
+        .finding-mini-tag.operativa { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .finding-mini-tag.riesgo { background: #fce4ec; color: #c62828; }
+
+        /* PROCESS FLOW */
+        .flow-line { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 16px 0; }
+        .flow-step { background: var(--bg-light); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; font-size: 12px; font-weight: 600; color: var(--lcg-navy); }
+        .flow-step.critical { border-color: var(--danger); background: #fce4ec; }
+        .flow-arrow { color: var(--diag-primary); font-size: 16px; }
+
+        /* BULLET LIST */
+        ul.bullet-list { padding-left: 18px; margin: 6px 0; }
+        ul.bullet-list li { font-size: 12px; color: var(--text-secondary); margin-bottom: 5px; line-height: 1.55; }
+
+        /* ONEPAGER */
+        .onepager-card { background: var(--bg-light); border-radius: 8px; padding: 16px; border-left: 4px solid var(--diag-primary); }
+        .onepager-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+        .onepager-card-text { font-size: 13px; color: var(--text-primary); font-weight: 500; line-height: 1.5; }
+
+        /* SLIDE FOOTER */
+        .slide-footer { position: absolute; bottom: 14px; left: 56px; right: 56px; display: flex; justify-content: space-between; font-size: 9px; color: var(--text-muted); }
+
+        /* NAV */
+        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--lcg-navy); padding: 10px 20px; display: flex; justify-content: center; gap: 8px; z-index: 100; }
+        .nav-bar a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 4px; }
+        .nav-bar a:hover { color: white; background: rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-bar no-print">
+    <a href="#cover">Portada</a>
+    <a href="#resumen">Resumen</a>
+    <a href="#estructura">Estructura</a>
+    <a href="#comercial">Comercial</a>
+    <a href="#operativa">Operativa</a>
+    <a href="#flujo">Flujo Core</a>
+    <a href="#oportunidades-op">Oport. Operativas</a>
+    <a href="#falla1">Falla Humana 1</a>
+    <a href="#falla2">Falla Humana 2</a>
+    <a href="#financieros">Financieros</a>
+    <a href="#oportunidades">Oportunidades</a>
+    <a href="#conclusiones">Conclusiones</a>
+    <a href="#onepager">One-Pager</a>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 1: PORTADA                                                  -->
+<!-- ================================================================ -->
+<div class="slide slide-cover" id="cover">
+    <div class="cover-top">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="cover-center">
+        <div class="cover-label">Prediagnostico</div>
+        <div class="cover-title">Hallazgos de Campo<br>Engen Capital</div>
+        <div class="cover-sub">Analisis documental previo a entrevistas presenciales</div>
+    </div>
+    <div class="cover-bottom">
+        <div><div class="cover-meta-label">Preparado por</div><div class="cover-meta-value">London Consulting Group</div></div>
+        <div><div class="cover-meta-label">Cliente</div><div class="cover-meta-value">Engen Capital — 397 CAP S.A. de C.V. SOFOM</div></div>
+        <div><div class="cover-meta-label">Clasificacion</div><div class="cover-meta-value">Confidencial</div></div>
+        <div><div class="cover-meta-label">Fecha</div><div class="cover-meta-value">Marzo 2026</div></div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 2: RESUMEN EJECUTIVO                                        -->
+<!-- ================================================================ -->
+<div class="slide" id="resumen">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Resumen Ejecutivo</div>
+    <div class="slide-subtitle">Hallazgos iniciales basados en 5 documentos internos del cliente</div>
+
+    <div class="kpi-banner">
+        <div class="kpi-item"><div class="kpi-value">5</div><div class="kpi-label">Documentos analizados</div></div>
+        <div class="kpi-item"><div class="kpi-value">$35.8B</div><div class="kpi-label">Activos totales (MDP)</div></div>
+        <div class="kpi-item"><div class="kpi-value">-53%</div><div class="kpi-label">Caida utilidad neta YoY</div></div>
+        <div class="kpi-item"><div class="kpi-value">11</div><div class="kpi-label">Procesos core mapeados</div></div>
+    </div>
+
+    <div class="two-col" style="margin-top: 16px;">
+        <div class="exec-card orange">
+            <div class="exec-card-label">Dimension Comercial</div>
+            <div class="exec-card-value">Crecimiento con presion</div>
+            <div class="exec-card-desc">NEAs $15,165M. LMM crece a 23.5% pero Core cae. Solo 133 clientes nuevos (-28%). Factoraje: conversion 3.5% — meta 15%.</div>
+        </div>
+        <div class="exec-card">
+            <div class="exec-card-label">Dimension Operativa</div>
+            <div class="exec-card-value">Arquitectura madura, eficiencia por mejorar</div>
+            <div class="exec-card-desc">11 procesos core documentados. Stack robusto (12+ sistemas). Gastos +5% con utilidad operativa -29%. Costos de fondeo +190 pb.</div>
+        </div>
+        <div class="exec-card orange">
+            <div class="exec-card-label">Dimension Financiera</div>
+            <div class="exec-card-value">Año de ajuste</div>
+            <div class="exec-card-desc">Utilidad neta $458M (vs $970M). Resultado cambiario -$82M. Rompieron swaps ~$150M. "Ajustamos el tamaño a nueva realidad."</div>
+        </div>
+        <div class="exec-card">
+            <div class="exec-card-label">Dimension Organizacional</div>
+            <div class="exec-card-value">Estructura completa y especializada</div>
+            <div class="exec-card-desc">8 direcciones bajo DG Juan Pablo Loperena. Presencia CDMX/MTY/GDL. QMS en SharePoint. Campaña de Calidad 2026.</div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 3: ESTRUCTURA ORGANIZACIONAL                                -->
+<!-- ================================================================ -->
+<div class="slide" id="estructura">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Organizacion Engen Capital</div>
+    <div class="slide-subtitle">Director General: Juan Pablo Loperena — 8 direcciones funcionales</div>
+
+    <table>
+        <thead><tr><th>Direccion</th><th>Director(a)</th><th>Alcance</th><th>Equipos</th></tr></thead>
+        <tbody>
+            <tr><td class="table-highlight">Comercial</td><td>Maurizzio Piva</td><td>Originacion por segmento (Core, LMM, Factoraje) y geografia</td><td>7 equipos: Core Mex/Mty, Core GDL, LMM, Factoraje, Compra Cartera, Rel. Indirectas, Estrategia</td></tr>
+            <tr><td class="table-highlight">Mercadotecnia</td><td>Alejandro Alvarez</td><td>Demanda digital, CRM, ciencia de datos, telemercadeo, RRPP</td><td>Digital, CRM &amp; Data, Telemercadeo, RRPP</td></tr>
+            <tr><td class="table-highlight">Riesgo</td><td>Fernando Garza</td><td>Suscripcion, mesa de control, recuperacion, auditoria, riesgo op.</td><td>Suscripcion Core, Suscripcion LMM, Admin. Activos, Mesa Control, Recuperacion, Auditoria, Riesgo Op.</td></tr>
+            <tr><td class="table-highlight">Legal</td><td>Rogelio Martinez</td><td>Contratos, cumplimiento regulatorio, PLD/KYC, contenciosos</td><td>Cumplimiento, Legal Mex (2), Legal Mty, Legal GDL</td></tr>
+            <tr><td class="table-highlight">Finanzas</td><td>Roberto Medina</td><td>Contraloria, tesoreria, impuestos, servicios operativos, compras</td><td>Contraloria, Finanzas, Serv. Op., Impuestos, Tesoreria, Servicios y Compras</td></tr>
+            <tr><td class="table-highlight">RRHH</td><td>Ma. Elena Suarez</td><td>Talento, compensaciones, desarrollo organizacional, ESG</td><td>Atraccion Talento, Compensaciones, DO, ESG</td></tr>
+            <tr><td class="table-highlight">TI</td><td>Luis Padilla</td><td>Stack de 12+ sistemas, innovacion (IA, plataforma factoraje)</td><td>Producto y Tech, Desarrollo de Valor, Aseg. Servicio, Infraestructura</td></tr>
+            <tr><td class="table-highlight">Calidad</td><td>Guillermo Llantada</td><td>QMS, arquitectura de procesos, Service Blueprints, experiencia cliente</td><td>Gestion de Calidad, Experiencia del Cliente</td></tr>
+        </tbody>
+    </table>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 4: DIMENSION COMERCIAL                                      -->
+<!-- ================================================================ -->
+<div class="slide" id="comercial">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Dimension Comercial — Go-to-Market</div>
+    <div class="slide-subtitle">Hallazgos de la documentacion interna del area comercial</div>
+
+    <div class="two-col">
+        <div>
+            <div class="finding-mini">
+                <span class="finding-mini-tag comercial">Comercial</span>
+                <div class="finding-mini-title">Caida en captacion de clientes nuevos</div>
+                <div class="finding-mini-body">133 clientes nuevos en 2025 (-28% vs 186 en 2024). LMM crece a 23.5% de NEAs pero el volumen es insuficiente. Meta 2026: 40 clientes nuevos.</div>
+            </div>
+            <div class="finding-mini">
+                <span class="finding-mini-tag comercial">Comercial</span>
+                <div class="finding-mini-title">Estrategia 2026: 5 pilares por segmento</div>
+                <div class="finding-mini-body"><strong>Core:</strong> Multiproducto, Potenciar LMM, One-off, REFIs, Verticales (A&amp;B, Salud, Mineria). <strong>LMM:</strong> +Ritmo operativo, +Deal size. <strong>Factoraje:</strong> Pipeline 2.5X, conversion 3.5%→15%.</div>
+            </div>
+            <div class="finding-mini">
+                <span class="finding-mini-tag comercial">Comercial</span>
+                <div class="finding-mini-title">Prospeccion formalizada con dependencia de Salesforce</div>
+                <div class="finding-mini-body">3 actores (Team Leaders, Originadores, Telemercadeo). Todo en Salesforce. Cotizacion en Super Trump. NDA via Docusign. Pendiente: eficacia real de cada canal.</div>
+            </div>
+        </div>
+        <div>
+            <table>
+                <thead><tr><th>Metrica</th><th>2025</th><th>Meta 2026</th><th>Delta</th></tr></thead>
+                <tbody>
+                    <tr><td>Originacion Core</td><td class="table-highlight">$4,494M</td><td>$4,632M</td><td>+3%</td></tr>
+                    <tr><td>LMM Iniciativa</td><td class="table-highlight">$1,058M</td><td>$1,176M</td><td>+11%</td></tr>
+                    <tr><td>Factoraje (nuevas lineas)</td><td>$404M</td><td>$572M</td><td>+42%</td></tr>
+                    <tr><td>Factoraje AFEs</td><td>$546M</td><td>$933M</td><td>+71%</td></tr>
+                    <tr><td>Clientes nuevos</td><td class="table-highlight">133 (-28%)</td><td>140</td><td>+5%</td></tr>
+                    <tr><td>Conversion factoraje</td><td>3.5%</td><td>15%</td><td>+11.5pp</td></tr>
+                </tbody>
+            </table>
+            <div class="callout callout-amber" style="margin-top: 12px;">
+                <div class="callout-label">Gap de mercado</div>
+                <p>"Missing middle" de <strong>$50,000-$85,000 MDP</strong> post-Unifin. La oportunidad existe — la ejecucion es el reto.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 5: DIMENSION OPERATIVA                                      -->
+<!-- ================================================================ -->
+<div class="slide" id="operativa">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Dimension Operativa — Fabrica de Originacion</div>
+    <div class="slide-subtitle">Arquitectura de procesos y hallazgos de la documentacion interna</div>
+
+    <div class="two-col">
+        <div>
+            <table>
+                <thead><tr><th>Capa</th><th>Procesos</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Estrategicos</td><td>Gobierno Corp., Planeacion Estrat., Admin. y Finanzas, Marketing, Innovacion</td></tr>
+                    <tr><td class="table-highlight">Core</td><td>Planeacion Comercial → Demanda → Conversion → Riesgo → Disposicion → Complementarias → Facturacion → Monitoreo → Eventos → Terminaciones</td></tr>
+                    <tr><td class="table-highlight">Habilitadores</td><td>Personas, TI, CX, Calidad, Instalaciones, Auditoria, Legal, Contabilidad</td></tr>
+                </tbody>
+            </table>
+
+            <div class="finding-mini">
+                <span class="finding-mini-tag operativa">Operativa</span>
+                <div class="finding-mini-title">Stack robusto pero fragmentado</div>
+                <div class="finding-mini-body">12+ sistemas: Salesforce, APEX, OLFM, Oracle, Credit Lens, EC Factor, Da Vinci, B2B, Qlik, Super Trump, Docusign, Integrity. Controles criticos en <strong>Excel + OneDrive</strong>.</div>
+            </div>
+        </div>
+        <div>
+            <div class="finding-mini">
+                <span class="finding-mini-tag operativa">Operativa</span>
+                <div class="finding-mini-title">Originacion con multiples handoffs</div>
+                <div class="finding-mini-body">12+ roles funcionales distintos desde prospeccion hasta fondeo. Cada handoff es un potencial cuello de botella. Correo como mecanismo de orquestacion.</div>
+            </div>
+            <div class="finding-mini">
+                <span class="finding-mini-tag operativa">Operativa</span>
+                <div class="finding-mini-title">Eficiencia bajo presion</div>
+                <div class="finding-mini-body">Gastos operacion +5% ($1,776M) con utilidad operativa -29% ($775M). Margen financiero -6%. "Ajustamos el tamaño a nueva realidad."</div>
+            </div>
+
+            <div class="callout callout-amber" style="margin-top: 8px;">
+                <div class="callout-label">Sintesis</div>
+                <p>El diseño de procesos es <strong>solido en su arquitectura</strong>. El riesgo esta en el <em>como</em> se ejecutan los handoffs: demasiado correo, demasiado Excel, demasiada secuencialidad.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 6: FLUJO CORE PUNTA A PUNTA                                 -->
+<!-- ================================================================ -->
+<div class="slide" id="flujo">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Flujo Core Punta a Punta — Ciclo de Vida de una Operacion</div>
+    <div class="slide-subtitle">Fuente: Procesos Engen 2026 — Oferta de Valor</div>
+
+    <div class="flow-line" style="margin: 20px 0;">
+        <span class="flow-step">Generacion de Demanda</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Conversion y Admin. de Clientes</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step critical">Analisis y Aprobacion de Riesgo</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step critical">Disposicion de Soluciones Financieras</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Facturacion y Cobranza</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Monitoreo del Portafolio</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Eventos de Portafolio</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Terminaciones</span>
+    </div>
+
+    <p style="font-size: 12px; color: var(--text-muted); margin: 8px 0 16px;">Cada etapa involucra multiples actores (Comercial, Legal, Suscripcion, Mesa de Control, Tesoreria) y sistemas (Salesforce/APEX, OLFM, Oracle, Credit Lens, Docusign, EC Factor). En rojo: etapas criticas por concentracion de actores y complejidad.</p>
+
+    <table>
+        <thead><tr><th>#</th><th>Oportunidad operativa</th><th>Descripcion</th><th>Impacto</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td class="table-highlight">Coordinacion manual entre areas</td><td>"Envia por correo" / "notifica por correo" como mecanismo de orquestacion</td><td><span class="tag tag-alta">Alto</span></td></tr>
+            <tr><td>2</td><td class="table-highlight">Fragmentacion de sistemas</td><td>12+ sistemas + Excel/OneDrive. XLS de funding control = riesgo de integridad</td><td><span class="tag tag-alta">Alto</span></td></tr>
+            <tr><td>3</td><td class="table-highlight">Disposicion secuencial</td><td>Validaciones en serie que podrian ser paralelas (activos, fiscal, seguro)</td><td><span class="tag tag-alta">Alto</span></td></tr>
+            <tr><td>4</td><td class="table-highlight">Gestorias/Importaciones en Excel</td><td>Portafolio transporte y gastos importacion en XLS</td><td><span class="tag tag-media-alta">Medio-Alto</span></td></tr>
+            <tr><td>5</td><td class="table-highlight">Cobranza reactiva</td><td>Escalada a Recuperacion hasta dia 45. Sin modelos predictivos</td><td><span class="tag tag-media-alta">Medio-Alto</span></td></tr>
+            <tr><td>6</td><td class="table-highlight">Monitoreo reactivo</td><td>Info financiera mediada por Comercial. Sin fuentes externas automaticas</td><td><span class="tag tag-media">Medio</span></td></tr>
+            <tr><td>7</td><td class="table-highlight">Terminaciones sin alertas</td><td>Contratos por vencer sin proceso proactivo automatizado</td><td><span class="tag tag-media">Medio</span></td></tr>
+        </tbody>
+    </table>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 7: FALLA HUMANA — ETAPAS 1-4                                -->
+<!-- ================================================================ -->
+<div class="slide" id="falla1">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Oportunidades por Etapa — Falla Humana (1 de 2)</div>
+    <div class="slide-subtitle">Etapas de pre-fondeo: donde se concentra el mayor riesgo operativo</div>
+
+    <div class="two-col">
+        <div>
+            <div class="finding-mini" style="border-left: 3px solid var(--engen-green);">
+                <div class="finding-mini-title">Etapa 1: Generacion de Demanda</div>
+                <div class="finding-mini-body">
+                    • Registro incompleto/tardio en Salesforce<br>
+                    • Filtrado inconsistente de leads<br>
+                    • Duplicacion Telemercadeo-Originacion<br>
+                    • Decisiones sobre datos incompletos
+                </div>
+            </div>
+            <div class="finding-mini" style="border-left: 3px solid var(--lcg-accent);">
+                <div class="finding-mini-title">Etapa 2: Conversion y Admin. Clientes</div>
+                <div class="finding-mini-body">
+                    • 5 actores simultaneos sin sincronia<br>
+                    • Retraso en valuacion bloquea cotizacion<br>
+                    • Datos faltantes reinician ciclo NDA<br>
+                    • Variabilidad en cotizaciones Super Trump<br>
+                    • Firma NDA sin recordatorio automatizado
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="finding-mini" style="border-left: 3px solid var(--danger);">
+                <div class="finding-mini-title">Etapa 3: Analisis y Aprobacion — CRITICA</div>
+                <div class="finding-mini-body">
+                    • Expediente incompleto no detectado hasta etapas avanzadas<br>
+                    • Google Searches como due diligence (no auditables)<br>
+                    • Sesgo del analista en visita presencial<br>
+                    • Cadena de aprobacion sin escalada automatica<br>
+                    • Analisis PLD subjetivo (falsos +/-)
+                </div>
+            </div>
+            <div class="finding-mini" style="border-left: 3px solid var(--danger);">
+                <div class="finding-mini-title">Etapa 4: Disposicion — CRITICA (mas larga)</div>
+                <div class="finding-mini-body">
+                    • Ambiguedad en condiciones → versiones incorrectas<br>
+                    • Mesa de Control como cuello de botella<br>
+                    • Politica de firma variable por caso<br>
+                    • Coordinacion EFA (3 partes)<br>
+                    • Documentos fisicos como requisito previo a fondeo
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 8: FALLA HUMANA — ETAPAS 5-10                               -->
+<!-- ================================================================ -->
+<div class="slide" id="falla2">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Oportunidades por Etapa — Falla Humana (2 de 2)</div>
+    <div class="slide-subtitle">Etapas de post-fondeo y soluciones complementarias</div>
+
+    <div class="three-col">
+        <div>
+            <div class="finding-mini" style="border-left: 3px solid var(--warning);">
+                <div class="finding-mini-title">Etapa 5-6: Importaciones y Gestorias</div>
+                <div class="finding-mini-body">
+                    • Operacion sobre correo + XLS<br>
+                    • Registro tardio de gastos<br>
+                    • Polizas sin confirmacion formal<br>
+                    • Portafolio transporte en XLS<br>
+                    • Baja de servicios omitible
+                </div>
+            </div>
+            <div class="finding-mini" style="border-left: 3px solid var(--lcg-accent);">
+                <div class="finding-mini-title">Etapa 7: Facturacion y Cobranza</div>
+                <div class="finding-mini-body">
+                    • Discrepancias OLFM-anexos<br>
+                    • Aplicacion erronea de pagos<br>
+                    • Morosos sin diferenciacion<br>
+                    • Escalada dia 45 sin criterio auto<br>
+                    • Reporte a buro manual
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="finding-mini" style="border-left: 3px solid var(--danger);">
+                <div class="finding-mini-title">Etapa 8: Monitoreo del Portafolio</div>
+                <div class="finding-mini-body">
+                    • Priorizacion sin scoring objetivo<br>
+                    • Info mediada por Comercial<br>
+                    • Covenants potencialmente mal capturados<br>
+                    • Interpretacion inconsistente entre analistas
+                </div>
+            </div>
+            <div class="finding-mini" style="border-left: 3px solid var(--danger);">
+                <div class="finding-mini-title">Etapa 9: Recuperacion y Reestructura</div>
+                <div class="finding-mini-body">
+                    • Historial incompleto en escalada<br>
+                    • Negociacion sin parametros claros<br>
+                    • Post-reestructura sin alertas (6 meses)<br>
+                    • Supervision legal externa informal
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="finding-mini" style="border-left: 3px solid var(--text-muted);">
+                <div class="finding-mini-title">Etapa 10: Terminaciones y Remercadeo</div>
+                <div class="finding-mini-body">
+                    • Sin alertas de vencimiento<br>
+                    • Contacto sin protocolo estandar<br>
+                    • Baja de placas por correo<br>
+                    • Remercadeo sin soporte de sistemas
+                </div>
+            </div>
+
+            <div class="callout callout-amber" style="margin-top: 10px;">
+                <div class="callout-label">Palancas clave</div>
+                <p><strong>Automatizar orquestacion</strong>, eliminar correo como mecanismo de handoff, integrar sistemas, pasar de controles reactivos a predictivos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 9: DATOS FINANCIEROS                                        -->
+<!-- ================================================================ -->
+<div class="slide" id="financieros">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Datos Financieros Clave</div>
+    <div class="slide-subtitle">EEFF Consolidados Diciembre 2025 — 397 CAP S.A. de C.V. SOFOM (miles de pesos)</div>
+
+    <div class="two-col">
+        <div>
+            <table>
+                <thead><tr><th>Concepto</th><th>Dic 2025</th><th>Dic 2024</th><th>Var %</th></tr></thead>
+                <tbody>
+                    <tr><td>Ingresos por intereses</td><td class="table-highlight">$5,595,772</td><td>$5,040,056</td><td style="color: var(--engen-green);">+11%</td></tr>
+                    <tr><td>Gasto por intereses</td><td>($3,100,704)</td><td>($2,382,315)</td><td style="color: var(--danger);">+30%</td></tr>
+                    <tr><td>Margen financiero neto</td><td class="table-highlight">$2,495,068</td><td>$2,657,741</td><td style="color: var(--danger);">-6%</td></tr>
+                    <tr><td>Gastos de operacion</td><td>($1,776,295)</td><td>($1,698,921)</td><td style="color: var(--danger);">+5%</td></tr>
+                    <tr><td>Utilidad operativa</td><td class="table-highlight">$774,813</td><td>$1,084,176</td><td style="color: var(--danger);">-29%</td></tr>
+                    <tr><td>Resultado cambiario</td><td style="color: var(--danger);">($82,078)</td><td style="color: var(--engen-green);">$210,764</td><td>—</td></tr>
+                    <tr><td>Utilidad neta</td><td class="table-highlight">$457,771</td><td>$969,744</td><td style="color: var(--danger);">-53%</td></tr>
+                    <tr><td>Activos totales</td><td class="table-highlight">$35,821,043</td><td>$35,449,468</td><td>+1%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div class="kpi-banner" style="grid-template-columns: 1fr 1fr; margin-bottom: 16px;">
+                <div class="kpi-item"><div class="kpi-value">-53%</div><div class="kpi-label">Caida utilidad neta</div></div>
+                <div class="kpi-item"><div class="kpi-value">+190pb</div><div class="kpi-label">Costos de fondeo</div></div>
+            </div>
+
+            <div class="exec-card red">
+                <div class="exec-card-label">Lectura clave</div>
+                <div class="exec-card-value">Ingresos crecen, utilidad cae</div>
+                <div class="exec-card-desc">Los ingresos subieron 11% pero los costos de fondeo subieron 30%. El resultado cambiario paso de +$211M a -$82M. La empresa rompio swaps (~$150M) para ser mas competitiva. No hay margen para crecer con la misma estructura de costos.</div>
+            </div>
+
+            <div class="callout callout-amber" style="margin-top: 12px;">
+                <div class="callout-label">Implicacion</div>
+                <p>La eficiencia operativa no es opcional — es <strong>prerequisito</strong> para que la estrategia 2026 funcione.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 10: OPORTUNIDADES DETECTADAS                                -->
+<!-- ================================================================ -->
+<div class="slide" id="oportunidades">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Oportunidades Detectadas</div>
+    <div class="slide-subtitle">Validacion del Estudio de Mercado + nuevas oportunidades del analisis documental</div>
+
+    <div class="two-col">
+        <div>
+            <p style="font-size: 14px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 10px;">Oportunidades del Estudio de Mercado (validacion)</p>
+            <table>
+                <thead><tr><th>Oportunidad</th><th>Prioridad</th><th>Validacion</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Go-to-Market mid-market</td><td><span class="tag tag-alta">Alta</span></td><td style="color: var(--engen-green); font-weight: 600;">Confirmada</td></tr>
+                    <tr><td class="table-highlight">Optimizacion fabrica originacion</td><td><span class="tag tag-alta">Alta</span></td><td style="color: var(--engen-green); font-weight: 600;">Confirmada</td></tr>
+                    <tr><td class="table-highlight">Calibracion modelo de riesgo</td><td><span class="tag tag-media-alta">Media-Alta</span></td><td style="color: var(--engen-green); font-weight: 600;">Confirmada</td></tr>
+                    <tr><td class="table-highlight">Transformacion digital</td><td><span class="tag tag-media">Media</span></td><td style="color: var(--warning); font-weight: 600;">Parcial</td></tr>
+                    <tr><td class="table-highlight">Gestion del cambio</td><td><span class="tag tag-media">Media</span></td><td style="color: var(--warning); font-weight: 600;">Parcial</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p style="font-size: 14px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 10px;">Nuevas oportunidades del analisis documental</p>
+            <div class="finding-mini">
+                <div class="finding-mini-title">OP-N1: Verticales Especializadas</div>
+                <div class="finding-mini-body">A&amp;B, Salud, Mineria como pilares 2026. Diseñar propuestas de valor por vertical, no solo por tamaño.</div>
+            </div>
+            <div class="finding-mini">
+                <div class="finding-mini-title">OP-N2: Brecha Procesos-Ejecucion</div>
+                <div class="finding-mini-body">Arquitectura formal documentada pero controles en Excel. Pasar de Service Blueprints a workflows automatizados.</div>
+            </div>
+            <div class="finding-mini">
+                <div class="finding-mini-title">OP-N3: Conversion Factoraje (3.5%→15%)</div>
+                <div class="finding-mini-body">Embudo con alta fuga. Diagnostico especifico del funnel: donde se pierden prospectos y como acelerar activacion.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 11: CONCLUSIONES                                            -->
+<!-- ================================================================ -->
+<div class="slide" id="conclusiones">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">Conclusiones y Triangulacion</div>
+    <div class="slide-subtitle">Integracion de hallazgos: mercado + documentacion interna + evidencia financiera</div>
+
+    <table style="margin-bottom: 16px;">
+        <thead><tr><th>Fuente</th><th>Que dice</th><th>Implicacion</th></tr></thead>
+        <tbody>
+            <tr><td class="table-highlight">Estudio de Mercado</td><td>Gap mid-market $50-85B MDP post-Unifin</td><td>La oportunidad existe y es grande</td></tr>
+            <tr><td class="table-highlight">Estrategia 2026</td><td>LMM $1,176M (+11%), Factoraje $572M (+42%)</td><td>Plan claro, ejecucion depende de resolver cuellos internos</td></tr>
+            <tr><td class="table-highlight">EEFF 2025</td><td>Utilidad -53%, costos fondeo +30%, gastos op. +5%</td><td>No hay margen para crecer con misma estructura de costos</td></tr>
+            <tr><td class="table-highlight">Procesos Engen</td><td>11 procesos core, controles en Excel, handoffs multiples</td><td>Sabe QUE hacer, necesita ayuda en COMO ejecutar</td></tr>
+            <tr><td class="table-highlight">All Employee</td><td>Clientes -28%, "ajustamos tamaño a nueva realidad"</td><td>Urgencia reconocida, tendencia no revertida</td></tr>
+        </tbody>
+    </table>
+
+    <div class="callout" style="background: var(--lcg-light-blue);">
+        <div class="callout-label">Tesis central</div>
+        <p>Engen tiene la <strong>estrategia correcta</strong> y la <strong>escala necesaria</strong> ($35.8B en activos, 33 años). Lo que necesita es <strong>destrabar la operacion interna</strong> para que esa estrategia se ejecute. Este es exactamente el patron que LCG resolvio en <strong>HDI Seguros</strong> (80% reduccion en tiempos) y <strong>Banregio</strong> (fabrica de credito PyME). No es un problema de vision — es un problema de ejecucion.</p>
+    </div>
+
+    <div class="two-col" style="margin-top: 12px;">
+        <div class="exec-card orange">
+            <div class="exec-card-label">Proximo paso</div>
+            <div class="exec-card-value">+10 entrevistas de campo</div>
+            <div class="exec-card-desc">Validar hallazgos documentales con la voz del equipo. Identificar dolor real vs. percibido. Semana 1-2 marzo 2026.</div>
+        </div>
+        <div class="exec-card green">
+            <div class="exec-card-label">Propuesta LCG</div>
+            <div class="exec-card-value">Proyecto dual: comercial + operativo</div>
+            <div class="exec-card-desc">Eje 1: Go-to-Market mid-market. Eje 2: Fabrica de originacion. Referencia: HDI + Banregio. Semana 3-4 marzo 2026.</div>
+        </div>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 12: ONE-PAGER EJECUTIVO                                     -->
+<!-- ================================================================ -->
+<div class="slide" id="onepager">
+    <div class="slide-header">
+        <img class="logo-lcg" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+        <span class="slide-label">Confidencial</span>
+        <img class="logo-engen" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen" onerror="this.style.display='none'">
+    </div>
+    <div class="slide-title">One-Pager Ejecutivo</div>
+
+    <div class="kpi-banner">
+        <div class="kpi-item"><div class="kpi-value">$35.8B</div><div class="kpi-label">Activos totales</div></div>
+        <div class="kpi-item"><div class="kpi-value">-53%</div><div class="kpi-label">Utilidad neta vs 2024</div></div>
+        <div class="kpi-item"><div class="kpi-value">-28%</div><div class="kpi-label">Clientes nuevos vs 2024</div></div>
+        <div class="kpi-item"><div class="kpi-value">3.5%</div><div class="kpi-label">Conversion factoraje</div></div>
+    </div>
+
+    <div class="two-col" style="margin-top: 12px;">
+        <div>
+            <div class="onepager-card" style="margin-bottom: 8px;">
+                <div class="onepager-card-label">Estrategia clara, ejecucion pendiente</div>
+                <div class="onepager-card-text">Plan 2026 con 5 pilares por segmento y metas cuantificadas. Pero clientes nuevos -28% y conversion factoraje 3.5%. El plan necesita la operacion destrabada.</div>
+            </div>
+            <div class="onepager-card" style="margin-bottom: 8px;">
+                <div class="onepager-card-label">Presion financiera real</div>
+                <div class="onepager-card-text">Costos fondeo +30%, margen -6%, utilidad operativa -29%. No hay espacio para crecer con la misma estructura de costos.</div>
+            </div>
+        </div>
+        <div>
+            <div class="onepager-card" style="margin-bottom: 8px;">
+                <div class="onepager-card-label">Fabrica de originacion con friccion</div>
+                <div class="onepager-card-text">12+ roles, handoffs multiples, controles en Excel. Arquitectura existe pero ejecucion no esta optimizada.</div>
+            </div>
+            <div class="onepager-card" style="margin-bottom: 8px;">
+                <div class="onepager-card-label">Oportunidad mid-market confirmada</div>
+                <div class="onepager-card-text">Gap $50-85B MDP. LMM crece a 23.5% de NEAs. Meta 2026: $1,176M (+11%). La apuesta es correcta — falta el como.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="callout" style="margin-top: 12px;">
+        <div class="callout-label">Recomendacion LCG</div>
+        <p><strong>No es un problema de vision — es un problema de ejecucion.</strong> Propuesta: proyecto dual — eje comercial (Go-to-Market mid-market) + eje operativo (fabrica de originacion). Referencias: HDI Seguros + Banregio.</p>
+    </div>
+
+    <div class="slide-footer"><span>Prediagnostico Engen Capital</span><span>London Consulting Group — Marzo 2026</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 13: CONTRAPORTADA                                           -->
+<!-- ================================================================ -->
+<div class="slide slide-cover" style="justify-content: center; align-items: center; text-align: center;">
+    <div style="position: relative; z-index: 1;">
+        <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" style="height: 45px; filter: brightness(0) invert(1); margin-bottom: 24px;" onerror="this.style.display='none'">
+        <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Este documento es confidencial y fue preparado exclusivamente para Engen Capital.</p>
+        <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px;">Su reproduccion o distribucion requiere autorizacion escrita de London Consulting Group.</p>
+        <p style="font-size: 11px; color: rgba(255,255,255,0.3);">&copy; 2026 London Consulting Group. Todos los derechos reservados.</p>
+    </div>
+</div>
+
+</body>
+</html>
