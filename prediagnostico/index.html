@@ -603,6 +603,377 @@
     </div>
 
     <!-- ============================================================ -->
+    <!-- SECTION 03b: FLUJO PUNTA A PUNTA Y OPORTUNIDADES POR ETAPA  -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 03b</div>
+            <div class="section-title">Flujo Core Punta a Punta — Ciclo de Vida de una Operacion</div>
+        </div>
+
+        <p>El ciclo de vida completo de una operacion recorre 8 etapas en secuencia. Cada etapa involucra multiples actores y sistemas. El analisis detallado de los diagramas de proceso revela oportunidades especificas de mejora en cada una.</p>
+
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-step-name">Generacion de Demanda</div>
+                <div class="process-step-time" style="font-size: 12px;">Salesforce</div>
+                <div class="process-step-benchmark">Comercial + Telemercadeo</div>
+            </div>
+            <div class="process-arrow">&rarr;</div>
+            <div class="process-step">
+                <div class="process-step-name">Conversion y Admin. Clientes</div>
+                <div class="process-step-time" style="font-size: 12px;">5 actores</div>
+                <div class="process-step-benchmark">NDA + Cotizacion + Propuesta</div>
+            </div>
+            <div class="process-arrow">&rarr;</div>
+            <div class="process-step bottleneck">
+                <div class="process-step-name">Analisis y Aprobacion Riesgo</div>
+                <div class="process-step-time" style="font-size: 12px;">Mayor # actores</div>
+                <div class="process-step-benchmark">Credit Lens + Da Vinci + PLD</div>
+            </div>
+            <div class="process-arrow">&rarr;</div>
+            <div class="process-step bottleneck">
+                <div class="process-step-name">Disposicion de Soluciones</div>
+                <div class="process-step-time" style="font-size: 12px;">Mas largo</div>
+                <div class="process-step-benchmark">Contrato + Fondeo + EFA</div>
+            </div>
+            <div class="process-arrow">&rarr;</div>
+            <div class="process-step">
+                <div class="process-step-name">Facturacion y Cobranza</div>
+                <div class="process-step-time" style="font-size: 12px;">OLFM + Oracle</div>
+                <div class="process-step-benchmark">Timbrado D1 + Seguimiento</div>
+            </div>
+            <div class="process-arrow">&rarr;</div>
+            <div class="process-step">
+                <div class="process-step-name">Monitoreo Portafolio</div>
+                <div class="process-step-time" style="font-size: 12px;">Reactivo</div>
+                <div class="process-step-benchmark">Covenants + Info financiera</div>
+            </div>
+            <div class="process-arrow">&rarr;</div>
+            <div class="process-step">
+                <div class="process-step-name">Eventos de Portafolio</div>
+                <div class="process-step-time" style="font-size: 12px;">Recuperacion</div>
+                <div class="process-step-benchmark">Reestructura + Contencioso</div>
+            </div>
+            <div class="process-arrow">&rarr;</div>
+            <div class="process-step">
+                <div class="process-step-name">Terminaciones</div>
+                <div class="process-step-time" style="font-size: 12px;">OLFM</div>
+                <div class="process-step-benchmark">Remercadeo + Baja activos</div>
+            </div>
+        </div>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Sintesis del diagnostico de procesos</div>
+            <p>El diseno de procesos de Engen es <strong>solido en su arquitectura conceptual</strong>, con roles claros y flujos bien definidos. El principal riesgo operativo no esta en el <em>que</em>, sino en el <em>como</em> se ejecutan los handoffs: demasiado correo, demasiado Excel, y demasiada secuencialidad donde podria haber paralelismo. Las mayores palancas de mejora estan en <strong>automatizacion de orquestacion</strong>, <strong>integracion de sistemas</strong> y <strong>analitica predictiva</strong> en cobranza y monitoreo.</p>
+        </div>
+
+        <h3>7 oportunidades operativas transversales</h3>
+
+        <table>
+            <thead><tr><th>#</th><th>Oportunidad</th><th>Descripcion</th><th>Impacto</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td class="table-highlight">Alta dependencia de coordinacion manual</td><td>Volumen elevado de pasos donde un area "envia por correo" o "notifica por correo" para detonar acciones. Automatizar handoffs desde Salesforce/APEX eliminaria el correo como mecanismo de orquestacion.</td><td><span class="tag tag-alta">Alto</span></td></tr>
+                <tr><td>2</td><td class="table-highlight">Fragmentacion de sistemas</td><td>Operacion simultanea en Salesforce, OLFM, Oracle, Credit Lens, EC Factor, Docusign, B2B, Qlik y Excel/OneDrive. El XLS de funding control de factoraje es un riesgo de integridad de datos. Consolidar con APIs o middleware.</td><td><span class="tag tag-alta">Alto</span></td></tr>
+                <tr><td>3</td><td class="table-highlight">Disposicion excesivamente secuencial</td><td>Tres diagramas completos con multiples actores en serie. Validaciones paralelas posibles: valuacion de activos, validacion fiscal de facturas, poliza de seguro. Rediseno comprimiria tiempo aprobacion-a-fondeo.</td><td><span class="tag tag-alta">Alto</span></td></tr>
+                <tr><td>4</td><td class="table-highlight">Gestorias e Importaciones en Excel</td><td>Portafolio de seguimiento de transporte y gastos de importacion viven en XLS. Riesgo operativo en visibilidad, auditoria y escalabilidad.</td><td><span class="tag tag-media-alta">Medio-Alto</span></td></tr>
+                <tr><td>5</td><td class="table-highlight">Cobranza reactiva con escalada tardia</td><td>Seguimiento inicia al dia 6, escalada a Recuperacion hasta dia 45. Modelos predictivos de comportamiento de pago podrian anticipar la escalada.</td><td><span class="tag tag-media-alta">Medio-Alto</span></td></tr>
+                <tr><td>6</td><td class="table-highlight">Monitoreo del Portafolio reactivo</td><td>Depende de que el cliente entregue informacion financiera, gestionado manualmente por Comercial. Integracion con buro, SAT y portales gubernamentales permitiria monitoreo continuo.</td><td><span class="tag tag-media">Medio</span></td></tr>
+                <tr><td>7</td><td class="table-highlight">Terminaciones sin alertas tempranas</td><td>Identificacion de contratos por vencer consultando OLFM, sin proceso proactivo automatizado. La ventana de decision (devolver, comprar, re-arrendar) es estrategica para el portafolio.</td><td><span class="tag tag-media">Medio</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 03c: OPORTUNIDADES POR ETAPA — FALLA HUMANA         -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 03c</div>
+            <div class="section-title">Oportunidades por Etapa — Enfoque en Falla Humana</div>
+        </div>
+
+        <p>Analisis detallado de cada etapa del flujo core con enfoque en donde el factor humano introduce riesgo. Cada punto representa una oportunidad de automatizacion, estandarizacion o control preventivo.</p>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 1</span>
+                <span class="finding-title">Generacion de Demanda y Prospeccion</span>
+                <span class="finding-dimension comercial">Comercial</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Registro incompleto o tardio en Salesforce:</strong> El Originador debe registrar cada prospecto y actividad. El olvido o priorizacion de llamadas sobre el CRM es un patron documentado en equipos comerciales.</li>
+                    <li><strong>Filtrado inconsistente de leads:</strong> Calidad variable en la calificacion de clientes potenciales antes de agendar cita.</li>
+                    <li><strong>Duplicacion Telemercadeo-Originacion:</strong> Coordinacion insuficiente puede generar contactos duplicados o experiencias contradictorias al prospecto.</li>
+                    <li><strong>Decisiones sobre datos incompletos:</strong> Team Leaders dependen de informacion capturada por sus equipos para gestionar presupuesto y metas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 2</span>
+                <span class="finding-title">Conversion y Administracion de Clientes</span>
+                <span class="finding-dimension operativa">Operativa</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Sincronizacion entre 5 actores:</strong> Comercial, Coordinacion Interna, Legal, Valuaciones y Seguros operan en paralelo. La solicitud de valuacion depende de que Coordinacion la genere en el momento correcto — un retraso bloquea la cotizacion.</li>
+                    <li><strong>Datos faltantes reinician ciclo:</strong> La elaboracion del NDA por Legal requiere registro correcto en Salesforce; cualquier dato faltante reinicia el proceso.</li>
+                    <li><strong>Variabilidad en cotizaciones:</strong> Las cotizaciones en Super Trump dependen del criterio y experiencia del Originador, generando variabilidad en propuestas similares.</li>
+                    <li><strong>Seguimiento de firma sin recordatorios:</strong> La firma del NDA (autografa o digital) no tiene mecanismo claro de recordatorio automatizado.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: #fce4ec; color: #c62828; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 3 — CRITICA</span>
+                <span class="finding-title">Analisis y Aprobacion de Riesgo</span>
+                <span class="finding-dimension riesgo">Riesgo</span>
+            </div>
+            <div class="finding-body">
+                <p style="margin-bottom: 8px;"><strong>Etapa con mayor numero de actores y decisiones de alto impacto — la mas expuesta a error humano:</strong></p>
+                <ul class="bullet-list">
+                    <li><strong>Expediente incompleto:</strong> Recopilacion manual por Comercial. La omision de un documento puede no detectarse hasta etapas avanzadas.</li>
+                    <li><strong>Registro de obligados y garantes:</strong> Coordinacion Interna puede omitir entidades relacionadas en Salesforce y corrida de listas internas.</li>
+                    <li><strong>Google Searches como due diligence:</strong> Mencionados explicitamente en el proceso — inherentemente subjetivos y no auditables.</li>
+                    <li><strong>Sesgo del analista en campo:</strong> Suscripcion requiere visita presencial al cliente para Credit Lens, creando dependencia de agenda y exposicion a sesgos.</li>
+                    <li><strong>Cadena de aprobacion sin escalada:</strong> Aprobacion via correo y Salesforce puede romperse si un aprobador no responde en tiempo.</li>
+                    <li><strong>Analisis PLD subjetivo:</strong> Interpretacion de coincidencias en listas con riesgo de falsos positivos (frenan operaciones) y falsos negativos (aprueban riesgosas).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: #fce4ec; color: #c62828; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 4 — CRITICA</span>
+                <span class="finding-title">Disposicion de Soluciones Financieras</span>
+                <span class="finding-dimension operativa">Operativa</span>
+            </div>
+            <div class="finding-body">
+                <p style="margin-bottom: 8px;"><strong>Proceso mas largo del flujo — maxima coordinacion simultanea requerida:</strong></p>
+                <ul class="bullet-list">
+                    <li><strong>Ambiguedad en condiciones:</strong> Contrato parte de condiciones de Suscripcion; cualquier ambiguedad genera versiones incorrectas o multiples rondas de revision.</li>
+                    <li><strong>Validacion de proveedor no estandarizada:</strong> Criterios de fiabilidad no explicitamente estandarizados en la documentacion.</li>
+                    <li><strong>Error de captura fiscal:</strong> Validacion fiscal de facturas en Pre-Registro sujeta a error humano.</li>
+                    <li><strong>Mesa de Control como cuello de botella:</strong> Revision dual (anexo + pagare vs condiciones Suscripcion) se satura con cargas altas.</li>
+                    <li><strong>Politica de firma variable:</strong> El Originador debe conocer y aplicar correctamente la politica vigente (fisica, digital, ratificacion) para cada caso.</li>
+                    <li><strong>Coordinacion EFA:</strong> Inspeccion de activos requiere coordinar agenda entre cliente, proveedor e inspector.</li>
+                    <li><strong>Poliza de seguro rezagada:</strong> Validacion por Seguros antes del fondeo puede quedar atrasada sin visibilidad compartida del avance.</li>
+                    <li><strong>Documentos fisicos como requisito:</strong> Entrega de originales al archivo antes del fondeo es un paso fisico que puede perderse o retrasarse.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 03d: OPORTUNIDADES POR ETAPA (cont.)                 -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <h3>Etapas 5-6: Soluciones Complementarias</h3>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 5</span>
+                <span class="finding-title">Importaciones</span>
+                <span class="finding-dimension operativa">Operativa</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Operacion sobre correo y XLS:</strong> Alta dependencia de disciplina individual. Perdida o confusion de correos en cadenas largas con multiples participantes (cliente, proveedor, agente aduanal, Seguros, Comercial).</li>
+                    <li><strong>Registro tardio de gastos:</strong> El XLS de control de gastos puede actualizarse con retraso o de forma incompleta.</li>
+                    <li><strong>Polizas de transporte sin confirmacion formal:</strong> Responsabilidad de Seguros, detonada por correo sin sistema de confirmacion.</li>
+                    <li><strong>Seguimiento de pedimento sin alertas:</strong> Depende de la proactividad del equipo sin alertas automaticas de estatus.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 6</span>
+                <span class="finding-title">Gestorias</span>
+                <span class="finding-dimension operativa">Operativa</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Portafolio de transporte en XLS:</strong> Deteccion tardia de adeudos en portales gubernamentales si la revision periodica no se realiza con frecuencia adecuada.</li>
+                    <li><strong>Asignacion de gestores sin criterio documentado:</strong> Seleccion de gestores internos o externos sin criterio formalizado.</li>
+                    <li><strong>Baja de servicios omitible:</strong> Depende de que Fin de Arrendamiento notifique oportunamente a Gestorias — se omite si no hay checklist obligatorio.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Etapas 7-10: Post-Fondeo</h3>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 7</span>
+                <span class="finding-title">Facturacion y Cobranza</span>
+                <span class="finding-dimension operativa">Operativa</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Discrepancias OLFM-anexos:</strong> El timbrado al dia 1 requiere flujos correctos vs anexos; cualquier discrepancia activa revision manual por Auditoria de Mesa de Control.</li>
+                    <li><strong>Aplicacion de pagos erronea:</strong> En carteras grandes con multiples contratos por cliente, identificar correctamente el pago con el contrato es fuente frecuente de errores.</li>
+                    <li><strong>Seguimiento morosos sin diferenciacion:</strong> Completamente manual (correo y telefono), sin estrategia diferenciada por perfil de riesgo del cliente.</li>
+                    <li><strong>Escalada inconsistente a dia 45:</strong> Depende de que Cobranza tome la decision de forma consistente, sin criterios automatizados.</li>
+                    <li><strong>Reporte a buro manual:</strong> Expone a errores de inclusion o exclusion de clientes en la cinta.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 8</span>
+                <span class="finding-title">Monitoreo del Portafolio</span>
+                <span class="finding-dimension riesgo">Riesgo</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Priorizacion sin scoring:</strong> Asignacion de cuentas y frecuencia de revision depende del criterio del analista, sin modelo objetivo.</li>
+                    <li><strong>Informacion mediada por Comercial:</strong> Obtencion de estados financieros del cliente es reactiva y pasa por un intermediario que puede demorar o filtrar.</li>
+                    <li><strong>Covenants potencialmente mal capturados:</strong> Si hay inconsistencias entre lo aprobado y lo registrado en Salesforce/APEX, el monitoreo opera sobre parametros incorrectos.</li>
+                    <li><strong>Interpretacion inconsistente:</strong> Evaluacion de incumplimiento recae en criterio individual, con riesgo de inconsistencias entre analistas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 9</span>
+                <span class="finding-title">Eventos de Portafolio — Recuperacion y Reestructura</span>
+                <span class="finding-dimension riesgo">Riesgo</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Historial incompleto en escalada:</strong> Depende de que Cobranza haya documentado correctamente antes de turnar a Recuperacion.</li>
+                    <li><strong>Negociacion sin parametros claros:</strong> Condiciones de reestructura sin rangos de autorizacion documentados por nivel.</li>
+                    <li><strong>Seguimiento post-reestructura sin alertas:</strong> Monitoreo de 6 meses para decidir si vuelve a Cobranza o va a Legal, sin alertas que lo detonen.</li>
+                    <li><strong>Supervision legal externa informal:</strong> Gestion del contencioso con proveedor externo sin mecanismos de supervision formales descritos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <span class="finding-id" style="background: var(--diag-light); color: var(--diag-primary); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">ETAPA 10</span>
+                <span class="finding-title">Terminaciones y Remercadeo</span>
+                <span class="finding-dimension operativa">Operativa</span>
+            </div>
+            <div class="finding-body">
+                <ul class="bullet-list">
+                    <li><strong>Sin alertas de vencimiento proactivas:</strong> Identificacion de contratos por vencer depende de consulta activa a OLFM.</li>
+                    <li><strong>Contacto al cliente sin protocolo estandar:</strong> Momento y forma dependen del criterio del equipo de Fin de Arrendamiento.</li>
+                    <li><strong>Baja de placas por correo:</strong> Coordinacion con Gestorias puede omitirse o retrasarse.</li>
+                    <li><strong>Remercadeo sin soporte:</strong> Cotizacion, inspeccion de activo devuelto, publicacion en web y venta a terceros dependen casi completamente de gestion individual.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Evidencia: Procesos Engen 2026 — Analisis completo de diagramas por etapa</div>
+            <p>Cada oportunidad fue identificada a partir de los diagramas de flujo detallados del documento de procesos. <strong>El diseno de procesos es solido en su arquitectura; las oportunidades estan en la ejecucion:</strong> automatizar orquestacion, eliminar correo como mecanismo de handoff, integrar sistemas, y pasar de controles reactivos a predictivos. Validar prioridades con los actores clave en entrevistas de campo.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 03e: ORGANIGRAMA COMPLETO                            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 03f</div>
+            <div class="section-title">Organigrama Engen Capital — Mapa de Entrevistas</div>
+        </div>
+
+        <p>Estructura organizacional completa bajo el Director General <strong>Juan Pablo Loperena</strong>. Se identifican los roles clave para las entrevistas de campo.</p>
+
+        <table>
+            <thead><tr><th>Direccion</th><th>Director(a)</th><th>Reportes directos</th><th>Entrevista</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">Comercial</td>
+                    <td>Maurizzio Piva</td>
+                    <td>Eduardo Garcia (Core Mex &amp; Mty), Mario Vazquez (Core GDL), Roberto Zacatenco (LMM), Alejandro de la Vega (Estrategia y Gestion), Alejandro Solorzano (Rel. Indirectas), Alejandro Lopez (Factoraje), Alvaro de Garay (Compra de Cartera)</td>
+                    <td><span class="tag tag-alta">Critica</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Mercadotecnia</td>
+                    <td>Alejandro Alvarez</td>
+                    <td>Cinthya Rodriguez (Digital), Agustin Ruiz (CRM &amp; Ciencia de Datos), Rodolfo Escalante (Telemercadeo), Mercedes Martinez (RRPP)</td>
+                    <td><span class="tag tag-media-alta">Alta</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Riesgo</td>
+                    <td>Fernando Garza</td>
+                    <td>Juan Manuel Flores (Suscripcion Core), Federico Cantu (Suscripcion LMM), Jessica Ochoa (Admin. Activos), Liliana Landa (Mesa de Control), Jorge Estrada (Recuperacion), Elizabeth Castillo (Auditoria Interna), Lourdes Reyes (Riesgo Operativo)</td>
+                    <td><span class="tag tag-alta">Critica</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Legal</td>
+                    <td>Rogelio Martinez</td>
+                    <td>Graciela Ramirez (Cumplimiento), Patricia de Cosio (Legal Mex), Daniela Diaz (Legal Mex), Erika Lobo (Legal Mty), Wendy Garcia (Legal GDL)</td>
+                    <td><span class="tag tag-media">Media</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Finanzas</td>
+                    <td>Roberto Medina</td>
+                    <td>Jose Juan Jimenez (Contraloria), Ivan Lopez (Finanzas), Erika Plata (Serv. Operativos), Cesar Jacintos (Impuestos), Sandra Tena (Tesoreria), Aaron Ortiz (Servicios y Compras)</td>
+                    <td><span class="tag tag-media-alta">Alta</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Recursos Humanos</td>
+                    <td>Ma. Elena Suarez</td>
+                    <td>Regina Cordero (Atraccion de Talento), Antonio Jacobo (Compensaciones), Paula Ibarrola (Desarrollo Organizacional), Alicia Acosta (ESG)</td>
+                    <td><span class="tag tag-media">Media</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Tecnologias de la Informacion</td>
+                    <td>Luis Padilla</td>
+                    <td>Narain Harjani (Producto y Tecnologia), Karina Flores (Desarrollo de Valor), Dulce Gonzalez (Aseguramiento de Servicio), Antonio Toral (Infraestructura)</td>
+                    <td><span class="tag tag-media-alta">Alta</span></td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Calidad</td>
+                    <td>Guillermo Llantada</td>
+                    <td>Hector Rivas (Gestion de Calidad), Yuriski Chavez (Experiencia del Cliente)</td>
+                    <td><span class="tag tag-media">Media</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-blue">
+            <div class="callout-label">Entrevistas criticas para el diagnostico</div>
+            <p><strong>Prioridad maxima:</strong> Maurizzio Piva (Comercial) y Fernando Garza (Riesgo) — entre ambas direcciones se concentra el 80% del flujo core de originacion. <strong>Prioridad alta:</strong> Luis Padilla (TI), Roberto Medina (Finanzas) y Alejandro Alvarez (Mercadotecnia) — habilitan la ejecucion y proveen datos clave. <strong>Complementarias:</strong> Rogelio Martinez (Legal), Ma. Elena Suarez (RRHH), Guillermo Llantada (Calidad). Adicionalmente, entrevistar al menos 2-3 Originadores y 1-2 analistas de Suscripcion para capturar la voz de la operacion diaria.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
     <!-- SECTION 04: GALERIA DE EVIDENCIAS (placeholder)               -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
