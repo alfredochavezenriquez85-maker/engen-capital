@@ -96,6 +96,8 @@
         .tag-important { background: #fff3e0; color: #e65100; }
         .tag-explore { background: var(--lcg-light-blue); color: var(--lcg-accent); }
         .tag-green { background: #e8f5e9; color: #2e7d32; }
+        .tag-done { background: #e8f5e9; color: #2e7d32; }
+        .status-done { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; background: #e8f5e9; color: #2e7d32; letter-spacing: 0.5px; margin-left: 8px; vertical-align: middle; }
 
         /* CALLOUT */
         .callout { border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 20px 0; background: var(--lcg-light-blue); }
@@ -257,6 +259,11 @@
             <div class="kpi-item"><div class="kpi-value">6</div><div class="kpi-label">Areas a cubrir</div></div>
             <div class="kpi-item"><div class="kpi-value">2</div><div class="kpi-label">Dimensiones</div></div>
             <div class="kpi-item"><div class="kpi-value">45-60</div><div class="kpi-label">Min / entrevista</div></div>
+        </div>
+
+        <div class="callout callout-green" style="border-left-width: 5px;">
+            <div class="callout-label">Progreso de entrevistas — Actualizado 3 marzo 2026</div>
+            <p><strong>2 de +10 entrevistas completadas.</strong> Direccion (Juan Pablo Loperena, CEO — 59 min) y Riesgos (Fernando Garza, Dir. Riesgo) realizadas el 2 de marzo 2026. Hallazgos clave ya capturados: dimensionamiento de mercado (~35K empresas objetivo), estructura completa de riesgos (88 HC, 8 sub-areas), SLAs de credito (12d credito, 3-4d parametrico), temas de fuerza de venta y modelo de compensacion. Pendientes: Comercial, Originacion, Operaciones, Tecnologia y entrevistas adicionales por area.</p>
         </div>
 
         <h3>Principios de la entrevista diagnostica</h3>
@@ -534,6 +541,7 @@
         <div class="area-card risk">
             <div class="area-header">
                 <div class="area-name">Calibracion de Riesgo para LMM (Lower Middle Market)</div>
+                <span class="status-done">Entrevista completada — 2 marzo 2026</span>
                 <span class="area-tag risk">Riesgos</span>
             </div>
             <p>Directamente vinculado a la oportunidad #3: <strong>Calibracion del Modelo de Riesgo</strong>. El reto es abrir la llave al LMM sin comprometer los NPLs saludables que tienen hoy.</p>
@@ -793,6 +801,7 @@
         <div class="area-card strategy">
             <div class="area-header">
                 <div class="area-name">Vision Estrategica y Definicion de Exito</div>
+                <span class="status-done">Entrevista completada — 2 marzo 2026</span>
                 <span class="area-tag strategy">Estrategia</span>
             </div>
             <p>Las entrevistas con directivos anclan todo el diagnostico. Aqui defines el "norte" contra el que mediris todos los hallazgos. Se conecta con <strong>todas las oportunidades</strong> — especialmente con la #5: Gestion del Cambio y Mindset.</p>
@@ -884,15 +893,15 @@
             <tbody>
                 <tr><td class="table-highlight">Funnel de conversion comercial</td><td>Comercial</td><td>Dato</td><td>Dimensionar la eficiencia comercial actual y la oportunidad de mejora</td><td><span class="tag tag-priority">Critica</span></td></tr>
                 <tr><td class="table-highlight">Tiempos por etapa de originacion</td><td>Originacion</td><td>Dato</td><td>Comparar contra benchmarks y construir el mapa de proceso as-is</td><td><span class="tag tag-priority">Critica</span></td></tr>
-                <tr><td class="table-highlight">Tasa de NPL por segmento</td><td>Riesgos</td><td>Dato</td><td>Validar que el LMM tiene NPLs saludables y hay espacio para crecer</td><td><span class="tag tag-priority">Critica</span></td></tr>
+                <tr style="background: #f1f8e9;"><td class="table-highlight">Tasa de NPL por segmento <span class="tag tag-done">Obtenida</span></td><td>Riesgos</td><td>Dato</td><td>Validar que el LMM tiene NPLs saludables y hay espacio para crecer. <em>Fernando Garza confirmo estructura y SLAs — 2 mar 2026</em></td><td><span class="tag tag-priority">Critica</span></td></tr>
                 <tr><td class="table-highlight">Captura del CRM / sistemas</td><td>Comercial / TI</td><td>Foto</td><td>Evidenciar el estado actual de herramientas y posible brecha tecnologica</td><td><span class="tag tag-important">Alta</span></td></tr>
                 <tr><td class="table-highlight">Flujo de originacion documentado</td><td>Originacion</td><td>Documento</td><td>Base para el mapa de proceso as-is que incluiremos en el prediagnostico</td><td><span class="tag tag-important">Alta</span></td></tr>
                 <tr><td class="table-highlight">Tasa de devolucion de expedientes</td><td>Operaciones</td><td>Dato</td><td>Cuantificar retrabajo — referencia directa con reduccion del 24% en HDI</td><td><span class="tag tag-important">Alta</span></td></tr>
-                <tr><td class="table-highlight">Organigrama comercial</td><td>Comercial</td><td>Documento</td><td>Entender estructura y modelo de cobertura actual</td><td><span class="tag tag-important">Alta</span></td></tr>
-                <tr><td class="table-highlight">Matriz de autonomias/aprobacion</td><td>Riesgos</td><td>Documento</td><td>Entender cuellos de botella en aprobacion y oportunidad de simplificacion</td><td><span class="tag tag-important">Alta</span></td></tr>
+                <tr style="background: #fffde7;"><td class="table-highlight">Organigrama comercial <span class="tag tag-important" style="background:#fff9c4;color:#f57f17;">Parcial</span></td><td>Comercial</td><td>Documento</td><td>Entender estructura y modelo de cobertura actual. <em>CEO confirmo perfiles de fuerza de venta y rotacion 25% — pendiente detalle de Comercial</em></td><td><span class="tag tag-important">Alta</span></td></tr>
+                <tr style="background: #f1f8e9;"><td class="table-highlight">Matriz de autonomias/aprobacion <span class="tag tag-done">Obtenida</span></td><td>Riesgos</td><td>Documento</td><td>Entender cuellos de botella en aprobacion y oportunidad de simplificacion. <em>Estructura de 88 HC, 8 sub-areas, SLAs documentados — 2 mar 2026</em></td><td><span class="tag tag-important">Alta</span></td></tr>
                 <tr><td class="table-highlight">Dashboard de KPIs comerciales</td><td>Comercial</td><td>Foto</td><td>Evaluar madurez de gestion por indicadores y calidad de datos</td><td><span class="tag tag-explore">Media</span></td></tr>
                 <tr><td class="table-highlight">Mapa de arquitectura de sistemas</td><td>Tecnologia</td><td>Documento</td><td>Evaluar integraciones y capacidad digital real</td><td><span class="tag tag-explore">Media</span></td></tr>
-                <tr><td class="table-highlight">Plan estrategico / targets</td><td>Direccion</td><td>Documento</td><td>Anclar el diagnostico al norte estrategico del cliente</td><td><span class="tag tag-explore">Media</span></td></tr>
+                <tr style="background: #f1f8e9;"><td class="table-highlight">Plan estrategico / targets <span class="tag tag-done">Obtenida</span></td><td>Direccion</td><td>Documento</td><td>Anclar el diagnostico al norte estrategico del cliente. <em>JP Loperena: ~35K empresas objetivo, modelo de compensacion, rotacion 25% — 2 mar 2026</em></td><td><span class="tag tag-explore">Media</span></td></tr>
                 <tr><td class="table-highlight">Encuesta de satisfaccion (NPS)</td><td>Operaciones</td><td>Dato</td><td>Medir experiencia del cliente como baseline para mejora</td><td><span class="tag tag-explore">Media</span></td></tr>
             </tbody>
         </table>
