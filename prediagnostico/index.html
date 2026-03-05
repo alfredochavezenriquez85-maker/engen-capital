@@ -426,6 +426,13 @@
                     <td>Videoconferencia</td>
                     <td>4 marzo 2026</td>
                 </tr>
+                <tr>
+                    <td class="table-highlight">6</td>
+                    <td class="table-highlight">Comercial — LMM</td>
+                    <td>Director LMM — Roberto Zacatenco</td>
+                    <td>Presencial, CDMX (90 min)</td>
+                    <td>4 marzo 2026</td>
+                </tr>
                 <tr><td colspan="5" style="text-align:center; color: var(--text-muted); font-style: italic; padding: 12px;">Proximas entrevistas en programacion — semana del 10 de marzo 2026</td></tr>
             </tbody>
         </table>
@@ -451,7 +458,7 @@
             <div class="section-title">Resumen Ejecutivo</div>
         </div>
 
-        <p>Resumen de hallazgos basados en <strong>12 documentos</strong> del cliente y <strong>5 entrevistas de campo</strong>: Juan Pablo Loperena (CEO), Fernando Garza (Dir. Riesgo), Luis Padilla (CIO), Guillermo Llantada (Calidad) y Cipriano Santisteban (Consejero (Linzor Capital)).</p>
+        <p>Resumen de hallazgos basados en <strong>16 documentos</strong> del cliente y <strong>6 entrevistas de campo</strong>: Juan Pablo Loperena (CEO), Fernando Garza (Dir. Riesgo), Luis Padilla (CIO), Guillermo Llantada (Calidad), Cipriano Santisteban (Consejero (Linzor Capital)) y Roberto Zacatenco (Dir. Comercial LMM).</p>
 
         <div class="kpi-banner">
             <div class="kpi-item"><div class="kpi-value">12</div><div class="kpi-label">Documentos analizados</div></div>
@@ -1582,6 +1589,138 @@
     </div>
 
     <!-- ============================================================ -->
+    <!-- SECTION 04d2: EJE COMERCIAL — ENTREVISTA ROBERTO ZACATENCO    -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Confidencial</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Seccion 04d.2</div>
+            <div class="section-title">Eje Comercial — Entrevista Roberto Zacatenco (Dir. LMM)</div>
+        </div>
+
+        <p>Hallazgos de la entrevista presencial con <strong>Roberto Zacatenco, Director Comercial LMM</strong> (4 marzo 2026, ~90 min, oficina CDMX). Roberto maneja ~25 originadores organizados en equipos con Team Leaders, distribuidos en CDMX, Monterrey, Guadalajara y regiones. Viene de banca (Santander/BBVA). La entrevista incluyo revision en vivo de Salesforce, reportes semanales y estructura de juntas.</p>
+
+        <h3>Supervision comercial: reactiva y superficial</h3>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-title">Salesforce se usa para reporting, no para gestion — no hay visibilidad prospectiva del pipeline</div>
+                <span class="finding-dimension comercial">Comercial</span>
+            </div>
+            <div class="finding-body">
+                Los originadores <strong>no agendan sus citas en Salesforce</strong>. Las llevan en agenda personal o papel. Salesforce se usa exclusivamente para reportar <strong>despues</strong> de que las citas ocurrieron. El area de Alex Alvarez (Marketing/CRM) genera un reporte semanal que Roberto revisa, pero es informacion <strong>post-facto</strong>.<br><br>
+                Esto significa que Roberto no sabe que va a pasar la proxima semana hasta que ya paso. Su mecanismo de control es el <strong>promedio movil de citas semanales</strong>: si un originador baja de 1.5 citas/semana, en 2-3 semanas interviene. Pero para ese momento ya se perdieron 2-3 semanas de productividad.<br><br>
+                <strong>Impacto:</strong> No hay gestion predictiva del funnel. No se pueden detectar problemas hasta que ya causaron dano. El CRM no es una herramienta de gestion viva sino un espejo retrovisor.
+            </div>
+            <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco, 4 marzo 2026 + revision en vivo de Salesforce</div>
+        </div>
+
+        <div class="verbatim">
+            <div class="verbatim-text">"¿Como se que la cita si fue cita o si fue una reunion de hoy? O sea, ¿o si la declaro y realmente nunca ocurrio? [...] Normalmente eso salen, pero no dudo que todavia hay alguien que lo haga de vez en cuando."</div>
+            <div class="verbatim-source">— Roberto Zacatenco, Dir. LMM, sobre la veracidad del reporting de citas</div>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-title">Cadencia de juntas: 5 sesiones semanales que mezclan seguimiento con supervision</div>
+                <span class="finding-dimension comercial">Comercial</span>
+            </div>
+            <div class="finding-body">
+                Roberto opera con la siguiente cadencia semanal:
+                <ul class="bullet-list" style="margin: 8px 0 8px 16px; list-style: disc;">
+                    <li><strong>Lunes:</strong> Pipeline con cada equipo (TL + originadores) — revision de oportunidades y resultados semana anterior</li>
+                    <li><strong>Martes y jueves:</strong> Seguimiento 1:1 con Team Leaders (sin originadores) — cobertura, industria, ritmo</li>
+                    <li><strong>Jueves 3pm:</strong> Giras y citas de la proxima semana (solo TLs) — nueva, agregada porque "el viernes ya era tarde"</li>
+                    <li><strong>Viernes:</strong> Early stage coaching TLs con equipos — preparacion antes de citas</li>
+                </ul>
+                <br>
+                <strong>Observacion:</strong> Son 5 reuniones semanales de seguimiento, pero ninguna es de <strong>planeacion estrategica</strong> (revision de account sets, penetracion por industria, conversion del funnel). Todo es operativo-tactico: ¿cuantas citas hiciste? ¿que oportunidades tienes? La junta del jueves es <strong>nueva</strong> — la agrego porque detectaron que el viernes los TLs no estaban preparando la semana siguiente a tiempo.
+            </div>
+            <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco, 4 marzo 2026</div>
+        </div>
+
+        <h3>Caso sintomatico: onboarding comercial fallido</h3>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-title">El "balde de agua fria": originadores de banca no saben prospectar en frio</div>
+                <span class="finding-dimension comercial">Comercial</span>
+            </div>
+            <div class="finding-body">
+                Roberto mostro en vivo el caso de <strong>Ila Misragil</strong>, originador con ~5 meses en Engen que viene de banca. Sus numeros:
+                <ul class="bullet-list" style="margin: 8px 0 8px 16px; list-style: disc;">
+                    <li>Meta pipeline anual: <strong>$300M</strong>. Ha generado: <strong>$20M</strong> (6% de meta)</li>
+                    <li>Oportunidades creadas: <strong>2</strong> (ambas perdidas)</li>
+                    <li>Fondeo year-to-date: <strong>$0</strong></li>
+                    <li>Promedio de citas new/semana: <strong>1.22</strong></li>
+                </ul>
+                <br>
+                El patron: en banca le daban 120 cuentas <strong>con cartera</strong> — solo tenia que llamar y decir "soy de Santander." En Engen son 120 <strong>prospectos sin relacion previa</strong>. Tiene que conseguir la cita en frio, y "¿quien es Engen?" es la primera pregunta que recibe.<br><br>
+                <strong>Impacto:</strong> El time-to-productivity de originadores nuevos es demasiado largo. El plan de Roberto: hacer <em>cold calling</em> conjunto con el TL — pero esto es coaching remedial de uno en uno, no un proceso sistematico de onboarding.
+            </div>
+            <div class="finding-evidence">Evidencia: Revision en vivo de dashboard Salesforce durante entrevista, 4 marzo 2026</div>
+        </div>
+
+        <div class="verbatim">
+            <div class="verbatim-text">"No es como los bancos donde me daban mi cartera y me decian 'pues ya habla a 120 cuentas'. Aqui son 120 prospectos. Se llama Bodegas la Lupita y hay que ir a conseguir la cita. 'Soy de Engen.' '¿Y quien es Engen?' Este es el balde de agua fria."</div>
+            <div class="verbatim-source">— Roberto Zacatenco, Dir. LMM, sobre la dificultad de prospeccion para originadores nuevos</div>
+        </div>
+
+        <h3>Modelo de facultades y relacion con la direccion</h3>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-title">Las facultades se descentralizaron hace solo 3 meses — antes todo pasaba por Maurizzio</div>
+                <span class="finding-dimension cultural">Cultural</span>
+            </div>
+            <div class="finding-body">
+                Hasta hace ~3 meses, <strong>todas las decisiones de pricing, plazo, residual y rentas anticipadas pasaban por Maurizzio Piva</strong>. La razon original: controlar el <em>duration</em> (plazo promedio ponderado) del portafolio que se estaba deteriorando. Pero el efecto secundario fue que los originadores se sentian <strong>"maniatados"</strong> y preferian perder operaciones antes que ir a pedir aprobacion.<br><br>
+                Ahora Roberto tiene facultad de pricing dentro de cierto rango y metricas propias. Roberto describe a Mau como "un muy buen jefe, buen coach, nada mas que <strong>rudo</strong>." Reconoce que el equipo "lo ve con espanto." Las 12 salidas del 2025 tuvieron como factor contribuyente esta dinamica.<br><br>
+                <strong>Reflexion propia de Roberto</strong> (apunte que mostro al cierre de la entrevista): "Necesito incrementar mi credibilidad incrementando pipeline, enfocarme al late stage, eliminar operaciones de $4M, onboarding de nuevos, recuperar a Chuy [TL que perdio a su hijo]."
+            </div>
+            <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco + apunte escrito mostrado al cierre, 4 marzo 2026</div>
+        </div>
+
+        <div class="verbatim">
+            <div class="verbatim-text">"Todo lo que tuviera que ver con un plazo bajo, residual bajo, rentas anticipadas, lo tenia que aprobar Mau. Entonces pues la gente decia: como tengo la percepcion de que es rudo, pues yo prefiero ir, perder operaciones..."</div>
+            <div class="verbatim-source">— Roberto Zacatenco, Dir. LMM, sobre el efecto de la centralizacion de decisiones</div>
+        </div>
+
+        <h3>Datos clave del All Employee Meeting 2026</h3>
+
+        <div class="kpi-banner">
+            <div class="kpi-item"><div class="kpi-value">-10%</div><div class="kpi-label">Originacion Core '25 vs '24</div></div>
+            <div class="kpi-item"><div class="kpi-value">+6%</div><div class="kpi-label">Originacion LMM '25 vs '24</div></div>
+            <div class="kpi-item"><div class="kpi-value">-28%</div><div class="kpi-label">Clientes nuevos '25 vs '24</div></div>
+            <div class="kpi-item"><div class="kpi-value">62%</div><div class="kpi-label">Crecimiento budget factoraje '26</div></div>
+        </div>
+
+        <table>
+            <thead><tr><th>Metrica</th><th>2024</th><th>2025</th><th>Budget 2026</th><th>Observacion</th></tr></thead>
+            <tbody>
+                <tr><td class="table-highlight">Originacion Core</td><td>$4,981M</td><td>$4,494M</td><td>$4,452M (+3%)</td><td>Tercer ano a la baja. Costos de fondeo 2025: +190 puntos base</td></tr>
+                <tr><td class="table-highlight">Originacion LMM</td><td>$1,673M</td><td>$1,777M</td><td>$1,698M (+7%)</td><td>Unico segmento que crecio en 2025</td></tr>
+                <tr><td class="table-highlight">Originacion OFS (factoraje+)</td><td>$17.9M</td><td>$19.3M</td><td>$29.6M (+62%)</td><td>Apuesta fuerte: factoraje como motor de crecimiento</td></tr>
+                <tr><td class="table-highlight">Factoraje APES</td><td>$447.8M</td><td>$545.3M</td><td>$932.1M (+71%)</td><td>"Terminamos el sistema, fortalecemos el equipo"</td></tr>
+                <tr><td class="table-highlight">Clientes nuevos</td><td>186</td><td>133</td><td>140</td><td>-28% en 2025. Meta 2026 apenas +5%</td></tr>
+                <tr><td class="table-highlight">Valor contribuido ajustado</td><td>$1,375.1M</td><td>$1,341.5M</td><td>$1,312.4M (-2%)</td><td>Rentabilidad a la baja 3 anos consecutivos</td></tr>
+                <tr><td class="table-highlight">Margen operativo</td><td>$569.7M</td><td>$514.0M</td><td>$465.1M (-10%)</td><td>"Ajustamos el tamano a una nueva realidad"</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size: 11px; color: var(--text-muted);">Fuente: Resumen All Employee Meeting Engen Capital, febrero 2026.</p>
+
+        <div class="callout callout-amber">
+            <div class="callout-label">Sintesis: la oportunidad grande</div>
+            <p>La entrevista con Roberto <strong>confirma y amplifica</strong> los hallazgos previos del CEO y la Planeacion Piva. El seguimiento comercial es <strong>reactivo y superficial</strong>: se basa en reportes post-facto, promedios semanales y deteccion tardia de problemas. Salesforce no es una herramienta de gestion viva. Los originadores nuevos no tienen un proceso sistematico de onboarding. Las facultades recien se descentralizaron despues de anos de centralizacion que contribuyo a 12 salidas. Y los numeros del All Employee Meeting confirman: <strong>la empresa esta encogiendose</strong> — originacion Core -10%, clientes nuevos -28%, margen operativo -10%. La unica luz es LMM +6% y la apuesta a factoraje. <strong>La brecha entre la ambicion estrategica y la capacidad de ejecucion comercial es la oportunidad central para LCG.</strong></p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
     <!-- SECTION 04e: EJE TECNOLOGIA — CIO LUIS PADILLA                -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
@@ -1764,8 +1903,8 @@
         </div>
 
         <div class="callout callout-green">
-            <div class="callout-label">Convergencia CEO + Riesgo + CIO + Calidad + Consejero (Linzor Capital)</div>
-            <p>Con 5 entrevistas, el diagnostico converge en un patron claro: <strong>Engen traslado intacto su modelo Core al segmento LMM</strong> — mismos procesos (CIO), mismas herramientas de cotizacion (Calidad), mismos modelos de riesgo (Dir. Riesgo), mismo perfil de vendedor (CEO). El resultado: 80% de cotizaciones con complejidad innecesaria, ciclo sin medicion end-to-end, watchlist 25.8%, detractores NPS concentrados en LMM. <strong>La oportunidad no es incremental — es redisenar el modelo operativo LMM de punta a punta.</strong></p>
+            <div class="callout-label">Convergencia CEO + Riesgo + CIO + Calidad + Consejero + Dir. LMM</div>
+            <p>Con 6 entrevistas, el diagnostico converge en un patron claro: <strong>Engen traslado intacto su modelo Core al segmento LMM</strong> — mismos procesos (CIO), mismas herramientas de cotizacion (Calidad), mismos modelos de riesgo (Dir. Riesgo), mismo perfil de vendedor (CEO). El resultado: 80% de cotizaciones con complejidad innecesaria, ciclo sin medicion end-to-end, watchlist 25.8%, detractores NPS concentrados en LMM. <strong>La oportunidad no es incremental — es redisenar el modelo operativo LMM de punta a punta.</strong></p>
         </div>
     </div>
 
@@ -1873,6 +2012,34 @@
                     <td>direccion/</td>
                     <td>Genesis LMM (post-adquisicion 2016, primer intento fallido, JP rearmó 2019). Tesis de inversion: "¿10x en 5 anos?". Cartera vencida LMM ~2.5% por cosecha a 3 anos — linea roja <5%. Tension consejo vs management: "hay tela de donde cortar" vs "situacion dificil". Rotacion comercial preocupa. Confianza plena en JP. Decision final: JP presenta al comite del consejo</td>
                     <td>Mandato de crecimiento LMM, Apetito de riesgo controlado, Rotacion comercial, Proceso de decision propuesta</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td class="table-highlight">Entrevista Dir. LMM — Roberto Zacatenco</td>
+                    <td>comercial/</td>
+                    <td>90 min presencial (4 marzo 2026). Revision en vivo de Salesforce: originadores no agendan citas, solo reportan post-facto. Caso Ila Misragil: $0 fondeo en 5 meses. Cadencia: 5 juntas semanales todas tacticas. Promedios de citas: 1.5/semana umbral de intervencion. Facultades recien descentralizadas (~3 meses). Mau "rudo, el equipo lo ve con espanto." 12 salidas 2025. Reflexion propia: "incrementar credibilidad"</td>
+                    <td>CRM como reporting no gestion, Onboarding fallido, Supervision superficial, Centralizacion, Rotacion</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td class="table-highlight">Resumen All Employee Meeting 2026</td>
+                    <td>comercial/</td>
+                    <td>Resultados 2025: Core $4,494M (-10%), LMM $1,777M (+6%), OFS $19.3M. Clientes nuevos 133 (-28%). Budget 2026: Core $4,452M, LMM $1,698M, Factoraje $932M (+71%). Valor contribuido -2%. Margen operativo -10%. Metas de areas. Premios Engenials 2025</td>
+                    <td>Decrecimiento general, Apuesta factoraje, Compresion de margen</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td class="table-highlight">Reporte semanal citas y opps (Semana 9, 2026)</td>
+                    <td>comercial/</td>
+                    <td>Reporte de Salesforce/Alex Alvarez con citas new, oportunidades, pipeline por originador. Herramienta de supervision post-facto que Roberto revisa semanalmente</td>
+                    <td>CRM como espejo retrovisor, Metricas de actividad</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td class="table-highlight">Staff LMM (24 feb 2026) + Gestion LMM (3 mar 2026) + Resumen Comercial (2 mar 2026)</td>
+                    <td>comercial/</td>
+                    <td>Archivos Excel de seguimiento semanal: headcount, pipeline por equipo, gestion de oportunidades. Formatos de control interno del area LMM</td>
+                    <td>Herramientas de supervision, Cadencia comercial</td>
                 </tr>
             </tbody>
         </table>
