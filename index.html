@@ -937,6 +937,78 @@
             background: var(--bg-light);
             color: var(--text-secondary);
         }
+
+        /* ---- FUNNEL / STEP DIAGRAM ---- */
+        .funnel-diagram {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin: 16px 0 12px;
+        }
+        .funnel-step {
+            text-align: center;
+            position: relative;
+            padding: 12px 6px 10px;
+        }
+        .funnel-step::after {
+            content: '\25B6';
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--border);
+            font-size: 14px;
+            z-index: 1;
+        }
+        .funnel-step:last-child::after { display: none; }
+        .funnel-num {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            border-radius: 50%;
+            background: var(--lcg-navy);
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .funnel-step:last-child .funnel-num {
+            background: var(--engen-green);
+        }
+        .funnel-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+        .funnel-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            line-height: 1.1;
+            margin-bottom: 3px;
+        }
+        .funnel-step:last-child .funnel-value {
+            color: var(--engen-dark);
+        }
+        .funnel-desc {
+            font-size: 9px;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+        .funnel-sources {
+            font-size: 8px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-style: italic;
+            border-top: 1px solid var(--border);
+            padding-top: 3px;
+        }
+        @media print {
+            .funnel-diagram { gap: 0; }
+        }
     </style>
 </head>
 <body>
@@ -1071,7 +1143,7 @@
                 <span class="toc-number" style="color: var(--engen-green);">01</span>
                 <div>
                     <div class="toc-text">Marco Metodol&oacute;gico</div>
-                    <div class="toc-desc">Objetivo, definiciones, enfoque anal&iacute;tico y dimensiones del an&aacute;lisis</div>
+                    <div class="toc-desc">L&oacute;gica de estimaci&oacute;n: cartera total &rarr; share Engen &rarr; Core vs. LMM &rarr; penetraci&oacute;n &rarr; universo</div>
                 </div>
             </li>
             <li class="toc-item">
@@ -1085,7 +1157,7 @@
                 <span class="toc-number" style="color: var(--engen-green);">03</span>
                 <div>
                     <div class="toc-text">Mercado ABL &mdash; Tama&ntilde;o, LMM y Comparativa</div>
-                    <div class="toc-desc">Mercado total $122K MDP, segmento LMM $22K&ndash;$86K MDP, Engen vs. Start Banregio</div>
+                    <div class="toc-desc">Cartera total $122K MDP, share Engen ~23%, embudo a universo ~6&ndash;8K empresas, Engen vs. Start</div>
                 </div>
             </li>
             <li class="toc-item">
@@ -1135,69 +1207,69 @@
         </div>
 
         <h3>Objetivo del estudio</h3>
-        <p>Dimensionar en <strong>n&uacute;mero de empresas</strong> el mercado target para productos de arrendamiento y cr&eacute;dito para activos (<em>asset-based lending</em>) en el segmento Lower Middle Market (LMM) de M&eacute;xico. El resultado final es un mapa cuantificado del universo de empresas que podr&iacute;an ser clientes de Engen Capital, segmentado por industria y geograf&iacute;a.</p>
+        <p>Responder una pregunta concreta: <strong>&iquest;cu&aacute;nto vale el mercado de asset-based lending en M&eacute;xico, qu&eacute; porci&oacute;n le corresponde a Engen Capital, y cu&aacute;ntas empresas componen el universo direccionable?</strong></p>
 
-        <h3>Definici&oacute;n del segmento LMM</h3>
         <div class="exec-grid">
             <div class="exec-card green">
-                <div class="exec-card-label">Rango de ventas anuales</div>
+                <div class="exec-card-label">Segmento LMM</div>
                 <div class="exec-card-value">$50M &mdash; $450M MXN</div>
-                <div class="exec-card-desc">Empresas medianas que invierten en activos productivos (maquinaria, equipo, veh&iacute;culos, tecnolog&iacute;a) y requieren financiamiento estructurado.</div>
+                <div class="exec-card-desc">Ventas anuales. Empresas medianas que invierten en maquinaria, equipo, veh&iacute;culos y tecnolog&iacute;a.</div>
             </div>
             <div class="exec-card">
                 <div class="exec-card-label">Ticket promedio target</div>
                 <div class="exec-card-value">$10M MXN</div>
-                <div class="exec-card-desc">Ticket promedio actual: $8.9M MXN. Productos: arrendamiento puro, arrendamiento financiero, cr&eacute;dito empresarial, sale &amp; lease back.</div>
+                <div class="exec-card-desc">Arrendamiento puro, financiero, cr&eacute;dito empresarial, sale &amp; lease back.</div>
             </div>
         </div>
 
-        <h3>Dimensiones del an&aacute;lisis</h3>
-        <p>El estudio recorre cuatro dimensiones progresivas, de lo macro a lo micro:</p>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 30%;">Dimensi&oacute;n</th>
-                    <th>Pregunta que responde</th>
-                    <th style="width: 25%;">Fuentes principales</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">1. Total nacional</td>
-                    <td>&iquest;Cu&aacute;ntas empresas existen en M&eacute;xico en el rango LMM?</td>
-                    <td>Censos Econ&oacute;micos, DENUE</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">2. Por industria (SCIAN)</td>
-                    <td>&iquest;Qu&eacute; sectores concentran la mayor demanda de activos?</td>
-                    <td>Censos, FBCF, CANACINTRA, ANPACT</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">3. Por geograf&iacute;a</td>
-                    <td>&iquest;En qu&eacute; estados y corredores est&aacute;n estas empresas?</td>
-                    <td>DENUE, AMPIP, SE (IED/nearshoring)</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">4. Cruce con financiamiento</td>
-                    <td>&iquest;Qu&eacute; % usa leasing o cr&eacute;dito formal? &iquest;Cu&aacute;l es la brecha?</td>
-                    <td>ENAFIN, ENAPROCE, CNBV, IFC</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="page-source" style="margin-top: 0; padding-top: 4px; border-top: none;">
-            <strong>Fuente:</strong> Elaboraci&oacute;n propia LCG con base en INEGI Censos Econ&oacute;micos 2024, DENUE, ENAFIN 2024, ENAPROCE 2023, CNBV, AMPIP, IFC/Banco Mundial.
+        <h3>L&oacute;gica de estimaci&oacute;n &mdash; del macro al micro</h3>
+
+        <div class="funnel-diagram">
+            <div class="funnel-step">
+                <div class="funnel-num">1</div>
+                <div class="funnel-label">Cartera total<br>ABL M&eacute;xico</div>
+                <div class="funnel-value">$122K</div>
+                <div class="funnel-desc">MDP en activos administrados por el sector</div>
+                <div class="funnel-sources">AMSOFAC, CNBV, Banxico</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">2</div>
+                <div class="funnel-label">Share de Engen<br>vs. competidores</div>
+                <div class="funnel-value">~23%</div>
+                <div class="funnel-desc">$27.7K MDP de $122K. &iquest;Creci&oacute; o decreci&oacute; el pastel?</div>
+                <div class="funnel-sources">EEFF Engen, CNBV, HR Ratings</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">3</div>
+                <div class="funnel-label">Segmento<br>Core vs. LMM</div>
+                <div class="funnel-value">Core + LMM</div>
+                <div class="funnel-desc">&iquest;Cu&aacute;nto del pastel es Core (&gt;$450M) y cu&aacute;nto LMM ($50&ndash;450M)?</div>
+                <div class="funnel-sources">Censos Econ., DENUE, CANACINTRA</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">4</div>
+                <div class="funnel-label">Empresas LMM<br>&times; penetraci&oacute;n ABL</div>
+                <div class="funnel-value">~20&ndash;25%</div>
+                <div class="funnel-desc">No todas usan leasing. Filtrar por % que usa financiamiento de activos</div>
+                <div class="funnel-sources">ENAFIN, ENAPROCE, IFC/BM</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">5</div>
+                <div class="funnel-label">Universo<br>direccionable</div>
+                <div class="funnel-value">~6&ndash;8K</div>
+                <div class="funnel-desc">Empresas formales, bankable, en sectores asset-intensive</div>
+                <div class="funnel-sources">D&amp;B Hoovers, Da Vinci, CRM</div>
+            </div>
         </div>
 
-        <h3>Enfoque metodol&oacute;gico</h3>
-        <div class="callout callout-green">
-            <div class="callout-label">Top-Down + Validaci&oacute;n Bottom-Up</div>
-            <p><strong>Paso 1 &mdash; Top-down:</strong> Partir de los Censos Econ&oacute;micos (6.4M establecimientos) y aplicar filtros sucesivos: tama&ntilde;o (personal/ingresos), sector SCIAN, ubicaci&oacute;n geogr&aacute;fica.<br>
-            <strong>Paso 2 &mdash; Fuentes secundarias:</strong> Validar con encuestas de financiamiento (ENAFIN/ENAPROCE), datos gremiales (ASOFOM, CANACINTRA) y reportes multilaterales (IFC/BM).<br>
-            <strong>Paso 3 &mdash; Enriquecimiento futuro:</strong> Cruzar con D&amp;B Hoovers (perfiles firmogr&aacute;ficos) y la base interna de Marketing de Engen (~5,000 prospectos con datos SAT) para validaci&oacute;n bottom-up.</p>
+        <div class="callout callout-green" style="margin-top: 8px;">
+            <div class="callout-label">Enfoque Top-Down + Validaci&oacute;n Bottom-Up</div>
+            <p><strong>Top-down:</strong> Partir de la cartera total del sector ($122K MDP), calcular el share de Engen (~23%), desglosar por segmento (Core vs. LMM), filtrar por industrias asset-intensive y aplicar tasa de penetraci&oacute;n de ABL (~20&ndash;25%).<br>
+            <strong>Bottom-up (futuro):</strong> Validar con D&amp;B Hoovers (perfiles firmogr&aacute;ficos) + Da Vinci/CRM Engen (~5,000 prospectos con datos SAT) para confirmar el universo y detectar gaps de cobertura.</p>
         </div>
 
         <div class="page-source">
-            Fuentes: Metodolog&iacute;a propia LCG basada en INEGI Censos Econ&oacute;micos 2024, DENUE, ENAFIN 2024, ENAPROCE 2023, CNBV, Banco de M&eacute;xico, IFC/Banco Mundial.
+            Fuentes: Metodolog&iacute;a propia LCG. AMSOFAC Convenci&oacute;n 2025, INEGI Censos Econ&oacute;micos 2024, DENUE, ENAFIN 2024, ENAPROCE 2023, CNBV, Banco de M&eacute;xico, IFC/Banco Mundial, EEFF Engen dic 2025.
         </div>
     </div>
 
@@ -1408,69 +1480,111 @@
             <div class="section-title">Mercado ABL &mdash; Tama&ntilde;o, LMM y Comparativa</div>
         </div>
 
-        <!-- MERCADO TOTAL -->
-        <h3>Tama&ntilde;o del mercado ABL en M&eacute;xico</h3>
+        <!-- PASO 1: TAM -->
+        <h3>Paso 1 &mdash; &iquest;Cu&aacute;nto vale el mercado total?</h3>
 
         <div class="kpi-banner">
             <div class="kpi-item">
                 <div class="kpi-value">$122,000</div>
-                <div class="kpi-label">MDP activos admin. (AMSOFAC)</div>
+                <div class="kpi-label">MDP cartera total (AMSOFAC)</div>
             </div>
             <div class="kpi-item">
-                <div class="kpi-value">120,000+</div>
-                <div class="kpi-label">Clientes (62K empresas + 58K PFAE)</div>
+                <div class="kpi-value">54</div>
+                <div class="kpi-label">Instituciones agremiadas</div>
             </div>
             <div class="kpi-item">
                 <div class="kpi-value">+18%</div>
                 <div class="kpi-label">Crecimiento anual proyectado</div>
             </div>
-            <div class="kpi-item">
-                <div class="kpi-value">$103,000</div>
-                <div class="kpi-label">MDP inversi&oacute;n proyectada 2026</div>
-            </div>
         </div>
 
-        <p>El sector de financiamiento especializado (SOFOMs, arrendadoras puras, brazos bancarios especializados) administra <strong>$122,000 MDP</strong> en activos a trav&eacute;s de 54 instituciones agremiadas a AMSOFAC. La salida de UNIFIN (concurso mercantil 2022) dej&oacute; un hueco estructural que las dem&aacute;s instituciones est&aacute;n llenando. El sector proyecta crecimiento del <strong>18% anual</strong> en los pr&oacute;ximos 3 a&ntilde;os.</p>
-
-        <!-- EMBUDO AL LMM -->
-        <h3>Del mercado total al segmento LMM de Engen</h3>
+        <!-- PASO 2: SHARE -->
+        <h3>Paso 2 &mdash; &iquest;Cu&aacute;nto del pastel tiene Engen?</h3>
 
         <table>
             <thead>
                 <tr>
-                    <th style="width: 35%;">Filtro</th>
-                    <th style="width: 18%;">Empresas</th>
+                    <th style="width: 35%;">Jugador</th>
+                    <th style="width: 22%;">Cartera</th>
+                    <th style="width: 18%;">Share est.</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #e8f7f2;">
+                    <td class="table-highlight">Engen Capital</td>
+                    <td style="font-weight: 800;">$27,733 MDP</td>
+                    <td style="font-weight: 800; color: var(--engen-dark);">~23%</td>
+                    <td>EEFF dic 2025</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Start Banregio</td>
+                    <td>$28,168 MDP</td>
+                    <td>~23%</td>
+                    <td>CNBV 4T25</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Resto del sector</td>
+                    <td>~$66,000 MDP</td>
+                    <td>~54%</td>
+                    <td>52 instituciones restantes</td>
+                </tr>
+                <tr style="background: var(--lcg-light-blue);">
+                    <td class="table-highlight" style="font-weight: 800;">Total mercado</td>
+                    <td style="font-weight: 800;">$122,000 MDP</td>
+                    <td style="font-weight: 800;">100%</td>
+                    <td>AMSOFAC 2025</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="page-source" style="margin-top: 0; padding-top: 4px; border-top: none;">
+            <strong>Fuente:</strong> AMSOFAC Convenci&oacute;n 2025 (DNF/Milenio oct 2025), EEFF consolidados Engen dic 2025, CNBV sominfin Start 4T25.
+        </div>
+
+        <!-- PASO 3-4: CORE VS LMM + PENETRACION -->
+        <h3>Paso 3 &mdash; &iquest;Cu&aacute;ntas empresas hay y cu&aacute;ntas usan ABL?</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 38%;">Filtro</th>
+                    <th style="width: 20%;">Empresas</th>
                     <th>Criterio</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="table-highlight">Universo total M&eacute;xico</td>
-                    <td><strong>5,470,000</strong></td>
-                    <td>Unidades econ&oacute;micas activas (Censos Econ&oacute;micos 2024)</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Rango LMM ($50&ndash;$450 MDP ventas)</td>
+                    <td class="table-highlight">Empresas medianas M&eacute;xico ($50&ndash;$450M)</td>
                     <td><strong>~90,000</strong></td>
-                    <td>Estrato mediano INEGI. Formal: ~43,000</td>
+                    <td>Estrato mediano INEGI (0.7% del total)</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">Sectores asset-intensive</td>
                     <td><strong>~20,000&ndash;25,000</strong></td>
-                    <td>Manufactura, transporte, construcci&oacute;n, miner&iacute;a, agro</td>
+                    <td>Manufactura, transporte, construcci&oacute;n, miner&iacute;a, agro, salud</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">Filtro: formales + bankable</td>
+                    <td><strong>~12,000&ndash;15,000</strong></td>
+                    <td>RFC, facturas, historial crediticio, EEFF verificables</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">% que usa ABL (&times; ~20&ndash;25%)</td>
+                    <td><strong>~3,000&ndash;3,500</strong></td>
+                    <td>Penetraci&oacute;n actual de arrendamiento + cr&eacute;dito de activos (ENAFIN)</td>
                 </tr>
                 <tr style="background: #e8f7f2;">
-                    <td class="table-highlight" style="font-size: 13px;">Mercado target (formales + bankable)</td>
-                    <td style="color: var(--engen-dark); font-weight: 800; font-size: 15px;">8,000&ndash;12,000</td>
-                    <td>RFC, facturas, historial crediticio, EEFF verificables</td>
+                    <td class="table-highlight" style="font-size: 12px;">Universo direccionable (usan + podr&iacute;an usar)</td>
+                    <td style="color: var(--engen-dark); font-weight: 800; font-size: 15px;">6,000&ndash;8,000</td>
+                    <td>Incluye empresas que no usan ABL pero califican y tienen demanda de CAPEX</td>
                 </tr>
             </tbody>
         </table>
         <div class="page-source" style="margin-top: 0; padding-top: 4px; border-top: none;">
-            <strong>Fuente:</strong> INEGI Censos Econ&oacute;micos 2024, AMSOFAC Convenci&oacute;n 2025, M&eacute;xico Como Vamos (empresas medianas 0.7%), IFC/Banco Mundial.
+            <strong>Fuente:</strong> INEGI Censos Econ&oacute;micos 2024, ENAFIN 2024 (penetraci&oacute;n ABL), M&eacute;xico Como Vamos (empresas medianas 0.7%), AMSOFAC, IFC/Banco Mundial.
         </div>
 
-        <p>El mercado ABL para el segmento LMM se estima entre <strong>$22,400 y $86,400 MDP anuales</strong> (8&ndash;12K empresas &times; $100&ndash;120M facturaci&oacute;n &times; 8&ndash;12% CAPEX &times; 35&ndash;50% financiable). Con ~200 contratos activos en LMM, la penetraci&oacute;n actual de Engen es <strong>inferior al 2%</strong>.</p>
+        <p>Con ~200 contratos activos en LMM, la penetraci&oacute;n actual de Engen en este universo es <strong>~2.5&ndash;3.3%</strong> &mdash; hay espacio significativo de crecimiento.</p>
 
         <!-- COMPARATIVA ENGEN VS START -->
         <h3>Engen vs. Start Banregio &mdash; comparativa directa</h3>
@@ -1527,10 +1641,10 @@
                 <tr>
                     <td class="table-highlight">Foco de producto</td>
                     <td style="color: var(--engen-dark); font-weight: 600;">Arr. puro + financiero + S&amp;LB</td>
-                    <td>Credito comercial (97%)</td>
+                    <td>Cr&eacute;dito comercial (97%)</td>
                 </tr>
                 <tr>
-                    <td class="table-highlight">Geografia fuerte</td>
+                    <td class="table-highlight">Geograf&iacute;a fuerte</td>
                     <td>Nacional (90% sectores)</td>
                     <td>NL 41%, Occ 19%, CDMX 17%</td>
                 </tr>
@@ -1542,7 +1656,7 @@
 
         <div class="callout callout-green" style="margin-top: 12px;">
             <div class="callout-label">Hallazgo clave</div>
-            <p>Engen y Start son <strong>pr&aacute;cticamente gemelas en tama&ntilde;o</strong> (~$28K MDP), pero radicalmente diferentes en composici&oacute;n. Engen tiene <strong>17x m&aacute;sequipo arrendado</strong> ($3,251 vs $184 MDP) y genera <strong>2.4x m&aacute;smargen financiero</strong> ($2,495 vs $1,032 MDP). Engen es una arrendadora real; Start es un veh&iacute;culo de cr&eacute;dito bancario. Start concentra 41% en NL, dejando oportunidad en Baj&iacute;o, CDMX y noroeste.</p>
+            <p>Engen y Start son <strong>pr&aacute;cticamente gemelas en tama&ntilde;o</strong> (~$28K MDP), pero radicalmente diferentes en composici&oacute;n. Engen tiene <strong>17x m&aacute;s equipo arrendado</strong> ($3,251 vs $184 MDP) y genera <strong>2.4x m&aacute;s margen financiero</strong> ($2,495 vs $1,032 MDP). Engen es una arrendadora real; Start es un veh&iacute;culo de cr&eacute;dito bancario. Start concentra 41% en NL, dejando oportunidad en Baj&iacute;o, CDMX y noroeste.</p>
         </div>
 
         <div class="page-source">
@@ -1565,18 +1679,18 @@
             <div class="section-title">Industrias Relevantes para el LMM</div>
         </div>
 
-        <p>No todos los sectores tienen la misma necesidad de financiamiento de activos. Los sectores <strong>asset-intensive</strong> &mdash;donde la operaci&oacute;n depende de maquinaria, equipo, veh&iacute;culos o infraestructura&mdash; son los clientes naturales de arrendamiento y cr&eacute;dito para activos.</p>
+        <p>No todos los sectores tienen la misma necesidad de financiamiento de activos. Esta secci&oacute;n desglosa las <strong>~20&ndash;25K empresas asset-intensive</strong> de la Secci&oacute;n 03 por industria, para priorizar d&oacute;nde enfocar el esfuerzo comercial.</p>
 
-        <h3>Distribuci&oacute;n del mercado LMM por industria</h3>
+        <h3>Desglose del universo por industria</h3>
 
         <table>
             <thead>
                 <tr>
-                    <th style="width: 24%;">Sector</th>
-                    <th style="width: 13%;">Empresas est.</th>
-                    <th style="width: 15%;">Propensi&oacute;n ABL</th>
-                    <th style="width: 16%;">Mercado calificado</th>
-                    <th style="width: 32%;">Activos t&iacute;picos financiados</th>
+                    <th style="width: 22%;">Sector</th>
+                    <th style="width: 12%;">Empresas LMM</th>
+                    <th style="width: 13%;">Propensi&oacute;n ABL</th>
+                    <th style="width: 18%;">Universo direcc.</th>
+                    <th style="width: 35%;">Activos t&iacute;picos financiados</th>
                 </tr>
             </thead>
             <tbody>
@@ -1584,69 +1698,69 @@
                     <td class="table-highlight">Manufactura</td>
                     <td>~9,900</td>
                     <td><span class="tag tag-green">Muy alta</span></td>
-                    <td style="font-weight: 800; color: var(--engen-dark);">7,000&ndash;8,000</td>
-                    <td>CNC, lineas de producci&oacute;n, moldes, equipo industrial</td>
+                    <td style="font-weight: 800; color: var(--engen-dark);">2,500&ndash;3,000</td>
+                    <td>CNC, l&iacute;neas de producci&oacute;n, moldes, equipo industrial</td>
                 </tr>
                 <tr style="background: #e8f7f2;">
                     <td class="table-highlight">Transporte y log&iacute;stica</td>
                     <td>~3,200</td>
                     <td><span class="tag tag-green">Muy alta</span></td>
-                    <td style="font-weight: 800; color: var(--engen-dark);">2,500&ndash;3,000</td>
+                    <td style="font-weight: 800; color: var(--engen-dark);">1,000&ndash;1,200</td>
                     <td>Tractocamiones, remolques, flotillas, equipo de carga</td>
                 </tr>
                 <tr style="background: #e8f7f2;">
                     <td class="table-highlight">Construcci&oacute;n</td>
                     <td>~2,200</td>
                     <td><span class="tag tag-media-alta">Alta</span></td>
-                    <td style="font-weight: 700;">1,500&ndash;2,000</td>
-                    <td>Maquinaria pesada, gruas, retroexcavadoras, mezcladoras</td>
+                    <td style="font-weight: 700;">600&ndash;800</td>
+                    <td>Maquinaria pesada, gr&uacute;as, retroexcavadoras, mezcladoras</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">Agro e ind. alimentaria</td>
                     <td>~3,000</td>
                     <td><span class="tag tag-media-alta">Alta</span></td>
-                    <td>1,500&ndash;2,000</td>
+                    <td>500&ndash;700</td>
                     <td>Tractores, cosechadoras, equipo de riego, proc. alimentos</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">Comercio al por mayor</td>
                     <td>~8,000</td>
                     <td><span class="tag tag-media">Media</span></td>
-                    <td>2,000&ndash;2,500</td>
+                    <td>500&ndash;600</td>
                     <td>Flotilla de distribuci&oacute;n, almacenes, montacargas</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">Miner&iacute;a y energ&iacute;a</td>
                     <td>~900</td>
                     <td><span class="tag tag-media-alta">Alta</span></td>
-                    <td>600&ndash;700</td>
+                    <td>250&ndash;350</td>
                     <td>Equipo de extracci&oacute;n, perforaci&oacute;n, paneles, generadores</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">Salud</td>
                     <td>~1,200</td>
                     <td><span class="tag tag-media-alta">Alta</span></td>
-                    <td>800&ndash;1,000</td>
+                    <td>300&ndash;400</td>
                     <td>Equipo m&eacute;dico, imagenolog&iacute;a, laboratorio, ambulancias</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">Servicios + comercio menor</td>
                     <td>~68,000</td>
                     <td><span class="tag" style="background: #f0f0f0; color: #999;">Baja</span></td>
-                    <td style="color: var(--text-muted);">2,000&ndash;2,800</td>
+                    <td style="color: var(--text-muted);">350&ndash;500</td>
                     <td>Equipo de c&oacute;mputo, mobiliario, veh&iacute;culos</td>
                 </tr>
                 <tr style="background: var(--lcg-light-blue);">
-                    <td class="table-highlight" style="font-size: 13px;">TOTAL MERCADO CALIFICADO</td>
+                    <td class="table-highlight" style="font-size: 12px;">UNIVERSO DIRECCIONABLE</td>
+                    <td style="color: var(--text-muted); font-size: 11px;">~96K total</td>
                     <td>&mdash;</td>
-                    <td>&mdash;</td>
-                    <td style="font-weight: 800; font-size: 15px; color: var(--lcg-navy);">~18,000&ndash;22,000</td>
-                    <td>&mdash;</td>
+                    <td style="font-weight: 800; font-size: 15px; color: var(--engen-dark);">~6,000&ndash;7,500</td>
+                    <td style="font-size: 10px; color: var(--text-muted);">Consistente con filtro Secci&oacute;n 03</td>
                 </tr>
             </tbody>
         </table>
         <div class="page-source" style="margin-top: 0; padding-top: 4px; border-top: none;">
-            <strong>Fuente:</strong> INEGI Censos Econ&oacute;micos 2024, CANACINTRA, ANPACT, AMPIP, SIAP/SADER. Propensi&oacute;n ABL estimada con base en intensidad de CAPEX/ventas por sector (INEGI FBCF).
+            <strong>Fuente:</strong> INEGI Censos Econ&oacute;micos 2024, CANACINTRA, ANPACT, AMPIP, SIAP/SADER, ENAFIN 2024. Universo = empresas formales &times; propensi&oacute;n ABL del sector (INEGI FBCF).
         </div>
 
         <!-- TIERS -->
@@ -1657,7 +1771,7 @@
                 <span class="tier-badge tier-1">TIER 1</span>
                 <span class="tier-title">M&aacute;xima prioridad &mdash; alta intensidad de CAPEX + volumen</span>
             </div>
-            <p style="font-size: 12px; color: var(--text-secondary); margin-top: -8px;"><strong>Manufactura</strong> (7&ndash;8K empresas) + <strong>Transporte</strong> (2.5&ndash;3K) + <strong>Construcci&oacute;n</strong> (1.5&ndash;2K). Representan el <strong>65%</strong> del mercado calificado y tienen la mayor demanda de arrendamiento de activos f&iacute;sicos.</p>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-top: -8px;"><strong>Manufactura</strong> (2.5&ndash;3K) + <strong>Transporte</strong> (1&ndash;1.2K) + <strong>Construcci&oacute;n</strong> (600&ndash;800). Representan el <strong>~65%</strong> del universo direccionable.</p>
         </div>
 
         <div class="tier-section">
@@ -1665,24 +1779,24 @@
                 <span class="tier-badge tier-2">TIER 2</span>
                 <span class="tier-title">Verticales especializadas &mdash; ticket alto, menor volumen</span>
             </div>
-            <p style="font-size: 12px; color: var(--text-secondary); margin-top: -8px;"><strong>Agro/alimentaria</strong> (1.5&ndash;2K) + <strong>Miner&iacute;a/energ&iacute;a</strong> (600&ndash;700) + <strong>Salud</strong> (800&ndash;1K). Alineado con verticales estrat&eacute;gicas de Engen (alimentos y bebidas, salud, miner&iacute;a).</p>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-top: -8px;"><strong>Agro/alimentaria</strong> (500&ndash;700) + <strong>Miner&iacute;a/energ&iacute;a</strong> (250&ndash;350) + <strong>Salud</strong> (300&ndash;400). Alineado con verticales estrat&eacute;gicas de Engen.</p>
         </div>
 
         <div class="tier-section">
             <div class="tier-header">
                 <span class="tier-badge tier-3">TIER 3</span>
-                <span class="tier-title">Oportunista &mdash; alto volumen, baja intensidad de activos</span>
+                <span class="tier-title">Oportunista &mdash; alto volumen base, baja intensidad de activos</span>
             </div>
-            <p style="font-size: 12px; color: var(--text-secondary); margin-top: -8px;"><strong>Comercio al por mayor</strong> (2&ndash;2.5K) + <strong>Servicios</strong> (2&ndash;2.8K). Menor necesidad de arrendamiento pero relevante para factoraje y cr&eacute;dito empresarial.</p>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-top: -8px;"><strong>Comercio</strong> (500&ndash;600) + <strong>Servicios</strong> (350&ndash;500). Menor demanda de arrendamiento pero relevante para factoraje y cr&eacute;dito empresarial.</p>
         </div>
 
         <div class="callout callout-green">
             <div class="callout-label">Concentraci&oacute;n geogr&aacute;fica</div>
-            <p>El 70%+ del mercado calificado LMM est&aacute; en <strong>5&ndash;6 estados</strong>: Nuevo Le&oacute;n, Jalisco, Guanajuato, Coahuila, Chihuahua y Estado de M&eacute;xico. Start Banregio concentra el <strong>40.8%</strong> de su cartera en Nuevo Le&oacute;n, dejando oportunidad significativa en Baj&iacute;o, CDMX y noroeste para Engen.</p>
+            <p>El 70%+ del universo direccionable est&aacute; en <strong>5&ndash;6 estados</strong>: Nuevo Le&oacute;n, Jalisco, Guanajuato, Coahuila, Chihuahua y Estado de M&eacute;xico. Start Banregio concentra el <strong>40.8%</strong> de su cartera en Nuevo Le&oacute;n, dejando oportunidad significativa en Baj&iacute;o, CDMX y noroeste para Engen.</p>
         </div>
 
         <div class="page-source">
-            Fuentes: INEGI Censos Econ&oacute;micos 2024 (distribuci&oacute;n sectorial), CANACINTRA (manufactura), ANPACT (veh&iacute;culos pesados), AMPIP (corredores industriales), HR Ratings Start 2024 (distribuci&oacute;n geogr&aacute;fica). Verticales estrat&eacute;gicas Engen: entrevista CEO mar 2026.
+            Fuentes: INEGI Censos Econ&oacute;micos 2024 (distribuci&oacute;n sectorial), CANACINTRA (manufactura), ANPACT (veh&iacute;culos pesados), AMPIP (corredores industriales), ENAFIN 2024 (penetraci&oacute;n ABL), HR Ratings Start 2024 (distribuci&oacute;n geogr&aacute;fica).
         </div>
     </div>
 
