@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio de Mercado — Engen Capital | London Consulting Group</title>
+    <title>Dimensionamiento del Mercado LMM — Engen Capital | London Consulting Group</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
 
@@ -806,6 +806,59 @@
             margin-bottom: 6px;
             line-height: 1.6;
         }
+
+        /* ======================== SOURCE DETAIL CARDS ======================== */
+        .source-detail {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 10px 0;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .source-detail.official { border-left-color: var(--lcg-navy); }
+        .source-detail.industry { border-left-color: var(--engen-green); }
+        .source-detail.multilateral { border-left-color: var(--lcg-accent); }
+        .source-detail.private { border-left-color: var(--warning); }
+        .source-detail.pending { border-left-color: var(--text-muted); border-style: dashed; background: #fafafa; }
+
+        .source-detail-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .source-detail-what {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+
+        .source-detail-contributes {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .source-detail-type {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 6px;
+        }
+
+        .type-oficial { background: #e8edf5; color: var(--lcg-navy); }
+        .type-gremial { background: #e8f7f2; color: var(--engen-dark); }
+        .type-multilateral { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .type-privada { background: #fff8ed; color: #e65100; }
+        .type-interna { background: #f0f0f0; color: var(--text-muted); }
+
         /* ======================== PRINT HELPER OVERLAY ======================== */
         .print-overlay {
             position: fixed;
@@ -973,8 +1026,8 @@
 
         <div class="cover-content">
             <div class="cover-label">Estudio de Mercado</div>
-            <h1 class="cover-title">Arrendamiento Financiero y Financiamiento Empresarial B2B en Mexico</h1>
-            <p class="cover-subtitle">Diagnostico de mercado, segmentacion y oportunidades estrategicas para el crecimiento en el LMM (Lower Middle Market)</p>
+            <h1 class="cover-title">Dimensionamiento del Mercado LMM &mdash; Asset-Based Lending en Mexico</h1>
+            <p class="cover-subtitle">Universo de empresas target por industria y geografia para Engen Capital</p>
             <div class="cover-divider"></div>
             <div class="cover-meta">
                 <div class="cover-meta-item">
@@ -987,7 +1040,7 @@
                 </div>
                 <div class="cover-meta-item">
                     <div class="cover-meta-label">Fecha</div>
-                    <div class="cover-meta-value">Febrero 2026</div>
+                    <div class="cover-meta-value">Marzo 2026</div>
                 </div>
                 <div class="cover-meta-item">
                     <div class="cover-meta-label">Clasificacion</div>
@@ -1015,1587 +1068,553 @@
         <div class="toc-subtitle">Estructura del estudio de mercado</div>
         <ul class="toc-list">
             <li class="toc-item">
-                <span class="toc-number" style="color: var(--engen-green);">00</span>
+                <span class="toc-number" style="color: var(--engen-green);">01</span>
                 <div>
                     <div class="toc-text">Marco Metodologico</div>
-                    <div class="toc-desc">Enfoque analitico, fuentes de datos y modelo de priorizacion</div>
-                </div>
-            </li>
-            <li class="toc-item">
-                <span class="toc-number">01</span>
-                <div>
-                    <div class="toc-text">Resumen Ejecutivo</div>
-                    <div class="toc-desc">Hallazgos clave y oportunidad estrategica</div>
+                    <div class="toc-desc">Objetivo, definiciones, enfoque analitico y dimensiones del analisis</div>
                 </div>
             </li>
             <li class="toc-item">
                 <span class="toc-number">02</span>
                 <div>
-                    <div class="toc-text">Dimension del Mercado</div>
-                    <div class="toc-desc">SOFOMs, penetracion del leasing, brecha de financiamiento</div>
+                    <div class="toc-text">Fuentes de Informacion</div>
+                    <div class="toc-desc">22 fuentes clasificadas: oficiales, gremiales, multilaterales, privadas e internas</div>
                 </div>
             </li>
-            <li class="toc-item" style="border-left: 3px solid var(--engen-green); padding-left: 12px;">
-                <span class="toc-number" style="color: var(--engen-green);">03</span>
+            <li class="toc-item" style="opacity: 0.45;">
+                <span class="toc-number">03</span>
                 <div>
-                    <div class="toc-text">Lower Middle Market — De lo Macro a lo Micro</div>
-                    <div class="toc-desc">Universo empresarial (6.4M → 35K), perfil LMM, 7 sectores, TAM, oceano azul</div>
+                    <div class="toc-text">Universo Empresarial &mdash; Macro a Micro</div>
+                    <div class="toc-desc">Embudo de 6.4M establecimientos al universo target LMM <em>(Fase 2)</em></div>
                 </div>
             </li>
-            <li class="toc-item">
+            <li class="toc-item" style="opacity: 0.45;">
                 <span class="toc-number">04</span>
                 <div>
-                    <div class="toc-text">Landscape Competitivo</div>
-                    <div class="toc-desc">Reconfiguracion post-Unifin, principales jugadores</div>
+                    <div class="toc-text">Segmentacion por Industria (SCIAN)</div>
+                    <div class="toc-desc">Sectores con mayor intensidad de CAPEX y afinidad asset-based lending <em>(Fase 2)</em></div>
                 </div>
             </li>
-            <li class="toc-item">
+            <li class="toc-item" style="opacity: 0.45;">
                 <span class="toc-number">05</span>
                 <div>
-                    <div class="toc-text">Posicionamiento de Engen Capital</div>
-                    <div class="toc-desc">Datos financieros, productos, estructura corporativa</div>
+                    <div class="toc-text">Segmentacion Geografica</div>
+                    <div class="toc-desc">Distribucion por estado, corredores industriales y nearshoring <em>(Fase 2)</em></div>
                 </div>
             </li>
-            <li class="toc-item">
+            <li class="toc-item" style="opacity: 0.45;">
                 <span class="toc-number">06</span>
                 <div>
-                    <div class="toc-text">Tendencias y Drivers del Mercado</div>
-                    <div class="toc-desc">Nearshoring, tasas, factoraje digital, regulacion</div>
+                    <div class="toc-text">Landscape Competitivo</div>
+                    <div class="toc-desc">SOFOMs, arrendadoras y banca: quien atiende al LMM hoy <em>(Fase 3)</em></div>
                 </div>
             </li>
-            <li class="toc-item">
+            <li class="toc-item" style="opacity: 0.45;">
                 <span class="toc-number">07</span>
                 <div>
-                    <div class="toc-text">Benchmarks de Modelo Comercial</div>
-                    <div class="toc-desc">Tiempos de respuesta, conversion, casos de referencia</div>
-                </div>
-            </li>
-            <li class="toc-item">
-                <span class="toc-number">08</span>
-                <div>
-                    <div class="toc-text">Insights y Oportunidades</div>
-                    <div class="toc-desc">5 lineas de consultoria sustentadas con datos</div>
+                    <div class="toc-text">Oportunidad de Mercado</div>
+                    <div class="toc-desc">TAM/SAM/SOM, brecha de financiamiento y oceano azul <em>(Fase 3)</em></div>
                 </div>
             </li>
         </ul>
     </div>
 
     <!-- ============================================================ -->
-    <!-- SECTION 00: MARCO METODOLOGICO                                -->
+    <!-- SECTION 01: MARCO METODOLOGICO                                -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
         <div class="page-header-logos">
             <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
+            <span class="header-divider">Estudio de Mercado &mdash; Engen Capital</span>
             <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
         </div>
-        <div class="section-header">
-            <div class="section-number">Marco Metodologico</div>
-            <div class="section-title">Enfoque Analitico y Modelo de Investigacion</div>
-        </div>
 
-        <p>Este estudio fue desarrollado bajo el <strong>modelo propietario de Diagnostico Estrategico de Mercado de London Consulting Group</strong>, disenado para construir una base de evidencia solida que sustente decisiones de crecimiento en servicios financieros B2B. El enfoque integra multiples capas de analisis convergente para minimizar sesgos y maximizar la accionabilidad de los hallazgos.</p>
-
-        <h3>Arquitectura del estudio</h3>
-
-        <div style="background: var(--bg-light); border-radius: 10px; padding: 28px; margin: 20px 0;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; text-align: center;">
-                <div>
-                    <div style="width: 56px; height: 56px; background: var(--lcg-navy); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800;">1</div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px;">OUTSIDE-IN</div>
-                    <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Dimension de mercado, tendencias macro, dinamicas sectoriales y entorno regulatorio</div>
-                </div>
-                <div>
-                    <div style="width: 56px; height: 56px; background: var(--lcg-accent); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800;">2</div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px;">COMPETITIVE INTELLIGENCE</div>
-                    <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Mapeo de jugadores, analisis de propuesta de valor, benchmarks operativos y comerciales</div>
-                </div>
-                <div>
-                    <div style="width: 56px; height: 56px; background: var(--engen-green); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800;">3</div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 4px;">OPPORTUNITY SIZING</div>
-                    <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Segmentacion del TAM, priorizacion sectorial y cuantificacion de la oportunidad especifica</div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <div style="display: inline-block; background: var(--lcg-navy); color: white; padding: 8px 20px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px;">CONVERGENCIA &rarr; INSIGHTS ACCIONABLES &rarr; RECOMENDACIONES PRIORIZADAS</div>
-            </div>
-        </div>
-
-        <h3>Fuentes de datos y triangulacion</h3>
-
-        <p>Cada hallazgo del estudio fue construido mediante <strong>triangulacion de al menos dos fuentes independientes</strong> para garantizar robustez. Las fuentes se clasifican en cinco categorias:</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Categoria</th>
-                    <th>Fuentes</th>
-                    <th>Uso principal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">Regulatorias y oficiales</td>
-                    <td>CNBV, Banco de Mexico, INEGI (Censos Economicos 2024, ENAPROCE, ENAFIN), SHCP</td>
-                    <td>Dimension de mercado, estructura del sector, datos demograficos empresariales</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Calificadoras y mercado de capitales</td>
-                    <td>PCR Verum, HR Ratings, Moody's Local, BMV (eventos relevantes, prospectos de colocacion)</td>
-                    <td>Metricas financieras de competidores, calidad de cartera, estructura de fondeo</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Gremiales y sectoriales</td>
-                    <td>ASOFOM, AMFE, AMPIP, IMCO, CIEP</td>
-                    <td>Tendencias del sector, posicionamiento competitivo, dinamicas de nearshoring</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Inteligencia primaria LCG</td>
-                    <td>Sesion de Discovery con el cliente (Feb 2026), base de conocimiento de proyectos LCG (HDI, Banregio, Banbajio)</td>
-                    <td>Contexto estrategico, pain points del cliente, benchmarks operativos propietarios</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Validacion directa con cliente</td>
-                    <td>Entrevista CEO Juan Pablo Loperena (2 mar 2026, 59 min); Entrevista Dir. Riesgo Fernando Garza (2 mar 2026)</td>
-                    <td>Confirmacion de parametros de segmento target, volumenes de originacion, rentabilidad por segmento, dinamica competitiva, perspectiva de riesgo en mid-market</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Modelo de priorizacion sectorial</h3>
-
-        <p>La identificacion de los 7 sectores prioritarios se realizo mediante un <strong>scoring multivariable</strong> que pondera cinco dimensiones:</p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
-                <div style="background: var(--lcg-navy); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">25%</div>
-                <div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Intensidad de CAPEX</div>
-                    <div style="font-size: 10px; color: var(--text-muted);">Inversion en activos fijos como % del ingreso sectorial</div>
-                </div>
-            </div>
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
-                <div style="background: var(--lcg-accent); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">20%</div>
-                <div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Masa critica mid-market</div>
-                    <div style="font-size: 10px; color: var(--text-muted);">Numero de empresas medianas activas en el sector</div>
-                </div>
-            </div>
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
-                <div style="background: var(--engen-green); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">20%</div>
-                <div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Propension al arrendamiento</div>
-                    <div style="font-size: 10px; color: var(--text-muted);">Penetracion actual y afinidad del activo con leasing</div>
-                </div>
-            </div>
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
-                <div style="background: var(--warning); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">20%</div>
-                <div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Momentum de crecimiento</div>
-                    <div style="font-size: 10px; color: var(--text-muted);">Tasa de crecimiento sectorial y drivers estructurales</div>
-                </div>
-            </div>
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; grid-column: 1 / -1;">
-                <div style="background: var(--lcg-navy); color: white; font-size: 11px; font-weight: 800; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">15%</div>
-                <div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--lcg-navy);">Perfil de riesgo crediticio</div>
-                    <div style="font-size: 10px; color: var(--text-muted);">NPLs historicos del sector, formalidad fiscal y disponibilidad de informacion para scoring</div>
-                </div>
-            </div>
-        </div>
-
-        <h3>Calculo del TAM (Total Addressable Market)</h3>
-
-        <p>La cuantificacion de la oportunidad sigue un modelo <strong>top-down con validacion bottom-up</strong>:</p>
-
-        <div style="background: var(--lcg-light-blue); border-radius: 10px; padding: 22px; margin: 16px 0;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
-                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">CAPEX sectorial total (INEGI/FBCF)</div>
-                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
-                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Filtro: empresas medianas (~15%)</div>
-                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
-                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Financiable via leasing (60-70%)</div>
-                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
-                <div style="background: white; padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--lcg-navy); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Mercado servido actual</div>
-                <div style="font-size: 16px; color: var(--lcg-accent); font-weight: 700;">&rarr;</div>
-                <div style="background: var(--engen-green); padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">GAP = Oportunidad</div>
-            </div>
-        </div>
-
-        <h3>Alcance y limitaciones</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Dimension</th>
-                    <th>Alcance</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">Geografia</td>
-                    <td>Mexico — enfasis en corredores industriales del norte, Bajio y centro del pais</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Segmento</td>
-                    <td>Empresas medianas — Lower Middle Market (LMM): facturacion $50M-$450M MXN. Core: >$450M MXN. Necesidades de CAPEX recurrente</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Productos</td>
-                    <td>Arrendamiento puro/financiero, credito empresarial, factoraje — no incluye consumo ni hipotecario</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Horizonte temporal</td>
-                    <td>Datos 2022-2025 con proyecciones a 2028 donde aplica</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Limitaciones</td>
-                    <td>Las cifras de empresas medianas por sector son estimaciones basadas en Censos Economicos 2024 y ENAPROCE. El TAM incluye supuestos sobre proporcion financiable que deberan validarse con datos internos del cliente</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout">
-            <div class="callout-label">Nota metodologica</div>
-            <p>Este documento es un <strong>diagnostico de mercado de primer nivel</strong> disenado para sustentar la propuesta de consultoria. Durante la fase de proyecto se profundizara con datos internos del cliente (distribucion de cartera, funnel de conversion, tiempos de proceso) para calibrar las recomendaciones con precision operativa.</p>
-        </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SECTION 1: RESUMEN EJECUTIVO                                  -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
         <div class="section-header">
             <div class="section-number">Seccion 01</div>
-            <div class="section-title">Resumen Ejecutivo</div>
+            <div class="section-title">Marco Metodologico</div>
         </div>
 
-        <p>El mercado de arrendamiento y financiamiento empresarial en Mexico presenta una <strong>oportunidad estructural de crecimiento</strong> para Engen Capital, sustentada por cinco factores convergentes que se refuerzan mutuamente.</p>
+        <h3>Objetivo del estudio</h3>
+        <p>Dimensionar en <strong>numero de empresas</strong> el mercado target para productos de arrendamiento y credito para activos (<em>asset-based lending</em>) en el segmento Lower Middle Market (LMM) de Mexico. El resultado final es un mapa cuantificado del universo de empresas que podrian ser clientes de Engen Capital, segmentado por industria y geografia.</p>
 
+        <h3>Definicion del segmento LMM</h3>
         <div class="exec-grid">
+            <div class="exec-card green">
+                <div class="exec-card-label">Rango de ventas anuales</div>
+                <div class="exec-card-value">$50M &mdash; $450M MXN</div>
+                <div class="exec-card-desc">Empresas medianas que invierten en activos productivos (maquinaria, equipo, vehiculos, tecnologia) y requieren financiamiento estructurado.</div>
+            </div>
             <div class="exec-card">
-                <div class="exec-card-label">Mercado subpenetrado</div>
-                <div class="exec-card-value">1.5-2.0%</div>
-                <div class="exec-card-desc">Leasing como % del PIB en Mexico vs. 3-5% en economias desarrolladas</div>
-            </div>
-            <div class="exec-card green">
-                <div class="exec-card-label">Brecha de financiamiento PyME</div>
-                <div class="exec-card-value">~$85,000 MDD</div>
-                <div class="exec-card-desc">Solo ~32% de las empresas medianas acceden a financiamiento formal (IFC/Banco Mundial)</div>
-            </div>
-            <div class="exec-card green">
-                <div class="exec-card-label">Nearshoring acelerador</div>
-                <div class="exec-card-value">$40,871 MDD</div>
-                <div class="exec-card-desc">IED record 2025. Mexico concentra 72% de la relocalizacion en LatAm</div>
-            </div>
-            <div class="exec-card orange">
-                <div class="exec-card-label">Consolidacion post-crisis</div>
-                <div class="exec-card-value">$120,000+ MDP</div>
-                <div class="exec-card-desc">Cartera redistribuida tras caida de Unifin, Credito Real y Alphacredit</div>
-            </div>
-            <div class="exec-card exec-card-full">
-                <div class="exec-card-label">Oportunidad identificada en LMM — Lower Middle Market (7 sectores prioritarios)</div>
-                <div class="exec-card-value" style="color: var(--engen-green);">$50,000 - $85,000 MDP</div>
-                <div class="exec-card-desc">Arrendamiento no atendido en manufactura, autotransporte, construccion, logistica, agroindustria, salud y tecnologia</div>
+                <div class="exec-card-label">Ticket promedio target</div>
+                <div class="exec-card-value">$10M MXN</div>
+                <div class="exec-card-desc">Ticket promedio actual: $8.9M MXN. Productos: arrendamiento puro, arrendamiento financiero, credito empresarial, sale &amp; lease back.</div>
             </div>
         </div>
 
-        <div class="kpi-banner">
-            <div class="kpi-item">
-                <div class="kpi-value">Ps$35,821M</div>
-                <div class="kpi-label">Activos totales Engen (Dic 2025)</div>
-            </div>
-            <div class="kpi-item">
-                <div class="kpi-value">AA-/M</div>
-                <div class="kpi-label">Calificacion PCR Verum</div>
-            </div>
-            <div class="kpi-item">
-                <div class="kpi-value">1.3%</div>
-                <div class="kpi-label">Cartera vencida</div>
-            </div>
+        <h3>Dimensiones del analisis</h3>
+        <p>El estudio recorre cuatro dimensiones progresivas, de lo macro a lo micro:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Dimension</th>
+                    <th>Pregunta que responde</th>
+                    <th style="width: 25%;">Fuentes principales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-highlight">1. Total nacional</td>
+                    <td>Cuantas empresas existen en Mexico en el rango LMM?</td>
+                    <td>Censos Economicos, DENUE</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">2. Por industria (SCIAN)</td>
+                    <td>Que sectores concentran la mayor demanda de activos?</td>
+                    <td>Censos, FBCF, CANACINTRA, ANPACT</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">3. Por geografia</td>
+                    <td>En que estados y corredores estan estas empresas?</td>
+                    <td>DENUE, AMPIP, SE (IED/nearshoring)</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">4. Cruce con financiamiento</td>
+                    <td>Que % usa leasing o credito formal? Cual es la brecha?</td>
+                    <td>ENAFIN, ENAPROCE, CNBV, IFC</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Enfoque metodologico</h3>
+        <div class="callout callout-green">
+            <div class="callout-label">Top-Down + Validacion Bottom-Up</div>
+            <p><strong>Paso 1 &mdash; Top-down:</strong> Partir de los Censos Economicos (6.4M establecimientos) y aplicar filtros sucesivos: tamano (personal/ingresos), sector SCIAN, ubicacion geografica.<br>
+            <strong>Paso 2 &mdash; Fuentes secundarias:</strong> Validar con encuestas de financiamiento (ENAFIN/ENAPROCE), datos gremiales (ASOFOM, CANACINTRA) y reportes multilaterales (IFC/BM).<br>
+            <strong>Paso 3 &mdash; Enriquecimiento futuro:</strong> Cruzar con D&amp;B Hoovers (perfiles firmograficos) y la base interna de Marketing de Engen (~5,000 prospectos con datos SAT) para validacion bottom-up.</p>
         </div>
 
-        <div class="callout-green callout">
-            <div class="callout-label">Posicion de Engen</div>
-            <p><strong>Segunda financiera independiente mas grande de Mexico en su segmento.</strong> Con 33 anios de trayectoria (GE Capital, 1992), activos totales de $35,821 MDP, cartera de credito de $24,482 MDP, 8 direcciones y presencia en CDMX, Monterrey y Guadalajara. Originacion 2025: $15,165M en NEAs (Core 72.4%, LMM 23.5%, Factoraje 4.1%). Capacidad tecnologica probada (Salesforce, Credit Lens, plataforma EC Factor). El momento de mercado y la posicion competitiva son favorables para un crecimiento agresivo pero disciplinado en el mid-market.</p>
+        <div class="page-source">
+            Fuentes: Metodologia propia LCG basada en INEGI Censos Economicos 2024, DENUE, ENAFIN 2024, ENAPROCE 2023, CNBV, Banco de Mexico, IFC/Banco Mundial.
         </div>
-        <div class="page-source">Fuentes: CNBV Portafolio de Informacion; IFC/Banco Mundial — Brecha de financiamiento PyME; PCR Verum — Calificacion Engen Capital AA-/M (Jul 2025); El Financiero — IED record 2025; EEFF Consolidados Engen Capital Dic 2025; Presentacion AEM Comercial feb 2026.</div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- SECTION 2: DIMENSION DEL MERCADO                              -->
+    <!-- SECTION 02: FUENTES DE INFORMACION (Oficiales)                -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
         <div class="page-header-logos">
             <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
+            <span class="header-divider">Estudio de Mercado &mdash; Engen Capital</span>
             <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
         </div>
+
         <div class="section-header">
             <div class="section-number">Seccion 02</div>
-            <div class="section-title">Dimension del Mercado</div>
+            <div class="section-title">Fuentes de Informacion</div>
         </div>
 
-        <h3>2.1 El sector de SOFOMs en Mexico</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Indicador</th>
-                    <th>Dato</th>
-                    <th>Fuente</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>SOFOMs activas</td>
-                    <td class="table-highlight">~1,500 entidades</td>
-                    <td>CNBV</td>
-                </tr>
-                <tr>
-                    <td>Cartera total SOFOMs</td>
-                    <td class="table-highlight">$655,432 MDP (cierre 2025)</td>
-                    <td>El Cronista</td>
-                </tr>
-                <tr>
-                    <td>Crecimiento real anual 2025</td>
-                    <td>6.4%</td>
-                    <td>El Cronista</td>
-                </tr>
-                <tr>
-                    <td>Utilidades del sector 2025</td>
-                    <td>$22,544 MDP (+12.8%)</td>
-                    <td>El Cronista</td>
-                </tr>
-                <tr>
-                    <td>Cartera ASOFOM (247 agremiadas)</td>
-                    <td>$161,954 MDP (+7.2%)</td>
-                    <td>DPL News</td>
-                </tr>
-                <tr>
-                    <td>Concentracion</td>
-                    <td>80% cartera en top 12% de empresas</td>
-                    <td>Margin.mx</td>
-                </tr>
-                <tr>
-                    <td>Top 20 SOFOMs — crecimiento anual</td>
-                    <td class="table-highlight">+22% (12pp arriba de banca)</td>
-                    <td>Margin.mx</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout">
-            <div class="callout-label">Dato clave</div>
-            <p>Las SOFOMs representan el <strong>20% de la cartera total de credito</strong> en Mexico. El 65% de las PyMEs obtienen su primer credito en una SOFOM. 7 de cada 10 PyMEs son financiadas por una SOFOM.</p>
-        </div>
-
-        <h3>2.2 Penetracion del arrendamiento (Leasing)</h3>
-
-        <div class="comparison-bar">
-            <div class="bar-label">
-                <span>Leasing como % del PIB</span>
-            </div>
-            <div class="bar-track" style="margin-bottom: 8px;">
-                <div class="bar-fill bar-fill-navy" style="width: 35%;">Mexico: 1.5-2.0%</div>
-            </div>
-            <div class="bar-track">
-                <div class="bar-fill bar-fill-green" style="width: 85%;">Economias desarrolladas: 3-5%</div>
-            </div>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Segmento</th>
-                    <th>Participacion en arrendamiento</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Bancos</td>
-                    <td>55-60%</td>
-                </tr>
-                <tr>
-                    <td>SOFOMs / Independientes</td>
-                    <td class="table-highlight">25-30%</td>
-                </tr>
-                <tr>
-                    <td>Cautivas (fabricantes)</td>
-                    <td>10-15%</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>2.3 La brecha de financiamiento</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Indicador</th>
-                    <th>Dato</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Penetracion crediticia (credito/PIB)</td>
-                    <td>~35-38% (vs. ~100% OCDE)</td>
-                </tr>
-                <tr>
-                    <td>Empresas con financiamiento formal</td>
-                    <td>~32% (ENAFIN 2021)</td>
-                </tr>
-                <tr>
-                    <td>Uso de arrendamiento en empresas medianas</td>
-                    <td class="table-highlight">18.7%</td>
-                </tr>
-                <tr>
-                    <td>Uso de arrendamiento en empresas pequenias</td>
-                    <td>7.3%</td>
-                </tr>
-                <tr>
-                    <td>Brecha de financiamiento PyME (IFC)</td>
-                    <td class="table-highlight">~$85,000 MDD</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p>La <strong>subpenetracion del leasing</strong> es una de las oportunidades estructurales mas relevantes. Solo 18.7% de las empresas medianas usan arrendamiento vs. 40-60% en mercados maduros.</p>
-        <div class="page-source">Fuentes: CNBV Portafolio de Informacion — Boletin Estadistico de SOFOMs; ASOFOM — El Sector SOFOM en Mexico; DPL News — Cartera ASOFOM crece 7.2%; CNBV/INEGI — ENAFIN 2024; Banco de Mexico — Reporte de Estabilidad Financiera 1S2024; HR Ratings — Reporte Sectorial Arrendadoras.</div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- LMM COVER / DIVIDER PAGE                                      -->
-    <!-- ============================================================ -->
-    <div class="cover-page page-break" style="background: linear-gradient(135deg, var(--engen-dark) 0%, #00896B 40%, var(--engen-green) 100%); min-height: 100vh;">
-        <div class="cover-logos">
-            <div class="cover-logo-lcg">
-                <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:4px;&quot;>London Consulting Group</span>'">
-            </div>
-            <div class="cover-logo-engen">
-                <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:600;color:white;letter-spacing:1px;&quot;>engen capital</span>'">
-            </div>
-        </div>
-        <div class="cover-content">
-            <div class="cover-label">Seccion 03</div>
-            <h1 class="cover-title">Lower Middle Market</h1>
-            <p class="cover-subtitle">De lo macro a lo micro — del universo de 6.4 millones de establecimientos al mercado target de Engen Capital</p>
-            <div class="cover-divider" style="background: white;"></div>
-            <div class="cover-meta">
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Segmento</div>
-                    <div class="cover-meta-value">Empresas de $50M-$450M MXN en ventas</div>
-                </div>
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Mercado Target</div>
-                    <div class="cover-meta-value">~35,000-40,000 empresas</div>
-                </div>
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Oportunidad</div>
-                    <div class="cover-meta-value">$50,000-$85,000 MDP (GAP)</div>
-                </div>
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Penetracion actual</div>
-                    <div class="cover-meta-value">&lt;0.4% — Oceano azul</div>
-                </div>
-            </div>
-        </div>
-        <div class="cover-footer">
-            <span>&copy; 2026 London Consulting Group. Todos los derechos reservados.</span>
-            <span>Confidencial</span>
-        </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SECTION 3.1: UNIVERSO EMPRESARIAL                             -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-        <div class="section-header">
-            <div class="section-number">Seccion 03</div>
-            <div class="section-title">Segmentacion del LMM (Lower Middle Market) y Sectores de Alto CAPEX</div>
-        </div>
-
-        <h3>3.1 El universo empresarial en Mexico</h3>
-
-        <p>El punto de partida es el universo completo de empresas en Mexico. A partir de este numero grande, aplicamos filtros progresivos hasta llegar al mercado target de Engen.</p>
-
-        <!-- BIG NUMBER CARD -->
-        <div style="background: linear-gradient(135deg, var(--lcg-navy) 0%, var(--lcg-blue) 100%); border-radius: 12px; padding: 32px; text-align: center; margin: 20px 0; color: white;">
-            <div style="font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">Censos Economicos INEGI 2024</div>
-            <div style="font-size: 48px; font-weight: 900; line-height: 1; margin-bottom: 4px;">6,373,169</div>
-            <div style="font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); margin-bottom: 16px;">Establecimientos en Mexico</div>
-            <div style="display: flex; justify-content: center; gap: 40px; margin-top: 16px;">
-                <div>
-                    <div style="font-size: 22px; font-weight: 800;">95.0%</div>
-                    <div style="font-size: 10px; color: rgba(255,255,255,0.5);">Micro (0-10 empleados)</div>
-                </div>
-                <div>
-                    <div style="font-size: 22px; font-weight: 800;">4.0%</div>
-                    <div style="font-size: 10px; color: rgba(255,255,255,0.5);">Pequeñas (11-50)</div>
-                </div>
-                <div style="border: 2px solid var(--engen-green); border-radius: 8px; padding: 4px 12px;">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--engen-green);">0.7%</div>
-                    <div style="font-size: 10px; color: var(--engen-green);">Medianas (51-250)</div>
-                </div>
-                <div>
-                    <div style="font-size: 22px; font-weight: 800;">0.2%</div>
-                    <div style="font-size: 10px; color: rgba(255,255,255,0.5);">Grandes (250+)</div>
-                </div>
-            </div>
-        </div>
-
-        <h3>3.2 De 6.4 millones a 35,000: el embudo de depuracion</h3>
-
-        <p>La cascada de filtros reduce el universo hasta el mercado realmente atendible por una arrendadora especializada en el segmento medio.</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Paso</th>
-                    <th>Concepto</th>
-                    <th># Empresas</th>
-                    <th>Criterio / Fuente</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">0</td>
-                    <td class="table-highlight">Total establecimientos Mexico</td>
-                    <td style="font-size: 16px; font-weight: 800; color: var(--lcg-navy);">6,373,169</td>
-                    <td>Censos Economicos INEGI 2024 — todos los tamaños y sectores</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>(-) Micro y pequeñas</td>
-                    <td style="color: #c62828;">-6,315,000</td>
-                    <td>Empresas con &lt;51 empleados. No son target de arrendamiento empresarial B2B</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">2</td>
-                    <td class="table-highlight">Empresas medianas + grandes</td>
-                    <td style="font-weight: 700;">~58,000</td>
-                    <td>Establecimientos con 51+ empleados (INEGI Censos 2024)</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>(-) Grandes ($450M+ ventas) = segmento Core</td>
-                    <td style="color: var(--lcg-accent);">~15,000</td>
-                    <td>Atendidas por banca corporativa y Engen Core. No son LMM</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">4</td>
-                    <td class="table-highlight">Universo LMM ($50M-$450M ventas)</td>
-                    <td style="font-size: 16px; font-weight: 800;">~100,000+</td>
-                    <td>Estimacion triangulada: Censos INEGI + ENAPROCE + DENUE. Incluye todas las actividades</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>(-) Exclusiones sectoriales</td>
-                    <td style="color: #c62828;">-60,000 a -65,000</td>
-                    <td>Gobierno, hidrocarburos, hospitalidad (salvo cadenas), restaurantes, marketing/publicidad, servicios sin inversion en activos duros</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight" style="background: rgba(0,179,136,0.08);">6</td>
-                    <td class="table-highlight" style="background: rgba(0,179,136,0.08);">Mercado Target Engen LMM</td>
-                    <td style="font-size: 18px; font-weight: 900; color: var(--engen-green); background: rgba(0,179,136,0.08);">~35,000-40,000</td>
-                    <td style="background: rgba(0,179,136,0.08);"><strong>Manufactura, exportadoras, mercado domestico con inversion real en M&amp;E y tecnologia</strong></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout callout-orange">
-            <div class="callout-label">Validado por CEO — 2 marzo 2026</div>
-            <p>El CEO Juan Pablo Loperena confirmo directamente los parametros de este modelo: universo de ~100,000+ unidades economicas, filtro a ~35,000-40,000 tras exclusiones sectoriales. <strong>Los sectores foco son manufactura, exportadores y empresas de mercado domestico con inversion real en maquinaria</strong>. El Cipriano Santisteban (Consejero, Linzor Capital) estima un rango similar: ~180,000 unidades economicas activas → ~100,000 relevantes → ~60,000 con CAPEX → ~30,000-40,000 target.</p>
-        </div>
-
-        <!-- PLACEHOLDERS FOR D&B AND MARKETING -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
-            <div style="background: var(--bg-light); border: 2px dashed var(--border); border-radius: 8px; padding: 18px; text-align: center;">
-                <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">Fuente pendiente</div>
-                <div style="font-size: 15px; font-weight: 700; color: var(--lcg-navy);">D&amp;B Hoovers</div>
-                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Base de datos externa — se integrara para validar y enriquecer el universo de empresas target con datos firmograficos</div>
-            </div>
-            <div style="background: var(--bg-light); border: 2px dashed var(--border); border-radius: 8px; padding: 18px; text-align: center;">
-                <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">Fuente pendiente</div>
-                <div style="font-size: 15px; font-weight: 700; color: var(--engen-green);">Base Interna Marketing Engen</div>
-                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">CRM + Da Vinci (5,000 prospectos con datos SAT) — se integrara para cruzar con Censos y D&amp;B</div>
-            </div>
-        </div>
-
-        <div class="page-source">Fuentes: INEGI — Censos Economicos 2024; INEGI — DENUE; CNBV/INEGI — ENAPROCE 2023; Entrevista CEO Juan Pablo Loperena (2 mar 2026); Entrevista Cipriano Santisteban (Consejero, Linzor Capital) (4 mar 2026).</div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SECTION 3.3: PERFIL + SECTORES                                -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-
-        <h3>3.3 Perfil de la empresa mediana (LMM)</h3>
+        <p>Este estudio integra <strong>22 fuentes</strong> de informacion clasificadas en cinco categorias. Cada fuente se detalla con su descripcion institucional y la contribucion especifica al dimensionamiento del mercado.</p>
 
         <div class="kpi-banner">
             <div class="kpi-item">
-                <div class="kpi-value">0.7%</div>
-                <div class="kpi-label">De establecimientos</div>
+                <div class="kpi-value">22</div>
+                <div class="kpi-label">Fuentes totales</div>
             </div>
             <div class="kpi-item">
-                <div class="kpi-value">14.4%</div>
-                <div class="kpi-label">Del empleo total</div>
+                <div class="kpi-value">5</div>
+                <div class="kpi-label">Categorias</div>
             </div>
             <div class="kpi-item">
-                <div class="kpi-value">21.8%</div>
-                <div class="kpi-label">De los ingresos totales</div>
-            </div>
-            <div class="kpi-item">
-                <div class="kpi-value">28%</div>
-                <div class="kpi-label">Financiamiento → M&amp;E</div>
+                <div class="kpi-value">2</div>
+                <div class="kpi-label">Pendientes de integrar</div>
             </div>
         </div>
 
-        <div class="callout-orange callout">
-            <div class="callout-label">El "Missing Middle"</div>
-            <p>Las empresas medianas son pocas pero desproporcionadamente grandes en impacto economico. Son demasiado grandes para fintechs de microcredito, demasiado pequenias para la banca corporativa. <strong>El 28% de su financiamiento se destina a compra de maquinaria y equipo</strong> — el producto core de Engen.</p>
+        <!-- CATEGORIA 1: FUENTES OFICIALES -->
+        <h3>Fuentes Oficiales del Gobierno de Mexico</h3>
+        <p>Datos producidos por organismos publicos con cobertura censal o muestral a nivel nacional. Son la columna vertebral del estudio.</p>
+
+        <div class="source-detail official">
+            <div class="source-detail-name">1. INEGI &mdash; Censos Economicos 2024</div>
+            <div class="source-detail-what">Instituto Nacional de Estadistica y Geografia. Los Censos Economicos son el levantamiento quinquenal mas completo de la actividad economica en Mexico, con cobertura de 100% de los establecimientos del pais.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Numero total de establecimientos por tamano (personal ocupado e ingresos), sector SCIAN, entidad federativa, activos fijos netos, formacion bruta de capital fijo. Es la fuente primaria para el embudo macro-a-micro.</div>
+            <span class="source-detail-type type-oficial">Oficial &mdash; Censal</span>
         </div>
 
-        <h3>3.4 Los 7 sectores mas atractivos</h3>
+        <div class="source-detail official">
+            <div class="source-detail-name">2. INEGI &mdash; DENUE (Directorio Estadistico Nacional de Unidades Economicas)</div>
+            <div class="source-detail-what">Directorio georeferenciado y actualizado trimestralmente de todas las unidades economicas del pais. Cubre desde micronegocios hasta grandes corporativos.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Directorio vivo para validar numero de empresas por ubicacion geografica exacta, rango de empleados y actividad economica SCIAN. Permite construir mapas de calor por estado y corredor industrial.</div>
+            <span class="source-detail-type type-oficial">Oficial &mdash; Directorio</span>
+        </div>
+
+        <div class="source-detail official">
+            <div class="source-detail-name">3. INEGI &mdash; ENAPROCE 2023 (Encuesta Nacional sobre Productividad y Competitividad de las MiPyMEs)</div>
+            <div class="source-detail-what">Encuesta bienal que mide productividad, acceso a financiamiento, capacitacion y adopcion de tecnologia de micro, pequenas y medianas empresas en Mexico.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Porcentaje de empresas medianas que usan financiamiento formal, destino del credito (maquinaria y equipo vs. capital de trabajo), barreras de acceso al financiamiento, tasa de rechazo.</div>
+            <span class="source-detail-type type-oficial">Oficial &mdash; Muestral</span>
+        </div>
+
+        <div class="source-detail official">
+            <div class="source-detail-name">4. INEGI &mdash; ENAFIN 2024 (Encuesta Nacional de Financiamiento de las Empresas)</div>
+            <div class="source-detail-what">Encuesta sobre comportamiento de financiamiento empresarial en Mexico, elaborada conjuntamente con la CNBV. Cubre empresas de todos los tamanos con enfoque en acceso y uso de productos financieros.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Tasa de uso de arrendamiento financiero y puro, penetracion de credito bancario vs. no bancario, razones por las que las empresas no solicitan credito, preferencia por tipo de instrumento financiero.</div>
+            <span class="source-detail-type type-oficial">Oficial &mdash; Muestral</span>
+        </div>
+
+        <div class="source-detail official">
+            <div class="source-detail-name">5. CNBV (Comision Nacional Bancaria y de Valores)</div>
+            <div class="source-detail-what">Organo desconcentrado de la SHCP que supervisa y regula el sistema financiero mexicano, incluyendo bancos, SOFOMs, casas de bolsa y otras entidades.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Datos del sector SOFOM: numero de SOFOMs reguladas y no reguladas activas, cartera total del sector, distribucion de credito por tipo (arrendamiento, factoraje, credito simple). Portafolio de informacion publica y reportes regulatorios.</div>
+            <span class="source-detail-type type-oficial">Oficial &mdash; Regulatorio</span>
+        </div>
+
+        <div class="source-detail official">
+            <div class="source-detail-name">6. Banco de Mexico</div>
+            <div class="source-detail-what">Banco central autonomo de Mexico. Ademas de la politica monetaria, publica indicadores de estabilidad financiera y condiciones de credito empresarial.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Reporte de Estabilidad Financiera: condiciones de credito, tasas de referencia, indicadores de riesgo del sector SOFOM/arrendadoras. Encuesta de Evaluacion Coyuntural del Mercado Crediticio (percepcion de las empresas).</div>
+            <span class="source-detail-type type-oficial">Oficial &mdash; Banco Central</span>
+        </div>
+
+        <div class="source-detail official">
+            <div class="source-detail-name">7. Secretaria de Economia (SE)</div>
+            <div class="source-detail-what">Dependencia federal responsable de la politica economica, comercio exterior, inversion extranjera directa y fomento industrial.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Datos de inversion extranjera directa (IED) por estado y sector, flujos de nearshoring, registro de empresas exportadoras, programas IMMEX (industria manufacturera de exportacion). Identifica corredores con alta inversion en activos.</div>
+            <span class="source-detail-type type-oficial">Oficial &mdash; Gobierno Federal</span>
+        </div>
+
+        <div class="page-source">
+            Fuentes oficiales del Gobierno de Mexico: INEGI (inegi.org.mx), CNBV (cnbv.gob.mx), Banco de Mexico (banxico.org.mx), Secretaria de Economia (gob.mx/se).
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 02 cont.: FUENTES GREMIALES                          -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Estudio de Mercado &mdash; Engen Capital</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <h3>Fuentes Gremiales e Industriales</h3>
+        <p>Asociaciones y camaras que agrupan empresas de sectores especificos. Aportan datos de mercado, directorios de afiliados y tendencias sectoriales.</p>
+
+        <div class="source-detail industry">
+            <div class="source-detail-name">8. ASOFOM (Asociacion de Sociedades Financieras de Objeto Multiple)</div>
+            <div class="source-detail-what">Gremio que agrupa a las principales SOFOMs en Mexico. Representa los intereses del sector de financiamiento no bancario y promueve mejores practicas.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Tamano del sector SOFOM, cartera total de afiliados, tendencias de colocacion, reporte anual del sector. Datos de la industria donde Engen Capital opera directamente.</div>
+            <span class="source-detail-type type-gremial">Gremial &mdash; Financiera</span>
+        </div>
+
+        <div class="source-detail industry">
+            <div class="source-detail-name">9. AMFE (Asociacion Mexicana de Factoraje y Financiamiento Empresarial)</div>
+            <div class="source-detail-what">Gremio de empresas de factoraje y financiamiento empresarial en Mexico. Complementa la vision del sector de financiamiento no bancario.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Datos de factoraje financiero, volumen de operaciones, numero de empresas atendidas. Complementa la vision de productos de financiamiento no bancario relevantes para Engen (factoraje CxC y CxP).</div>
+            <span class="source-detail-type type-gremial">Gremial &mdash; Financiera</span>
+        </div>
+
+        <div class="source-detail industry">
+            <div class="source-detail-name">10. AMPIP (Asociacion Mexicana de Parques Industriales Privados)</div>
+            <div class="source-detail-what">Asociacion que agrupa a mas de 400 parques industriales privados en Mexico, con presencia en 24 estados. Es el referente del ecosistema industrial organizado del pais.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Numero de parques industriales por estado, tasa de ocupacion, inversion asociada al nearshoring. Identifica corredores industriales con alta concentracion de empresas que invierten en CAPEX (clientes naturales de asset-based lending).</div>
+            <span class="source-detail-type type-gremial">Gremial &mdash; Industrial</span>
+        </div>
+
+        <div class="source-detail industry">
+            <div class="source-detail-name">11. CANACINTRA (Camara Nacional de la Industria de Transformacion)</div>
+            <div class="source-detail-what">Camara empresarial que agrupa a mas de 50,000 empresas manufactureras en Mexico, desde PyMEs hasta grandes corporativos, en 83 ramas industriales.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Numero de empresas manufactureras por subsector SCIAN, datos de inversion en maquinaria y equipo, directorio de afiliados. La manufactura es el sector con mayor intensidad de CAPEX y demanda natural de arrendamiento.</div>
+            <span class="source-detail-type type-gremial">Gremial &mdash; Manufactura</span>
+        </div>
+
+        <div class="source-detail industry">
+            <div class="source-detail-name">12. ANPACT (Asociacion Nacional de Productores de Autobuses, Camiones y Tractocamiones)</div>
+            <div class="source-detail-what">Gremio de los productores de vehiculos pesados en Mexico (Daimler, PACCAR, Navistar, Scania, Volvo, entre otros). Publica estadisticas mensuales de ventas y parque vehicular.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Ventas mensuales de vehiculos pesados (nuevos y usados), tamano del parque vehicular activo, edad promedio de flota. Es un proxy directo de la demanda de arrendamiento en el sector de autotransporte, uno de los mercados mas grandes para Engen.</div>
+            <span class="source-detail-type type-gremial">Gremial &mdash; Autotransporte</span>
+        </div>
+
+        <div class="source-detail industry">
+            <div class="source-detail-name">13. SIAP (Servicio de Informacion Agroalimentaria y Pesquera)</div>
+            <div class="source-detail-what">Sistema de informacion de la Secretaria de Agricultura (SADER). Publica datos de produccion agricola, ganadera, pesquera y agroindustrial a nivel nacional y estatal.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Datos de produccion agroindustrial, numero de unidades de produccion, nivel de mecanizacion agricola. Sirve para dimensionar el mercado de arrendamiento de maquinaria agricola y equipo agroindustrial.</div>
+            <span class="source-detail-type type-gremial">Oficial &mdash; Sectorial</span>
+        </div>
+
+        <div class="page-source">
+            Fuentes gremiales: ASOFOM (asofom.mx), AMFE (amfe.com.mx), AMPIP (ampip.org.mx), CANACINTRA (canacintra.org.mx), ANPACT (anpact.com.mx), SIAP/SADER (gob.mx/siap).
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 02 cont.: MULTILATERALES + PRIVADAS + INTERNAS        -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Estudio de Mercado &mdash; Engen Capital</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <h3>Fuentes Multilaterales</h3>
+        <p>Organismos internacionales que estudian brechas de financiamiento y acceso a credito en economias emergentes.</p>
+
+        <div class="source-detail multilateral">
+            <div class="source-detail-name">14. IFC / Banco Mundial (Corporacion Financiera Internacional)</div>
+            <div class="source-detail-what">Brazo de inversion privada del Grupo Banco Mundial. La IFC es el mayor inversor multilateral en el sector privado de paises en desarrollo. Publica estudios sobre brechas de financiamiento para PyMEs.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Estudio de brecha de financiamiento PyME en Mexico y America Latina: gap cuantificado entre la demanda de credito formal y la oferta disponible. Dato clave para dimensionar el "oceano azul" del mercado no atendido.</div>
+            <span class="source-detail-type type-multilateral">Multilateral</span>
+        </div>
+
+        <h3>Fuentes Privadas y Academicas</h3>
+        <p>Firmas de investigacion, calificadoras de valores y consultoras que publican reportes sectoriales y whitepapers relevantes para el estudio.</p>
+
+        <div class="source-detail private">
+            <div class="source-detail-name">15. PCR Verum / HR Ratings / Moody's Local</div>
+            <div class="source-detail-what">Calificadoras de valores autorizadas por la CNBV que operan en Mexico. Evaluan la calidad crediticia de emisores de deuda, incluyendo SOFOMs y arrendadoras.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Reportes sectoriales de SOFOMs y arrendadoras: metricas de calidad de cartera, estructura de fondeo, concentracion de clientes, tendencias de originacion. Permite entender el posicionamiento relativo de los competidores de Engen.</div>
+            <span class="source-detail-type type-privada">Privada &mdash; Calificadoras</span>
+        </div>
+
+        <div class="source-detail private">
+            <div class="source-detail-name">16. IDC Mexico / Gartner</div>
+            <div class="source-detail-what">Firmas globales de investigacion de mercado especializadas en tecnologia de la informacion y telecomunicaciones. IDC tiene presencia directa en Mexico con analistas locales.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Datos de inversion en TI en Mexico, crecimiento de data centers, infraestructura tecnologica. Sirve para dimensionar la demanda de leasing de equipo tecnologico (servidores, networking, computo empresarial).</div>
+            <span class="source-detail-type type-privada">Privada &mdash; Research</span>
+        </div>
+
+        <div class="source-detail private">
+            <div class="source-detail-name">17. BMV (Bolsa Mexicana de Valores)</div>
+            <div class="source-detail-what">Mercado de valores organizado en Mexico. Las SOFOMs y arrendadoras que emiten deuda publica deben registrar prospectos de colocacion con informacion financiera detallada.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Prospectos de colocacion de deuda de SOFOMs y arrendadoras: datos publicos de cartera, composicion de clientes, estructura de fondeo y metricas operativas de competidores directos de Engen.</div>
+            <span class="source-detail-type type-privada">Privada &mdash; Mercado de Valores</span>
+        </div>
+
+        <div class="source-detail private">
+            <div class="source-detail-name">18. McKinsey &amp; Company</div>
+            <div class="source-detail-what">Firma global de consultoria estrategica. Publica whitepapers y reportes sobre tendencias de negocio en America Latina, incluyendo digitalizacion de servicios financieros y financiamiento alternativo.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Whitepapers sobre digitalizacion PyME en LatAm, impacto del nearshoring en cadenas de suministro, crecimiento de financiamiento alternativo. Contexto estrategico para el posicionamiento de Engen.</div>
+            <span class="source-detail-type type-privada">Privada &mdash; Consultoria</span>
+        </div>
+
+        <div class="source-detail private">
+            <div class="source-detail-name">19. Deloitte Mexico</div>
+            <div class="source-detail-what">Firma de auditoria, consultoria e impuestos con amplia presencia en Mexico. Publica reportes periodicos sobre entorno de negocios, tendencias de inversion y panorama fiscal.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Reportes sobre entorno de negocios en Mexico, tendencias de inversion empresarial, panorama fiscal y regulatorio que afecta al sector de financiamiento no bancario.</div>
+            <span class="source-detail-type type-privada">Privada &mdash; Consultoria</span>
+        </div>
+
+        <div class="source-detail private">
+            <div class="source-detail-name">20. PwC Mexico</div>
+            <div class="source-detail-what">Firma de auditoria y consultoria. Publica la Encuesta CEO Mexico y reportes sectoriales con perspectivas economicas y de inversion por industria.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Encuesta CEO Mexico: perspectivas de inversion, prioridades de gasto de capital, confianza empresarial. Reportes sectoriales (manufactura, salud, tecnologia) con datos de crecimiento e inversion.</div>
+            <span class="source-detail-type type-privada">Privada &mdash; Consultoria</span>
+        </div>
+
+        <div class="page-source">
+            Fuentes: IFC (ifc.org), PCR Verum, HR Ratings, Moody's Local, IDC Mexico, Gartner, BMV (bmv.com.mx), McKinsey, Deloitte, PwC.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 02 cont.: FUENTES PENDIENTES DE INTEGRAR              -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-header-logos">
+            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+            <span class="header-divider">Estudio de Mercado &mdash; Engen Capital</span>
+            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+        </div>
+
+        <h3>Fuentes Pendientes de Integrar</h3>
+        <p>Estas dos fuentes se incorporaran en fases posteriores del estudio. Aportaran validacion bottom-up del universo de empresas identificado con las fuentes top-down.</p>
+
+        <div class="source-detail pending">
+            <div class="source-detail-name">21. D&amp;B Hoovers (Dun &amp; Bradstreet)</div>
+            <div class="source-detail-what">Base de datos global de inteligencia empresarial de Dun &amp; Bradstreet. Contiene perfiles firmograficos de millones de empresas con datos financieros estimados, clasificacion industrial y ubicacion.</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Perfiles firmograficos: numero de empresas por industria, tamano, ubicacion e ingresos estimados. Permite validar bottom-up el universo calculado con Censos Economicos y construir listas de prospectos por sector y geografia.</div>
+            <span class="source-detail-type type-interna">Pendiente de integrar</span>
+        </div>
+
+        <div class="source-detail pending">
+            <div class="source-detail-name">22. Base Interna de Marketing &mdash; Engen Capital</div>
+            <div class="source-detail-what">CRM de Engen Capital + plataforma Da Vinci, con aproximadamente 5,000 prospectos que incluyen datos del SAT (ingresos declarados, actividad economica, ubicacion fiscal).</div>
+            <div class="source-detail-contributes"><strong>Aporta:</strong> Cruce con fuentes externas para validar que porcentaje del universo ya tiene Engen identificado, detectar gaps de cobertura por sector y geografia, y calibrar la tasa de conversion prospecto-a-cliente actual.</div>
+            <span class="source-detail-type type-interna">Pendiente de integrar</span>
+        </div>
+
+        <div class="callout callout-orange" style="margin-top: 24px;">
+            <div class="callout-label">Nota sobre las fuentes pendientes</div>
+            <p>La integracion de D&amp;B Hoovers y la base interna de Marketing permitira pasar de un dimensionamiento estadistico (top-down) a una lista accionable de empresas target (bottom-up). Este cruce es el paso que convierte el estudio de mercado en una herramienta comercial operativa.</p>
+        </div>
+
+        <!-- TABLA RESUMEN DE TODAS LAS FUENTES -->
+        <h3>Resumen de Fuentes</h3>
 
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Sector</th>
-                    <th>Empresas medianas (est.)</th>
-                    <th>CAPEX anual (MDP)</th>
-                    <th>Penetracion leasing</th>
-                    <th>Driver</th>
+                    <th style="width: 5%;">#</th>
+                    <th style="width: 30%;">Fuente</th>
+                    <th style="width: 15%;">Tipo</th>
+                    <th>Contribucion principal al estudio</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="table-highlight">1</td>
-                    <td class="table-highlight">Manufactura</td>
-                    <td>6,500-7,500</td>
-                    <td>650,000-750,000</td>
-                    <td>20-30%</td>
-                    <td>Nearshoring</td>
+                    <td class="table-highlight">Censos Economicos 2024</td>
+                    <td><span class="tag tag-blue">Oficial</span></td>
+                    <td># establecimientos por tamano, sector, estado, activos fijos</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">2</td>
-                    <td class="table-highlight">Autotransporte</td>
-                    <td>4,000-6,000</td>
-                    <td>80,000-100,000</td>
-                    <td>35-45%</td>
-                    <td>Renovacion flota</td>
+                    <td class="table-highlight">DENUE</td>
+                    <td><span class="tag tag-blue">Oficial</span></td>
+                    <td>Directorio georeferenciado de unidades economicas</td>
                 </tr>
                 <tr>
                     <td class="table-highlight">3</td>
-                    <td class="table-highlight">Construccion</td>
-                    <td>1,800-2,500</td>
-                    <td>120,000-150,000</td>
-                    <td>25-35%</td>
-                    <td>Obra industrial</td>
+                    <td class="table-highlight">ENAPROCE 2023</td>
+                    <td><span class="tag tag-blue">Oficial</span></td>
+                    <td>% empresas con financiamiento, destino del credito</td>
                 </tr>
                 <tr>
-                    <td>4</td>
-                    <td>Logistica</td>
-                    <td>1,500-2,500</td>
-                    <td>40,000-60,000</td>
-                    <td>20-25%</td>
-                    <td>E-commerce + nearshoring</td>
+                    <td class="table-highlight">4</td>
+                    <td class="table-highlight">ENAFIN 2024</td>
+                    <td><span class="tag tag-blue">Oficial</span></td>
+                    <td>Uso de arrendamiento, credito bancario vs. no bancario</td>
                 </tr>
                 <tr>
-                    <td>5</td>
-                    <td>Agroindustria</td>
-                    <td>3,000-5,000</td>
-                    <td>35,000-45,000</td>
-                    <td>15-25%</td>
-                    <td>Exportacion</td>
+                    <td class="table-highlight">5</td>
+                    <td class="table-highlight">CNBV</td>
+                    <td><span class="tag tag-blue">Oficial</span></td>
+                    <td>Datos regulatorios SOFOMs, cartera del sector</td>
                 </tr>
                 <tr>
-                    <td>6</td>
-                    <td>Salud privada</td>
-                    <td>800-1,200</td>
-                    <td>50,000-65,000</td>
-                    <td>15-20%</td>
-                    <td>Demanda + tecnologia</td>
+                    <td class="table-highlight">6</td>
+                    <td class="table-highlight">Banco de Mexico</td>
+                    <td><span class="tag tag-blue">Oficial</span></td>
+                    <td>Condiciones de credito, tasas, estabilidad financiera</td>
                 </tr>
                 <tr>
-                    <td>7</td>
-                    <td>Tecnologia / Data Centers</td>
-                    <td>2,000-3,000</td>
-                    <td>120,000-150,000</td>
-                    <td>15-20%</td>
-                    <td>Digitalizacion</td>
+                    <td class="table-highlight">7</td>
+                    <td class="table-highlight">Secretaria de Economia</td>
+                    <td><span class="tag tag-blue">Oficial</span></td>
+                    <td>IED, nearshoring, IMMEX, empresas exportadoras</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">8</td>
+                    <td class="table-highlight">ASOFOM</td>
+                    <td><span class="tag tag-green">Gremial</span></td>
+                    <td>Tamano y tendencias del sector SOFOM</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">9</td>
+                    <td class="table-highlight">AMFE</td>
+                    <td><span class="tag tag-green">Gremial</span></td>
+                    <td>Datos de factoraje, financiamiento no bancario</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">10</td>
+                    <td class="table-highlight">AMPIP</td>
+                    <td><span class="tag tag-green">Gremial</span></td>
+                    <td>Parques industriales, ocupacion, nearshoring</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">11</td>
+                    <td class="table-highlight">CANACINTRA</td>
+                    <td><span class="tag tag-green">Gremial</span></td>
+                    <td># empresas manufactureras, inversion en M&amp;E</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">12</td>
+                    <td class="table-highlight">ANPACT</td>
+                    <td><span class="tag tag-green">Gremial</span></td>
+                    <td>Ventas vehiculos pesados, parque vehicular, edad de flota</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">13</td>
+                    <td class="table-highlight">SIAP / SADER</td>
+                    <td><span class="tag tag-green">Sectorial</span></td>
+                    <td>Produccion agroindustrial, mecanizacion</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">14</td>
+                    <td class="table-highlight">IFC / Banco Mundial</td>
+                    <td><span class="tag tag-media">Multilateral</span></td>
+                    <td>Brecha de financiamiento PyME en Mexico/LatAm</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">15</td>
+                    <td class="table-highlight">PCR Verum / HR / Moody's</td>
+                    <td><span class="tag tag-media-alta">Privada</span></td>
+                    <td>Reportes sectoriales SOFOMs, calidad de cartera</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">16</td>
+                    <td class="table-highlight">IDC Mexico / Gartner</td>
+                    <td><span class="tag tag-media-alta">Privada</span></td>
+                    <td>Inversion TI, data centers, infraestructura tech</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">17</td>
+                    <td class="table-highlight">BMV</td>
+                    <td><span class="tag tag-media-alta">Privada</span></td>
+                    <td>Prospectos de deuda de competidores</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">18</td>
+                    <td class="table-highlight">McKinsey &amp; Company</td>
+                    <td><span class="tag tag-media-alta">Privada</span></td>
+                    <td>Whitepapers: digitalizacion PyME, nearshoring</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">19</td>
+                    <td class="table-highlight">Deloitte Mexico</td>
+                    <td><span class="tag tag-media-alta">Privada</span></td>
+                    <td>Entorno de negocios, tendencias de inversion</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight">20</td>
+                    <td class="table-highlight">PwC Mexico</td>
+                    <td><span class="tag tag-media-alta">Privada</span></td>
+                    <td>Encuesta CEO, reportes sectoriales</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td class="table-highlight" style="color: var(--text-muted);">21</td>
+                    <td style="color: var(--text-muted); font-style: italic;">D&amp;B Hoovers <em>(pendiente)</em></td>
+                    <td><span class="tag" style="background: #f0f0f0; color: #999;">Pendiente</span></td>
+                    <td style="color: var(--text-muted);">Perfiles firmograficos, validacion bottom-up</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td class="table-highlight" style="color: var(--text-muted);">22</td>
+                    <td style="color: var(--text-muted); font-style: italic;">Base Marketing Engen <em>(pendiente)</em></td>
+                    <td><span class="tag" style="background: #f0f0f0; color: #999;">Pendiente</span></td>
+                    <td style="color: var(--text-muted);">CRM + Da Vinci: cobertura actual vs. universo</td>
                 </tr>
             </tbody>
         </table>
 
-        <h3>3.5 Priorizacion por Tier</h3>
-
-        <div class="tier-section">
-            <div class="tier-header">
-                <span class="tier-badge tier-1">TIER 1</span>
-                <span class="tier-title">Maxima Prioridad</span>
-            </div>
-            <div class="tier-cards">
-                <div class="tier-card">
-                    <div class="tier-card-name">Manufactura</div>
-                    <div class="tier-card-desc">Mayor masa critica. Beneficio directo de nearshoring (proveedores T2/T3). Tickets de $2-20 MDP en el sweet spot del arrendamiento.</div>
-                </div>
-                <div class="tier-card">
-                    <div class="tier-card-name">Autotransporte de Carga</div>
-                    <div class="tier-card-desc">Sector conocido por Engen (TIP Mexico). Parque vehicular con edad promedio de 17 anios = renovacion obligada.</div>
-                </div>
-            </div>
+        <div class="page-source">
+            Tabla resumen de las 22 fuentes utilizadas en el estudio. Fuentes 21 y 22 pendientes de integracion en fases posteriores.
         </div>
-
-        <div class="tier-section">
-            <div class="tier-header">
-                <span class="tier-badge tier-2">TIER 2</span>
-                <span class="tier-title">Alta Prioridad</span>
-            </div>
-            <div class="tier-cards">
-                <div class="tier-card">
-                    <div class="tier-card-name">Construccion Industrial</div>
-                    <div class="tier-card-desc">Boom por nearshoring. Arrendamiento por proyecto. Tickets altos.</div>
-                </div>
-                <div class="tier-card">
-                    <div class="tier-card-name">Logistica y Almacenamiento</div>
-                    <div class="tier-card-desc">Demanda derivada de nearshoring y e-commerce. Automatizacion de almacenes.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tier-section">
-            <div class="tier-header">
-                <span class="tier-badge tier-3">TIER 3</span>
-                <span class="tier-title">Oportunidad de Nicho</span>
-            </div>
-            <div class="tier-cards">
-                <div class="tier-card">
-                    <div class="tier-card-name">Salud Privada</div>
-                    <div class="tier-card-desc">Tickets altos en imagenologia. Excelente calidad crediticia.</div>
-                </div>
-                <div class="tier-card">
-                    <div class="tier-card-name">Tecnologia / Data Centers</div>
-                    <div class="tier-card-desc">Obsolescencia rapida hace el arrendamiento puro ideal.</div>
-                </div>
-            </div>
-        </div>
-
-        <h3>3.6 Mercado Total Direccionable (TAM)</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Concepto</th>
-                    <th>Estimacion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>CAPEX anual total (7 sectores)</td>
-                    <td>~$1.1-$1.3 billones MXN</td>
-                </tr>
-                <tr>
-                    <td>CAPEX de empresas medianas (~15%)</td>
-                    <td>~$165,000-$195,000 MDP</td>
-                </tr>
-                <tr>
-                    <td>Porcion financiable via arrendamiento (60-70%)</td>
-                    <td>~$100,000-$136,000 MDP</td>
-                </tr>
-                <tr>
-                    <td>Mercado servido actual</td>
-                    <td>~$35,000-$50,000 MDP</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Oportunidad no atendida (GAP)</td>
-                    <td class="table-highlight" style="color: var(--engen-green); font-size: 16px;">~$50,000-$85,000 MDP</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>3.7 Oceano Azul: Penetracion y Espacio de Crecimiento</h3>
-
-        <p>Con el mercado target definido (35,000-40,000 empresas) y el TAM cuantificado, la pregunta es: <strong>¿cuanto del oceano esta siendo atendido?</strong></p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Concepto</th>
-                    <th>Valor</th>
-                    <th>Implicacion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">Mercado Target LMM</td>
-                    <td style="font-weight: 700;">~35,000-40,000 empresas</td>
-                    <td>Post-filtros sectoriales (ver seccion 3.2)</td>
-                </tr>
-                <tr>
-                    <td>Engen clientes nuevos/año</td>
-                    <td>~130</td>
-                    <td>125-140 anuales (2025: ~133). Base total LMM: ~397 clientes</td>
-                </tr>
-                <tr>
-                    <td>Competidores en mismo segmento</td>
-                    <td>~200-300 adicionales</td>
-                    <td>Otras arrendadoras/SOFOMs colocando ~$3,500-4,000M en LMM</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Tasa de penetracion Engen</td>
-                    <td class="table-highlight" style="color: var(--lcg-accent); font-size: 16px;">&lt;0.4%</td>
-                    <td><strong>Oceano azul con penetracion minima</strong></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout-green callout">
-            <div class="callout-label">Insight clave — Oceano Azul</div>
-            <p>Con ~35,000-40,000 empresas target y una conversion de ~130 clientes nuevos/año (base total LMM: ~397 clientes), Engen penetra <strong>menos del 0.4% del mercado anualmente</strong>. Incluso sumando competidores (~400-430 empresas convertidas/año en total), <strong>el 99% del oceano esta sin explotar</strong>. El reto no es el tamaño del mercado — es la capacidad de llegar a el.</p>
-        </div>
-
-        <h3>3.8 Ticket Promedio por Tamaño de Originacion</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Segmento</th>
-                    <th>Rango de ventas</th>
-                    <th>Ticket promedio por operacion</th>
-                    <th>Inversion anual tipica (M&amp;E + tech)</th>
-                    <th>Rentabilidad promedio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">Core (empresas grandes)</td>
-                    <td>>$450M MXN</td>
-                    <td>$1M-$5M+ USD</td>
-                    <td>$25M-$200M+ MXN</td>
-                    <td>~17%</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight" style="color: var(--engen-green);">LMM (Lower Middle Market)</td>
-                    <td>$50M-$450M MXN</td>
-                    <td>$8.9M MXN actual (target: $10M)</td>
-                    <td>~$5M MXN (empresa de $200M)</td>
-                    <td style="color: var(--engen-green); font-weight: 700;">~25% (1.5x vs. Core)</td>
-                </tr>
-                <tr>
-                    <td>Factoraje</td>
-                    <td>Ambos segmentos</td>
-                    <td>Variable (lineas de factoraje)</td>
-                    <td>N/A — capital de trabajo</td>
-                    <td>Alto margen, corto plazo</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout-orange callout">
-            <div class="callout-label">Volumen total del segmento LMM</div>
-            <p>Engen origina <strong>~$1,700M MXN/año</strong> en LMM. Competidores en el mismo espacio colocan otros <strong>~$3,500-4,000M</strong>. El mercado servido total es de <strong>~$5,200-5,700M MXN</strong> — una fraccion del TAM financiable de $100,000-$136,000 MDP identificado en la seccion 3.6.</p>
-        </div>
-
-        <div class="callout callout-orange">
-            <div class="callout-label">Confirmado — Comite de Riesgos Engen Capital, enero 2026</div>
-            <p>El portafolio total de Engen asciende a <strong>$15,432M MXN</strong>. El segmento LMM representa <strong>$2,300M (14.9% del portafolio)</strong> distribuido en <strong>405 grupos economicos</strong>. El ticket promedio de fondeo LMM paso de $6.72M (2024) a $7.78M (Comite Riesgos ene 2026) y actualmente se ubica en <strong>$8.9M MXN</strong> (target: $10M). Operaciones dictaminadas LMM: 365 en 2025 vs. 426 en 2024 (-14% YoY), lo que indica un proceso de seleccion mas riguroso con tickets mas altos. El portafolio LMM representa apenas el <strong>2.7%-4.6%</strong> del GAP de mercado de $50,000-$85,000 MDP — confirmando el amplio espacio de crecimiento identificado en este estudio.</p>
-        </div>
-        <div class="page-source">Fuentes: INEGI — Censos Economicos 2024; CNBV/INEGI — ENAPROCE; IFC — Brecha de financiamiento PyME; Modern Machine Shop Mexico — Inversion en maquinaria 2023-2025; Entrevista CEO Juan Pablo Loperena (2 mar 2026); Presentacion AEM Comercial feb 2026; Comite de Riesgos Engen Capital (ene 2026).</div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- SECTION 4: LANDSCAPE COMPETITIVO                              -->
+    <!-- FOOTER                                                        -->
     <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-        <div class="section-header">
-            <div class="section-number">Seccion 04</div>
-            <div class="section-title">Landscape Competitivo</div>
-        </div>
-
-        <h3>4.1 Reconfiguracion post-Unifin</h3>
-
-        <p>La caida de <strong>Unifin</strong> (suspension de pagos agosto 2022, ~$80,000 MDP en pasivos), junto con las quiebras de <strong>Credito Real</strong> y <strong>Alphacredit</strong>, eliminaron ~$120,000 MDP de cartera del sector no bancario. Este fue el evento mas transformador de la decada.</p>
-
-        <div class="callout">
-            <div class="callout-label">Consecuencias</div>
-            <p>Inversionistas institucionales mas selectivos. SOFOMs con buena gobernanza capturaron cartera. Mayor prima de confianza para jugadores con calificaciones solidas. <strong>Engen Capital fue una de las principales beneficiarias de esta redistribucion.</strong></p>
-        </div>
-
-        <h3>4.2 Principales jugadores</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Jugador</th>
-                    <th>Tipo</th>
-                    <th>Segmento</th>
-                    <th>Diferenciador</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">Engen Capital</td>
-                    <td>SOFOM (indep.)</td>
-                    <td>Mid-market, leasing + factoraje</td>
-                    <td>Escala GE Capital + agilidad + tecnologia</td>
-                </tr>
-                <tr>
-                    <td>Value Arrendadora</td>
-                    <td>SOFOM E.R.</td>
-                    <td>Arrendamiento corporativo/mid</td>
-                    <td>Cartera $6,447 MDP, CAGR 19.7%</td>
-                </tr>
-                <tr>
-                    <td>Arrendadora Afirme</td>
-                    <td>SOFOM E.R.</td>
-                    <td>Arrendamiento</td>
-                    <td>Respaldo bancario</td>
-                </tr>
-                <tr>
-                    <td>Start Banregio</td>
-                    <td>SOFOM E.R.</td>
-                    <td>Credito PyME</td>
-                    <td>Fabrica de credito (referencia LCG)</td>
-                </tr>
-                <tr>
-                    <td>Konfio</td>
-                    <td>Fintech/ITF</td>
-                    <td>Credito PyME digital</td>
-                    <td>100% digital, tickets pequenios</td>
-                </tr>
-                <tr>
-                    <td>Covalto (ex-Credijusto)</td>
-                    <td>Banco digital</td>
-                    <td>Credito empresarial</td>
-                    <td>Licencia bancaria, digital</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>4.3 Sweet spot competitivo de Engen</h3>
-
-        <div class="callout-green callout">
-            <div class="callout-label">Posicion unica</div>
-            <p>Los <strong>bancos</strong> desatienden al mid-market con productos de arrendamiento. Las <strong>fintechs</strong> no alcanzan tickets de $5-50 MDP. Las <strong>arrendadoras pequenias</strong> no tienen escala ni calificacion crediticia. Los <strong>jugadores caidos</strong> dejaron un vacio. Engen opera en el centro exacto de esta oportunidad.</p>
-        </div>
-
-        <div class="callout callout-orange">
-            <div class="callout-label">Perspectiva CEO — Dinamica competitiva actual</div>
-            <p>Segun Juan Pablo Loperena (CEO, 2 mar 2026): existen <strong>~10 competidores directos</strong> en el mismo segmento LMM, pero el mercado no ha crecido lo suficiente para sostenerlos a todos. Post-Unifin, muchos jugadores desaparecieron por malas decisiones crediticias y fraude. Engen realiza <strong>estudios de mystery shopper cada 2 años</strong> y se confirma competitivo en tasas. Los competidores en el mismo espacio originan ~$3,500-4,000M MXN adicionales a los ~$1,700M de Engen. La rentabilidad del LMM (~25%) supera significativamente al Core (~17%), lo que refuerza el caso de negocio para escalar este segmento.</p>
-        </div>
-        <div class="page-source">Fuentes: CNBV Portafolio de Informacion; HR Ratings — Reporte Sectorial Arrendadoras; Moody's Local — Value Arrendadora (Abr 2025); BMV — Eventos Engen Capital; Margin.mx — Las SOFOMs mas grandes de Mexico; El Cronista — Sofomes aceleran crecimiento; Entrevista CEO Juan Pablo Loperena (2 mar 2026).</div>
+    <div class="page-footer">
+        <span class="footer-brand">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.style.display='none'">
+            London Consulting Group
+        </span>
+        <span>Dimensionamiento del Mercado LMM &mdash; Engen Capital &mdash; Confidencial &mdash; Marzo 2026</span>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SECTION 5: POSICIONAMIENTO ENGEN                              -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-        <div class="section-header">
-            <div class="section-number">Seccion 05</div>
-            <div class="section-title">Posicionamiento de Engen Capital</div>
-        </div>
-
-        <h3>5.1 Datos financieros clave</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Indicador</th>
-                    <th>Dato</th>
-                    <th>Periodo</th>
-                    <th>Fuente</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Activos totales</td>
-                    <td class="table-highlight">Ps$35,821 millones</td>
-                    <td>Dic 2025 (EEFF internos)</td>
-                    <td>PCR Verum</td>
-                </tr>
-                <tr>
-                    <td>Arrendamiento Puro</td>
-                    <td class="table-highlight">79.5%</td>
-                    <td>2T25</td>
-                    <td>PCR Verum</td>
-                </tr>
-                <tr>
-                    <td>Arrendamientos Financieros</td>
-                    <td>11.8%</td>
-                    <td>2T25</td>
-                    <td>PCR Verum</td>
-                </tr>
-                <tr>
-                    <td>Creditos</td>
-                    <td>8.7%</td>
-                    <td>2T25</td>
-                    <td>PCR Verum</td>
-                </tr>
-                <tr>
-                    <td>Utilidad neta 2025</td>
-                    <td class="table-highlight">Ps$458 millones</td>
-                    <td>Dic 2025 (EEFF internos)</td>
-                    <td>EEFF Engen</td>
-                </tr>
-                <tr>
-                    <td>Utilidad neta 2024</td>
-                    <td class="table-highlight">Ps$970 millones</td>
-                    <td>2024 (auditado)</td>
-                    <td>EEFF Engen</td>
-                </tr>
-                <tr>
-                    <td>Ingresos por intereses y arrend. 2025</td>
-                    <td class="table-highlight">Ps$5,596 millones</td>
-                    <td>Dic 2025 (EEFF internos)</td>
-                    <td>EEFF Engen</td>
-                </tr>
-                <tr>
-                    <td>NEAs (New Earning Assets) 2025</td>
-                    <td class="table-highlight">Ps$15,165 millones</td>
-                    <td>2025</td>
-                    <td>Presentacion AEM Comercial</td>
-                </tr>
-                <tr>
-                    <td>Cartera de credito (CP + LP)</td>
-                    <td class="table-highlight">Ps$24,482 millones</td>
-                    <td>Dic 2025 (EEFF internos)</td>
-                    <td>EEFF Engen</td>
-                </tr>
-                <tr>
-                    <td>Indice de cartera vencida</td>
-                    <td class="table-highlight" style="color: var(--engen-green);">1.3%</td>
-                    <td>1T25</td>
-                    <td>PCR Verum</td>
-                </tr>
-                <tr>
-                    <td>Calificacion crediticia</td>
-                    <td class="table-highlight">AA-/M (Perspectiva Estable)</td>
-                    <td>Jul 2025</td>
-                    <td>PCR Verum</td>
-                </tr>
-                <tr>
-                    <td>ROAA / ROAE</td>
-                    <td>2.6% / 13.7%</td>
-                    <td>2024</td>
-                    <td>PCR Verum</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout callout-orange">
-            <div class="callout-label">Pricing power en mid-market — Comite de Riesgos, enero 2026</div>
-            <p>El segmento LMM genera un <strong>Blended Yield de 25.6% MXN</strong> vs. <strong>17.7% en Core</strong> — un diferencial de <strong>+7.9 pp</strong> que refleja el pricing power de Engen en el mid-market. Este spread compensa el perfil de riesgo diferenciado: la tasa de aprobacion LMM es del <strong>66%</strong> (vs. 78% en Core), el Watchlist LMM alcanza el <strong>25.8%</strong> (93 clientes) y la cartera vencida LMM es del <strong>3.8%</strong> (23 clientes). A nivel consolidado, la cartera vencida 90+ se mantiene en <strong>$216M (1.4%)</strong> con reservas de <strong>$342M (2.2%)</strong>. El EVG acumulado alcanzo <strong>$226.6M vs. $155M de presupuesto (145%)</strong>, evidenciando que la rentabilidad superior del mid-market justifica la exposicion incremental al riesgo.</p>
-        </div>
-
-        <div class="callout callout-orange">
-            <div class="callout-label">Presion comercial y pronostico 2026 — Planeacion Comercial (Maurizzio Piva)</div>
-            <p>El pipeline comercial 2025 registro una <strong>caida de -26% en pesos y -52% en USD</strong>, con deals cancelados en LMM creciendo <strong>+100% YoY</strong>. El pronostico de fondeo 2026 refleja esta presion: Core <strong>-10%</strong>, LMM <strong>+5%</strong> y OFS <strong>+108%</strong>. El Base Yield promedio se ubica en <strong>23.9%</strong> con un spread de <strong>14.7 pp</strong> sobre costo de fondeo. La rotacion del equipo comercial alcanzo el <strong>25%</strong> (de 76 a 69 HC planeados), agravando el reto de conversion. En factoraje, solo el <strong>3% de los leads se convierte</strong> — muy por debajo de benchmarks del sector. Los datos confirman que el crecimiento del mid-market requiere no solo ajustar apetito de riesgo, sino resolver la eficiencia de la maquinaria comercial.</p>
-        </div>
-
-        <h4 style="margin-top: 20px;">Benchmark: cartera vencida LMM vs. mejores practicas Mexico</h4>
-
-        <table>
-            <thead>
-                <tr><th>Referencia</th><th>Cartera vencida</th><th>Semaforo</th><th>Fuente</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">Arrendadoras top-tier</td>
-                    <td>&lt; 2.0%</td>
-                    <td><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#00B388;vertical-align:middle;"></span> <span style="font-size:10px;font-weight:700;color:#00B388;text-transform:uppercase;">Best practice</span></td>
-                    <td style="font-size:11px;">Actinver, Banregio leasing, BBVA arrendamiento</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Banca multiple — cred. empresarial</td>
-                    <td>1.5 – 2.5%</td>
-                    <td><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#00B388;vertical-align:middle;"></span> <span style="font-size:10px;font-weight:700;color:#00B388;text-transform:uppercase;">Best practice</span></td>
-                    <td style="font-size:11px;">CNBV, reportes trimestrales 2025</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">SOFOMs reguladas (promedio)</td>
-                    <td>2.5 – 3.5%</td>
-                    <td><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#F5A623;vertical-align:middle;"></span> <span style="font-size:10px;font-weight:700;color:#F5A623;text-transform:uppercase;">Promedio</span></td>
-                    <td style="font-size:11px;">CNBV, sector SOFOM 2024-2025</td>
-                </tr>
-                <tr style="background:rgba(230,81,0,0.06);">
-                    <td class="table-highlight">Engen — LMM</td>
-                    <td style="font-weight:700;color:#E65100;">3.8%</td>
-                    <td><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#F5A623;vertical-align:middle;"></span> <span style="font-size:10px;font-weight:700;color:#F5A623;text-transform:uppercase;">Promedio</span></td>
-                    <td style="font-size:11px;">Comite Riesgos Engen, ene 2026</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Mid-market / PyME especializado</td>
-                    <td>3.0 – 5.0%</td>
-                    <td><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#F5A623;vertical-align:middle;"></span> <span style="font-size:10px;font-weight:700;color:#F5A623;text-transform:uppercase;">Promedio</span></td>
-                    <td style="font-size:11px;">Sector financiero no bancario</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">SOFOMs en deterioro / pre-crisis</td>
-                    <td>&gt; 5.0%</td>
-                    <td><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#D32F2F;vertical-align:middle;"></span> <span style="font-size:10px;font-weight:700;color:#D32F2F;text-transform:uppercase;">Laggers</span></td>
-                    <td style="font-size:11px;">Unifin (pre-default), Credito Real, Alphacredit</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Fintechs credito PyME (alto riesgo)</td>
-                    <td>5 – 10%+</td>
-                    <td><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#D32F2F;vertical-align:middle;"></span> <span style="font-size:10px;font-weight:700;color:#D32F2F;text-transform:uppercase;">Laggers</span></td>
-                    <td style="font-size:11px;">Sector fintech no regulado, pricing compensa</td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="font-size: 11px; color: var(--text-muted);">El LMM de Engen (3.8%) cae en zona promedio para mid-market. Lo critico son los indicadores adelantados: watchlist 25.8%, recovery 8.5%, excepciones post-fondeo 39%. Sin recalibracion, la trayectoria apunta hacia territorio de laggers. Fuentes: CNBV, Comite de Riesgos Engen (ene 2026), reportes sectoriales.</p>
-
-        <h3>5.2 Historia corporativa</h3>
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="timeline-year">1992</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">GE Capital Corporation entra al mercado de arrendamiento mexicano via Joint Venture con Serfin</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">1995</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Se constituye GE Capital Commercial Equipment Finance como entidad independiente</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2016</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Linzor Capital Partners adquiere el negocio. Nace Engenium Capital. Bono global por USD $340.5M</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2017</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Transformacion tecnologica: inversion de USD $12M. Lanzamiento del producto de Seguros</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2018</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Primera emision de CEBURES por $2,500 MDP — 4 calificaciones AAA (DBRS, Fitch, HR, S&amp;P)</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2019</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Adquisicion de 51% de TIP Mexico (arrendamiento operativo de remolques/semirremolques)</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2020</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Evolucion de Engenium a Engen Capital — enfoque simplificado + herramientas tecnologicas</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2023</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Lanzamiento de Engen Factoraje — 100% digital con IA integrada (e.firma + plataforma EC Factor)</span>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2025</span>
-                <div class="timeline-dot"></div>
-                <span class="timeline-text">Activos totales Ps$35,821M. NEAs $15,165M. Cartera de credito Ps$24,482M. >$121,800 MDP acumulados</span>
-            </div>
-        </div>
-
-        <h3>5.3 Posicionamiento de marca</h3>
-
-        <div style="background: var(--lcg-navy); color: white; padding: 30px; border-radius: 10px; text-align: center; margin: 20px 0;">
-            <div style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px;">Tagline</div>
-            <div style="font-size: 24px; font-weight: 700; color: var(--engen-green);">"El financiamiento mas facil. Punto."</div>
-            <div style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 10px;">Compania de tecnologia de financiamiento — no financiera tradicional</div>
-        </div>
-        <div class="page-source" style="color: rgba(255,255,255,0.35);">Fuentes: engen.com.mx; PCR Verum — Calificacion AA-/M (Jul 2025); BMV — Eventos Relevantes; Engen Capital — Informe de Sostenibilidad 2024; EEFF Consolidados Dic 2025; Comite de Riesgos Engen Capital (ene 2026); Planeacion Comercial 2025 (Maurizzio Piva); Entrevista CIO Luis Padilla (mar 2026).</div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SECTION 6: TENDENCIAS Y DRIVERS                               -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-        <div class="section-header">
-            <div class="section-number">Seccion 06</div>
-            <div class="section-title">Tendencias y Drivers del Mercado</div>
-        </div>
-
-        <h3>6.1 Nearshoring: el mega-driver</h3>
-
-        <div class="kpi-banner">
-            <div class="kpi-item">
-                <div class="kpi-value">$40,871 MDD</div>
-                <div class="kpi-label">IED Mexico 2025 (record)</div>
-            </div>
-            <div class="kpi-item">
-                <div class="kpi-value">72%</div>
-                <div class="kpi-label">Relocalizacion LatAm en Mexico</div>
-            </div>
-            <div class="kpi-item">
-                <div class="kpi-value">400-450</div>
-                <div class="kpi-label">Nuevas empresas esperadas 2025</div>
-            </div>
-        </div>
-
-        <p>Las empresas que se relocalizan optan por arrendamiento en lugar de compra directa. Sus proveedores mexicanos T2/T3 (tipicamente empresas medianas) necesitan invertir en CAPEX rapidamente — el segmento exacto de Engen.</p>
-
-        <h3>6.2 Sintesis de drivers</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Driver</th>
-                    <th>Impacto para Engen</th>
-                    <th>Horizonte</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">Nearshoring</td>
-                    <td>Demanda directa en mid-market CAPEX</td>
-                    <td><span class="tag tag-green">En curso</span></td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Baja de tasas Banxico</td>
-                    <td>Menor costo de fondeo + mayor demanda</td>
-                    <td><span class="tag tag-green">2024-2026</span></td>
-                </tr>
-                <tr>
-                    <td>Post-Unifin</td>
-                    <td>Captura de clientes y mercado</td>
-                    <td><span class="tag tag-blue">Ya materializado</span></td>
-                </tr>
-                <tr>
-                    <td>Factoraje digital</td>
-                    <td>+30% anual, Engen bien posicionado</td>
-                    <td><span class="tag tag-green">En curso</span></td>
-                </tr>
-                <tr>
-                    <td>Mayor regulacion</td>
-                    <td>Favorece a jugadores grandes y formales</td>
-                    <td><span class="tag tag-blue">Gradual</span></td>
-                </tr>
-                <tr>
-                    <td>Open Banking</td>
-                    <td>Mejor scoring, menor friccion onboarding</td>
-                    <td><span class="tag tag-blue">2026-2028</span></td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">IA / Tecnologia</td>
-                    <td>Engen ya opera <strong>13 agentes de IA en produccion</strong> (AWS Bedrock) y su plataforma Da Vinci contiene <strong>5,000 prospectos con datos SAT</strong> — activo subutilizado para inteligencia comercial. El CIO confirma que los flujos pueden reconfigurarse rapidamente: es tema de decision, no de restriccion tecnologica.</td>
-                    <td><span class="tag tag-green">2025-2027</span></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>6.3 Factoraje digital</h3>
-
-        <div class="exec-grid">
-            <div class="exec-card green">
-                <div class="exec-card-label">Volumen 2024</div>
-                <div class="exec-card-value">$66,000 MDD</div>
-                <div class="exec-card-desc">Mercado de factoraje en Mexico</div>
-            </div>
-            <div class="exec-card green">
-                <div class="exec-card-label">Proyeccion 2033</div>
-                <div class="exec-card-value">$126,000 MDD</div>
-                <div class="exec-card-desc">Crecimiento esperado ~30% anual en digital</div>
-            </div>
-        </div>
-        <div class="page-source">Fuentes: El Financiero — IED record 2025: $40,871 MDD; IMCO — Nearshoring e IED; CIEP — Plan Mexico y Decretos de Relocalizacion; Modern Machine Shop Mexico; Aklara — Factoraje digital tendencias; Fintech Mexico — Reporte 2025; Reporte Indigo — SOFOMs y Plan Mexico; Entrevista CIO Luis Padilla (mar 2026).</div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SECTION 7: BENCHMARKS                                         -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-        <div class="section-header">
-            <div class="section-number">Seccion 07</div>
-            <div class="section-title">Benchmarks de Modelo Comercial</div>
-        </div>
-
-        <h3>7.1 Tiempos de respuesta del sector</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Etapa</th>
-                    <th>Benchmark actual</th>
-                    <th>Best-in-class</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Pre-calificacion</td>
-                    <td>24-72 horas</td>
-                    <td class="table-highlight" style="color: var(--engen-green);">&lt;4 horas</td>
-                </tr>
-                <tr>
-                    <td>Analisis de credito completo</td>
-                    <td>5-15 dias</td>
-                    <td class="table-highlight" style="color: var(--engen-green);">2-3 dias</td>
-                </tr>
-                <tr>
-                    <td>Aprobacion</td>
-                    <td>3-10 dias</td>
-                    <td class="table-highlight" style="color: var(--engen-green);">1-2 dias</td>
-                </tr>
-                <tr>
-                    <td>Documentacion y firma</td>
-                    <td>5-10 dias</td>
-                    <td class="table-highlight" style="color: var(--engen-green);">1-3 dias</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Total: solicitud a desembolso</td>
-                    <td class="table-highlight">20-45 dias</td>
-                    <td class="table-highlight" style="color: var(--engen-green); font-size: 14px;">5-10 dias</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>7.2 Funnel de conversion</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Etapa</th>
-                    <th>Ratio tipico</th>
-                    <th>Best-in-class</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Leads &rarr; Solicitudes formales</td>
-                    <td>15-25%</td>
-                    <td>30-40%</td>
-                </tr>
-                <tr>
-                    <td>Solicitudes &rarr; Aprobaciones</td>
-                    <td>40-60%</td>
-                    <td>65-75%</td>
-                </tr>
-                <tr>
-                    <td>Aprobaciones &rarr; Desembolsos</td>
-                    <td>70-85%</td>
-                    <td>85-95%</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">Lead &rarr; Desembolso (end-to-end)</td>
-                    <td class="table-highlight">4-12%</td>
-                    <td class="table-highlight" style="color: var(--engen-green);">17-28%</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout callout-orange">
-            <div class="callout-label">Dato Engen vs. benchmark — Planeacion Comercial 2025 + CIO</div>
-            <p>La conversion end-to-end de <strong>factoraje Engen es del 3%</strong> (leads a desembolso), significativamente por debajo del rango tipico de 4-12% del sector. El LMM corre el mismo proceso de originacion que Core, cuando segun el CIO (Luis Padilla) <strong>"deberia ser mas transaccional"</strong>. El stack tecnologico (Salesforce, Da Vinci, Credit Lens de Moody's, Oracle OLFM) tiene capacidad para soportar flujos diferenciados — la limitante es de diseno de proceso, no de plataforma.</p>
-        </div>
-
-        <h3>7.3 Casos de referencia LCG</h3>
-
-        <div class="exec-grid">
-            <div class="exec-card">
-                <div class="exec-card-label">Banregio — 6 Proyectos</div>
-                <div class="exec-card-value" style="font-size: 16px;">Fabrica de Credito PyME</div>
-                <div class="exec-card-desc">Proceso estandarizado, scoring automatico, ejecutivos especializados. Escalaron originacion sin escalar headcount proporcionalmente.</div>
-            </div>
-            <div class="exec-card green">
-                <div class="exec-card-label">HDI Seguros — Transformacion</div>
-                <div class="exec-card-value" style="font-size: 16px;">80% reduccion tiempos</div>
-                <div class="exec-card-desc">Excelencia operativa + transformacion digital + mindset agil. 24% reduccion en tramites devueltos. Alta afinidad con Engen.</div>
-            </div>
-        </div>
-        <div class="page-source">Fuentes: LCG — Caso HDI Seguros (resultados publicados); LCG — 6 proyectos Banregio, modelo de operacion PyME; Practicas de industria: Banregio, Banbajio, GNP, Zurich, Santander; Planeacion Comercial 2025 (Maurizzio Piva); Entrevista CIO Luis Padilla (mar 2026).</div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SECTION 8: INSIGHTS Y OPORTUNIDADES                           -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-        <div class="section-header">
-            <div class="section-number">Seccion 08</div>
-            <div class="section-title">Insights y Oportunidades para Engen Capital</div>
-        </div>
-
-        <h3>8.1 Oportunidades de consultoria identificadas</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Oportunidad</th>
-                    <th>Prioridad</th>
-                    <th>Sustento</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-highlight">1</td>
-                    <td class="table-highlight">Estrategia Go-to-Market LMM (Lower Middle Market)</td>
-                    <td><span class="tag tag-alta">ALTA</span></td>
-                    <td>GAP de $50,000-$85,000 MDP; nearshoring como acelerador; 7 sectores prioritarios</td>
-                </tr>
-                <tr>
-                    <td class="table-highlight">2</td>
-                    <td class="table-highlight">Optimizacion de la Fabrica de Originacion</td>
-                    <td><span class="tag tag-alta">ALTA</span></td>
-                    <td>Best-in-class en 5-10 dias vs. 20-45 dias; casos HDI + Banregio</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Calibracion del Modelo de Riesgo</td>
-                    <td><span class="tag tag-media-alta">MEDIA-ALTA</span></td>
-                    <td>NPLs de 1.3% (saludables); espacio para abrir al mid-market</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Transformacion Digital de Procesos</td>
-                    <td><span class="tag tag-media">MEDIA</span></td>
-                    <td>Engen Factoraje como modelo para extender a arrendamiento</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Gestion del Cambio y Mindset</td>
-                    <td><span class="tag tag-media">MEDIA</span></td>
-                    <td>Critico para sostener la transformacion; caso HDI</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout callout-orange">
-            <div class="callout-label">Alerta de campo — Perspectiva de Riesgos (Dir. Fernando Garza, 2 mar 2026)</div>
-            <p>El area de Riesgos cuestiona si el mercado LMM <strong>"realmente existe" para sus modelos de riesgo actuales</strong>. Segun Fernando Garza, las empresas mid-market tienen gestion fiscal agresiva, margenes estrechos y muchas no auditan sus estados financieros. Esto implica que <strong>la oportunidad de $50,000-$85,000 MDP existe en el mercado, pero capturarla requiere recalibrar los modelos de riesgo</strong> y posiblemente los criterios de evaluacion crediticia. La brecha entre la vision comercial (crecer en LMM) y la perspectiva de riesgos (dudas sobre la calidad del segmento) es un hallazgo critico para el diagnostico.</p>
-        </div>
-
-        <h3>8.2 Preguntas para profundizar con el cliente</h3>
-
-        <ul class="bullet-list">
-            <li>Cual es la distribucion actual de la cartera de Engen por sector?</li>
-            <li>Cual es el ticket promedio actual y el rango target en mid-market?</li>
-            <li>Cual es la cobertura geografica actual y donde ven oportunidad?</li>
-            <li>Que capacidad de originacion tiene la fabrica hoy (solicitudes/mes)?</li>
-            <li>Cual es el NPL historico por sector en su portafolio?</li>
-            <li>Cuantos ejecutivos comerciales operan hoy y con que ratio de cartera?</li>
-            <li>Que tan avanzada esta la digitalizacion del proceso de arrendamiento (vs. factoraje)?</li>
-        </ul>
-
-        <div class="callout-green callout" style="margin-top: 30px;">
-            <div class="callout-label">Conclusion</div>
-            <p>Engen Capital enfrenta una <strong>ventana de oportunidad unica</strong>: un mercado subpenetrado, un entorno macro favorable (nearshoring + baja de tasas), un landscape competitivo en reconfiguracion, y una posicion financiera solida. El reto no es si crecer, sino <strong>como estructurar el crecimiento</strong> — en que sectores, con que modelo comercial, y con que nivel de riesgo. Exactamente donde London Consulting Group puede agregar mayor valor.</p>
-        </div>
-        <div class="page-source">Fuentes: Sintesis de secciones 01-07. Entrevista CEO Juan Pablo Loperena (2 mar 2026); Reunion Discovery LCG — Febrero 2026. Ver Anexo de Fuentes para listado completo.</div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SOURCES PAGE                                                  -->
-    <!-- ============================================================ -->
-    <div class="content-page page-break">
-        <div class="page-header-logos">
-            <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
-            <span class="header-divider">Confidencial</span>
-            <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
-        </div>
-        <div class="section-header">
-            <div class="section-number">Anexo</div>
-            <div class="section-title">Fuentes</div>
-        </div>
-
-        <div class="source-category">Fuentes oficiales</div>
-        <ul class="source-list">
-            <li>CNBV — Portafolio de Informacion (portafolioinfo.cnbv.gob.mx)</li>
-            <li>CNBV — Informe Anual 2024</li>
-            <li>Banco de Mexico — Reporte de Estabilidad Financiera 1S2024</li>
-            <li>INEGI — Estadisticas MiPyMEs 2024/2025 (Censos Economicos)</li>
-            <li>CNBV/INEGI — ENAFIN 2024</li>
-        </ul>
-
-        <div class="source-category">Calificadoras y sector financiero</div>
-        <ul class="source-list">
-            <li>PCR Verum — Calificacion Engen Capital AA-/M (Jul 2025)</li>
-            <li>HR Ratings — Reporte Sectorial Arrendadoras</li>
-            <li>Moody's Local — Value Arrendadora (Abr 2025)</li>
-            <li>BMV — Eventos Engen Capital (Ago 2024, Ene 2025)</li>
-            <li>HR Ratings — Arrendadora Afirme 2024</li>
-        </ul>
-
-        <div class="source-category">Mercado y tendencias</div>
-        <ul class="source-list">
-            <li>ASOFOM — El Sector SOFOM en Mexico</li>
-            <li>DPL News — Cartera ASOFOM crece 7.2%</li>
-            <li>El Cronista — Sofomes aceleran crecimiento</li>
-            <li>Margin.mx — Las SOFOMs mas grandes de Mexico</li>
-            <li>El Financiero — IED record 2025: $40,871 MDD</li>
-            <li>IMCO — Nearshoring e IED</li>
-            <li>CIEP — Plan Mexico y Decretos de Relocalizacion</li>
-            <li>Modern Machine Shop Mexico — Inversion en maquinaria 2023-2025</li>
-            <li>Aklara — Factoraje digital tendencias</li>
-            <li>Fintech Mexico — Reporte 2025</li>
-            <li>Reporte Indigo — SOFOMs y Plan Mexico</li>
-        </ul>
-
-        <div class="source-category">Fuentes del cliente</div>
-        <ul class="source-list">
-            <li>Engen Capital (engen.com.mx)</li>
-            <li>Engen Capital — Informe de Sostenibilidad 2024</li>
-            <li>Reunion Discovery LCG — Febrero 2026</li>
-            <li>Entrevista CEO Juan Pablo Loperena — 2 marzo 2026 (59 min). Validacion de segmento target, volumenes de originacion, rentabilidad LMM vs. Core, dinamica competitiva, criterios de exclusion sectorial</li>
-            <li>Entrevista Dir. Riesgo Fernando Garza — 2 marzo 2026. Perspectiva sobre viabilidad del segmento LMM desde modelos de riesgo, gestion fiscal de empresas mid-market, retos de informacion financiera auditada</li>
-            <li>Comite de Riesgos Engen Capital — enero 2026 (68 paginas, clasificacion Confidencial). Portafolio total, segmentacion LMM, yields por segmento, metricas de calidad de cartera, excepciones post-fondeo, EVG acumulado</li>
-        </ul>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- BACK COVER                                                    -->
-    <!-- ============================================================ -->
-    <div class="cover-page" style="min-height: 40vh; justify-content: center; align-items: center; text-align: center;">
-        <div style="position: relative; z-index: 1;">
-            <div style="margin-bottom: 30px;">
-                <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group" style="height: 50px; filter: brightness(0) invert(1);" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:4px;display:inline-block;&quot;>London Consulting Group</span>'">
-            </div>
-            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Este documento es confidencial y fue preparado exclusivamente para Engen Capital.</p>
-            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 30px;">Su reproduccion o distribucion requiere autorizacion escrita de London Consulting Group.</p>
-            <p style="font-size: 12px; color: rgba(255,255,255,0.3);">&copy; 2026 London Consulting Group. Todos los derechos reservados.</p>
-        </div>
-    </div>
-
-</div>
+</div><!-- .document -->
 
 </body>
 </html>
