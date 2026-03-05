@@ -1009,6 +1009,63 @@
         @media print {
             .funnel-diagram { gap: 0; }
         }
+
+        /* Growth comparison chart */
+        .growth-chart { margin: 12px 0 8px; }
+        .growth-row {
+            display: grid;
+            grid-template-columns: 140px 1fr 60px;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .growth-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--lcg-navy);
+            text-align: right;
+        }
+        .growth-bar-track {
+            background: #eef2f7;
+            border-radius: 4px;
+            height: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+        .growth-bar {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 6px;
+            font-size: 9px;
+            font-weight: 700;
+            color: white;
+            transition: width 0.5s ease;
+        }
+        .growth-bar.sector { background: linear-gradient(90deg, var(--lcg-accent), #1a4f8b); }
+        .growth-bar.top20 { background: linear-gradient(90deg, #2E6DB4, #0B1F3F); }
+        .growth-bar.engen { background: linear-gradient(90deg, var(--engen-green), var(--engen-dark)); }
+        .growth-bar.engen-low { background: linear-gradient(90deg, #ffb74d, #e65100); }
+        .growth-source {
+            font-size: 8px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .growth-insight {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: #fff3e0;
+            border-left: 3px solid #e65100;
+            border-radius: 0 6px 6px 0;
+            padding: 8px 12px;
+            margin-top: 10px;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+        .growth-insight .icon { font-size: 16px; flex-shrink: 0; }
     </style>
 </head>
 <body>
@@ -1236,7 +1293,7 @@
                 <div class="funnel-num">2</div>
                 <div class="funnel-label">Share de Engen<br>vs. competidores</div>
                 <div class="funnel-value">~12%</div>
-                <div class="funnel-desc">$15K MDP cartera colocada de $122K. &iquest;Creci&oacute; o decreci&oacute; el pastel?</div>
+                <div class="funnel-desc">$15K MDP cartera colocada de $122K (~12% del sector)</div>
                 <div class="funnel-sources">EEFF Engen, CNBV, HR Ratings</div>
             </div>
             <div class="funnel-step">
@@ -1509,6 +1566,56 @@
                 <div class="kpi-value">+18%</div>
                 <div class="kpi-label">Crecimiento anual proyectado</div>
             </div>
+        </div>
+
+        <!-- CRECIMIENTO: SECTOR VS ENGEN -->
+        <h4 style="margin: 14px 0 4px; color: var(--lcg-navy); font-size: 12px;">&iquest;Crece el pastel? &iquest;Crece Engen al mismo ritmo?</h4>
+
+        <div class="growth-chart">
+            <div class="growth-row">
+                <div class="growth-label">Top 20 SOFOMs</div>
+                <div class="growth-bar-track">
+                    <div class="growth-bar top20" style="width: 100%;">+22%</div>
+                </div>
+                <div class="growth-source">Margin.mx</div>
+            </div>
+            <div class="growth-row">
+                <div class="growth-label">AMSOFAC (proyecci&oacute;n)</div>
+                <div class="growth-bar-track">
+                    <div class="growth-bar sector" style="width: 82%;">+18%</div>
+                </div>
+                <div class="growth-source">DNF / Milenio</div>
+            </div>
+            <div class="growth-row">
+                <div class="growth-label">ASOFOM (260 afiliados)</div>
+                <div class="growth-bar-track">
+                    <div class="growth-bar sector" style="width: 33%;">+7.2%</div>
+                </div>
+                <div class="growth-source">DPL News</div>
+            </div>
+            <div class="growth-row">
+                <div class="growth-label">Engen Capital</div>
+                <div class="growth-bar-track">
+                    <div class="growth-bar engen-low" style="width: 17%;">+3.7%</div>
+                </div>
+                <div class="growth-source">EEFF dic 2025</div>
+            </div>
+        </div>
+
+        <div class="growth-insight">
+            <span class="icon">&#9888;</span>
+            <div>
+                <strong>El sector crece entre 7% y 22% anual, pero Engen solo creci&oacute; 3.7%</strong> (cartera cr&eacute;dito LP: $14,058 &rarr; $14,572 MDP, dic 2024 vs. dic 2025).
+                El mercado se est&aacute; expandiendo &mdash; Engen est&aacute; perdiendo participaci&oacute;n relativa.
+            </div>
+        </div>
+
+        <div class="page-source" style="margin-top: 6px;">
+            <strong>Fuentes de crecimiento:</strong>
+            <strong>Top 20 SOFOMs (+22%)</strong> &mdash; An&aacute;lisis de las 20 mayores SOFOMs por cartera, Margin.mx 2025.
+            <strong>AMSOFAC (+18%)</strong> &mdash; Proyecci&oacute;n 2026&ndash;2028 de las 54 arrendadoras/SOFOMs agremiadas; Convenci&oacute;n AMSOFAC oct 2025 (DNF, Milenio).
+            <strong>ASOFOM (+7.2%)</strong> &mdash; Crecimiento real jul 2024 vs. jul 2025 de las ~260 SOFOMs afiliadas a ASOFOM; DPL News ene 2026.
+            <strong>Engen (+3.7%)</strong> &mdash; Cartera de cr&eacute;dito a largo plazo en EEFF consolidados, dic 2024 ($14,058 MDP) vs. dic 2025 ($14,572 MDP).
         </div>
 
         <!-- PASO 2: SHARE -->
