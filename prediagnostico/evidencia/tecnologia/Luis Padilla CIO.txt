@@ -1,0 +1,245 @@
+Luis Padilla es CIO
+Punto de Vista de Tecnologia, que ves, como oportunidades para impulsar el crecimiento de el Segmento LMM?
+El modelo de LMM es muy similar al modelo de CORE, Distinto mercado pero procesos iguales, mismas herramientas, mismos flujos operativos, aunque sea transacción pequeña, entra en el pipelin operativo. Pelean el mismo nivel de atención, si bien los equipos de riesgo estan segmentados, pero el equipo de riesgo que ve LMM, ve Factoraje, seguramente esa capacidad se topará. El proceso de LMM no debería ser tan especializado debería ser mas trnsaccional. 
+No estamos aprovechando la información de las plataformas para poder sacar mas mercado. Información con el RFC (Analisis Equity) 
+
+Flujo Tecnologico
+No solo CRM sino Originación. Asset Based Lending (colateral activo de por medio), Asset management estan embedidos enel flujo de proceso.
+Para poder generar una cotización que sea verídica, Super Trump(cotizador) de Ivory Consulting que te permite estructurar el pricing, te permite generar estructuras complejas (variaciones, pagos irregulares, diferencia de Tazas) esa especialización de super Trump nos permite adecuarnos y ser muy especifico en las cotizaciones con el cliente. EVAL. La información se ingresa en el checklist a través de Salesforce, la recopila el comercial o los ISC. Donde llenan la información
+Hay dos stages en la fila a riesgo TOLL GATE 1 y TOLL GATE 2. (métricas del porcentaje de expedientes ingresados bien a la primera vez, que tan bien estan ingresando el expediente para que pase a Riesgo) Una vez que se genera la evaluación de crédito, el análisis de riesgo analisa en los comités, se aprueba o niega, después viene el takedown donde se formaliza el proceso, Hay proceso adicionales de los activos, equipment field outing (EFAS), Documentales o físicos. 
+Aura, BPM esta embedido en Salesforce, se da seguimiento a los EFAs que se levantan o a los servicios de importaciones.
+Herramientas de Marketing – S Navigator, compra de bases de datos, telemarketing, prospección individual. Equipo de Marketing hace campañas dirigidas tomando las bases. Alex Alvarez. ¼ parte de los Leads viene por aquí.
+Dentro de Salesforce, hay ENGEN Docs (checklist por cada una de las entidades. 
+Dentro de una pagina que una le mandamos, el cliente ingresa su rfc, su firma SAT, y engen entra a la información del SAT. Analisis de los últimos tres años. Con Davinci, extracción del SAT, indicadores de concentración con clientes, estacionalidades, etc. Davinci extra información del SAT.
+Credit Lense de Moodys, meten la información para riesgo, modelos de moodys adecuados al mercado mexicano. A partir de estas herramientas se hace el análisis del riesgo del crédito. Riesgo da la aprobación en la plataforma.
+Mesa de Control APEX de Oracle (application Exchange) La aprobación se hace en Oracle, en un modulo especializado que se desarrollo para GE. OLFM. Todos los sistemas estan embedidos en el ERP
+Office 365
+BI: QlikSense, Oracle Analytics Cloud (embedido), Arquitectura Hibrida (OnPremise) y en la nube.
+Proyectos:
+CORE y AI con Agentes: 5 mil prospectos en Davinci, con sus entidades relacionadas, a quien le venden y a quien le compran.
+Narain AI
+Joel Castillo Productos Tecnologicos Core
+
+TRANSCRIPCION DE LLAMADA CON LUIS PADILLA
+y ya como una vez que ya está completando un expediente Cómo avanzan las herramientas Qué sucede Con qué tiempo con qué se leas etcétera disculpa si me alargué no está preferido per eso esa Entonces por lo pronto adelante Luis si quieren que es un poquito de la parte de proceso
+En la que de ahí nos lleva la plataforma y de la plataforma algunos de los temas que vemos con fricción, ¿no? ¿Qué tanto? ¿Qué tanta información les dieron de proceso? Mira, de hecho aquí de cajón, ya pegué algunos slides aquí en las otras que estaba haciendo, pero a lo mismo de rasgos, pues nos nos explicaban este y de este todavía si nos dieron todavía un.
+Un poquito de desglose que hay aquí abajo, ya tengo, o sea, ya entendemos a grandes rasgos la estructura organizacional, este en la primera reunión que tuve con Fernando Garza, incluso estuvimos repasando toda la información disponible, por ejemplo, la que muestro en el Comité de Crédito, este ya ya nos este Guillermo ya nos.
+Facilitó un documento, pues que a grandes rasgos trae algunas de las estrategias más importantes del 2026. Evidentemente, pues es que este hay algunas muy claras, el reto precisamente del crecimiento del MMY ahorita como que vamos por ahí.
+Perfecto, bueno, a ver, nosotros tenemos un CRM que es el force y básicamente no solamente nos sirve para la información como CRM, sino también la parte de originación de los procesos de originación se gestionan en esta herramienta. O K, sí. ¿Cuáles son los procesos? Correcto.
+¿Cuáles son esos procesos? Nuestros productos, como nosotros somos un asset-based lending, hay un colateral o un activo de por medio. Entonces hay servicios relacionados que tienen que ver con la inspección de los activos, con la valuación de los activos, lo que nosotros llamamos asset management, y en asset management esos procesos están embebidos en esos flujos de procesos, sí.
+Entonces, el comercial para poder generar una cotización que realmente sea verídica, o sea, llamarlo de esa forma, no solamente hace un ejercicio de un pricing a través de una herramienta que se llama Super Trump, se llama Super Trump, Trump, o Trump, el apellido de Donald Trump, nada que ver.
+Este utilizamos esta herramienta, el fabricante se llama ivory y es una herramienta que te permite estructurar las condiciones de un pricing. No es una calculadora en la cual le metes cuatro o 5 variables y te da todo lo demás, no, sino realmente te permite generar.
+Una estructuras completas, donde tú puedas meter variaciones, pagos irregulares, variaciones en cuanto a tasas, a lo mejor 6 meses una tasa, el resto de otro tipo. Puedes integrar un depósito de seguridad, puedes irlo construyendo, no solamente el principio, etcétera. Y esa y esa especialización.
+De Super Trump lo que nos permite es generar estructuras financieras muy ad hocs al cliente, sí, con lo cual se da un pricing muy específico, pero también nos nos permite ser diferentes a la competencia, porque la competencia no necesariamente tiene esos productos tan alto.
+¿Están hechos a vender? Exacto, este y es lo que nos permite esa ese estructurador que le llamamos, no que se llama Super Trump. Entonces, adicional para generar ese pricing, hacemos una evaluación de los activos donde se se confirma el monto del activo a financiar o arrendar.
+Y en base a eso, hay ciertas políticas de pricing en medidas, no es lo que le llama mucho que es el famoso.
+como Okay muy bien sí eh posteriormente toda esa información Se ingresa con un expediente de de cliente que llamamos checklist es es digital en adolescentes correcto toda esa información la recopila
+Ya sea el comercial directamente o el equipo que soporta la función comercial, que son los que son administración de ventas, se llaman Insile Sales Coordinators. Lo que hacen estos equipos es concentrar la información, llenan los pasos del proceso en la plataforma. Están del lado del equipo.
+Correcto, y esta función de administración de ventas con comercial, básicamente lo que les permite es agilizar el ingreso de información en toda la plataforma, el Salesforce, y con eso se va llenando los diferentes pasos de proceso que tiene que ver con.
+Toda la información del checklist, toda la información de asset management, y teniendo eso ingresa un proceso que le llamamos aprobación de crédito, en donde tenemos 2 excredites, Tolgrade uno y Tolgrade 2.
+Esto se hizo de esa forma para poder agilizar el ingreso de los expedientes a riesgo.
+Sin embargo, es la realidad lo que hace es que el proceso lo alarga un poco más, porque tienes los states. este Hay algunas métricas que incluso yo creo que Guillermo se las puede proporcionar sobre el porcentaje de expedientes ingresados bien a la primera vez.
+Y eso básicamente lo que nos dice es que también están llenando el primer expediente para que ingrese a riesgo. Tenemos algunas métricas muy importantes de esos tiempos de ciclo y lo que sí hay es mucho retroceso en donde el riesgo empieza a trabajar en una oportunidad, no tiene toda la información, la regresa comercial hasta que lleguen el expediente y la de regreso, ¿no?
+Una vez que se genera toda la información de la evaluación de crédito, lo que es el famoso crédito global, hay un análisis de riesgo que es el que ya les explico un poco a partir de los comités que se tienen. Hay diferentes comités o diferentes niveles de acuerdo a los puntos de colocación, con visiones, estructuración de la operación, etcétera.
+Y de acuerdo a esa aprobación, se aprueba la transacción y después ya ingresa lo que viene siendo el famoso pent down por la formalización, de donde ya se generan los la formalización de los contratos, los anexos este y la disposición del crédito o K para poder disponer el crédito.
+Eso también se hace en las plataformas. Hay algunos procesos de confirmación adicional de los activos, como son los famosos Equipment Fill Audit, que es auditar que efectivamente el activo exista. Hay diferentes características de estos EFAS, pueden ser documentales, si ya son proveedores conocidos y un cliente conocido.
+O puede ser físico, tenemos que inspeccionar que efectivamente la máquina exista y que vaya a ser entregada en las instalaciones del cliente que vamos a finalizar. Bueno, el tema, como nosotros somos una red-based lending y todas nuestras transacciones tienen que estar soportadas por una colateral para poder nosotros hacer.
+Este, el fondeo a través de las de las estructuras de financiamiento y cosas que tenemos, se requieren esos activos. Entonces tenemos que tener la continuación de que efectivamente existan. Recorriendo estas etapas que fuiste muy claro, solo para repasar un poquito entonces todo lo que tienen que ver en un inicio con la.
+Con la generación de la demanda, la construcción, este todo eso estamos hablando específicamente de Salesforce. Por eso se realiza en Salesforce, hay algunas herramientas adicionales que utilizamos para el seguimiento a esas tareas. Es, por ejemplo, un BPM que tenemos que se llama Aura.
+Para hacer cierto seguimiento de ciertas tareas en tanto popular. Ok, pronto está en medido a partir de unos lo que es este del BPM de ahora. ¿Para qué sirve? Perdón. Servicios para semana, por ejemplo, ahorita lo estamos terminando de refinar en donde tú le puedes dar seguimiento a los a los.
+Jefas que se que se levantan o incluso también a los servicios de importaciones o k.
+Muy bien, el objetivo ya implementado es reemplazar esos servicios que tenemos en Zen. Vale, me voy a ir un poquitito atrás, que tiene que ver un poco ya con nuestra parte de la estrategia comercial y el dimensionamiento de mercado, de las herramientas de investigación de empresas, etcétera.
+¿Hay algún ecosistema que yo no sé allá el equipo comercial ya cada quien eche mano de qué era? No, es que yo busco en LinkedIn, no, yo agarro Google, no, yo agarro este, o sea, cada quien hará sus esfuerzos, ¿verdad? Pero hay algo oficial en el que digas, o sea, nosotros utilizamos 3 cuatro plataformas para investigación de empresas, ¿no?
+¿Hay algo que ustedes utilizan estas son las oficiales? ¿Hay varias? Este todas las gestiones del equipo de marketing está Navigator de LinkedIn también está la compra de bases de datos También tenemos esfuerzos de telemarketing y también tenemos lo que viene siendo la prospección individual
+¿Este qué es lo que pasa? Tenemos un equipo de telemarketing que constantemente está lanzando campañas, haciendo llamadas desde frío o campañas este dirigidas con firma citas y así necesitas al equipo comercial para que pueda tener alguna necesidad ya particular.
+Sí, este, pero la las campañas las gestiona marketing directamente, salvo aquellos esfuerzos individuales por el equipo comercial, este todo lo direccionales Álvarez y su equipo que está en el equipo de Mauricio. Sí, reporta Juan Pablo.
+Pero vas de la mano, o k, ahí hay una muy buena sinergia entre el marketing y todo eso.
+Es Alex Álvarez, verdad, correcto.
+Todo bien, si entiendo, le platicamos también con él. Sí, él les va a hablar todo el este lado, como el 20% de los leads, algo así nos decía, no, y ahora que para que entenda porque eso creo que es 1/4 1/4 parte de los leads, por el por este los esfuerzos.
+este después hablabas ahorita ya de esta herramienta Este es de este esta la utilizo también un equipo comercial o es de lado de riego
+100% comercial, 100% comercial, o sea, es como una precotización, ya es una cotización, puedes, o sea, puedes cotizar sin tener la confirmación del valor de los activos, que son las cotizaciones comerciales, te llamamos simplemente este ahorita dices que vale el este activo, no sé 100000 USD, pues voy con ese valor, creo con lo que me estás diciendo, sí, claro, después se hace de una.
+Evaluación para saber con qué valor lo vamos a tomar en activo, etcétera, este aforo, residuales, etcétera. Entonces, con esta herramienta está embebida en Salesforce. Sí, entonces ingresan a Salesforce, cotizan en Salesforce.
+Y ahí es donde hacen la estructuración de esa de esa oportunidad. Entonces, partimos desde un objeto de una oportunidad en el pipeline. Hay diferentes estages, este en uno de ellos ya es la confirmación de la propuesta y la aceptación de las ropas. Gracias. Muy bien, buenísimo. Este okay después.
+Ya que tenemos esa cotización, nos hablabas también del tema de ir integrando el expediente y hablaste de bueno, aquí con con qué herramienta hablo de Salesforce. También hay algo adicional que se haga dentro de Salesforce hay un hay 2 tipos de expedientes, este hay uno que se llama Ingent Docs.
+En donde lo que hacemos es generar un checklist.
+Particularmente por cada una de las entidades que van a ingresar al análisis de crédito. ¿Por qué otras entidades? Porque cuando hacemos el estudio de crédito identificamos a partir de un dictamen legal todas las personas que tienen que participar en la transacción y hacemos un expediente de cada uno de ellos.
+Entonces, dependiendo, puede ser algún conglomerado de empresas, puede ser este personas entidades relacionadas morales con este físicas, los accionistas, urbales, etcétera.
+okay entonces cada uno tenemos un cherry es particular este okay engine docs o sea está medido también dentro de Sameforce correcto pero es otro motorcito también eso es un segmento lector uno de los elementos importantes es yo te diría que casi el 100% de las transacciones del Omnio market
+requiere que el cliente ingrese sus credenciales de estilo masato, lo que antes se llamaba la 100. Sí, es una de todos estos archivos estos no son archivos. El cliente dentro de nuestro dentro de una página que nosotros le mandamos ingresa su RCC.
+Confirma su firma SAT y con eso nos está dando autorización a nosotros poder acceder la información del SAT. O K, sí, entonces eso es importante porque hace 3 años, 3 años y medio, nosotros implementamos esta este ingreso de firma SAT.
+Este Este fue para que pudieran hacer eso en el mercado no existía el 30% de las arrendadoras financieras lo pedían a día de hoy, ya más el 75 80% lo piden. Este pues ya se volvió algo importante. ¿Por qué? Porque sí puede haber alguna desconexión entre la información fiscal y la contable.
+Por estructuras que se puedan hacer, etcétera, para pagar menos impuestos, pero sí es un reflejo de la facturación y la cobranza de los clientes, porque son los flujos, exacto, y porque todo está regresado de México y requieres un CFDI tanto para facturar como para cobrar, entonces.
+Toda esa información la obtenemos de con esa prima SAT. Vamos, hacemos un análisis de los últimos 3 años de las oportunidades de sus clientes, sus facturaciones, ingresos, egresos, incluso hasta los de nómina. O sea, sacamos toda la información que está en el SAT y con eso sacamos lo que le llamamos o reportes Da Vinci.
+La Vinci es una plataforma interna que creamos precisamente para correr no solamente los procesos de extracción de información del SAT, sino también indicadores para medir, por ejemplo, concentración con clientes, concentración con proveedores, estacionalidades, recurrencia de facturación. O sea, ya de reportear inclusiones, es lo que de
+¿Están en desarrollan ustedes o la suma? Es el reporte da Vinci. Correcto. Partimos de insumos de terceros, como vienen siendo algunos proveedores que hacen directamente la conexión al SAT. Sí, pero realmente todo el know-how de la plataforma es pues es de ustedes, perfecto.
+Muy bien, de perfecto. Luego hablabas ya cuando empieza ya el proceso de evaluación de crédito, ya una vez que tengo, pues pronto decir todos los documentos, hablabas de Tolgate uno, Tolgate 2, este ahí.
+¿Qué herramientas ya per se utilizan para la evaluación? O sea, utilizan para evaluar el crédito riesgo contraparte. Ingresamos la información de financiera de los clientes en una herramienta que se llama Credit Lens de Moods.
+Y con eso lo que tenemos es una probabilidad de default y un.
+Eso lo trasladamos a un nivel de riesgo.
+Que ya con nomenclatura de Ángel y con eso determinamos el nivel de riesgo de gente, sí.
+Okey, este crédito es que pues pagas una licencia y correcto, es son modelos de moodys adecuados al mercado mexicano, latinoamericano, es de diferentes modelos de riesgo que se pueden evaluar este y a partir de esa herramienta hacemos la evaluación de crédito contratado.
+O K, muy bien, ya de ahí.
+Para empezarlo, digamos que a escalar a hacia las hacia los diferentes, vamos a decir, comités de crédito en cuanto asus jerarquías, porque entiendo que pues por un todo por riesgo, etcétera, pues pasan. Me comentaba Fernando porque son 3 niveles, este eso se digamos que ya el expediente se vuelve a formar ya dentro del Safeforce en una fila en el que va.
+ya está en la etapa de comité de crédito o sea yo yo voy pudiendo monitorear el estatus de de esa de mi tubería en qué parte del proceso van exacto pero no son 3 caminos sino realmente o sea el proceso es el mismo la única diferencia es la instancia de acuerdo a la el estrecho es el
+Correcto, y en todos los casos, en todos los casos, riesgo te tiene que dar la última confirmación de aprobación en la plataforma, y soporta, soporta la autorización, no a través de lo que se llama un este un que vas a poner el estudio de crédito, este viendo que se sube en el sistema y con eso ya es como que la aprobación.
+En lo que crédito aprobó en sus diferentes niveles de aprobación. Okay, esto en el writing cuando dijiste se sube, se sube en el sistema. Estamos hablando con el sistema. Seiphos. Ah, seiphos. Todo y todo, todo está en las centros. Okay, muy bien.
+Perfecto.
+Ya entonces vamos a decir, ya se hizo en underwriting, ya se probó, ya ahora vamos a empezar ahora sí con la parte de la operación de operar el crédito, ingresarlo en el sistema, etcétera. Ahí ya ahora ya no estamos algunos Salesforce, ya para ya para entrar al sistema, al cordón, vamos a decirlo así, se ingresa toda la información en Salesforce.
+Este, pero tenemos un símil de salesforce simplemente para reducción de licencias que se llama Apex, en donde el equipo de mesa de control es donde tiene sus procesos de gestión. o K mesa de control, aquí es donde entra mesa de control. o K.
+Entonces, construcción Apex, correcto, que es un submódulo de ahora, o k.
+Ese es el acrónimo de Application Exchange, este tú puedes contivar aplicaciones, se configura una aplicación para llevar todos los procesos de mesa de control.
+Sí, perfecto, que es básicamente la ventaja de ingreso de toda la información. Okay, perdón, pero muchas cosas ya se jalan desde, hay algunas que sí se tenían que volver porque son parte de la misma operación, este, pero por ejemplo, tenemos comparadores del pricing.
+El de le llamamos, hay hay 2 tipos de pricing, el el y el pricing de cotización o de la aprobación de crédito. Comparamos que los 2 que sean los mismos, que no haya diferencias, etcétera. Que hay más como candados. Okay, y okay, su suerte es.
+Oracle, sí, ya la formalización del, no se llama así, créditos y formalización se hace en un módulo que se llama Oracle List and Finals Management.
+Es un módulo muy especializado de Oracle.
+Ahora con lo desarrolló para Chilín Capiper.
+O sea, aquí aquí he hecho una unidad, oye y capital, cuenta mundial. Este y ese fue el sistema que como somos referencia, lo implementamos cuando cuando se fue la separación en 2016, el General Electric, el General Electric, que lo parece un poquito este contexto, tenía diferentes plataformas de acuerdo a las diferentes verticales.
+Sí, ¿por qué? Porque realmente creció a través de atenciones de negocio. Entonces de Galíptica en su momento, pues tenías a Vishon, tenías Real Estate, etcétera, y cada una tenía un un gestor distinto este y luego llegaba toda la parte contable que era pnsy luego después por algo. Nosotros hicimos una evaluación.
+e identificamos que la herramienta que podría cubrir las necesidades de la se implementó durante dieciocho meses aproximadamente tuvimos la primera empresa en Latinoamérica que lo implementó seguimos siendo hay dos empresas la otra es este grupo este son las únicas dos empresas que tienen no
+México y Latinoamérica.
+aprovech tú tú le das servicio Ah también o sea ten responsable también el servicio hacer tu corrector coro es que vi algunos Guillermo por ejemplo es chistoso porque estábamos separados Ajá
+Hace un año y medio, Juan Pablo me dice, voy a separar las cosas. Yo llevaba TI y calidad, por eso te corto el proceso, etcétera. Llevaba TI y calidad este hasta hace un año y medio este y después se se hizo una separación. Guillermo ve calidad de los negocios.
+¿Migro tecnología de nuestro negocio? Guillermo no ve tecnología para ser, no? Okay, sí, no, Guillermo no ve tecnología, Guillermo, Guillermo solamente ve procesos, proceso, proceso, existe una gestión de calidad y lo que viene siendo es la experiencia del cliente.
+Okay, en los 2 negocios, en el y yo veo tecnología en ambos negocios. Okay, que entonces ya se hace la formación de crédito en o en FEM. ¿Qué otros sistemas más utilizan siguiendo esta este? Ya todos están entendidos en el RP.
+Contación, cuentas a cobrar, cuentas a pagar, contabilidad, etcétera. Ok, todavía.
+Novia.
+En términos de.
+Este de las herramientas para el trabajo del equipo. Sí, toda nuestra temática es con Office 365 este.
+Para Business Intelligence que obviar o no tenemos, tenemos varias herramientas, tenemos clicsense en donde generamos muchos de los reportes. Seguro, pues tú lo trabajaste de verdad, era ClickView. Sí, amigos, sí.
+Este Click Sense es la nueva versión de ClickBio en este momento. También manejamos ahora con Analytics Claro, que es el que me viva. Exacto. Tenemos un poquito como contexto, tenemos una arquitectura híbrida que es milica. Algunas aplicaciones las tenemos en servidores todavía on premise.
+O K, este y la mayoría ya está en servicios en la nube.
+O K, tienes un mapita de arquitectura de sistemas, o sea, para cuando está estructurado, eso igual nos serviría mucho si no lo compartes, no le le podemos buscar ahí ahorita todavía le podemos echar unos cosas en lo que si vemos aquí de una vez, pero déjenme 1 segundo, órale, gracias.
+Yeah.
+Lo más importante, y ahora ya que nos, sí, o sea, y donde él ve que en el proceso hay más manualidades, pues.
+Muchas gracias, Luis.
+¿Tú tiempo llevas este con una con un grupo grupo? Mira.
+Yo estaba en TIP desde el 2004 en el 2011 me mantuve en TIP hasta el 2016 que se adquirió allí y desde el 16 hasta acá. ¿Te llevas toda la historia de ella? O sea, es que yo estuve en eléctrica, antes de TIP estuve en dos negocios de Jim.
+O sea, yo me formé y yo vengo de la factura de montar, de la planta de focos. Ah, ok, este.
+Cachita, sí, a la vuelta.
+Yeah.
+ya, sí, entonces ahí está es.
+En.
+Todo lo que dice agentes, pues desde Agent AIT, desde ahí.
+Don't cheat man.
+Este, más que la arquitectura de sistemas, es cómo están los procesos y qué herramientas principales tenemos, perfecto, este proceso de comercial, crédito, fondeo, actuación, cobranza, terminaciones, remarketing, finanzas, reporteo y lo que llamamos este ejemplo del capital. no?
+Las principales herramientas que tenemos son Salesforce, súper claro, tenemos para gestión de indirectos, tenemos una aplicación que le llamamos PRM, Regressions y Management, que es el siming de un CRM, pero para proveedores que se ocupa, o k, o k, o acerca los indirectos, correcto.
+Es de nuestro modelo Da Vinci, ClickSense y OAC, Salesforce y Oracle. Eso está en la parte de todo lo que es de crédito, approval, takedown y monitoreo de portafolio, todo lo que es Oracle. Llevamos AML, el KYC o el FM, cuentas por pagar, cobrar.
+Cobranza, etcétera. Tenemos un este que acaba de cambiar el año pasado, noviembre, migramos de un sistema de tesorería que se llama Integrity a uno que se llama FIS, que es una aplicación tipo SaaS, pero es la misma, es la misma empresa, no este para Gema Capital manejamos principalmente Oracle Cloud y Nova, que es una aplicación interna.
+Tenemos un contact center a través del Cisco Webex, tenemos toda la parte del contact center, Super Trump, Moody's, Buro de Crédito, las listas de KYC, utilizamos principalmente quién es quién para validar hits y listas este negras, expediente azul engine docs como integración del expediente.
+La parte de facturación para temas de confirmación, este derivados, tipos de cambio, etcétera. Concur, este acaba de cambiar, un sistema de gestión de viáticos que se llaman vender y el SAP, no correcto, y Roby, que es para la gestión de espacios de.
+En las oficinas, en toda esa, en todo esa este flujo de datos, o sea, si tú tuvieras que marcar como el punto álgido donde hay más manualidades, donde tú ves que hay más oportunidad operativa, donde la tecnología tal vez todavía no resuelve el problema y tal vez no lo va a resolver porque no costea.
+¿Dónde sería? O sea, ¿dónde podría irse? En todos hay manualidades este tenemos una premisa de que no vamos a digitalizar el 100% de las cosas, claro, entonces tampoco hace sentido, no hace sentido este, pero sí tenemos, por ejemplo, en Salesforce, actualmente estamos gestionando muchos procesos de digitalización.
+Y otros a través de herramientas de automatización, claro, sí, para poder hacer la carga de información. Por ejemplo, no teníamos expedientes por tipo de documento, eso ahora lo implementamos el año pasado, se tiene que poner cada documento va en cada boqueta. Claro, sí, este antes simplemente era todo cargado.
+Entonces la productividad me armada en el resto de los equipos, pero también era muy fácil porque claramente lo hacían folder, claro, pero para el resto de los equipos tenían que identificar cuáles eran las este exacto. Ahorita ya lo vamos a hacer con un expediente automatizado con inteligencia artificial, que cargues uno y se va asignando a cada uno de los claro.
+Buenísimo, por ejemplo, este se van a empezar. Correcto y a nivel de arquitectura, estas son las algunas de las observaciones que murió este. ¿Por qué? Porque estamos haciendo un cambio específicamente del tipo de Moody's. Tenemos aquí Riscalc, solamente te quedó Credit Lens, pero es un poquito así como está la estructura.
+De las aplicaciones integradas. Esto está súper bueno, ¿no lo puedes compartir? Sí, soy el actualizado. Este archivo que abrí ahorita desde el 2024 fue para una auditoria que tuvimos. No, pues mira, o sea, mientras pasa este, tengo una actualización, ahorita lo busco, simplemente por efectos de nuevo perder tiempo.
+Este es este y este es y es un poquito de la evaluación que tuvimos. Esos son los proyectos que lanzamos en el 2016 y 2017. Para que se den una idea, muchos de los sistemas que tenemos al día de hoy fueron creados para ella. Sí, ¿por qué? Porque obviamente a partir de la separación de General Electric no es como que vengamos cargando.
+Con 1.1 sistema viejo Legacy, sino realmente todo se creó de cero en la parte del 2016.
+Okay, ya aprovechando este platícanos un poco de los de los proyectos que traes para este año en los próximos años y en la medida de lo posible, que de esto le pega a específicamente a LM. Okay, voy a partir por 2 tipos de proyectos, separando su portafolio en 2 categorías.
+Los proyectos que le llamamos corp y los proyectos que le llamamos inteligencia artificial con agentes. Sí, déjenme vernos un poquito de dirección de edad.
+Esa es la evolución de capex que se ha tenido en las 2 compañías, rojo es TIP, azul es ellen. A partir del 24 hemos decrecido nuestro nivel o nuestras necesidades de inversión en ellen, pero se han incrementado en TIP. ¿Por qué? Porque la deuda tecnológica fue importante.
+Durante estos años no se invertía demasiado en la tecnología y ahorita estamos haciendo un cachote todo el material tecnológico que existía. Estas son las 5:05 este fundamentales que estamos buscando para tecnología en este año, innovación y diferenciación es lo que les decía, proyectos con proyectos de inteligencia artificial.
+Con 2 focos, vender más o productividad, ciberseguridad y gestión de riesgos. Contamos con una política de ciberseguridad que no solamente esté en papel, sino también hacemos pruebas anuales de penetración para garantizar que contamos con todos los controles seguros e implementar nuevas nuevas cuestiones de controles. no?
+es un de datos y analíticos Juan Pablo se mencionó queremos escalar la información que tenemos al día de hoy en las plataformas tenemos imagínense que tenemos alrededor de cinco mil prospectos en Da Vinci con lo cual tengo cinco mil potenciales prospectos con sus
+¿Entidades relacionadas? ¿Qué son entidades relacionadas? ¿A quién le venden y a quién le compran? Sí, entonces eso nos permite poder identificar otro número. Exacto. Y es lo que vamos a escalar este año. Ya no solamente es un requerimiento para los procesos de crédito, que al que no hoy es aquí, sino escalar esa información.
+Aseguramiento de continuidad operativa, pues básicamente estamos haciendo algunas migraciones de procesos. Ahorita les mencionaba los de Aura para temas de costos de financiamiento y cumplimiento regulatorio, no todo el tema de hacer más sinergias con el equipo de TIP. En el hay los las 2 categorías, los proyectos Corp.
+Son estos tipos de proyectos que traemos: me da más productividad, de su cumplimiento, actualización y backlog de habilitación tecnológica y proyectos de IA muy enfocados hacia las 2:00 verticales que les mencionaba. ¿Vender más o productividad? Sí, este generamos nosotros una arquitectura particular para IA.
+En donde no estamos apalancándonos de soluciones en la nube, sino ya son soluciones implementadas para para ello, lo cual nos permite poder tener los modelos de conocimiento, aprovechar esta información en el seguro con nosotros. Muy bien, gracias.
+Algunas informaciones son menores, realmente este tenemos muy poco requerimiento de inversión en el item hardware. Bitca es muy similar, ahí son diferentes focos de estrategias, no lo no me voy a aclarar aquí en esto.
+Igual los proyectos están separados con iniciativas y hardware.
+Ya.
+¿Ahora qué tipo de proyectos tenemos? Un poquito más el de también.
+Estos son los proyectos que traemos, por ejemplo, para vender más, está apalancado en 2 principales proyectos, la plataforma de factoraje a proveedores y el factoraje multimoneda de procurrency, que significa que en una misma sesión tú puedas tener indistintamente facturas, pesos, dólares.
+Este, por lo cual es importante porque no tienes que estar haciendo 2 sesiones con el cliente, etcétera. Frente a productividad, migración del trainer, nos estamos migrando de Apex y Salesforce a una plataforma que se llama Creation. Es 1/3 parte más barata que Salesforce.
+Es nativa en y tiene mayores funcionalidades. Entonces, es uno de los proyectos importantes para migración de plataformas que estamos haciendo este año, la migración de a MAC. Estamos sustituyendo Aura, Salesforce y Appex también por creation, la migración de servicios de end of list y la migración de los.
+Ese es un proyecto importante para que los clientes.
+Pueden realizar los elfas, es un que es la auditoría o la certificación de que el activo existe.
+Al día de hoy depende de que 1/3.
+Nosotros.
+lo contratamos para que vaya a las instalaciones del cliente y lo certifique Sí el año pasado hicimos una herramienta para que nuestro equipo comercial pudiera ir realmente no lo está utilizando porque no no es un necesario principal pero lo que vamos a hacer es tomar eso como base
+Para que el cliente lo pueda hacer, entonces tenemos a nuestro equipo de analistas de evaluaciones en nuestro en nuestra cancha, toma el video del cliente, le está direccionando el nuestro analista, ve aquí, toma esta foto de acá, cojo de localización y con eso ya se puede tener el la auditoría por parte del cliente.
+Algunos proyectos de riesgo, actualizaciones, seguridad y habilitación tecnológica. OK, cada uno de los proyectos tiene su forma, su principal de beneficios, KPIs.
+Y eso solamente es para presupuesto.
+Y a nivel de los proyectos de IA, muy similar.
+Aquí partimos un poquito como es el primer año que los integramos dentro del presupuesto, hicimos el framework que utilizamos a partir de un tema de ideación, se integramos 63 casos, una junta de previsión estratégica se seleccionaron 22, se priorizaron y solamente dijimos, sabes qué, podemos atender esos 3.
+Que son más importantes y son los 13 agentes que estamos trabajando este año. Hay una evaluación tanto de la habilidad y esfuerzo de implementación con el impacto al negocio. Esos son los 13 que nos estamos focalizando este año.
+En base a eso, ya ponerle nombre a los audiantes, eso lo hicieron ustedes, o sea, ellos hablaban de necesidades, cierto, ellos hablaban de necesidades y después tú dijiste, entonces necesidades, así se llama esta gente. Hicimos un análisis inicial de cómo, en qué parte del proceso cae, entonces, por ejemplo, es un nivel.
+Macro 2 de proceso, consulta, segmenta, análisis y generar campañas comerciales, solo hace marketing. Después captura lead, detecta oportunidades para el marketing y cada uno de los diferentes agentes donde van a estar interactuando. Sí.
+Cada uno de los agentes ese es el framework que tuvimos donde hay objetivo, inscripción, herramientas, de datos. Eso es súper importante. Cada gente tiene esto metodología y todo eso se refleja en una hoja de agentes en donde definimos cada uno de estos diferentes.
+Segmentos y con lo cual tenemos nosotros la garantía de que le estamos pegando lo que queremos, no algunas métricas que estamos llevando para el tema de la ejecución de los proyectos, no solamente la parte de proyectos, el costo operativo y la efectividad, que significa que efectivamente la gente dijimos que inunciando.
+Y esos ya esos eran ya ******. Sí, estos son los esos son los principal, los primeros 6 que vamos a atacar, los siguientes 7.
+Los timelines por su operación, cada uno tiene su hoja de proyecto, alcance, proceso, beneficios.
+Problemas de implementación, no todos se implementan desde un principio, son alcances a partir de MVP.
+Las herramientas, esos son los módulos que van a componer el agente. ¿Qué actividades va a ser cada uno de esos módulos y el estado tecnológico que estamos utilizando? ¿Dónde los están desarrollando el agente? Tenemos principalmente es n 8 nn 8 n orquestador, ajá, pero tenemos nuestro.
+Nuestro sector de bedrock para poder seleccionar el tipo de LLM, ya o K correcto, principalmente estamos trabajando con esos 3: Cloud, Gemini y OpenA como LLN, correcto, toda nuestra base de datos principalmente está en la nube, que es Oracle.
+Algunos servicios los tenemos con GCP, que es el, por ejemplo, es un servicio que ya estamos utilizando y las herramientas de comunicación, Twitter, WhatsApp, Sendgrid, Teams y Salesforce. ¿Y cuando dijiste que lo iban a poner el rag o bueno, el LM interno, se lo van a hacer con meta o qué están pensando?
+¿Con qué modelo lo van a hacer? O sea, hay diferentes racks que traemos, depende el tipo de especialización del documento. ¿Están viendo todavía cuál? No tenemos varios, ya tienen varios. Algunos son de Meta, algunos son de OpenAI, algunos otros son este específicos de Antropic, o sea, cada uno de Antropic como el Opus o cuál.
+Yeah.
+Cada uno de los proyectos a ver.
+Este, por ejemplo, es súper importante, el gestor de documentos, el que nos decías, ¿verdad? O sea, aquí lo que estamos buscando es no solamente tener el expediente, sino poder validar determinar el checklist por el estado de la oportunidad, porque va cambiando, se va incrementando los requerimientos de información que fueron avanzando la oportunidad.
+Se crea el expediente, valida la documentación que ya tenemos en el cliente, recopila el expediente con el cliente, valida que los documentos sean correctos, como validación de vigencias, que cuadren los montos, etcétera. Al día de hoy no tenemos servicios de open banking en México. Sí, no está regulado.
+Y no hay ningún que los quiera hacer. Entonces es muy complicado hacer la validación de los estados de cuenta de los bancos. Claro. Sin embargo, utilizamos algunas herramientas para determinar similitudes, etcétera. ¿Oye Luis, y de tu equipo, quién es el que trae esta iniciativa? ¿O sea, cuánta gente traes aquí desarrollando esto? Tenemos 2.
+lo que lo que hicimos fue partir el equipo tengo un cómo se llama así un gerente que está llevando toda la iniciativa como grupo y tenemos arquitectos desarrolladores separados para no canibalizar la prioridad de proyectos operativos claro el día a día
+O K, aquí está Narain Arajani, correcto, es Karina Flores, Dulce González y Antonio Toral. O K, ¿y tienes alguien más en tu estructura? Aporte directo.
+Y justo lo quería ver.
+Te digo, el último, el último organigrama que mandamos.
+¿Y cómo se decidieron por creation?
+Hacemos constantemente buscar, exacto, está bueno esa.
+Es que no la encuentro, pero no te preocupes de la estructura de la estructura que mencionaste. Tengo un gerente de producto que es para el gerente de desarrollo que es canina, gerente de aseguramiento que es dulce, este y un gerente de infraestructura y tecnología que es Antonio Torán. En adición hay un hay un tercero que ahorita este año lo estamos en el movimiento porque nada se está focalizando a toda la gestión del proyecto.
+sería okay narin es el que trae esto o el castillo está llevando todos los productos tecnológicos
+Okay.
+Lo que estamos buscando es precisamente generar señal, más o menos. va buenísimo. Oye, este ahorita ahorita en un correo sobre este mismo de la invitación te solicitamos entonces cuatro de estos documentos que nos mostraste el día de hoy, el de la arquitectura tecnológica que nos comentaste que.
+No sé sobre actualizarlo, el de no movies de cultivo que traía la estrategia de ti los proyectos y luego nos mostraste 2 que ya abren el portafolio de proyectos, el de Engine Core y el de Engineering. Ahora aprovechamos esos minutos que nos quedan. este.
+¿Cuáles son las principales oportunidades que tú visualizas?
+para hacer o sea para para potenciar el negocio del mm si lo quieres decir con lo que chucha de ti o no con lo que no importa o sea como ejecutivo como como toda la fensibilidad del negocio y por el enfoque que veo que más allá de la parte técnica
+Pues le hace un poco el bosque.
+Mira, yo veo algunos temas que son relevantes. El primero, el modelo del homeo market al día de hoy es muy similar al que tenemos en corte, aunque el segmento es distinto del mercado, pero los procesos son prácticamente los mismos. Sí.
+Se utilizan las mismas herramientas, se utilizan los mismos flujos operativos y aunque tengamos una transacción pequeña, todo entra en el mismo pipeline operativo. ¿Qué significa? Pues si tenemos una transacción web, puedes decir números anarios de 10000000 en Core.
+Pero eso fue 1000000 en el homin market, pues pelean el mismo nivel de atención de los equipos este de operación. Sí, los equipos de riesgo sí están segmentados. Ahí veo un tema en el cual el equipo de riesgo del homin market es el mismo equipo que de factoraje.
+Y como ambas iniciativas se está esperando un crecimiento, seguramente en su momento va a ser un happy problem, en el cual va a tener que incrementarse esa capacidad, este o generar una energía adicional de análisis de este.
+Eso por un lado. Entonces, ¿a qué me refiero a que los cores son iguales? Pues hay una evaluación de activos, este el pricing, la herramienta de pricing está para la misma, todo cobra sobre la plataforma, etcétera, no. Entonces estoy convencido que el tipo de las transacciones de los virus rankings deberían ser.
+Mass.
+O sea, mucho más transaccionales este y no tan especializadas. Ajá, sí, el segundo punto relevante es.
+No estamos aprovechando la información o la segmentación que tenemos dentro de nuestras plataformas, y ahí la necesidad que estamos haciendo proyectos este año para poder escalar la información que tenemos en las plataformas como Da Vinci, etcétera.
+You.
+Como esto que nos platicaba, tenemos 5000 prospectos y este les voy a dar una red que ayer ayer precisamente.
+Yeah.
+Estamos haciendo un análisis para evaluar quiénes de nuestros prospectos que están en Da Vinci.
+¿Han facturado o reciben facturas de Equity Link? Sí, Equity Link es una empresa que ofrece servicios de factoraje. Simplemente es un competidor pues con el RFC de Equity Link.
+¿Yo puedo evaluar en mis 5000 prospectos que he evaluado, a quiénes les factura esta empresa y a quién le vende esa empresa? Sí, entonces de todos los que evaluamos encontramos que hay 25 prospectos, nuestra base que están relacionados con ellos.
+Sí, 2 proveedores y 25 prospectos o clientes, de esos 25 no son clientes de nosotros 17.
+Sí.
+Hay 7 que tienen overlap de arrendamiento, hay 2 que le dan factoraje tanto la competidora como nosotros y que tengan los 2 productos, arrendamiento y financiamiento, factoraje, perdón, un cliente. Sí, y estamos viendo los montos, esto es de la información del SAT.
+Le sacamos, entonces, por ejemplo, yo estoy analizando y estoy viendo que que sería algunas en este periodo de facturación, que es la información que tengo de cliente en este momento. Estamos hablando de Coahuila, son de Torreño, de Chihuahua, Chihuahua, que serían las alunas. Entonces hay 36 oportunidades de arrendamiento, también es un cliente de nosotros con factoraje.
+Tengo información de este cliente en particular del 7 de julio, perdón de julio del 24 a enero del 26 le ha facturado equity link 17.4 millones de dólares.
+Sí, 422 facturas y así cada uno de los diferentes clientes.
+Listo.
+poder hacer algo y ha visto volver a quién no trae quién no está apostando es escalar esta información
+Este marco lo hicimos ya con N o Training, la presentación del reporte y también con LLMs este están integrados y que el mío esto fue de bote pronto, o sea, platicamos con Juan Pablo a las 6:00 de la tarde, ya para las 8 bueno, no me acuerdo que hora se mandó el correo el análisis que hizo el la gente.
+A las 10:00 de la noche, este lo hizo con opus fácil, no sé el formato.
+Pero fíjate, o sea, tenemos la información este en este caso, digo, no tengo información de abril del 23 en adelante, hasta ese momento fue cliente de nosotros en factoraje, pero le faltó los 155000 pesos, pero 7000000 USD, aquí estamos viendo hasta el corte del producto que es factoraje internacional.
+Este es el envío, o sea, que de una alguna nos puedes. ¿Nos puedes compartir este como ejemplo de lo que estás diciendo? Sí, se puede.
+igual les puedo sacar algo puedo sacar de mis aspectos quienes están facturándoles ustedes han facturado base datos también clasificados podría haber podría haber de mis aspectos quiénes han trabajado con ustedes
+*****.
+Y así digo, proveedores, si se cuenta, muy pocos de mis de mis prospectos le han facturado, tal vez España, nada este febrero del 25 y en el caso de link conexión a ella debe ser alguna aviación 6100 pesos, tampoco les da claro.
+Yeah.
+Hasta que quiere pasar.
+Mm.
+Da Vinci, que es donde están, o sea, Da Vinci, lo utilizas para, o sea, hacer de los cinco, recuérdame, es donde SAT es mi modelo de extracción e información del SAT y generación de indicadores.
+Con eso confirmo que el cliente efectivamente esté facturando, esté cobrando, etcétera. Buenísimo, en la parte de dimensionamiento del mercado de LNM te han involucrado. Supongo que eso ya lo platicaremos con.
+Con Mauricio y con también ha visto la placas con Alejandro, pero te han involucrado en algún análisis aquí, o sea, decir, oye, a hacer estas investigación, hacer este funcionamiento por segmento, por región, por tipo de este de actividad, por y dice.
+¿Criminaron diciendo, pues hay 180000 unidades por metas activas, pero este que si limpiamos estos momentos, o sea, hay algo en lo que te haya participado en ese sentido? No, y te voy a decir por qué, la verdad es que son autos suficientes para el equipo de marketing, este ellos tienen esa capacidad de gestión, este donde si participamos ya es en incorporación de ciertas herramientas.
+O extracción de información este o incluso, por ejemplo, en la participación de los mistery shoppers para hacer la evaluación de ciertas características que hacen los competidores y cómo los cambiamos o venderemos eso en nuestros plataformas.
+O K, eso lo pueden ver con Alex Álvarez, lo del nuevo sitio, exacto.
+¿Hemos agendado con Alex, no?
+Aquí ya anoté, muy interesante.
+Bueno, este bueno, pues muy productiva la muy eficiente y muchas gracias. Muchas gracias Luis, muy padre todo lo que tienes. Importantes es precisamente la arquitectura de los sistemas, algunas de las herramientas que ya nos permiten.
+precisamente hacia las entrevistas cambiar la próxima semana por no llegar en blanco y eso que tienes por ahí este primero pues ya nos hace este framework todos está muy interesante los proyectos que trae muy y concepto la verdad muy para la metodología de cómo los de cómo los tienes desde nuestra con sus impactos
+Este trabajamos con compañías grandes, medianas, pequeñas, en bolsa, en bolsa, ¿no? Y es raro verlo así el cultural, así que muchas felicidades, Luis. Muchas felicidades, nos tocó invertirle tiempo para él. Está muy fregón y.
+Y vamos a decir parte de lo que queremos también.
+En este assessment entender es, oye, y si hay que hacer ajustes, cambios al al a ya precisamente a la operación, a los procesos, a los productos, etcétera, hay hoy las capacidades y condiciones para que la empresa lo pueda hacer. Y bueno, una impresión más gente, búscalo ahí.
+Realmente, nosotros podríamos.
+Cambiar los flujos de proceso en Salesforce el día que quisiéramos, o sea, es más un tema de decisión, un tema de restricción. Yo siempre he visto que la tecnología es habilitadora. Sí, son los creyentes de, son los creyentes, no solamente es en fin, no es un medio y que si.
+¿Va bien enfocado el negocio? Por supuesto que hay un diferenciado. Perfecto, pues lo que hiciste, tenemos el correito que nosotros cuatro temas, copia Memo para que esté llevando ahí como administrador de de muchas gracias y algo ya muy operativo, pero nos iban a dar un acceso a Internet porque tenemos este.
+
+Alfredo Chavez detuvo la transcripción

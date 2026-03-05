@@ -95,6 +95,65 @@ Opera en el espacio SOFOM / arrendadoras (financiamiento no bancario). Principal
 
 ---
 
+## Entregables del proyecto
+
+### 1. Estudio de Mercado (completado)
+- **Archivo:** `index.html`
+- **URL:** https://alfredochavezenriquez85-maker.github.io/engen-capital/
+- **Contenido:** Análisis outside-in del mercado de arrendamiento y financiamiento B2B en México. Dimensionamiento de mercado, segmentación mid-market, 7 sectores de alto CAPEX organizados en 3 tiers, landscape competitivo (post-Unifin), posicionamiento de Engen, tendencias/drivers, benchmarks de modelo comercial, oportunidades priorizadas.
+- **Dato ancla:** Gap de mercado mid-market de $50,000-$85,000 MDP
+- **Portada:** Gradiente navy (LCG)
+- **Clasificación:** Confidencial
+
+### 2. Playbook de Prospección Mid-Market (completado)
+- **Archivo:** `prospeccion-mid-market/index.html`
+- **URL:** https://alfredochavezenriquez85-maker.github.io/engen-capital/prospeccion-mid-market/
+- **Contenido:** Guía operativa para el equipo comercial. ICP (Ideal Customer Profile), fichas sectoriales de los 7 sectores, geografía prioritaria (5 corredores industriales), propuesta de valor por perfil de cliente, plan de acción a 90 días con 3 fases, quick wins inmediatos.
+- **Portada:** Gradiente verde (Engen)
+- **Clasificación:** Uso Interno
+
+### 3. Guía de Entrevistas para Prediagnóstico (completado)
+- **Archivo:** `guia-entrevistas/index.html`
+- **URL:** https://alfredochavezenriquez85-maker.github.io/engen-capital/guia-entrevistas/
+- **Contenido:** Herramienta de trabajo para las entrevistas de campo. Tips de entrevista diagnóstica, estructura sugerida (45-60 min), fichas por área con 5-7 temas cada una (Comercial, Originación, Riesgos, Operaciones, Tecnología, Dirección), checklist de evidencia a recopilar con prioridad. Cada tema incluye qué explorar y qué evidencia pedir. Contextos del Estudio de Mercado integrados como referencia.
+- **Portada:** Gradiente ámbar/naranja (diagnóstico de campo)
+- **Clasificación:** Uso Interno LCG
+
+### 4. Prediagnóstico — Hallazgos de Campo (estructura lista, contenido pendiente)
+- **Archivo:** `prediagnostico/index.html`
+- **URL:** https://alfredochavezenriquez85-maker.github.io/engen-capital/prediagnostico/
+- **Contenido (cuando se complete):** Síntesis de entrevistas de campo + evidencia + conclusiones de los documentos anteriores. Secciones: Metodología, Resumen Ejecutivo, Dimensión Comercial, Dimensión Operativa, Galería de Evidencias, Oportunidades Detectadas, Conclusiones y Recomendaciones, One-Pager Ejecutivo.
+- **Portada:** Gradiente ámbar/naranja (diagnóstico de campo)
+- **Clasificación:** Confidencial
+- **Carpeta de evidencia:** `prediagnostico/evidencia/` con subcarpetas por área (comercial, originacion, riesgos, operaciones, tecnologia, direccion, financieros)
+
+---
+
+## Sistema de diseño de los entregables
+
+- **Framework:** HTML autocontenido (single-file), CSS inline, sin dependencias externas
+- **Fuentes:** Google Fonts — Inter (body) + Playfair Display (títulos de portada)
+- **Paleta base:** `--lcg-navy: #0B1F3F`, `--lcg-accent: #2E6DB4`, `--engen-green: #00B388`, `--engen-dark: #004D40`
+- **Diferenciación por portada:** Navy = análisis estratégico, Verde = operativo, Ámbar/naranja = diagnóstico de campo
+- **Componentes compartidos:** KPI Banner, Exec Cards, Callout boxes (azul/verde/naranja/ámbar), Tags de prioridad, Tablas con fuente, Page headers con logos duales
+- **Componentes del prediagnóstico:** Evidence Card, Verbatim Quote, Finding Card, Heat Map, Process Map
+- **Logos:** LCG (londoncg.com) + Engen (LinkedIn) — con conversión a base64 para PDF
+- **Print helper:** Modal con instrucciones de exportación a PDF (Guardar como PDF → Gráficos de fondo → Márgenes ninguno)
+- **Publicación:** GitHub Pages en `alfredochavezenriquez85-maker.github.io/engen-capital/`
+
+---
+
+## Flujo de trabajo para el prediagnóstico
+
+1. Alfredo hace +10 entrevistas con diversas áreas de Engen Capital
+2. Pasa material por bloques (por área o por día): transcripts, notas, fotos, documentos
+3. Para cada pieza incluye: el material + qué quiere evidenciar con él
+4. Claude sintetiza y va llenando secciones del prediagnóstico
+5. Al completar: cierre con conclusiones integradas de los 3 documentos + one-pager
+6. **Formatos de entrada:** PDFs e imágenes se leen directo. Word/PPT/Excel → exportar a PDF o pegar texto en chat
+
+---
+
 ## Cómo trabajo con Claude en este proyecto
 
 - Investigación y análisis del mercado de arrendamiento y financiamiento B2B en México
@@ -103,6 +162,8 @@ Opera en el espacio SOFOM / arrendadoras (financiamiento no bancario). Principal
 - Identificación de sectores con mayor potencial CAPEX para el segmento medio
 - Estructuración de la propuesta de consultoría (alcance, enfoque, casos de éxito)
 - Elaboración de entregables y presentaciones ejecutivas para el cliente
+- Procesamiento de transcripts de entrevistas y síntesis de hallazgos
+- Integración de evidencia visual en documentos de diagnóstico
 
 ---
 
@@ -125,3 +186,4 @@ Opera en el espacio SOFOM / arrendadoras (financiamiento no bancario). Principal
 - **Engenials** — nombre interno para los colaboradores de Engen Capital
 - **Mid-market / low-mid market** — segmento de empresas medianas al que quieren crecer
 - **TIP México** — subsidiaria de arrendamiento de remolques (51% propiedad de Engen)
+- **ICP** — Ideal Customer Profile (perfil de cliente ideal, definido en el Playbook)

@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"\" \"C:\\\\proyectos\\\\engen-capital\\\\Estudio-de-Mercado-Engen-Capital.html\")",
+      "Bash(cmd /c start \"\" \"C:\\\\proyectos\\\\engen-capital\\\\Estudio-de-Mercado-Engen-Capital.html\")",
+      "Bash(explorer \"C:\\\\proyectos\\\\engen-capital\\\\Estudio-de-Mercado-Engen-Capital.html\")",
+      "WebFetch(domain:londoncg.com)",
+      "WebFetch(domain:engen.com.mx)",
+      "WebFetch(domain:engencapital.com)",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebFetch(domain:www.igsa.com.mx)",
+      "Bash(cmd /c \"mkdir C:\\\\proyectos\\\\igsa\\\\.claude\")",
+      "Bash(curl -L -o \"C:\\\\proyectos\\\\engen-capital\\\\logo-lcg.png\" \"https://londoncg.com/hs-fs/hubfs/Logo4%20\\(1\\).png?width=580&height=230\")",
+      "Bash(where curl)",
+      "Bash(where powershell)",
+      "Bash(git -C \"C:/proyectos/engen-capital\" status)",
+      "Bash(git -C \"C:/proyectos/engen-capital\" init)",
+      "Bash(gh auth status)",
+      "Bash(git init \"C:/proyectos/engen-capital\")",
+      "Bash(where git)"
+    ]
+  }
+}
