@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensi&oacute;n Tecnolog&iacute;a: Arquitectura, Capacidades e IA &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #0d3345 40%, #004D40 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+        .finding-dimension.tecnologia { background: #e0f2f1; color: #00695c; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+
+        /* ======================== GRID TIENE VS NECESITA ======================== */
+        .grid-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .grid-col-header {
+            padding: 14px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .grid-col-header.tiene { background: var(--lcg-navy); color: white; }
+        .grid-col-header.necesita { background: var(--engen-green); color: white; }
+
+        .grid-row {
+            display: contents;
+        }
+
+        .grid-cell {
+            padding: 12px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .grid-cell:nth-child(odd) { background: var(--bg-light); border-right: 1px solid var(--border); }
+        .grid-cell:nth-child(even) { background: white; }
+
+        .grid-cell strong { color: var(--lcg-navy); }
+
+        /* ======================== STACK CARD ======================== */
+        .stack-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .stack-card.core { border-left-color: var(--lcg-navy); }
+        .stack-card.analytics { border-left-color: var(--engen-green); }
+        .stack-card.ai { border-left-color: var(--warning); }
+        .stack-card.legacy { border-left-color: var(--text-muted); }
+
+        .stack-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            width: 32px;
+            text-align: center;
+        }
+
+        .stack-info { flex: 1; }
+
+        .stack-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            margin-bottom: 2px;
+        }
+
+        .stack-vendor {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stack-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">An&aacute;lisis de Oportunidades</div>
+                <h1 class="cover-title">Dimensi&oacute;n Tecnolog&iacute;a:<br>Arquitectura, Capacidades e IA</h1>
+                <p class="cover-subtitle">Deep-dive en el ecosistema tecnol&oacute;gico y los proyectos de inteligencia artificial que pueden potenciar el crecimiento LMM</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Luis Padilla, CIO Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">Marzo 2026 &mdash; Entrevista presencial CDMX</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento presenta un an&aacute;lisis de la <strong>dimensi&oacute;n tecnol&oacute;gica</strong> de Engen Capital, basado en la entrevista de ~60 minutos con <strong>Luis Padilla, CIO</strong> de Engen Capital y TIP M&eacute;xico. Luis tiene background de GE (inici&oacute; en la f&aacute;brica de focos) y ha estado con el grupo desde 2004. La conversaci&oacute;n cubri&oacute; el stack tecnol&oacute;gico completo, la estrategia de IA con 13 agentes en desarrollo, la migraci&oacute;n a Creaction, y &mdash;cr&iacute;ticamente&mdash; c&oacute;mo la tecnolog&iacute;a actual podr&iacute;a habilitar un modelo diferenciado para el segmento LMM.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value green">5,000</div><div class="kpi-label">Prospectos en Da Vinci</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">13</div><div class="kpi-label">Agentes IA en desarrollo</div></div>
+                <div class="kpi-item"><div class="kpi-value green">1/3</div><div class="kpi-label">Ahorro Creaction vs Salesforce</div></div>
+                <div class="kpi-item"><div class="kpi-value green">3.5 a&ntilde;os</div><div class="kpi-label">Con firma SAT (pioneros)</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">LMM = Core en procesos</div>
+                    <div class="exec-card-desc">El segmento LMM usa los mismos flujos, herramientas y pipeline operativo que Core/Corp. Las transacciones peque&ntilde;as compiten por la misma atenci&oacute;n que las grandes. No existe un proceso transaccional diferenciado.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Oportunidad estrat&eacute;gica</div>
+                    <div class="exec-card-value">Da Vinci: joya subutilizada</div>
+                    <div class="exec-card-desc">5,000 prospectos con entidades relacionadas (clientes, proveedores). Demostraci&oacute;n en vivo: cruzaron un competidor y encontraron 17 prospectos no-clientes. La inteligencia existe pero no se escala.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo operativo</div>
+                    <div class="exec-card-value">Retrocesos en Toll Gates</div>
+                    <div class="exec-card-desc">Expedientes llegan incompletos a Riesgos. &ldquo;Hay mucho retroceso donde riesgo empieza a trabajar, no tiene toda la info, la regresa.&rdquo; M&eacute;tricas de expedientes bien a la primera son bajas.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Proyecto 2026</div>
+                    <div class="exec-card-value">13 agentes IA priorizados</div>
+                    <div class="exec-card-desc">De 63 casos ideados &rarr; 22 seleccionados &rarr; 13 priorizados. Framework propio con N8N + AWS Bedrock + LLMs. Primer a&ntilde;o integrado en presupuesto formal.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central</div>
+                <p>La plataforma tecnol&oacute;gica de Engen es <strong>robusta y madura</strong> &mdash; heredada de GE Capital y reconstruida desde 2016. Sin embargo, el <strong>modelo operativo LMM replica los mismos flujos del segmento Core/Corp</strong>, haciendo que transacciones peque&ntilde;as consuman recursos desproporcionados. La oportunidad no est&aacute; en m&aacute;s tecnolog&iacute;a sino en <strong>redise&ntilde;ar los flujos para que el LMM sea transaccional, no especializado</strong>. La tecnolog&iacute;a ya est&aacute; lista para habilitarlo &mdash; como dice Luis Padilla: <em>&ldquo;Podr&iacute;amos cambiar los flujos de proceso en Salesforce el d&iacute;a que quisi&eacute;ramos, es m&aacute;s un tema de decisi&oacute;n.&rdquo;</em></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: CONTEXTO — ARQUITECTURA TECNOL&Oacute;GICA          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Contexto: Arquitectura tecnol&oacute;gica de Engen</div>
+            </div>
+
+            <p>La fortaleza tecnol&oacute;gica de Engen es un activo cr&iacute;tico para ejecutar la estrategia de crecimiento LMM. <strong>Luis Padilla</strong> (CIO de Engen Capital y TIP) lidera una infraestructura de primer nivel, heredada de GE Capital y reconstruida desde cero en 2016. Lo que importa para el diagn&oacute;stico LMM es entender <strong>qu&eacute; piezas ya existen y pueden reconfigurarse</strong> para habilitar un modelo operativo diferenciado para el segmento de medianas empresas &mdash; sin necesidad de invertir desde cero.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Todo se cre&oacute; de cero en 2016.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, CIO, sobre la reconstrucci&oacute;n post-GE</div>
+            </div>
+
+            <h3>Stack tecnol&oacute;gico y su relevancia para LMM</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sistema</th>
+                        <th>Funci&oacute;n</th>
+                        <th>Relevancia LMM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-highlight">Salesforce</td>
+                        <td>CRM + originaci&oacute;n + pipeline + checklist (Engen Docs)</td>
+                        <td style="color: var(--danger); font-weight: 600;">Cr&iacute;tica &mdash; mismos flujos que Core, necesita diferenciaci&oacute;n</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">Super Trump</td>
+                        <td>Cotizador avanzado: pagos irregulares, variaciones tasa, dep&oacute;sitos</td>
+                        <td style="color: var(--warning); font-weight: 600;">80% de cotizaciones LMM lo usan innecesariamente</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">Da Vinci</td>
+                        <td>Extracci&oacute;n SAT + indicadores. 5,000 prospectos con entidades relacionadas</td>
+                        <td style="color: var(--engen-green); font-weight: 600;">Joya subutilizada &mdash; motor de prospecci&oacute;n LMM</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">Credit Lens (Moody&rsquo;s)</td>
+                        <td>Probabilidad de default, modelos mercado mexicano</td>
+                        <td style="color: var(--warning); font-weight: 600;">Modelos calibrados para Core, no para mid-market</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">Oracle OLFM</td>
+                        <td>Formalizaci&oacute;n de cr&eacute;ditos (legacy GE)</td>
+                        <td>Compartido &mdash; sin diferenciaci&oacute;n por segmento</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">Apex / Mesa Control</td>
+                        <td>Verificaci&oacute;n contratos, VoBo fondeo</td>
+                        <td>Compartido &mdash; migrar&aacute; a Creaction 2026</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">QlikSense + OAC</td>
+                        <td>Business Intelligence y reporteo</td>
+                        <td style="color: var(--warning); font-weight: 600;">Falta dashboard end-to-end de ciclo LMM</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">N8N + AWS Bedrock</td>
+                        <td>Orquestaci&oacute;n agentes IA (Claude, Gemini, OpenAI)</td>
+                        <td style="color: var(--engen-green); font-weight: 600;">2 agentes con impacto directo en LMM</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Arquitectura h&iacute;brida</div>
+                <p>El stack opera en un modelo <strong>h&iacute;brido on-premise + nube</strong>. Los sistemas core (Oracle OLFM, Apex) corren on-premise por regulaci&oacute;n y legado, mientras que los componentes m&aacute;s nuevos (IA, Da Vinci, CRM) operan en nube. La migraci&oacute;n a Creaction busca simplificar esta arquitectura reduciendo dependencias de Salesforce.</p>
+            </div>
+
+            <h3>Equipo de TI</h3>
+            <table>
+                <thead><tr><th>Rol</th><th>Persona</th><th>Enfoque</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">CIO</td><td>Luis Padilla</td><td>Tecnolog&iacute;a ambos negocios (Engen + TIP)</td></tr>
+                    <tr><td class="table-highlight">Gerente de IA</td><td>Narain</td><td>13 agentes IA, framework N8N + Bedrock</td></tr>
+                    <tr><td class="table-highlight">Desarrollo</td><td>Karina Flores, Dulce Gonz&aacute;lez</td><td>Plataformas y desarrollo</td></tr>
+                    <tr><td class="table-highlight">Infraestructura</td><td>Antonio Toral</td><td>Infraestructura y operaciones</td></tr>
+                    <tr><td class="table-highlight">Productos Core</td><td>Joel Castillo</td><td>Productos core y nuevos desarrollos</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: HALLAZGO 1 — LMM = CORE EN PROCESOS               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 01</div>
+                <div class="section-title">LMM = Core en procesos &mdash; la oportunidad cr&iacute;tica de diferenciaci&oacute;n</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">El modelo operativo LMM replica &iacute;ntegramente el flujo de Core/Corp</div>
+                    <span class="finding-dimension proceso">Proceso</span>
+                </div>
+                <div class="finding-body">
+                    El hallazgo m&aacute;s relevante desde la perspectiva tecnol&oacute;gica es que el segmento <strong>Lower Middle Market no tiene un proceso diferenciado</strong>. Usa las mismas herramientas, los mismos flujos operativos y el mismo pipeline que Core/Corp. Esto significa que una transacci&oacute;n de $2M MDP pasa por el mismo rigor que una de $50M MDP.<br><br>
+                    El impacto es doble: (1) las transacciones peque&ntilde;as consumen recursos desproporcionados, y (2) compiten por la misma atenci&oacute;n del equipo de riesgos. Luis lo articula con claridad: el proceso LMM <strong>deber&iacute;a ser transaccional, no especializado</strong>.<br><br>
+                    Adem&aacute;s, el equipo de riesgos que atiende LMM es el mismo que Factoraje &mdash; lo que genera un cuello de botella de capacidad que &ldquo;seguramente se topar&aacute;&rdquo; conforme crezca el volumen.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Luis Padilla, CIO, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El modelo de LMM es muy similar al modelo de Core. Distinto mercado pero procesos iguales, mismas herramientas, mismos flujos operativos.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, CIO Engen Capital</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Aunque sea transacci&oacute;n peque&ntilde;a, entra en el mismo pipeline operativo. Pelean el mismo nivel de atenci&oacute;n.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, sobre la competencia por recursos entre segmentos</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El proceso de LMM no deber&iacute;a ser tan especializado, deber&iacute;a ser m&aacute;s transaccional.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, sobre el modelo objetivo para LMM</div>
+            </div>
+
+            <h3>Flujo actual: misma tuber&iacute;a, distinto volumen</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Prospecto</div>
+                    <div class="process-step-title">Salesforce CRM</div>
+                    <div class="process-step-detail">Mismo pipeline Core y LMM</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Cotizaci&oacute;n</div>
+                    <div class="process-step-title">Super Trump</div>
+                    <div class="process-step-detail">Mismo cotizador para ambos</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">An&aacute;lisis</div>
+                    <div class="process-step-title">Toll Gates 1-2</div>
+                    <div class="process-step-detail">Mismo rigor documental</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Riesgos</div>
+                    <div class="process-step-title">Equipo compartido</div>
+                    <div class="process-step-detail">LMM + Factoraje = mismo equipo</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">Formalizaci&oacute;n</div>
+                    <div class="process-step-title">Oracle OLFM</div>
+                    <div class="process-step-detail">Mismo proceso</div>
+                </div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Implicaci&oacute;n estrat&eacute;gica</div>
+                <p>Si Engen quiere escalar el segmento LMM &mdash; como lo indica la estrategia de Juan Pablo &mdash; necesita un <strong>carril r&aacute;pido operativo</strong> que no compita por los mismos recursos que Core/Corp. La tecnolog&iacute;a para hacerlo ya existe dentro de la plataforma: <em>&ldquo;Podr&iacute;amos cambiar los flujos de proceso en Salesforce el d&iacute;a que quisi&eacute;ramos, es m&aacute;s un tema de decisi&oacute;n.&rdquo;</em></p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Realmente nosotros podr&iacute;amos cambiar los flujos de proceso en Salesforce el d&iacute;a que quisi&eacute;ramos.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, confirmando que la tecnolog&iacute;a no es el bloqueador</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: HALLAZGO 2 — DA VINCI, LA JOYA SUBUTILIZADA       -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 02</div>
+                <div class="section-title">Da Vinci &mdash; la joya subutilizada (5,000 prospectos con intel)</div>
+            </div>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Da Vinci contiene inteligencia comercial que no se explota sistem&aacute;ticamente</div>
+                    <span class="finding-dimension oportunidad">Oportunidad</span>
+                </div>
+                <div class="finding-body">
+                    <strong>Da Vinci</strong> es una plataforma interna que extrae informaci&oacute;n del SAT mediante la e.firma y genera indicadores clave: concentraci&oacute;n de clientes, estacionalidades de facturaci&oacute;n, recurrencia de ingresos. Pero su valor m&aacute;s poderoso est&aacute; en los <strong>5,000 prospectos con sus entidades relacionadas</strong> &mdash; es decir, sabe a qui&eacute;n le venden y a qui&eacute;n le compran.<br><br>
+                    Durante la entrevista, Luis hizo una demostraci&oacute;n en vivo: tomaron el RFC de un competidor (<strong>Equity Link</strong>) y lo cruzaron contra la base Da Vinci. Resultado: <strong>25 prospectos relacionados con Equity Link</strong>, de los cuales <strong>17 no son clientes Engen</strong>. De esos 17, 7 tienen overlap en arrendamiento, 2 en factoraje y 1 en ambos productos.<br><br>
+                    El an&aacute;lisis se ejecut&oacute; <em>overnight</em> con <strong>N8N + LLMs (Claude Opus)</strong> &mdash; de manera ad hoc, sin un proceso establecido. Nadie est&aacute; escalando esta capacidad de manera sistem&aacute;tica.
+                </div>
+                <div class="finding-evidence">Evidencia: Demostraci&oacute;n en vivo durante entrevista + cruce RFC Equity Link, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Tenemos 5,000 prospectos en Da Vinci con sus entidades relacionadas.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, sobre la base de inteligencia comercial disponible</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No estamos aprovechando la informaci&oacute;n de las plataformas para poder sacar m&aacute;s mercado.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, sobre la subutilizaci&oacute;n de Da Vinci</div>
+            </div>
+
+            <h3>Caso pr&aacute;ctico: cruce con Equity Link</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card">
+                    <div class="exec-card-label">Prospectos relacionados</div>
+                    <div class="exec-card-value">25</div>
+                    <div class="exec-card-desc">Entidades relacionadas con Equity Link encontradas en Da Vinci</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">No son clientes Engen</div>
+                    <div class="exec-card-value">17</div>
+                    <div class="exec-card-desc">Oportunidades directas de prospecci&oacute;n &mdash; empresas atendidas por la competencia</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Overlap arrendamiento</div>
+                    <div class="exec-card-value">7</div>
+                    <div class="exec-card-desc">Prospectos con actividad en arrendamiento &mdash; producto core de Engen</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Overlap factoraje</div>
+                    <div class="exec-card-value">2 + 1</div>
+                    <div class="exec-card-desc">2 con overlap en factoraje, 1 con ambos productos (arrendamiento + factoraje)</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Oportunidad de alto impacto</div>
+                <p>Si un solo cruce ad hoc contra un competidor arroja 17 prospectos no atendidos, <strong>&iquest;qu&eacute; pasar&iacute;a si se sistematizara este an&aacute;lisis contra los 10-15 competidores principales del mercado?</strong> Da Vinci tiene la materia prima para construir un motor de prospecci&oacute;n inteligente basado en datos reales del SAT. Este es exactamente el tipo de ventaja competitiva que los bancos generalistas no pueden replicar.</p>
+            </div>
+
+            <h3>Firma SAT: innovaci&oacute;n que Engen pioneer&oacute;</h3>
+
+            <p>Engen implement&oacute; el ingreso de <strong>firma SAT (e.firma)</strong> hace 3.5 a&ntilde;os. En ese momento, apenas el 30% de las arrendadoras lo ped&iacute;an. Hoy, el 75-80% del mercado ya lo exige &mdash; Engen fue precursora. Con la e.firma acceden a los &uacute;ltimos 3 a&ntilde;os de informaci&oacute;n fiscal del SAT, lo que permite validar la realidad de la empresa vs. estados financieros que &ldquo;pueden tener manejo fiscal.&rdquo;</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">En el mercado no exist&iacute;a, el 30% de las arrendadoras lo ped&iacute;an. A d&iacute;a de hoy ya 75-80% lo piden.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, sobre la adopci&oacute;n de firma SAT que Engen pioneer&oacute;</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: HALLAZGO 3 — TOLL GATES Y RETROCESOS              -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 03</div>
+                <div class="section-title">Toll Gates y retrocesos &mdash; expedientes incompletos</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Alto porcentaje de expedientes que regresan de Riesgos por informaci&oacute;n incompleta</div>
+                    <span class="finding-dimension proceso">Proceso</span>
+                </div>
+                <div class="finding-body">
+                    El proceso de originaci&oacute;n tiene dos <strong>Toll Gates</strong> antes de que un expediente pase a Riesgos para an&aacute;lisis. Sin embargo, a pesar de este doble filtro, <strong>hay un volumen significativo de retrocesos</strong> donde Riesgos recibe el expediente, detecta que falta informaci&oacute;n y lo devuelve al equipo comercial.<br><br>
+                    Existe una m&eacute;trica de <strong>&ldquo;porcentaje de expedientes ingresados bien a la primera vez&rdquo;</strong>, lo que sugiere que el problema est&aacute; identificado pero no resuelto. <strong>Engen Docs</strong> (checklist por entidad en Salesforce) deber&iacute;a prevenir estos retrocesos, pero la herramienta no est&aacute; cerrando la brecha.<br><br>
+                    Cada retroceso representa: tiempo perdido del analista de riesgos, demora para el cliente, re-trabajo del originador y &mdash; potencialmente &mdash; p&eacute;rdida de la operaci&oacute;n si el cliente se va con la competencia.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Luis Padilla, CIO, marzo 2026</div>
+            </div>
+
+            <h3>Flujo de Toll Gates: dise&ntilde;o vs. realidad</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Paso 1</div>
+                    <div class="process-step-title">Toll Gate 1</div>
+                    <div class="process-step-detail">Validaci&oacute;n inicial del expediente</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">Paso 2</div>
+                    <div class="process-step-title">Toll Gate 2</div>
+                    <div class="process-step-detail">Revisi&oacute;n documental completa</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 3</div>
+                    <div class="process-step-title">Pasa a Riesgos</div>
+                    <div class="process-step-detail">Expediente deber&iacute;a estar completo</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Realidad</div>
+                    <div class="process-step-title">Retroceso</div>
+                    <div class="process-step-detail">Falta info &rarr; se regresa</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Impacto</div>
+                    <div class="process-step-title">Re-trabajo</div>
+                    <div class="process-step-detail">Tiempo perdido + riesgo de fuga</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Correlaci&oacute;n con otros hallazgos</div>
+                <p>Este hallazgo conecta directamente con lo observado en la entrevista comercial (Roberto Zacatenco): los originadores priorizan volumen de citas sobre calidad de expedientes. Si el proceso de Toll Gate no bloquea efectivamente expedientes incompletos &mdash; o si los originadores saben que pueden &ldquo;pasarlos&rdquo; incompletos &mdash; el cuello de botella se traslada a Riesgos, que se convierte en <strong>el &uacute;ltimo filtro de calidad</strong> en lugar del primero.</p>
+            </div>
+
+            <h3>Engen Docs: la herramienta existe pero no resuelve</h3>
+
+            <p><strong>Engen Docs</strong> es un m&oacute;dulo dentro de Salesforce que funciona como checklist por entidad: documentos legales, de accionistas, de personas morales y f&iacute;sicas. El dise&ntilde;o es correcto &mdash; el problema es que la completitud del checklist <strong>no est&aacute; siendo un bloqueador real</strong> para avanzar en el pipeline. Los originadores pueden avanzar la transacci&oacute;n sin haber completado toda la documentaci&oacute;n, lo que genera los retrocesos observados.</p>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Oportunidad de mejora r&aacute;pida</div>
+                <p>Configurar Salesforce para que <strong>el Toll Gate 2 sea un bloqueador duro</strong> &mdash; no avanza la transacci&oacute;n si el checklist de Engen Docs no est&aacute; al 100%. Esto es un cambio de configuraci&oacute;n, no de desarrollo. Como dice Luis: <em>&ldquo;Podr&iacute;amos cambiar los flujos de proceso en Salesforce el d&iacute;a que quisi&eacute;ramos.&rdquo;</em></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: HALLAZGO 4 — 13 AGENTES IA                        -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 04</div>
+                <div class="section-title">13 agentes IA &mdash; habilitadores cr&iacute;ticos para escalar LMM</div>
+            </div>
+
+            <p>Los agentes IA no son un ejercicio tecnol&oacute;gico abstracto. Dos de ellos son habilitadores cr&iacute;ticos para escalar LMM de manera rentable: (1) el <strong>gestor de documentos</strong> puede resolver el problema de retrocesos en Toll Gates, habilitando un flujo m&aacute;s transaccional; (2) la <strong>segmentaci&oacute;n inteligente</strong> puede escalar Da Vinci para prospecci&oacute;n masiva en el mid-market. El framework t&eacute;cnico es relevante porque determina <strong>qu&eacute; tan r&aacute;pido pueden desplegarse soluciones espec&iacute;ficas para LMM</strong>.</p>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">13 agentes IA priorizados para 2026 &mdash; al menos 2 con impacto directo en LMM</div>
+                    <span class="finding-dimension tecnologia">Tecnolog&iacute;a</span>
+                </div>
+                <div class="finding-body">
+                    El equipo de Luis identific&oacute; <strong>63 casos de uso potenciales</strong> para inteligencia artificial, de los cuales seleccion&oacute; 22 y <strong>prioriz&oacute; 13 para desarrollo en 2026</strong>. Es el <strong>primer a&ntilde;o que los integran dentro del presupuesto formal</strong> &mdash; se&ntilde;al de madurez institucional en adopci&oacute;n de IA.<br><br>
+                    El framework t&eacute;cnico es sofisticado: usan <strong>N8N como orquestador</strong>, <strong>AWS Bedrock</strong> como infraestructura de modelos, y m&uacute;ltiples LLMs (Claude, Gemini, OpenAI) seg&uacute;n el caso de uso. Cada agente tiene una hoja de especificaci&oacute;n con objetivo, herramientas necesarias, datos requeridos y KPIs esperados.<br><br>
+                    Entre los agentes priorizados destacan: <strong>gestor de documentos con IA</strong> (automatizaci&oacute;n de expedientes) y <strong>marketing segmentation agent</strong> &mdash; ambos con impacto directo en la eficiencia de originaci&oacute;n y la inteligencia comercial.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Luis Padilla + revisi&oacute;n de roadmap IA 2026, marzo 2026</div>
+            </div>
+
+            <h3>Pipeline de IA: del universo a la prioridad</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Ideaci&oacute;n</div>
+                    <div class="process-step-title">63 casos</div>
+                    <div class="process-step-detail">Universo de oportunidades</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Selecci&oacute;n</div>
+                    <div class="process-step-title">22 casos</div>
+                    <div class="process-step-detail">Filtro de viabilidad</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">Priorizaci&oacute;n</div>
+                    <div class="process-step-title">13 agentes</div>
+                    <div class="process-step-detail">En desarrollo activo</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">2026</div>
+                    <div class="process-step-title">En presupuesto</div>
+                    <div class="process-step-detail">Primer a&ntilde;o formal</div>
+                </div>
+            </div>
+
+            <h3>Framework t&eacute;cnico</h3>
+
+            <table>
+                <thead><tr><th>Componente</th><th>Tecnolog&iacute;a</th><th>Rol</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Orquestador</td><td>N8N (open source)</td><td>Coordinaci&oacute;n de flujos entre agentes, triggers, secuenciaci&oacute;n</td></tr>
+                    <tr><td class="table-highlight">Infraestructura LLM</td><td>AWS Bedrock</td><td>Hosting y acceso a modelos de lenguaje</td></tr>
+                    <tr><td class="table-highlight">Modelos</td><td>Claude (Opus), Gemini, OpenAI</td><td>Diferentes modelos seg&uacute;n caso de uso</td></tr>
+                    <tr><td class="table-highlight">Datos</td><td>Da Vinci + SAT + Salesforce</td><td>Fuentes de datos para alimentar agentes</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Agentes de alto impacto para LMM</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Agente prioritario</div>
+                    <div class="exec-card-value">Gestor de documentos IA</div>
+                    <div class="exec-card-desc">Automatizar la revisi&oacute;n y clasificaci&oacute;n de expedientes. Podr&iacute;a resolver directamente el problema de retrocesos en Toll Gates al validar completitud antes de pasar a Riesgos.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Agente prioritario</div>
+                    <div class="exec-card-value">Marketing segmentation</div>
+                    <div class="exec-card-desc">Segmentaci&oacute;n inteligente de prospectos. Combinado con los 5,000 prospectos de Da Vinci, podr&iacute;a generar listas de prospecci&oacute;n priorizadas por probabilidad de conversi&oacute;n.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Visi&oacute;n de Luis Padilla</div>
+                <p><em>&ldquo;La tecnolog&iacute;a es habilitadora... no es un fin sino un medio.&rdquo;</em> Esta filosof&iacute;a es consistente con un CIO que entiende que la IA debe resolver problemas de negocio espec&iacute;ficos, no ser un ejercicio tecnol&oacute;gico. El hecho de que cada agente tenga <strong>KPIs definidos</strong> confirma un enfoque orientado a resultados.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">La tecnolog&iacute;a es habilitadora... no es un fin sino un medio.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, sobre su filosof&iacute;a como CIO</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: HALLAZGO 5 — MIGRACI&Oacute;N A CREACTION          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 05</div>
+                <div class="section-title">Migraci&oacute;n a Creaction &mdash; ventana de redise&ntilde;o para LMM</div>
+            </div>
+
+            <p>La decisi&oacute;n de migrar a Creaction no es un proyecto operativo aislado. Es una <strong>ventana &uacute;nica de arquitectura</strong>: la oportunidad de construir el &ldquo;carril r&aacute;pido&rdquo; LMM que Luis Padilla identifica como necesario. Migrar los mismos procesos a una plataforma nueva sin reimaginar el flujo LMM ser&iacute;a dejar sobre la mesa la oportunidad m&aacute;s importante de diferenciaci&oacute;n.</p>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">Migraci&oacute;n de Salesforce/Apex/Aura hacia Creaction &mdash; oportunidad de crear flujo LMM nativo</div>
+                    <span class="finding-dimension tecnologia">Tecnolog&iacute;a</span>
+                </div>
+                <div class="finding-body">
+                    La migraci&oacute;n del ecosistema <strong>Salesforce + Apex + Aura</strong> hacia <strong>Creaction</strong> (plataforma <strong>1/3 del costo</strong>, con IA nativa) es el proyecto tecnol&oacute;gico m&aacute;s grande de 2026. Consolida tres herramientas en una sola plataforma.<br><br>
+                    <strong>La lectura para LMM es clara:</strong> si el hallazgo central de este diagn&oacute;stico es que LMM opera con los mismos flujos que Core, el momento de crear un proceso diferenciado es <strong>durante la migraci&oacute;n, no despu&eacute;s</strong>. Creaction puede configurarse nativamente con un flujo transaccional simplificado para el mid-market, mientras Core mantiene su complejidad estructurada.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Luis Padilla, CIO, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Estamos haciendo un cambio... migraci&oacute;n a Creaction, es 1/3 parte m&aacute;s barata que Salesforce.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, sobre el proyecto de migraci&oacute;n 2026</div>
+            </div>
+
+            <h3>Consolidaci&oacute;n de plataformas</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hoy (3 plataformas)</div>
+                    <div class="exec-card-value">Salesforce + Apex + Aura</div>
+                    <div class="exec-card-desc">CRM, mesa de control y BPM operando por separado con integraciones. M&uacute;ltiples licencias, m&uacute;ltiples proveedores, m&uacute;ltiples puntos de falla.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Ma&ntilde;ana (1 plataforma)</div>
+                    <div class="exec-card-value">Creaction</div>
+                    <div class="exec-card-desc">Plataforma unificada con IA nativa. 1/3 del costo. Simplifica stack, reduce integraciones y habilita flujos m&aacute;s &aacute;giles.</div>
+                </div>
+            </div>
+
+            <h3>Otros proyectos 2026 (Core/Corp)</h3>
+
+            <table>
+                <thead><tr><th>Proyecto</th><th>Descripci&oacute;n</th><th>Impacto esperado</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">EFAs self-service</td><td>Estados financieros v&iacute;a video call con analista, self-service por cliente</td><td>Reducir carga operativa de an&aacute;lisis, empoderar al cliente</td></tr>
+                    <tr><td class="table-highlight">Factoraje a proveedores</td><td>Nuevo producto de factoraje a proveedores (CxP)</td><td>Ampliar oferta de productos de corto plazo</td></tr>
+                    <tr><td class="table-highlight">Multimoneda</td><td>Capacidad de operar factoraje en m&uacute;ltiples monedas</td><td>Atender clientes con operaciones en USD</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Ventana de oportunidad</div>
+                <p>La migraci&oacute;n a Creaction representa una <strong>ventana ideal para redise&ntilde;ar los flujos de LMM</strong>. En lugar de migrar los mismos procesos a una nueva plataforma, se puede aprovechar el momento para crear el &ldquo;carril r&aacute;pido&rdquo; transaccional que Luis Padilla identifica como necesario. <strong>Migrar sin redise&ntilde;ar ser&iacute;a una oportunidad desperdiciada.</strong></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: OPORTUNIDADES DE INTERVENCI&Oacute;N               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08</div>
+                <div class="section-title">Oportunidades de intervenci&oacute;n</div>
+            </div>
+
+            <p>A partir de los hallazgos de la entrevista con Luis Padilla se identifican <strong>5 oportunidades concretas</strong> de intervenci&oacute;n, todas habilitadas por la tecnolog&iacute;a existente y alineadas con la estrategia de crecimiento del segmento LMM.</p>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <span class="opp-number">01</span>
+                    <span class="opp-title">Dise&ntilde;o de proceso transaccional diferenciado para LMM</span>
+                    <span class="opp-priority alta">Prioridad Alta</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Contexto</div>
+                    <p class="opp-text">El LMM usa los mismos flujos que Core/Corp. Luis confirma que la tecnolog&iacute;a permite cambiar los flujos &ldquo;el d&iacute;a que quisi&eacute;ramos&rdquo; &mdash; el bloqueo es de decisi&oacute;n, no de capacidad.</p>
+                    <div class="opp-section-label">Alcance propuesto</div>
+                    <ul class="opp-bullets">
+                        <li>Mapear proceso as-is de originaci&oacute;n LMM vs. Core e identificar pasos eliminables</li>
+                        <li>Dise&ntilde;ar flujo simplificado con Toll Gates reducidos y expediente m&iacute;nimo viable</li>
+                        <li>Definir criterios de &ldquo;carril r&aacute;pido&rdquo; (monto, sector, historial SAT)</li>
+                        <li>Configurar nuevo flujo en Salesforce/Creaction con equipo de Luis</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">-40%</div><div class="opp-impact-label">Tiempo de originaci&oacute;n LMM</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">+30%</div><div class="opp-impact-label">Capacidad de procesamiento</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">4-6 sem</div><div class="opp-impact-label">Tiempo de implementaci&oacute;n</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <span class="opp-number">02</span>
+                    <span class="opp-title">Motor de prospecci&oacute;n inteligente basado en Da Vinci</span>
+                    <span class="opp-priority alta">Prioridad Alta</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Contexto</div>
+                    <p class="opp-text">5,000 prospectos con entidades relacionadas. El cruce ad hoc con Equity Link demostr&oacute; 17 prospectos no atendidos. La capacidad existe pero no se escala.</p>
+                    <div class="opp-section-label">Alcance propuesto</div>
+                    <ul class="opp-bullets">
+                        <li>Sistematizar cruces de Da Vinci contra los 10-15 competidores principales</li>
+                        <li>Generar listas de prospecci&oacute;n priorizadas por sector, monto estimado y probabilidad</li>
+                        <li>Integrar con agente de marketing segmentation (roadmap IA 2026)</li>
+                        <li>Entregar listas accionables al equipo comercial LMM semanalmente</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">170+</div><div class="opp-impact-label">Prospectos potenciales (estimado 10 competidores)</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Data-driven</div><div class="opp-impact-label">Prospecci&oacute;n basada en datos SAT reales</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">6-8 sem</div><div class="opp-impact-label">Tiempo de implementaci&oacute;n</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <span class="opp-number">03</span>
+                    <span class="opp-title">Bloqueo duro en Toll Gates + gestor de expedientes IA</span>
+                    <span class="opp-priority alta">Prioridad Alta</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Contexto</div>
+                    <p class="opp-text">Retrocesos frecuentes de Riesgos por expedientes incompletos. Engen Docs existe pero no es bloqueador. El agente gestor de documentos IA est&aacute; en el roadmap 2026.</p>
+                    <div class="opp-section-label">Alcance propuesto</div>
+                    <ul class="opp-bullets">
+                        <li>Configurar Toll Gate 2 como bloqueador duro en Salesforce (quick win inmediato)</li>
+                        <li>Acelerar desarrollo del agente gestor de documentos IA</li>
+                        <li>Medir &ldquo;expedientes bien a la primera&rdquo; como KPI semanal del equipo comercial</li>
+                        <li>Reducir carga del equipo de Riesgos compartido (LMM + Factoraje)</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">-60%</div><div class="opp-impact-label">Retrocesos estimados</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Quick win</div><div class="opp-impact-label">Configuraci&oacute;n SF: 1-2 semanas</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">+20%</div><div class="opp-impact-label">Capacidad liberada en Riesgos</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08 (cont): OPORTUNIDADES 4-5                          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <!-- OPP 4 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <span class="opp-number">04</span>
+                    <span class="opp-title">Redise&ntilde;o de flujos LMM integrado a migraci&oacute;n Creaction</span>
+                    <span class="opp-priority media">Prioridad Media</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Contexto</div>
+                    <p class="opp-text">La migraci&oacute;n a Creaction es una ventana &uacute;nica para no replicar los mismos flujos ineficientes en una nueva plataforma. Migrar sin redise&ntilde;ar ser&iacute;a una oportunidad desperdiciada.</p>
+                    <div class="opp-section-label">Alcance propuesto</div>
+                    <ul class="opp-bullets">
+                        <li>Participar en el proyecto de migraci&oacute;n como asesores de procesos (no de tecnolog&iacute;a)</li>
+                        <li>Asegurar que el nuevo flujo LMM diferenciado se configure nativamente en Creaction</li>
+                        <li>Aprovechar IA nativa de Creaction para complementar agentes en desarrollo</li>
+                        <li>Definir m&eacute;tricas de &eacute;xito post-migraci&oacute;n</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">1/3</div><div class="opp-impact-label">Ahorro en licenciamiento</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">3 &rarr; 1</div><div class="opp-impact-label">Plataformas consolidadas</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">2026</div><div class="opp-impact-label">Ventana de ejecuci&oacute;n</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 5 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <span class="opp-number">05</span>
+                    <span class="opp-title">Separaci&oacute;n de capacidad de Riesgos: LMM vs. Factoraje</span>
+                    <span class="opp-priority media">Prioridad Media</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Contexto</div>
+                    <p class="opp-text">El equipo de Riesgos para LMM es el mismo que atiende Factoraje. Luis advierte que &ldquo;seguramente esa capacidad se topar&aacute;&rdquo; conforme ambos segmentos crezcan.</p>
+                    <div class="opp-section-label">Alcance propuesto</div>
+                    <ul class="opp-bullets">
+                        <li>Analizar carga actual de Riesgos por producto (LMM vs. Factoraje)</li>
+                        <li>Dise&ntilde;ar modelo de capacidad y puntos de quiebre por volumen</li>
+                        <li>Proponer estructura de equipo diferenciado o modelo escalonado</li>
+                        <li>Definir qu&eacute; an&aacute;lisis pueden automatizarse con Credit Lens + agentes IA</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">Prevenci&oacute;n</div><div class="opp-impact-label">Evitar cuello de botella futuro</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Escalabilidad</div><div class="opp-impact-label">Preparar para crecimiento LMM</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">8-12 sem</div><div class="opp-impact-label">Tiempo de an&aacute;lisis + propuesta</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: CONCLUSI&Oacute;N — TIENE VS. NECESITA             -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Conclusi&oacute;n</div>
+                <div class="section-title">Tiene vs. Necesita</div>
+            </div>
+
+            <p>La dimensi&oacute;n tecnol&oacute;gica de Engen Capital revela una paradoja: <strong>la plataforma es sofisticada y madura, pero el modelo operativo no aprovecha su potencial</strong>. El gap no est&aacute; en la tecnolog&iacute;a &mdash; est&aacute; en las decisiones de proceso que la tecnolog&iacute;a podr&iacute;a habilitar hoy mismo.</p>
+
+            <div class="grid-comparison">
+                <div class="grid-col-header tiene">Tiene</div>
+                <div class="grid-col-header necesita">Necesita</div>
+
+                <div class="grid-cell"><strong>Salesforce con flujos configurables</strong><br>La plataforma permite cambiar procesos &ldquo;el d&iacute;a que quieran&rdquo;</div>
+                <div class="grid-cell"><strong>Flujo LMM diferenciado</strong><br>Carril r&aacute;pido transaccional separado del proceso Core/Corp</div>
+
+                <div class="grid-cell"><strong>Da Vinci con 5,000 prospectos</strong><br>Inteligencia SAT con entidades relacionadas de clientes y proveedores</div>
+                <div class="grid-cell"><strong>Prospecci&oacute;n sistem&aacute;tica</strong><br>Cruces automatizados contra competidores, listas priorizadas al equipo comercial</div>
+
+                <div class="grid-cell"><strong>Engen Docs (checklist digital)</strong><br>M&oacute;dulo en Salesforce con validaci&oacute;n por entidad</div>
+                <div class="grid-cell"><strong>Bloqueo duro en Toll Gates</strong><br>Que el checklist sea requisito real, no sugerencia, para avanzar</div>
+
+                <div class="grid-cell"><strong>13 agentes IA en roadmap</strong><br>Framework N8N + Bedrock, presupuesto aprobado, KPIs definidos</div>
+                <div class="grid-cell"><strong>Priorizaci&oacute;n por impacto LMM</strong><br>Acelerar gestor de documentos y segmentaci&oacute;n como habilitadores de la f&aacute;brica</div>
+
+                <div class="grid-cell"><strong>Migraci&oacute;n a Creaction</strong><br>Proyecto aprobado 2026, 1/3 del costo de Salesforce</div>
+                <div class="grid-cell"><strong>Redise&ntilde;o antes de migrar</strong><br>No replicar los mismos flujos ineficientes en la nueva plataforma</div>
+
+                <div class="grid-cell"><strong>Equipo de Riesgos competente</strong><br>Credit Lens (Moody&rsquo;s) + analistas experimentados</div>
+                <div class="grid-cell"><strong>Capacidad diferenciada por producto</strong><br>Separar LMM de Factoraje antes de que el volumen los sature</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Conclusi&oacute;n ejecutiva</div>
+                <p>Engen Capital tiene un <strong>stack tecnol&oacute;gico de primer nivel</strong> &mdash; superior al de muchos competidores en el segmento SOFOM. El reto no es de tecnolog&iacute;a sino de <strong>decisi&oacute;n y dise&ntilde;o de procesos</strong>. La intervenci&oacute;n de LCG en esta dimensi&oacute;n deber&iacute;a enfocarse en ayudar a Engen a <strong>tomar las decisiones que la tecnolog&iacute;a ya puede ejecutar</strong>: diferenciar el flujo LMM, escalar la inteligencia de Da Vinci, endurecer los controles de calidad y aprovechar la migraci&oacute;n a Creaction como ventana de redise&ntilde;o. Como lo resume Luis Padilla: <em>&ldquo;Podr&iacute;amos cambiar los flujos de proceso en Salesforce el d&iacute;a que quisi&eacute;ramos, es m&aacute;s un tema de decisi&oacute;n.&rdquo;</em></p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Podemos cambiar los flujos de proceso en Salesforce el d&iacute;a que quisi&eacute;ramos, es m&aacute;s un tema de decisi&oacute;n.</div>
+                <div class="verbatim-source">&mdash; Luis Padilla, CIO Engen Capital &mdash; la frase que resume toda la dimensi&oacute;n tecnol&oacute;gica</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

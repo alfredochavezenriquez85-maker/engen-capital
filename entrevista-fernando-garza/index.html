@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensi&oacute;n Riesgos: Hallazgos y Oportunidades &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #1A3A6B 50%, #2E6DB4 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+        .finding-dimension.riesgo { background: #fce4ec; color: #c62828; }
+        .finding-dimension.estrategico { background: #ede7f6; color: #4527a0; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+
+        /* ======================== TIENE VS NECESITA GRID ======================== */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        .comparison-col {
+            padding: 0;
+        }
+
+        .comparison-header {
+            padding: 14px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .comparison-header.tiene {
+            background: var(--lcg-navy);
+            color: white;
+        }
+
+        .comparison-header.necesita {
+            background: var(--engen-green);
+            color: white;
+        }
+
+        .comparison-item {
+            padding: 12px 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .comparison-item:last-child { border-bottom: none; }
+
+        .comparison-col:first-child .comparison-item {
+            border-right: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">An&aacute;lisis de Oportunidades</div>
+                <h1 class="cover-title">Dimensi&oacute;n Riesgos:<br>Hallazgos y Oportunidades</h1>
+                <p class="cover-subtitle">Deep-dive en la funci&oacute;n de riesgo y su relaci&oacute;n con el crecimiento del Lower Middle Market</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Fernando Garza, Director de Riesgos</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">Marzo 2026 &mdash; Entrevista presencial CDMX</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento presenta un an&aacute;lisis detallado de los hallazgos y oportunidades en la <strong>funci&oacute;n de riesgos</strong> de Engen Capital, basado en la entrevista presencial con <strong>Fernando Garza, Director de Riesgos</strong>, realizada en marzo de 2026 en las oficinas de CDMX. Fernando lidera un &aacute;rea de 110-115 personas que cubre cr&eacute;dito, administraci&oacute;n de activos, mesa de control, recuperaci&oacute;n, monitoreo de portafolio y riesgo operativo. La entrevista revel&oacute; hallazgos cr&iacute;ticos sobre la relaci&oacute;n entre la funci&oacute;n de riesgo y la ambici&oacute;n de crecimiento en el segmento Lower Middle Market.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value">110-115</div><div class="kpi-label">Personas en el &aacute;rea</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">12 d&iacute;as</div><div class="kpi-label">SLA estudio cr&eacute;dito</div></div>
+                <div class="kpi-item"><div class="kpi-value green">3-4 d&iacute;as</div><div class="kpi-label">Estudios param&eacute;tricos</div></div>
+                <div class="kpi-item"><div class="kpi-value green">97%</div><div class="kpi-label">Exposici&oacute;n monitoreada</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">&iquest;Existe el mercado LMM?</div>
+                    <div class="exec-card-desc">Fernando cuestiona frontalmente si el mercado mid-market existe para Engen: empresas con manejo fiscal, sin auditorías, m&aacute;rgenes peque&ntilde;os. &ldquo;Primero d&iacute;ganme que s&iacute; existe el mercado.&rdquo;</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">Modelos no ajustados</div>
+                    <div class="exec-card-desc">Los modelos de riesgo emulan los del segmento Core (&gt;$500 MDP). No est&aacute;n calibrados para la realidad de empresas medianas: sin EEFF auditados, director financiero = contador.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo relevante</div>
+                    <div class="exec-card-value">F&aacute;brica vs. Trajes a medida</div>
+                    <div class="exec-card-desc">Para tickets de $5 MDP se negocia el contrato como si fuera uno grande. Visi&oacute;n: &ldquo;f&aacute;brica de bolillos, atenci&oacute;n r&aacute;pida, tasas m&aacute;s altas.&rdquo; Pero la operaci&oacute;n a&uacute;n no est&aacute; dise&ntilde;ada as&iacute;.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Hallazgo estructural</div>
+                    <div class="exec-card-value">Tensi&oacute;n ventas-riesgo</div>
+                    <div class="exec-card-desc">Funci&oacute;n dual de &ldquo;promover nueva originaci&oacute;n&rdquo; y &ldquo;asegurar que no se deteriore la cartera.&rdquo; Tensi&oacute;n constante entre crecer y controlar, sin modelo claro de gobernanza.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central</div>
+                <p>La funci&oacute;n de riesgos de Engen es robusta para el segmento Core heredado de GE Capital, pero <strong>no est&aacute; calibrada para el Lower Middle Market</strong>. Los modelos, procesos y tiempos est&aacute;n dise&ntilde;ados para operaciones grandes y complejas. Si Engen quiere crecer en el mid-market, necesita <strong>un modelo de riesgo diferenciado</strong>: m&aacute;s r&aacute;pido, m&aacute;s simple, con par&aacute;metros propios &mdash; no una versi&oacute;n reducida del modelo Core. <strong>Fernando lo sabe y lo articula con claridad.</strong></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: CONTEXTO — ESTRUCTURA DEL AREA DE RIESGOS         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Contexto: Estructura del &aacute;rea de riesgos</div>
+            </div>
+
+            <p><strong>Fernando Garza</strong> es Director de Riesgos de Engen Capital. Su &aacute;rea cubre cr&eacute;dito, administraci&oacute;n de activos, mesa de control operativo, recuperaci&oacute;n, monitoreo de portafolio y riesgo operativo. En total maneja entre <strong>110 y 115 personas</strong> distribuidas en 8 sub&aacute;reas con responsables directos.</p>
+
+            <h3>Organigrama del &aacute;rea de riesgos</h3>
+
+            <table>
+                <thead><tr><th>Responsable</th><th>Sub&aacute;rea</th><th>HC</th><th>Funciones clave</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Juan Manuel</td><td>Cr&eacute;dito / Core &gt;$500 MDP</td><td>18</td><td>Suscripci&oacute;n de cr&eacute;dito para operaciones grandes. An&aacute;lisis profundo, write-up, niveles de aprobaci&oacute;n</td></tr>
+                    <tr><td class="table-highlight">Federico Cant&uacute;</td><td>Cr&eacute;dito &lt;$500 MDP + Factoraje</td><td>15</td><td>Cat&aacute;logo de requerimientos, an&aacute;lisis cr&eacute;dito, write-up. Comit&eacute; Cr&eacute;dito &rarr; Comit&eacute; Direcci&oacute;n &rarr; Consejo</td></tr>
+                    <tr><td class="table-highlight">Jessica Ochoa</td><td>Administraci&oacute;n de Activos</td><td>20</td><td>Valuaci&oacute;n de activos (actual y en el tiempo), curvas de depreciaci&oacute;n. 99% bienes muebles. Gestor&iacute;as, llantas, importaci&oacute;n, seguros, fin de arrendamiento</td></tr>
+                    <tr><td class="table-highlight">Liliana Landa</td><td>Mesa de Control</td><td>15</td><td>Verificaci&oacute;n de contratos/facturas, entrada al sistema, VoBo de fondeo</td></tr>
+                    <tr><td class="table-highlight">Jorge Estrada</td><td>Recuperaci&oacute;n</td><td>10</td><td>Reestructura, daci&oacute;n en pago, convenio mixto, alivio, coordinaci&oacute;n legal</td></tr>
+                    <tr><td class="table-highlight">Marisol Martell</td><td>Reporteo / Monitoreo Portafolio</td><td>8</td><td>Monitoreo del 97% de la exposici&oacute;n. Solicitud de EEFF a clientes. Clasificaci&oacute;n de cartera</td></tr>
+                    <tr><td class="table-highlight">Lourdes Reyes</td><td>Riesgo Operativo</td><td>1</td><td>Gesti&oacute;n de riesgos operativos y prevenci&oacute;n de fraudes</td></tr>
+                    <tr><td class="table-highlight">Elizabeth</td><td>Punteado / Auditor&iacute;a Interna</td><td>1</td><td>Auditor&iacute;a interna de procesos y cumplimiento</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Observaci&oacute;n clave</div>
+                <p>La estructura del &aacute;rea refleja la herencia de GE Capital: altamente especializada, con m&uacute;ltiples capas de control y aprobaci&oacute;n (Comit&eacute; Cr&eacute;dito &rarr; Comit&eacute; Direcci&oacute;n &rarr; Consejo). Esto funciona para operaciones grandes del Core, pero genera <strong>fricci&oacute;n significativa</strong> cuando se aplica a tickets peque&ntilde;os del LMM. Fernando lo reconoce: <em>&ldquo;Que complejos son ENGEN.&rdquo;</em></p>
+            </div>
+
+            <h3>Niveles de aprobaci&oacute;n</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Nivel 1</div>
+                    <div class="process-step-title">An&aacute;lisis Cr&eacute;dito</div>
+                    <div class="process-step-detail">Suscripci&oacute;n + Write-up</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Nivel 2</div>
+                    <div class="process-step-title">Comit&eacute; Cr&eacute;dito</div>
+                    <div class="process-step-detail">Aprobaci&oacute;n inicial</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Nivel 3</div>
+                    <div class="process-step-title">Comit&eacute; Direcci&oacute;n</div>
+                    <div class="process-step-detail">Aprobaci&oacute;n ejecutiva</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Nivel 4</div>
+                    <div class="process-step-title">Consejo</div>
+                    <div class="process-step-detail">Aprobaci&oacute;n final (montos altos)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: HALLAZGO 1 — ¿EXISTE EL MERCADO?                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 01</div>
+                <div class="section-title">&iquest;Existe el mercado? &mdash; La pregunta de Fernando</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">El Director de Riesgos cuestiona frontalmente la viabilidad del mercado LMM para Engen</div>
+                    <span class="finding-dimension estrategico">Estrat&eacute;gico</span>
+                </div>
+                <div class="finding-body">
+                    Fernando plantea la pregunta m&aacute;s b&aacute;sica y a la vez m&aacute;s profunda: <strong>&iquest;realmente existe el mercado mid-market para Engen?</strong> No duda de que existan empresas medianas en M&eacute;xico &mdash; duda de que Engen est&eacute; equipada para atenderlas. Las empresas del LMM tienen caracter&iacute;sticas que chocan con el modelo actual de riesgos: manejo fiscal agresivo, m&aacute;rgenes peque&ntilde;os, falta de estados financieros auditados, y estructuras de gobierno corporativo informales.<br><br>
+                    La pregunta no es ret&oacute;rica &mdash; es un llamado a <strong>validar la tesis de crecimiento</strong> antes de comprometer recursos. Fernando necesita evidencia de que el mercado no solo existe, sino que es <strong>rentable y manejable</strong> para el perfil de riesgo de Engen.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Fernando Garza, Director de Riesgos, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Primero d&iacute;ganme que s&iacute; existe el mercado.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, Dir. Riesgos, cuestionando la premisa fundamental del crecimiento LMM</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Le meten mucho manejo fiscal. Muchas de esas empresas tienen m&aacute;rgenes peque&ntilde;os.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, describiendo la realidad de las empresas medianas</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Muchos no auditan, al que le llaman director financiero termina siendo el contador.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, sobre la informalidad del gobierno corporativo en el LMM</div>
+            </div>
+
+            <h3>Las barreras espec&iacute;ficas que Fernando identifica</h3>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Perfil del cliente LMM vs. lo que el modelo de riesgo puede evaluar</div>
+                    <span class="finding-dimension riesgo">Riesgo</span>
+                </div>
+                <div class="finding-body">
+                    <ul style="margin: 0 0 0 16px; list-style: disc; font-size: 12px; color: var(--text-secondary);">
+                        <li><strong>Manejo fiscal agresivo:</strong> Empresas que optimizan impuestos de manera que distorsiona sus estados financieros reales</li>
+                        <li><strong>M&aacute;rgenes peque&ntilde;os:</strong> Menor capacidad de absorber impactos, mayor sensibilidad a ciclos econ&oacute;micos</li>
+                        <li><strong>Sin auditor&iacute;as:</strong> No hay terceros independientes validando la informaci&oacute;n financiera</li>
+                        <li><strong>Gobierno corporativo informal:</strong> &ldquo;Director financiero = contador&rdquo; &mdash; no hay separaci&oacute;n de funciones</li>
+                        <li><strong>Falta de inteligencia comercial:</strong> No se sabe si se est&aacute; atacando el mercado correctamente o solo procesando lo que llega</li>
+                    </ul>
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Fernando Garza, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si estoy atacando comercialmente bien este mercado.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, cuestionando si la estrategia comercial est&aacute; bien dirigida</div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Implicaci&oacute;n estrat&eacute;gica</div>
+                <p>Si el Director de Riesgos &mdash; la persona que debe aprobar los cr&eacute;ditos &mdash; no est&aacute; convencido de que el mercado existe, <strong>cualquier esfuerzo comercial enfrentar&aacute; resistencia estructural</strong> en la aprobaci&oacute;n. No basta con traer m&aacute;s prospectos; hay que darle a Riesgos las herramientas y la evidencia para que <strong>puedan decir s&iacute; con confianza</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: HALLAZGO 2 — MODELOS HEREDADOS DEL CORE            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 02</div>
+                <div class="section-title">Modelos de riesgo heredados del Core &mdash; no ajustados al LMM</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Los modelos de evaluaci&oacute;n crediticia emulan los del segmento Core sin adaptaci&oacute;n para el mid-market</div>
+                    <span class="finding-dimension proceso">Proceso</span>
+                </div>
+                <div class="finding-body">
+                    Fernando lo dice expl&iacute;citamente: los modelos actuales <strong>&ldquo;emulan estas cosas... de las grandes&rdquo;</strong>. El proceso de suscripci&oacute;n de cr&eacute;dito fue dise&ntilde;ado para empresas que facturan &gt;$500 MDP, con estados financieros auditados, gobierno corporativo formal y equipos financieros profesionales. Cuando se aplica a empresas medianas que no cumplen estas condiciones, el modelo genera <strong>dos resultados negativos</strong>:
+                    <ul style="margin: 8px 0 0 16px; list-style: disc; font-size: 12px; color: var(--text-secondary);">
+                        <li><strong>Rechazos excesivos:</strong> Empresas viables se rechazan porque no cumplen criterios dise&ntilde;ados para otro segmento</li>
+                        <li><strong>Tiempos inflados:</strong> El SLA de 12 d&iacute;as para estudio de cr&eacute;dito es excesivo para un ticket de $5 MDP</li>
+                    </ul>
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Fernando Garza, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Nuestros modelos emulan estas cosas... de las grandes.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, reconociendo que los modelos de riesgo no est&aacute;n adaptados al LMM</div>
+            </div>
+
+            <h3>Core vs. LMM: dos mundos, un mismo modelo</h3>
+
+            <table>
+                <thead><tr><th>Dimensi&oacute;n</th><th>Core (&gt;$500 MDP)</th><th>LMM (&lt;$500 MDP)</th><th>Impacto</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">EEFF</td><td>Auditados por despacho</td><td>Sin auditar, contador interno</td><td style="color: var(--danger); font-weight: 600;">Modelo no puede evaluar correctamente</td></tr>
+                    <tr><td class="table-highlight">Gobierno corporativo</td><td>CFO, contralor, tesorero</td><td>&ldquo;Director financiero = contador&rdquo;</td><td style="color: var(--danger); font-weight: 600;">Riesgo de informaci&oacute;n asim&eacute;trica</td></tr>
+                    <tr><td class="table-highlight">Ticket promedio</td><td>&gt;$50 MDP</td><td>~$5 MDP</td><td style="color: var(--warning); font-weight: 600;">Costo de an&aacute;lisis desproporcionado</td></tr>
+                    <tr><td class="table-highlight">SLA cr&eacute;dito</td><td>12 d&iacute;as (justificable)</td><td>12 d&iacute;as (excesivo)</td><td style="color: var(--danger); font-weight: 600;">Fricci&oacute;n y p&eacute;rdida de oportunidades</td></tr>
+                    <tr><td class="table-highlight">M&aacute;rgenes</td><td>Altos, diversificados</td><td>Peque&ntilde;os, concentrados</td><td style="color: var(--warning); font-weight: 600;">Mayor sensibilidad a deterioro</td></tr>
+                    <tr><td class="table-highlight">Contrato</td><td>Negociaci&oacute;n detallada</td><td>Deber&iacute;a ser est&aacute;ndar</td><td style="color: var(--danger); font-weight: 600;">Se negocia como si fuera Core</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Reflexi&oacute;n</div>
+                <p>El problema no es que los modelos de riesgo sean malos &mdash; funcionan bien para lo que fueron dise&ntilde;ados. El problema es que <strong>se aplican indiscriminadamente</strong> a un segmento con caracter&iacute;sticas fundamentalmente distintas. Es como usar un traje hecho a medida para una persona como plantilla para vestir a cien personas diferentes.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: HALLAZGO 3 — FABRICA DE BOLILLOS VS TRAJES         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 03</div>
+                <div class="section-title">F&aacute;brica de bolillos vs. trajes a medida: el producto</div>
+            </div>
+
+            <p>Fernando tiene una visi&oacute;n clara de c&oacute;mo deber&iacute;a funcionar el negocio LMM, y la describe con una met&aacute;fora poderosa: <strong>una f&aacute;brica de bolillos</strong>. Alto volumen, proceso estandarizado, atenci&oacute;n r&aacute;pida, tasas m&aacute;s altas para compensar el riesgo. Pero la realidad actual es que cada operaci&oacute;n LMM se procesa como un &ldquo;traje a medida&rdquo; del Core.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Un mercado muy amplio, una f&aacute;brica de bolillos, atenci&oacute;n r&aacute;pida, tasas m&aacute;s altas.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, describiendo su visi&oacute;n del modelo LMM ideal</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Los cambios al producto rompieron la operaci&oacute;n sin resolver el problema de fondo</div>
+                    <span class="finding-dimension proceso">Proceso</span>
+                </div>
+                <div class="finding-body">
+                    Fernando revela que cuando intentaron adaptar el producto para el LMM, el resultado fue contraproducente: <strong>&ldquo;Empezamos a hacer cambios en el producto. En ese momento ya rompimos la operaci&oacute;n.&rdquo;</strong> Los cambios fueron incrementales, no estructurales. Se ajustaron par&aacute;metros aislados sin redise&ntilde;ar el flujo completo, lo que gener&oacute; inconsistencias entre &aacute;reas y excepciones que complicaron a&uacute;n m&aacute;s el proceso.<br><br>
+                    El ejemplo m&aacute;s claro: para un ticket de $5 MDP, <strong>&ldquo;no deber&iacute;amos negociar el contrato de cr&eacute;dito&rdquo;</strong> como si fuera uno de $50 MDP. Pero eso es exactamente lo que sucede porque el proceso es el mismo.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Fernando Garza, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Empezamos a hacer cambios en el producto. En ese momento ya rompimos la operaci&oacute;n.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, sobre los intentos de adaptar el producto al LMM</div>
+            </div>
+
+            <h3>La visi&oacute;n vs. la realidad</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Visi&oacute;n de Fernando</div>
+                    <div class="exec-card-value">F&aacute;brica de bolillos</div>
+                    <div class="exec-card-desc">Proceso estandarizado, alto volumen, param&eacute;trico autom&aacute;tico, contrato est&aacute;ndar, decisi&oacute;n en 3-4 d&iacute;as, tasas m&aacute;s altas para compensar riesgo.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Realidad actual</div>
+                    <div class="exec-card-value">Trajes a medida</div>
+                    <div class="exec-card-desc">Cada operaci&oacute;n se analiza como Core, contrato negociado caso por caso, 12 d&iacute;as de SLA, m&uacute;ltiples niveles de aprobaci&oacute;n para tickets peque&ntilde;os.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Dato clave</div>
+                <p>Los <strong>estudios param&eacute;tricos ya funcionan en 3-4 d&iacute;as</strong> &mdash; pero son la excepci&oacute;n, no la regla. Si Engen lograra que la mayor&iacute;a de las operaciones LMM pasaran por el param&eacute;trico en vez del proceso completo de suscripci&oacute;n, se reducir&iacute;an dr&aacute;sticamente los tiempos de respuesta. La infraestructura existe; falta la pol&iacute;tica para usarla sistem&aacute;ticamente.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: HALLAZGO 4 — SLAs Y CONCENTRACION                 -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 04</div>
+                <div class="section-title">SLAs y concentraci&oacute;n de operaciones</div>
+            </div>
+
+            <p>Fernando identifica un patr&oacute;n cr&iacute;tico en la operaci&oacute;n: <strong>la concentraci&oacute;n de actividad en la &uacute;ltima semana del mes</strong>. Este fen&oacute;meno &mdash; com&uacute;n en servicios financieros &mdash; genera picos de carga que estresan todos los SLAs y comprometen la calidad del an&aacute;lisis.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">La operaci&oacute;n se concentra en la &uacute;ltima semana del mes, estresando todos los SLAs</div>
+                    <span class="finding-dimension proceso">Proceso</span>
+                </div>
+                <div class="finding-body">
+                    Fernando describe un patr&oacute;n donde las primeras 3 semanas del mes tienen una carga manejable, pero la &uacute;ltima semana recibe un volumen desproporcionado de solicitudes. Esto impacta toda la cadena: cr&eacute;dito, mesa de control, administraci&oacute;n de activos y fondeo.<br><br>
+                    Los SLAs actuales del &aacute;rea:
+                    <ul style="margin: 8px 0 0 16px; list-style: disc; font-size: 12px; color: var(--text-secondary);">
+                        <li><strong>Estudio de cr&eacute;dito:</strong> 12 d&iacute;as (completo) / 3-4 d&iacute;as (param&eacute;trico)</li>
+                        <li><strong>Administraci&oacute;n de activos:</strong> Tiempo de aval&uacute;o + verificaci&oacute;n</li>
+                        <li><strong>Mesa de control:</strong> Tiempos de verificaci&oacute;n de contratos</li>
+                        <li><strong>Comit&eacute; de Riesgos:</strong> 1 vez al mes</li>
+                    </ul>
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Fernando Garza, marzo 2026</div>
+            </div>
+
+            <h3>El efecto domino de la concentraci&oacute;n</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Semana 1-3</div>
+                    <div class="process-step-title">Flujo normal</div>
+                    <div class="process-step-detail">Carga manejable</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">&Uacute;ltima semana</div>
+                    <div class="process-step-title">Pico de solicitudes</div>
+                    <div class="process-step-detail">Concentraci&oacute;n masiva</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Resultado</div>
+                    <div class="process-step-title">SLAs comprometidos</div>
+                    <div class="process-step-detail">Riesgo de error, presi&oacute;n</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Impacto</div>
+                    <div class="process-step-title">Calidad en riesgo</div>
+                    <div class="process-step-detail">An&aacute;lisis apresurados</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Reflexi&oacute;n</div>
+                <p>La concentraci&oacute;n de operaciones no es un problema de Riesgos &mdash; es un <strong>s&iacute;ntoma de la din&aacute;mica comercial</strong>. Los originadores empujan las operaciones al cierre de mes para cumplir meta, lo que genera un cuello de botella en la f&aacute;brica de originaci&oacute;n. Resolver esto requiere intervenir en la <strong>cadencia comercial</strong>, no solo en los procesos de riesgo.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: HALLAZGO 5 — TENSION VENTAS-RIESGO                -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 05</div>
+                <div class="section-title">La tensi&oacute;n ventas-riesgo</div>
+            </div>
+
+            <p>Fernando describe su funci&oacute;n con una dualidad que revela una tensi&oacute;n fundamental: <strong>&ldquo;Promover y asegurar servicios a trav&eacute;s de nueva originaci&oacute;n. Que est&eacute; sana y no se deteriore la cartera.&rdquo;</strong> Es simult&aacute;neamente el acelerador y el freno.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">La funci&oacute;n de riesgo tiene un mandato contradictorio: crecer y controlar al mismo tiempo</div>
+                    <span class="finding-dimension estrategico">Estrat&eacute;gico</span>
+                </div>
+                <div class="finding-body">
+                    Esta tensi&oacute;n no es exclusiva de Engen &mdash; es inherente a cualquier instituci&oacute;n financiera. Pero en el contexto del crecimiento LMM, se agudiza. Fernando ve que <strong>puede abrirse m&aacute;s la llave pero controladamente</strong>. La cartera vencida del LMM (~3%) es mayor que la del Core pero manejable, y el margen diferenciado (tasas m&aacute;s altas) compensa el riesgo adicional.<br><br>
+                    Sin embargo, Fernando es cauteloso por experiencia: <strong>&ldquo;Nosotros a diferencia de otras compa&ntilde;&iacute;as somos m&aacute;s estrictos para no desaparecer.&rdquo;</strong> La referencia impl&iacute;cita es Unifin, cuyo colapso en 2022 marc&oacute; a todo el sector.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Fernando Garza, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Nosotros a diferencia de otras compa&ntilde;&iacute;as somos m&aacute;s estrictos para no desaparecer.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, sobre la filosof&iacute;a de prudencia de Engen</div>
+            </div>
+
+            <h3>El Blue Ocean cuestionado</h3>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Fernando cuestiona si Engen realmente est&aacute; atacando el Blue Ocean o solo esperando lo que caiga</div>
+                    <span class="finding-dimension comercial">Comercial</span>
+                </div>
+                <div class="finding-body">
+                    Fernando hab&iacute;a asumido que el Blue Ocean del LMM era tan grande que ser&iacute;a f&aacute;cil de capturar. Pero ahora duda: <strong>&iquest;realmente se est&aacute; atacando activamente o solo se procesa lo que llega?</strong> La diferencia es fundamental &mdash; una estrategia proactiva requiere inteligencia comercial, segmentaci&oacute;n, y un modelo de riesgo ajustado. Esperar lo que caiga no es una estrategia.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Fernando Garza, marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Lo que caiga lo intento de proceso, &iquest;o tengo inteligencia comercial?</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, cuestionando la proactividad de la estrategia comercial LMM</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Que complejos son ENGEN.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, reconociendo la complejidad heredada de la organizaci&oacute;n</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Perspectiva LCG</div>
+                <p>Fernando articula con precisi&oacute;n la tensi&oacute;n que existe entre las &aacute;reas. No se opone al crecimiento &mdash; pide que se haga <strong>con fundamento</strong>. Su postura es la de un l&iacute;der de riesgo maduro: <strong>&ldquo;abrir la llave, pero con la evidencia de que el mercado es real y con un modelo que lo pueda evaluar.&rdquo;</strong> Esto lo convierte en un aliado clave para la transformaci&oacute;n, no en un obst&aacute;culo.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: OPORTUNIDADES DE INTERVENCION                      -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08</div>
+                <div class="section-title">Oportunidades de intervenci&oacute;n</div>
+            </div>
+
+            <p>A partir de los hallazgos de la entrevista con Fernando Garza, se identifican <strong>4 oportunidades concretas de intervenci&oacute;n</strong> que LCG puede abordar. Estas oportunidades est&aacute;n directamente alineadas con los retos expresados por el Director de Riesgos y son complementarias a las oportunidades identificadas en la dimensi&oacute;n comercial.</p>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Modelo de riesgo diferenciado para LMM</div>
+                    <span class="opp-priority alta">Prioridad Alta</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text">Los modelos actuales emulan los del Core. Para evaluar empresas medianas se necesitan par&aacute;metros propios: fuentes alternativas de informaci&oacute;n, scoring simplificado, umbrales de aprobaci&oacute;n ajustados.</div>
+                    <div class="opp-section-label">Intervenci&oacute;n propuesta</div>
+                    <ul class="opp-bullets">
+                        <li>Dise&ntilde;ar param&eacute;trico espec&iacute;fico para tickets LMM (&lt;$50 MDP)</li>
+                        <li>Integrar fuentes alternativas: bur&oacute; SAT, datos transaccionales, tendencias de sector</li>
+                        <li>Definir umbrales de aprobaci&oacute;n autom&aacute;tica vs. revisi&oacute;n manual</li>
+                        <li>Calibrar con base en el desempe&ntilde;o hist&oacute;rico de la cartera LMM existente</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">3-4 d&iacute;as</div><div class="opp-impact-label">SLA objetivo vs. 12 actuales</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">~3%</div><div class="opp-impact-label">NPL controlable con margen</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">+40%</div><div class="opp-impact-label">Reducci&oacute;n tiempo aprobaci&oacute;n</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">F&aacute;brica de originaci&oacute;n LMM: proceso end-to-end</div>
+                    <span class="opp-priority alta">Prioridad Alta</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text">Las operaciones LMM pasan por el mismo proceso que las del Core. Contratos negociados caso por caso, m&uacute;ltiples niveles de aprobaci&oacute;n, documentaci&oacute;n est&aacute;ndar excesiva para el tama&ntilde;o de la operaci&oacute;n.</div>
+                    <div class="opp-section-label">Intervenci&oacute;n propuesta</div>
+                    <ul class="opp-bullets">
+                        <li>Dise&ntilde;ar proceso simplificado end-to-end para operaciones &lt;$50 MDP</li>
+                        <li>Contrato est&aacute;ndar no negociable para tickets peque&ntilde;os</li>
+                        <li>Reducci&oacute;n de niveles de aprobaci&oacute;n (Comit&eacute; Cr&eacute;dito directo para LMM)</li>
+                        <li>Cat&aacute;logo simplificado de requerimientos documentales</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">-60%</div><div class="opp-impact-label">Reducci&oacute;n en tiempo total</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Est&aacute;ndar</div><div class="opp-impact-label">Contrato no negociable</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">2 niveles</div><div class="opp-impact-label">vs. 4 actuales</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Nivelaci&oacute;n de carga operativa mensual</div>
+                    <span class="opp-priority media">Prioridad Media</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text">La concentraci&oacute;n de operaciones en la &uacute;ltima semana del mes genera picos que estresan SLAs y comprometen la calidad del an&aacute;lisis.</div>
+                    <div class="opp-section-label">Intervenci&oacute;n propuesta</div>
+                    <ul class="opp-bullets">
+                        <li>Redise&ntilde;ar incentivos comerciales para distribuir originaci&oacute;n a lo largo del mes</li>
+                        <li>Establecer cortes semanales de pipeline con metas parciales</li>
+                        <li>Implementar capacidad flexible en Riesgos para manejar picos residuales</li>
+                        <li>Crear tablero de carga operativa en tiempo real para las sub&aacute;reas</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">-30%</div><div class="opp-impact-label">Reducci&oacute;n pico &uacute;ltima semana</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">+calidad</div><div class="opp-impact-label">An&aacute;lisis sin presi&oacute;n</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Flujo</div><div class="opp-impact-label">Operaci&oacute;n constante</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 4 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Gobernanza ventas-riesgo para crecimiento LMM</div>
+                    <span class="opp-priority media">Prioridad Media</span>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text">La tensi&oacute;n entre la funci&oacute;n comercial y la funci&oacute;n de riesgo no tiene un mecanismo formal de resoluci&oacute;n. Las decisiones se toman caso por caso en vez de con pol&iacute;ticas claras.</div>
+                    <div class="opp-section-label">Intervenci&oacute;n propuesta</div>
+                    <ul class="opp-bullets">
+                        <li>Definir apetito de riesgo expl&iacute;cito para el segmento LMM (NPL target, p&eacute;rdida esperada)</li>
+                        <li>Crear comit&eacute; conjunto Comercial-Riesgos con cadencia quincenal</li>
+                        <li>Establecer pol&iacute;ticas de excepci&oacute;n claras con autoridad definida</li>
+                        <li>Dashboard compartido de calidad de originaci&oacute;n + desempe&ntilde;o de cartera</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">Alineaci&oacute;n</div><div class="opp-impact-label">Comercial + Riesgos</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">~3%</div><div class="opp-impact-label">NPL target controlado</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Confianza</div><div class="opp-impact-label">Para abrir la llave</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: CONCLUSION — TIENE VS NECESITA                     -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 09</div>
+                <div class="section-title">Conclusi&oacute;n: Tiene vs. Necesita</div>
+            </div>
+
+            <p>Fernando Garza es un l&iacute;der de riesgo con claridad sobre el problema. No se opone al crecimiento &mdash; pide que se haga con las herramientas correctas. La funci&oacute;n de riesgos tiene los fundamentos, pero necesita evoluci&oacute;n espec&iacute;fica para habilitar el segmento LMM.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-col">
+                    <div class="comparison-header tiene">Tiene hoy</div>
+                    <div class="comparison-item">&Aacute;rea robusta de 110-115 personas con alta especializaci&oacute;n</div>
+                    <div class="comparison-item">Monitoreo del 97% de la exposici&oacute;n de la cartera</div>
+                    <div class="comparison-item">Estudios param&eacute;tricos que ya operan en 3-4 d&iacute;as</div>
+                    <div class="comparison-item">Cartera vencida LMM controlada (~3%) con margen que compensa</div>
+                    <div class="comparison-item">L&iacute;der de riesgo alineado conceptualmente con la visi&oacute;n de crecimiento</div>
+                    <div class="comparison-item">Filosof&iacute;a de prudencia post-Unifin (&ldquo;somos estrictos para no desaparecer&rdquo;)</div>
+                    <div class="comparison-item">Comit&eacute; de Riesgos mensual como instancia de gobernanza</div>
+                </div>
+                <div class="comparison-col">
+                    <div class="comparison-header necesita">Necesita</div>
+                    <div class="comparison-item">Modelo de riesgo diferenciado dise&ntilde;ado para empresas medianas</div>
+                    <div class="comparison-item">Validaci&oacute;n del mercado LMM con evidencia (no supuestos)</div>
+                    <div class="comparison-item">Param&eacute;trico como regla general para LMM, no como excepci&oacute;n</div>
+                    <div class="comparison-item">Proceso end-to-end simplificado: contrato est&aacute;ndar, menos aprobaciones</div>
+                    <div class="comparison-item">Apetito de riesgo expl&iacute;cito y compartido con el &aacute;rea comercial</div>
+                    <div class="comparison-item">Fuentes alternativas de evaluaci&oacute;n (bur&oacute; SAT, datos transaccionales)</div>
+                    <div class="comparison-item">Gobernanza formal ventas-riesgo con pol&iacute;ticas de excepci&oacute;n claras</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">S&iacute;ntesis final</div>
+                <p>Fernando Garza no es un obst&aacute;culo para el crecimiento del LMM &mdash; es un <strong>habilitador que necesita las herramientas correctas</strong>. Su claridad sobre los problemas (&ldquo;primero d&iacute;ganme que s&iacute; existe el mercado&rdquo;) y su visi&oacute;n de la soluci&oacute;n (&ldquo;f&aacute;brica de bolillos, atenci&oacute;n r&aacute;pida, tasas m&aacute;s altas&rdquo;) lo convierten en el aliado natural de una transformaci&oacute;n bien dise&ntilde;ada. <strong>El reto no es convencer a Riesgos de abrirse &mdash; es darle la evidencia y los modelos para que pueda hacerlo con confianza.</strong></p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El margen diferenciado nos ayuda a la cartera vencida.</div>
+                <div class="verbatim-source">&mdash; Fernando Garza, confirmando que la econom&iacute;a del LMM puede funcionar con el modelo correcto</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensi&oacute;n Calidad y CX &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #BF360C 0%, #E65100 40%, #F57C00 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(255, 183, 77, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: rgba(255,255,255,0.5);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+
+        /* ======================== COMPARISON GRID ======================== */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-col-header {
+            padding: 12px 16px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .comparison-col-header.tiene { background: #fce4ec; color: #c62828; }
+        .comparison-col-header.necesita { background: #e8f5e9; color: #2e7d32; }
+
+        .comparison-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .comparison-item:nth-child(odd) { border-right: 1px solid var(--border); }
+
+        .comparison-item-title {
+            font-weight: 700;
+            color: var(--lcg-navy);
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .comparison-item-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">An&aacute;lisis de Oportunidades</div>
+                <h1 class="cover-title">Dimensi&oacute;n Calidad y CX:<br>Procesos, M&eacute;tricas y Voz del Cliente</h1>
+                <p class="cover-subtitle">Deep-dive en la gesti&oacute;n de calidad, experiencia del cliente y las oportunidades operativas del Lower Middle Market</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Guillermo Llantada, Dir. Calidad y CX</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">Marzo 2026 &mdash; Entrevista presencial CDMX</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza los hallazgos de la entrevista con <strong>Guillermo &ldquo;Memo&rdquo; Llantada, Director de Calidad y Customer Experience</strong> de Engen Capital. Memo lidera el Quality Management System (herencia GE) y el programa de experiencia del cliente. Su perspectiva cruza todas las &aacute;reas: mide el apego al proceso, recoge la voz del cliente v&iacute;a NPS/CSAT, y tiene visibilidad &uacute;nica de las fricciones internas. La conversaci&oacute;n revel&oacute; que <strong>las mejoras operativas son necesarias pero no suficientes</strong> &mdash; el verdadero driver de crecimiento est&aacute; en la simplificaci&oacute;n del producto para LMM.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value green">91.3%</div><div class="kpi-label">Apego a procesos</div></div>
+                <div class="kpi-item"><div class="kpi-value green">~72</div><div class="kpi-label">NPS anual</div></div>
+                <div class="kpi-item"><div class="kpi-value green">3</div><div class="kpi-label">Detractores en 12 meses</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">4</div><div class="kpi-label">Clientes nuevos LMM/mes (feb)</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">80% de LMM con complejidad Core</div>
+                    <div class="exec-card-desc">M&aacute;s del 80% de las cotizaciones del Lower Middle Market traen la complejidad estructural de un deal de Core: pagos Low-High, secure deposit, pagos intermedios. Se est&aacute; vendiendo un producto sofisticado a un mercado que no lo necesita.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">Sin dashboard end-to-end</div>
+                    <div class="exec-card-desc">No existe un indicador oficial que mida el tiempo completo del ciclo de originaci&oacute;n. Se conocen etapas aisladas pero nadie tiene la foto completa. &ldquo;Ir manejando medio a ciegas.&rdquo;</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Fortaleza</div>
+                    <div class="exec-card-value">Cultura de procesos s&oacute;lida</div>
+                    <div class="exec-card-desc">91.3% de apego al proceso medido en auditor&iacute;as internas. Herencia GE viva: manual, capacitaci&oacute;n, certificaci&oacute;n. &ldquo;Si decimos as&iacute; se va a hacer, s&iacute; se hace.&rdquo;</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Insight estrat&eacute;gico</div>
+                    <div class="exec-card-value">Mejoras operativas &#8800; explotar producto</div>
+                    <div class="exec-card-desc">Memo cree que las mejoras operativas son necesarias pero no har&aacute;n &ldquo;explotar el producto&rdquo;. Sugiere que el inter&eacute;s de JP en dimensionamiento de mercado puede tener motivaci&oacute;n M&amp;A m&aacute;s que comercial.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central</div>
+                <p>Engen Capital tiene una <strong>cultura de procesos excepcionalmente fuerte</strong> (91.3% apego, herencia GE) y un NPS de ~72 que confirma buena percepci&oacute;n del cliente. Sin embargo, el producto LMM arrastra la <strong>complejidad heredada de Core</strong> (80%+ de cotizaciones estructuradas como deals corporativos), no hay <strong>visibilidad end-to-end del ciclo de originaci&oacute;n</strong>, y las mejoras que surgen del buz&oacute;n interno son <strong>&ldquo;poco profundas&rdquo;</strong>. <strong>La oportunidad no est&aacute; en optimizar lo actual sino en simplificar el modelo para LMM.</strong></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: CONTEXTO — QMS Y CX                               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Contexto: Quality Management System y Customer Experience</div>
+            </div>
+
+            <p><strong>Guillermo &ldquo;Memo&rdquo; Llantada</strong> dirige dos funciones en Engen Capital: el <strong>Quality Management System</strong> (sistema de gesti&oacute;n de calidad) y <strong>Customer Experience</strong>. Hasta hace 1.5 a&ntilde;os, compart&iacute;a TI con Luis Padilla; hoy opera como &aacute;rea independiente. Su rol es transversal: mide el apego al proceso en todas las &aacute;reas, recoge la voz del cliente, y coordina mejoras.</p>
+
+            <h3>Quality Management System</h3>
+
+            <table>
+                <thead><tr><th>Componente</th><th>Descripci&oacute;n</th><th>Estado</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Manual de procesos</td><td>Documentaci&oacute;n completa de todos los procesos operativos</td><td>Activo, actualizado</td></tr>
+                    <tr><td class="table-highlight">Auditor&iacute;as internas</td><td>Medici&oacute;n peri&oacute;dica de apego al proceso &mdash; resultado: 91.3%</td><td>Activo</td></tr>
+                    <tr><td class="table-highlight">Capacitaci&oacute;n y certificaci&oacute;n</td><td>Programa de formaci&oacute;n en procesos para todos los colaboradores</td><td>Activo</td></tr>
+                    <tr><td class="table-highlight">Buz&oacute;n de mejoras</td><td>Canal para que las &aacute;reas propongan mejoras a los procesos</td><td>Activo, pero mejoras &ldquo;poco profundas&rdquo;</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si nosotros decimos as&iacute; se va a hacer, s&iacute; se hace, no se salen.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, Dir. Calidad y CX</div>
+            </div>
+
+            <h3>Customer Experience &mdash; Estructura</h3>
+
+            <table>
+                <thead><tr><th>Programa</th><th>Qu&eacute; mide / hace</th><th>Frecuencia</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">NPS</td><td>3 momentos: nuevos, intermedios (vida del contrato), finales (end of lease)</td><td>Continuo, 30+ encuestas/mes</td></tr>
+                    <tr><td class="table-highlight">CSAT</td><td>Satisfacci&oacute;n por transacci&oacute;n &mdash; reci&eacute;n implementado este a&ntilde;o</td><td>Por evento</td></tr>
+                    <tr><td class="table-highlight">Cliente Primero</td><td>Inducci&oacute;n a clientes nuevos, seguimiento de solicitudes, acompa&ntilde;amiento</td><td>Continuo</td></tr>
+                    <tr><td class="table-highlight">&Aacute;ngel de la Guarda</td><td>Seguimiento especial a detractores y pasivos identificados en NPS</td><td>Reactivo post-NPS</td></tr>
+                    <tr><td class="table-highlight">Portal de clientes</td><td>Autoservicio para clientes activos</td><td>24/7</td></tr>
+                    <tr><td class="table-highlight">Junta mensual CX</td><td>Revisi&oacute;n de resultados NPS con todas las &aacute;reas; parte de compensaci&oacute;n variable</td><td>Mensual</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Datos de portafolio (LMM + Core)</h3>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value">~400</div><div class="kpi-label">Clientes LMM (grupos econ&oacute;micos)</div></div>
+                <div class="kpi-item"><div class="kpi-value">853</div><div class="kpi-label">Contratos activos LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value">~2x</div><div class="kpi-label">Contratos por cliente promedio</div></div>
+                <div class="kpi-item"><div class="kpi-value">1/3</div><div class="kpi-label">Cartera en transporte</div></div>
+            </div>
+
+            <p>El segmento Core tiene aproximadamente 200-250 clientes adicionales. En febrero 2026, solo se incorporaron <strong>4 clientes nuevos LMM</strong>, un indicador que Memo considera bajo y que refuerza la necesidad de revisar el modelo de adquisici&oacute;n.</p>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: HALLAZGO 1 — PRODUCTO CORE EN MERCADO LMM          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03</div>
+                <div class="section-title">Hallazgo 1: Producto Core en mercado LMM &mdash; el 80%</div>
+            </div>
+
+            <p>Este es posiblemente el hallazgo m&aacute;s revelador de la entrevista. Memo comparti&oacute; un estudio interno que realiz&oacute; a petici&oacute;n de <strong>Juan Pablo</strong>: se analizaron las cotizaciones del Lower Middle Market y se descubri&oacute; que <strong>m&aacute;s del 80% traen la complejidad estructural de un deal de Core</strong>.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">80%+ de cotizaciones LMM con estructura de deal Core</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Engen utiliza <strong>Super Trump</strong>, una herramienta de cotizaci&oacute;n descrita como &ldquo;muy cara y muy poderosa&rdquo;. Juan Pablo challenge&oacute; al equipo: &ldquo;apaguen eso para LMM, coticen tasa-plazo-residual&rdquo;. El resultado del estudio fue contundente: las cotizaciones incluyen pagos Low-High, secure deposit, pagos intermedios y otras complejidades que son ventajas competitivas de Core pero <strong>no tienen sentido para el segmento medio</strong>.
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">80 y tantos por ciento de las cotizaciones del LMM traen la complejidad estructural de un deal de Core.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, Dir. Calidad y CX</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Eso no se vende de anaquel.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, sobre la complejidad del producto LMM</div>
+            </div>
+
+            <h3>&iquest;Por qu&eacute; importa?</h3>
+
+            <p>La complejidad del producto tiene efectos en cascada sobre toda la operaci&oacute;n:</p>
+
+            <table>
+                <thead><tr><th>Efecto</th><th>Impacto en LMM</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Tiempo de cotizaci&oacute;n</td><td>Cada cotizaci&oacute;n requiere parametrizaci&oacute;n avanzada en Super Trump en lugar de un modelo simple tasa-plazo-residual</td></tr>
+                    <tr><td class="table-highlight">Complejidad de an&aacute;lisis</td><td>Riesgos debe evaluar estructuras complejas que el cliente medio no necesita ni entiende</td></tr>
+                    <tr><td class="table-highlight">Capacitaci&oacute;n de originadores</td><td>Se necesita conocimiento profundo de estructuraci&oacute;n para un mercado que deber&iacute;a ser transaccional</td></tr>
+                    <tr><td class="table-highlight">Atenci&oacute;n postventa</td><td>Contratos complejos generan m&aacute;s consultas, aclaraciones y fricci&oacute;n durante la vida del cr&eacute;dito</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">&iquest;Ese pinche tipo de clientes son igual de sofisticados que los corporativos? Ya no lo creo.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, sobre el perfil del cliente LMM</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Implicaci&oacute;n para LCG</div>
+                <p>Memo cree que LMM deber&iacute;a ser <strong>&ldquo;m&aacute;s financiera que especializada en activos&rdquo;</strong>. Esta visi&oacute;n choca con la postura de Fernando Garza (&ldquo;es asset-based lending&rdquo;), lo que sugiere un debate estrat&eacute;gico no resuelto dentro de Engen sobre la <strong>identidad del producto LMM</strong>. Este es un punto de intervenci&oacute;n natural para consultor&iacute;a.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: HALLAZGO 2 — DASHBOARD END-TO-END                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04</div>
+                <div class="section-title">Hallazgo 2: Dashboard end-to-end ausente &mdash; &ldquo;manejando a ciegas&rdquo;</div>
+            </div>
+
+            <p>Memo identifica como un problema cr&iacute;tico la <strong>ausencia de un indicador oficial que mida el tiempo completo del ciclo de originaci&oacute;n</strong>. Cada &aacute;rea mide su etapa, pero nadie tiene la fotograf&iacute;a completa desde el primer contacto hasta el desembolso.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">No existe m&eacute;trica end-to-end del ciclo de originaci&oacute;n</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Cuando Memo pregunt&oacute; a <strong>Fernando Garza</strong> por el tiempo total del ciclo, la respuesta fue: &ldquo;No, eso no es m&iacute;o. Te puedo decir etapas pero no el todo.&rdquo; Cada &aacute;rea es due&ntilde;a de su tramo pero nadie es due&ntilde;o del proceso completo. Esto impide priorizar mejoras con datos: &ldquo;&iquest;D&oacute;nde le hago la mejora? Donde grit&oacute; el ejecutivo comercial o donde grit&oacute; mesa de control.&rdquo;
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No hay indicador oficial que mide el tiempo completo del ciclo.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, Dir. Calidad y CX</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Ese me parece que es ir manejando medio a ciegas.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, sobre la falta de visibilidad del proceso</div>
+            </div>
+
+            <h3>Process Map: visibilidad por etapa</h3>
+
+            <div class="process-map">
+                <div class="process-step warning">
+                    <div class="process-step-label">Etapa 1</div>
+                    <div class="process-step-title">Prospecci&oacute;n</div>
+                    <div class="process-step-detail">Comercial mide citas, pero no conversi&oacute;n real</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Etapa 2</div>
+                    <div class="process-step-title">Cotizaci&oacute;n</div>
+                    <div class="process-step-detail">Super Trump &mdash; complejidad innecesaria para LMM</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Etapa 3</div>
+                    <div class="process-step-title">An&aacute;lisis</div>
+                    <div class="process-step-detail">Riesgos, activos, documentaci&oacute;n &mdash; sin SLA global</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Etapa 4</div>
+                    <div class="process-step-title">Aprobaci&oacute;n</div>
+                    <div class="process-step-detail">Comit&eacute; &mdash; tiempos variables</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Etapa 5</div>
+                    <div class="process-step-title">Desembolso</div>
+                    <div class="process-step-detail">Sin m&eacute;trica de ciclo total</div>
+                </div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Consecuencia directa</div>
+                <p>Sin visibilidad end-to-end, las mejoras son <strong>reactivas</strong>: se arregla donde alguien grita, no donde los datos indican. Memo tiene un proyecto pendiente con TI para construir dashboards directos del sistema, pero a&uacute;n no se concreta. Mientras tanto, las decisiones de mejora se toman con informaci&oacute;n fragmentada.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Conexi&oacute;n con otros hallazgos</div>
+                <p>Este gap de visibilidad se conecta directamente con lo reportado por <strong>Roberto Zacatenco</strong> (Dir. Comercial LMM): el CRM se usa como &ldquo;espejo retrovisor&rdquo; y los promedios m&oacute;viles detectan problemas 2-3 semanas tarde. La ausencia de dashboard end-to-end es un s&iacute;ntoma de una operaci&oacute;n que <strong>mide outputs pero no el flujo</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: HALLAZGO 3 — LEYENDAS URBANAS                      -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05</div>
+                <div class="section-title">Hallazgo 3: Leyendas urbanas &mdash; la queja de comerciales desmitificada</div>
+            </div>
+
+            <p>Una narrativa recurrente en la fuerza comercial de Engen es que los originadores &ldquo;pasan arreglando temas administrativos&rdquo; en lugar de vender. Memo puso a prueba esta narrativa con un ejercicio pr&aacute;ctico &mdash; y los resultados fueron reveladores.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">La queja de &ldquo;temas administrativos&rdquo; no se sustenta con evidencia</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    Memo organiz&oacute; un foro con los comerciales para identificar exactamente qu&eacute; temas administrativos les quitaban tiempo. El resultado: <strong>no pudieron identificar qu&eacute; quitar</strong>. Las quejas se evaporaron cuando se pidieron espec&iacute;ficos. Memo los califica como &ldquo;leyendas urbanas&rdquo; &mdash; percepciones repetidas tantas veces que se asumen como verdad.
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Los comerciales dicen que pasan arreglando temas administrativos... encontramos leyendas urbanas.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, Dir. Calidad y CX</div>
+            </div>
+
+            <h3>&iquest;Qu&eacute; nos dice esto?</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Patr&oacute;n</div>
+                    <div class="exec-card-value">Percepci&oacute;n &#8800; Realidad</div>
+                    <div class="exec-card-desc">El equipo comercial tiene una narrativa consolidada de &ldquo;la operaci&oacute;n me frena&rdquo; que no se sostiene al ponerla bajo escrutinio. Esto es com&uacute;n en organizaciones donde el diagn&oacute;stico se hace desde la anecdota y no desde la medici&oacute;n.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Conexi&oacute;n</div>
+                    <div class="exec-card-value">JP dice lo mismo</div>
+                    <div class="exec-card-desc">Juan Pablo mencion&oacute; en el Discovery que la gente &ldquo;se inventa nuevos procesos&rdquo;. El hallazgo de Memo confirma este patr&oacute;n: la queja sobre procesos es m&aacute;s cultural que operativa.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Implicaci&oacute;n para el diagn&oacute;stico</div>
+                <p>Si la queja de &ldquo;temas administrativos&rdquo; es una leyenda urbana, entonces el problema <strong>no es eliminar pasos del proceso</strong> sino entender por qu&eacute; la percepci&oacute;n difiere tanto de la realidad. Posibles causas: falta de herramientas de productividad, tareas manuales que se sienten como &ldquo;administrativas&rdquo; aunque son parte del rol, o simplemente <strong>falta de medici&oacute;n del uso del tiempo</strong> que permita separar lo productivo de lo no productivo.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: HALLAZGO 4 — NPS Y VOZ DEL CLIENTE                 -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06</div>
+                <div class="section-title">Hallazgo 4: NPS alto pero base peque&ntilde;a &mdash; lo que dice la voz del cliente</div>
+            </div>
+
+            <p>Engen Capital mide NPS en tres momentos del ciclo de vida del cliente y tiene resultados que, en superficie, son excepcionales. Sin embargo, Memo mismo reconoce que el n&uacute;mero &ldquo;le da terror&rdquo; por lo alto &mdash; una se&ntilde;al de madurez anal&iacute;tica que es poco com&uacute;n.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value green">~72</div><div class="kpi-label">NPS anual</div></div>
+                <div class="kpi-item"><div class="kpi-value green">30+</div><div class="kpi-label">Encuestas/mes</div></div>
+                <div class="kpi-item"><div class="kpi-value green">3</div><div class="kpi-label">Detractores en 12 meses</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">LMM</div><div class="kpi-label">Segmento de detractores</div></div>
+            </div>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">NPS de ~72: alto pero con reservas sobre la base muestral</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    Un NPS de 72 es <strong>excepcional</strong> en servicios financieros (el promedio de la industria en M&eacute;xico oscila entre 30-45). Sin embargo, con 30+ encuestas/mes sobre una base de ~400 clientes LMM + ~200 Core, la tasa de respuesta es baja. Esto puede generar un <strong>sesgo de selecci&oacute;n</strong>: los clientes satisfechos tienden a responder m&aacute;s. A&uacute;n as&iacute;, la consistencia del dato en 12 meses con solo 3 detractores sugiere que la percepci&oacute;n general es genuinamente positiva.
+                </div>
+            </div>
+
+            <h3>Perfil del detractor</h3>
+
+            <p>Los 3 detractores del a&ntilde;o comparten un perfil revelador:</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Detractor t&iacute;pico: &ldquo;me dijo una cosa y cuando contrat&eacute; fue otra&rdquo;</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Los 3 detractores son del <strong>segmento LMM</strong> y su queja principal es una <strong>brecha entre lo prometido en la venta y lo entregado en el contrato</strong>. Esto apunta a dos posibles causas: (1) el originador no conoce bien el producto y vende algo que la operaci&oacute;n no puede cumplir exactamente, o (2) la complejidad del producto (el 80% con estructura Core) genera confusi&oacute;n entre lo cotizado y lo formalizado.
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Somos mejores para vender que para atender postventa.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, Dir. Calidad y CX</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Oportunidad</div>
+                <p>La infraestructura de CX ya existe y es robusta: NPS en 3 momentos, CSAT reci&eacute;n implementado, programa &Aacute;ngel de la Guarda, junta mensual con &aacute;reas. Lo que falta es <strong>ampliar la base muestral</strong> para darle robustez estad&iacute;stica al NPS, y <strong>conectar la voz del cliente con la simplificaci&oacute;n del producto</strong> &mdash; los detractores est&aacute;n se&ntilde;alando exactamente el mismo problema que el estudio del 80%.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: HALLAZGO 5 — CULTURA DE PROCESOS                   -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07</div>
+                <div class="section-title">Hallazgo 5: Cultura de procesos s&oacute;lida &mdash; fortaleza heredada de GE</div>
+            </div>
+
+            <p>A diferencia de muchas empresas medianas mexicanas, Engen Capital tiene una <strong>cultura de procesos genuinamente arraigada</strong>. No es aspiracional &mdash; es operativa, medida y con consecuencias. Esta es una fortaleza diferencial que facilitar&iacute;a significativamente cualquier proyecto de consultor&iacute;a.</p>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">91.3% de apego al proceso &mdash; cultura GE viva</div>
+                    <div class="finding-dimension oportunidad">Fortaleza</div>
+                </div>
+                <div class="finding-body">
+                    El apego al proceso se mide en auditor&iacute;as internas y se reporta peri&oacute;dicamente. Hay manual, capacitaci&oacute;n, certificaci&oacute;n. Cuando alguien agrega un documento adicional fuera de proceso, &ldquo;suenan las alarmas&rdquo;. Esto implica que <strong>cualquier redise&ntilde;o de proceso que se defina, se ejecutar&aacute;</strong> &mdash; una condici&oacute;n que no existe en la mayor&iacute;a de las empresas.
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">91.3% de apego al proceso.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, resultado de auditor&iacute;a interna</div>
+            </div>
+
+            <h3>La paradoja: alto apego, baja profundidad</h3>
+
+            <p>Sin embargo, Memo revela una tensi&oacute;n importante. El buz&oacute;n de mejoras existe y funciona, pero las mejoras que salen de &eacute;l son <strong>&ldquo;poco profundas&rdquo;</strong>. Maurizzio Piva se quejaba abiertamente de esto.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si esas son las ideas de tu gente, soy mensajero.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, respondiendo a la cr&iacute;tica de Piva sobre la profundidad de las mejoras</div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Lo que funciona</div>
+                    <div class="exec-card-value">Apego al proceso</div>
+                    <div class="exec-card-desc">La gente sigue los procesos definidos. Hay cultura de disciplina operativa. 91.3% medido y auditado. Esto es una base excepcional para implementar cambios.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Lo que falta</div>
+                    <div class="exec-card-value">Mejora profunda</div>
+                    <div class="exec-card-desc">Las mejoras que surgen del buz&oacute;n son incrementales, no transformacionales. Falta la capacidad de cuestionar el proceso mismo, no solo cumplirlo. &ldquo;Tus reingenier&iacute;as son poco profundas.&rdquo;</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Implicaci&oacute;n para LCG</div>
+                <p>Esta es una <strong>condici&oacute;n ideal para consultor&iacute;a</strong>. El problema no es que la gente no siga los procesos (el reto m&aacute;s com&uacute;n) &mdash; es que los procesos mismos necesitan ser <strong>redise&ntilde;ados a un nivel que la organizaci&oacute;n no puede alcanzar por s&iacute; sola</strong>. LCG puede aportar la profundidad de reingenier&iacute;a que internamente no existe, con la garant&iacute;a de que lo que se defina, se ejecutar&aacute;.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: HALLAZGO 6 — ACTIVOS Y SOFISTICACION               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08</div>
+                <div class="section-title">Hallazgo 6: Activos &mdash; &iquest;cu&aacute;nta sofisticaci&oacute;n necesita LMM?</div>
+            </div>
+
+            <p>Un debate interno no resuelto es el nivel de an&aacute;lisis de activos que requiere el segmento LMM. <strong>Jessica Ochoa</strong> lidera la inspecci&oacute;n de activos tanto para admisi&oacute;n como para end-of-lease, aplicando el mismo rigor para todos los segmentos. Memo cuestiona si esto tiene sentido para LMM.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Inspecci&oacute;n de activos: mismo proceso para $400M y para una cl&iacute;nica</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    El ejemplo es contundente: <strong>Sabormex</strong> tiene una m&aacute;quina de frijoles de $400M que requiere inspecci&oacute;n especializada. Una cl&iacute;nica con un aparato de imagenolog&iacute;a de $2-5M tambi&eacute;n recibe el mismo tratamiento. Memo pregunta: &ldquo;&iquest;Qu&eacute; tanto tienes que ir a hacer una inspecci&oacute;n de una m&aacute;quina de belleza?&rdquo; El esfuerzo no est&aacute; calibrado al riesgo real.
+                </div>
+            </div>
+
+            <h3>El debate: asset-based vs. financiera</h3>
+
+            <table>
+                <thead><tr><th>Postura</th><th>Defensor</th><th>Argumento</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">&ldquo;Es asset-based lending&rdquo;</td><td>Fernando Garza (Originaci&oacute;n)</td><td>El valor del activo es la garant&iacute;a. Sin inspecci&oacute;n rigurosa, el riesgo de cr&eacute;dito se descontrola. Es lo que diferencia a una arrendadora de un banco.</td></tr>
+                    <tr><td class="table-highlight">&ldquo;LMM debe ser m&aacute;s financiera&rdquo;</td><td>Guillermo Llantada (Calidad y CX)</td><td>Para montos peque&ntilde;os y activos est&aacute;ndar, la inspecci&oacute;n detallada no agrega valor proporcional. Genera cuellos de botella y demora sin reducir riesgo significativamente.</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Debate no resuelto</div>
+                <p>Este debate toca la <strong>identidad estrat&eacute;gica del segmento LMM</strong>. Ser &ldquo;asset-based&rdquo; es el ADN de Engen y su diferenciador hist&oacute;rico. Pero aplicar el mismo rigor a un deal de $2M que a uno de $400M genera fricci&oacute;n operativa sin reducci&oacute;n proporcional de riesgo. La soluci&oacute;n probablemente es una <strong>pol&iacute;tica de inspecci&oacute;n escalonada</strong> por monto y tipo de activo, no un cambio de identidad.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si hay mejoras operativas, pero esas no van a ser que explote el producto.</div>
+                <div class="verbatim-source">&mdash; Guillermo Llantada, Dir. Calidad y CX</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Insight estrat&eacute;gico de Memo</div>
+                <p>Memo ofrece una lectura estrat&eacute;gica que va m&aacute;s all&aacute; de la operaci&oacute;n: cree que el inter&eacute;s de Juan Pablo en dimensionamiento de mercado no es solo por estrategia comercial sino que <strong>podr&iacute;a estar vinculado a una tesis de inversi&oacute;n o M&amp;A</strong>. &ldquo;Creo que puede haber alg&uacute;n inter&eacute;s diferente a las estrategias comerciales.&rdquo; Tambi&eacute;n identifica rotaci&oacute;n y talento como preocupaci&oacute;n real: &ldquo;Algo est&aacute; pasando aqu&iacute;, que no tenemos los equipos completos o correctos.&rdquo;</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: OPORTUNIDADES DE INTERVENCION                      -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 09</div>
+                <div class="section-title">Oportunidades de Intervenci&oacute;n</div>
+            </div>
+
+            <p>Los hallazgos de esta entrevista apuntan a oportunidades concretas de intervenci&oacute;n que se alinean con las capacidades de LCG y con los retos ya identificados en entrevistas anteriores.</p>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Simplificaci&oacute;n del Producto LMM &mdash; &ldquo;De Anaquel&rdquo;</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">80%+ de las cotizaciones LMM arrastran la complejidad de Core (pagos Low-High, secure deposit, pagos intermedios). El cliente LMM no necesita ni entiende esta sofisticaci&oacute;n. Genera fricci&oacute;n en cotizaci&oacute;n, an&aacute;lisis, aprobaci&oacute;n y postventa.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Definir cat&aacute;logo de productos LMM simplificados (tasa-plazo-residual)</li>
+                        <li>Crear herramienta de cotizaci&oacute;n r&aacute;pida que no requiera Super Trump para deals est&aacute;ndar</li>
+                        <li>Establecer umbrales claros: &iquest;cu&aacute;ndo un deal LMM requiere estructuraci&oacute;n y cu&aacute;ndo es &ldquo;de anaquel&rdquo;?</li>
+                        <li>Simplificar documentaci&oacute;n y requisitos para productos est&aacute;ndar</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">80%+</div><div class="opp-impact-label">Cotizaciones a simplificar</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">~400</div><div class="opp-impact-label">Clientes LMM beneficiados</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Dashboard End-to-End de Originaci&oacute;n</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">No existe m&eacute;trica oficial del ciclo completo de originaci&oacute;n. Las &aacute;reas miden su etapa pero nadie es due&ntilde;o del proceso total. Las mejoras son reactivas (&ldquo;donde grit&oacute; alguien&rdquo;) en lugar de basadas en datos.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Definir el ciclo completo de originaci&oacute;n con puntos de medici&oacute;n claros</li>
+                        <li>Establecer SLAs por etapa y por segmento (Core vs. LMM)</li>
+                        <li>Construir dashboard integrado con visibilidad en tiempo real</li>
+                        <li>Asignar due&ntilde;o del proceso end-to-end (no solo de etapas)</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">0</div><div class="opp-impact-label">Dashboards end-to-end actuales</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">5</div><div class="opp-impact-label">Etapas a integrar</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09 CONT: OPORTUNIDADES 3-5                             -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Pol&iacute;tica de Inspecci&oacute;n Escalonada por Segmento</div>
+                    <div class="opp-priority media">Prioridad Media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">La inspecci&oacute;n de activos aplica el mismo rigor para un deal de $400M (Sabormex) que para una cl&iacute;nica con equipo de $2-5M. Esto genera cuellos de botella en LMM sin reducci&oacute;n proporcional de riesgo.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Clasificaci&oacute;n de activos por complejidad: est&aacute;ndar (inspecci&oacute;n documental), medio (inspecci&oacute;n remota), complejo (inspecci&oacute;n f&iacute;sica completa)</li>
+                        <li>Umbrales por monto: &lt;$5M simplificado, $5-20M est&aacute;ndar, &gt;$20M riguroso</li>
+                        <li>Cat&aacute;logo de activos pre-aprobados que no requieren inspecci&oacute;n f&iacute;sica</li>
+                        <li>Liberar capacidad de Jessica Ochoa para deals de alto valor</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">853</div><div class="opp-impact-label">Contratos LMM activos</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">1/3</div><div class="opp-impact-label">Cartera en transporte (activo est&aacute;ndar)</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 4 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Fortalecimiento del Programa de Mejora Continua</div>
+                    <div class="opp-priority media">Prioridad Media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">El buz&oacute;n de mejoras existe pero genera mejoras &ldquo;poco profundas&rdquo;. Las reingenier&iacute;as son superficiales. La organizaci&oacute;n es disciplinada para seguir procesos pero no tiene la capacidad interna para cuestionarlos y redise&ntilde;arlos a profundidad.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Metodolog&iacute;a de mejora continua estructurada (no solo buz&oacute;n de sugerencias)</li>
+                        <li>Equipos de mejora multifuncionales para proyectos espec&iacute;ficos</li>
+                        <li>Capacitaci&oacute;n en an&aacute;lisis de causa ra&iacute;z y redise&ntilde;o de procesos</li>
+                        <li>Conectar la voz del cliente (NPS/CSAT) directamente con iniciativas de mejora</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">91.3%</div><div class="opp-impact-label">Apego actual (base s&oacute;lida)</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Bajo</div><div class="opp-impact-label">Profundidad de mejoras actuales</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 5 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">05</div>
+                    <div class="opp-title">Robustecimiento del Programa de CX</div>
+                    <div class="opp-priority media">Prioridad Media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">NPS alto (~72) pero base muestral peque&ntilde;a (30+ encuestas/mes para ~600 clientes). Detractores concentrados en LMM por brecha venta-entrega. CSAT reci&eacute;n arrancando. Postventa reconocida como &aacute;rea de mejora.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Ampliar tasa de respuesta de NPS para robustez estad&iacute;stica</li>
+                        <li>Integrar CSAT con NPS para vista 360 de la experiencia del cliente</li>
+                        <li>Programa de capacitaci&oacute;n a originadores sobre producto (cerrar brecha venta-entrega)</li>
+                        <li>Fortalecer &Aacute;ngel de la Guarda con protocolo proactivo, no solo reactivo</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">~72</div><div class="opp-impact-label">NPS actual a defender</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">4</div><div class="opp-impact-label">Clientes nuevos LMM/mes a mejorar</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 10: CONCLUSION — TIENE VS. NECESITA                    -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Conclusi&oacute;n</div>
+                <div class="section-title">Tiene vs. Necesita &mdash; el mapa de la oportunidad</div>
+            </div>
+
+            <p>La entrevista con Guillermo Llantada confirma que Engen Capital tiene <strong>infraestructura de calidad y CX que la mayor&iacute;a de las empresas de su tama&ntilde;o no tiene</strong>: auditor&iacute;as internas, NPS multimomento, programas de acompa&ntilde;amiento al cliente, buz&oacute;n de mejoras. Sin embargo, esa infraestructura opera sobre un <strong>modelo de producto y procesos dise&ntilde;ado para Core</strong> que se aplica sin diferenciaci&oacute;n al segmento LMM.</p>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Producto Core para LMM</div>
+                    <div class="exec-card-desc">80%+ de cotizaciones con complejidad estructural heredada. Super Trump para todo. &ldquo;No se vende de anaquel.&rdquo;</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Producto simplificado LMM</div>
+                    <div class="exec-card-desc">Cat&aacute;logo tasa-plazo-residual para 80% de deals. Cotizaci&oacute;n r&aacute;pida. Documentaci&oacute;n ligera. &ldquo;De anaquel.&rdquo;</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Visibilidad por etapa</div>
+                    <div class="exec-card-desc">Cada &aacute;rea mide su tramo. Nadie mide el ciclo completo. Mejoras reactivas basadas en qui&eacute;n grita m&aacute;s fuerte.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Dashboard end-to-end</div>
+                    <div class="exec-card-desc">M&eacute;trica oficial del ciclo completo. SLAs por segmento. Due&ntilde;o del proceso total. Mejoras basadas en datos.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Mejoras incrementales</div>
+                    <div class="exec-card-desc">Buz&oacute;n de mejoras activo pero con resultados &ldquo;poco profundos&rdquo;. Reingenier&iacute;as superficiales. Alto apego sin profundidad.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Reingenier&iacute;a real</div>
+                    <div class="exec-card-desc">Cuestionamiento profundo de procesos heredados. Equipos multifuncionales. Metodolog&iacute;a de mejora continua estructurada.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">La oportunidad para LCG</div>
+                <p>Memo ofrece la perspectiva m&aacute;s honesta del diagn&oacute;stico: <strong>&ldquo;Si hay mejoras operativas, pero esas no van a ser que explote el producto.&rdquo;</strong> El verdadero impacto est&aacute; en la simplificaci&oacute;n del modelo LMM &mdash; pasar de un producto estructurado a uno transaccional. La cultura de 91.3% de apego al proceso es la <strong>mejor garant&iacute;a de implementaci&oacute;n</strong> que puede existir: lo que LCG defina, Engen lo ejecutar&aacute;. La combinaci&oacute;n de diagn&oacute;stico de producto + reingenier&iacute;a de procesos + dashboard end-to-end es un proyecto cl&aacute;sico LCG con alto impacto y condiciones excepcionales de &eacute;xito.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Siguiente paso</div>
+                <p>Triangular el hallazgo del 80% con las entrevistas de Originaci&oacute;n y Riesgos para cuantificar el impacto en tiempos y costos. Verificar con el CIO la viabilidad t&eacute;cnica del dashboard end-to-end. Validar con JP si la simplificaci&oacute;n del producto es parte del mandato estrat&eacute;gico.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

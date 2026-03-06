@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista CEO: Visi&oacute;n Estrat&eacute;gica LMM &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #1A3A6B 60%, #2E6DB4 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== TIMELINE ======================== */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            margin: 16px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--lcg-accent);
+            border: 2px solid white;
+        }
+
+        .timeline-item.red::before { background: var(--danger); }
+        .timeline-item.green::before { background: var(--engen-green); }
+        .timeline-item.amber::before { background: var(--warning); }
+
+        .timeline-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+        }
+
+        .timeline-text {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">An&aacute;lisis de Oportunidades</div>
+                <h1 class="cover-title">Visi&oacute;n CEO: Estrategia y Retos<br>del Lower Middle Market</h1>
+                <p class="cover-subtitle">Entrevista con el CEO de Engen Capital &mdash; expectativas, diagn&oacute;stico del equipo comercial y oportunidades de crecimiento</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Juan Pablo Loperena, CEO Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">2 de marzo de 2026 &mdash; 60 min virtual</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza los hallazgos de la entrevista estrat&eacute;gica con <strong>Juan Pablo Loperena, CEO de Engen Capital</strong>, realizada el 2 de marzo de 2026 (60 minutos, virtual). La conversaci&oacute;n cubri&oacute; su visi&oacute;n sobre el dimensionamiento del mercado mid-market, la tesis de inversi&oacute;n Linzor, el perfil de la fuerza de ventas, la gesti&oacute;n del pipeline, el estilo de liderazgo de la direcci&oacute;n comercial y los cuellos de botella en originaci&oacute;n. Es la perspectiva del m&aacute;ximo nivel ejecutivo sobre por qu&eacute; el LMM no est&aacute; creciendo al ritmo esperado.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value amber">125</div><div class="kpi-label">Clientes nuevos / a&ntilde;o</div></div>
+                <div class="kpi-item"><div class="kpi-value red">-10%</div><div class="kpi-label">Originaci&oacute;n 2025 vs 2024</div></div>
+                <div class="kpi-item"><div class="kpi-value red">25%</div><div class="kpi-label">Rotaci&oacute;n fuerza de ventas</div></div>
+                <div class="kpi-item"><div class="kpi-value green">$1,700M</div><div class="kpi-label">Originaci&oacute;n LMM anual</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">Pipeline como ficci&oacute;n</div>
+                    <div class="exec-card-desc">El equipo comercial subval&uacute;a sistem&aacute;ticamente las oportunidades en el pipeline: registran $10M cuando la operaci&oacute;n real vale $100M. Sin pipeline confiable, el CEO no puede tomar decisiones de negocio.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">Perfil de ventas equivocado</div>
+                    <div class="exec-card-desc">Se contrata gente &ldquo;muy letrada en finanzas&rdquo; pero sin habilidades b&aacute;sicas de venta. El CEO cuestiona frontalmente esta l&oacute;gica: el mid-market necesita colmillo comercial, no an&aacute;lisis financiero.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo relevante</div>
+                    <div class="exec-card-value">Micromanagement directivo</div>
+                    <div class="exec-card-desc">El Director Comercial centraliza descuentos, concesiones y contrataciones. La capa gerencial no tiene autonom&iacute;a. El CEO tuvo que intervenir para eliminar seguimientos diarios que se volv&iacute;an &ldquo;t&oacute;xicos&rdquo;.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Hallazgo estructural</div>
+                    <div class="exec-card-value">Mercado de sobra, conversi&oacute;n &iacute;nfima</div>
+                    <div class="exec-card-desc">De ~35,000 empresas target, Engen convierte solo 125 al a&ntilde;o. &ldquo;Tengo para 15 a&ntilde;os&rdquo;. El problema no es el tama&ntilde;o del mercado sino la capacidad de captura comercial.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central del CEO</div>
+                <p>El mercado mid-market est&aacute; ah&iacute; &mdash; ~35,000 empresas, $5 MDP de inversi&oacute;n anual en maquinaria cada una, 10 competidores compartiendo ~$5,200 MDP. Pero la operaci&oacute;n comercial de Engen tiene tres frenos estructurales: <strong>(1) un perfil de vendedor que no corresponde al segmento</strong>, <strong>(2) un pipeline que no refleja la realidad</strong>, y <strong>(3) un modelo de gesti&oacute;n que centraliza decisiones y genera rotaci&oacute;n</strong>. El CEO lo tiene diagnosticado; lo que falta es la intervenci&oacute;n sistem&aacute;tica para resolverlo.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: CONTEXTO — LA TESIS DE INVERSION LMM              -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Contexto: La tesis de inversi&oacute;n LMM</div>
+            </div>
+
+            <p>Para entender la urgencia del CEO, es necesario comprender c&oacute;mo Engen Capital lleg&oacute; al segmento Lower Middle Market y por qu&eacute; el crecimiento en este segmento es una prioridad estrat&eacute;gica &mdash; no una l&iacute;nea de negocio m&aacute;s.</p>
+
+            <h3>De GE Capital a Linzor: el cambio de modelo</h3>
+
+            <p>Engen Capital naci&oacute; como <strong>GE Capital M&eacute;xico</strong>, operando exclusivamente arrendamiento para empresas grandes. En <strong>2016, Linzor Capital Partners</strong> adquiri&oacute; la operaci&oacute;n. El cambio de estructura de fondeo (m&aacute;s costoso sin el respaldo de GE) redujo su competitividad en el segmento premium, donde las tasas son la variable clave.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Unifin hab&iacute;a probado ser exitoso... y otros competidores</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO, sobre la referencia para entrar al mid-market</div>
+            </div>
+
+            <p>En <strong>2019</strong>, se tom&oacute; la decisi&oacute;n estrat&eacute;gica de ir al mid-market: empresas con ventas de <strong>$50-450 MDP</strong>, tickets de <strong>$400-500K USD</strong>, a una tasa m&aacute;s alta que Core (~25% vs ~17%). La tesis era clara: mayor margen por operaci&oacute;n compensar&iacute;a el mayor costo de fondeo.</p>
+
+            <h3>Cronolog&iacute;a del LMM</h3>
+
+            <div class="timeline">
+                <div class="timeline-item green">
+                    <div class="timeline-title">2016 &mdash; Adquisici&oacute;n Linzor</div>
+                    <div class="timeline-text">GE Capital M&eacute;xico se convierte en Engen Capital. Solo operaba arrendamiento a empresas grandes.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">2019 &mdash; Decisi&oacute;n estrat&eacute;gica LMM</div>
+                    <div class="timeline-text">Se decide atacar el mid-market. Empresas $50-450 MDP en ventas. Tickets $400-500K USD. Tasa ~25%.</div>
+                </div>
+                <div class="timeline-item green">
+                    <div class="timeline-title">2021-2023 &mdash; Crecimiento</div>
+                    <div class="timeline-text">El segmento LMM crece de manera sostenida. Se construye equipo comercial dedicado.</div>
+                </div>
+                <div class="timeline-item amber">
+                    <div class="timeline-title">2024 &mdash; Estancamiento</div>
+                    <div class="timeline-text">La originaci&oacute;n LMM deja de crecer. Se&ntilde;ales de fatiga en el modelo comercial.</div>
+                </div>
+                <div class="timeline-item red">
+                    <div class="timeline-title">2025 &mdash; Ca&iacute;da del -10%</div>
+                    <div class="timeline-text">Originaci&oacute;n LMM cae 10% vs 2024. Rotaci&oacute;n de 25% en fuerza de ventas. El CEO activa b&uacute;squeda de soluciones.</div>
+                </div>
+            </div>
+
+            <h3>El dimensionamiento del mercado seg&uacute;n el CEO</h3>
+
+            <table>
+                <thead><tr><th>Variable</th><th>Estimaci&oacute;n CEO</th><th>Implicaci&oacute;n</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Empresas medianas M&eacute;xico</td><td>~100,000</td><td>Universo amplio antes de filtros</td></tr>
+                    <tr><td class="table-highlight">Target filtrado</td><td>~35,000</td><td>Quitando gobierno, hospitalidad informal, hidrocarburos</td></tr>
+                    <tr><td class="table-highlight">Inversi&oacute;n anual maq/equipo</td><td>~$5 MDP por empresa</td><td>Empresas de ~200 MDP en ventas</td></tr>
+                    <tr><td class="table-highlight">Competidores en el mercado</td><td>~10</td><td>Colocan ~$3,500-4,000 MDP combinados</td></tr>
+                    <tr><td class="table-highlight">Originaci&oacute;n Engen LMM</td><td>$1,700 MDP/a&ntilde;o</td><td>Participaci&oacute;n relevante pero estancada</td></tr>
+                    <tr><td class="table-highlight">Clientes nuevos / a&ntilde;o</td><td>125-140</td><td>De 35,000 target &mdash; conversi&oacute;n &lt;0.4%</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si son 35,000 empresas y convierto 125 al a&ntilde;o, tengo para 15 a&ntilde;os</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO, sobre la suficiencia del mercado</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>El CEO tiene claridad absoluta sobre el tama&ntilde;o del mercado y la oportunidad. Su frustraci&oacute;n no es con el mercado &mdash; es con la <strong>incapacidad de la operaci&oacute;n comercial para capturarlo</strong>. Esto alinea perfectamente con una intervenci&oacute;n de Go-to-Market y modelo de gesti&oacute;n comercial, no de estrategia de mercado.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: HALLAZGO 1 — PERFIL DE FUERZA DE VENTAS          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03 &mdash; Hallazgo 1</div>
+                <div class="section-title">Perfil de fuerza de ventas: el debate central</div>
+            </div>
+
+            <p>Este es el hallazgo que el CEO abord&oacute; con mayor &eacute;nfasis y emoci&oacute;n durante la entrevista. Juan Pablo cuestiona directamente la l&oacute;gica con la que se contrata y desarrolla al equipo comercial del LMM.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">El perfil actual no corresponde al segmento</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    La fuerza de ventas LMM est&aacute; compuesta por personas con <strong>fuerte formaci&oacute;n financiera</strong> pero con <strong>habilidades de venta elementales ausentes</strong>. No identifican tomadores de decisi&oacute;n, no conocen a la competencia, no saben prospectar. El CEO lo diagnostica como un error de dise&ntilde;o del perfil, no como un problema de capacitaci&oacute;n.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista directa con CEO + estudio Korn Ferry en curso</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Mi teor&iacute;a es que eso est&aacute; equivocado, que el segmento mercado mediano necesito tener alguien m&aacute;s cargado de las habilidades de venta que las habilidades financieras</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Les gusta traer gente muy educada... habilidades elementales de ventas no est&aacute;n</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO</div>
+            </div>
+
+            <h3>El modelo que propone el CEO</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Modelo actual</div>
+                    <div class="exec-card-value">Financiero que vende</div>
+                    <div class="exec-card-desc">Perfil &ldquo;muy letrado en finanzas&rdquo; que no sabe prospectar, no identifica competidores, no cierra. Las combinaciones venta + finanzas &ldquo;son muy extra&ntilde;as&rdquo;.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Modelo propuesto por CEO</div>
+                    <div class="exec-card-value">Vendedor con soporte</div>
+                    <div class="exec-card-desc">Vendedor con colmillo comercial al frente + soporte financiero detr&aacute;s para estructuraci&oacute;n. Separar las dos funciones.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Gente que est&aacute; muy cargada al tema financiero y no ventas, entonces no avanzan en el proceso</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO</div>
+            </div>
+
+            <h3>El problema gerencial asociado</h3>
+
+            <p>El CEO tambi&eacute;n se&ntilde;ala que los gerentes no est&aacute;n cumpliendo su funci&oacute;n de desarrollo. En lugar de dedicar tiempo a formar y cuestionar a sus vendedores, est&aacute;n ellos mismos vendiendo &mdash; lo cual distorsiona toda la cadena de gesti&oacute;n.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Me da la impresi&oacute;n que hay falta de rigor en el cuestionamiento de los gerentes a los vendedores</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">La gente entre sus urgencias por cumplir la cuota no han entendido que lo m&aacute;s importante es tener un equipo que resuelva</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO</div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Implicaci&oacute;n cr&iacute;tica</div>
+                <p>El CEO y la direcci&oacute;n comercial tienen <strong>visiones opuestas</strong> sobre qu&eacute; perfil necesita el LMM. Mientras la direcci&oacute;n sigue contratando perfiles financieros, el CEO cree que necesitan vendedores puros con soporte t&eacute;cnico. Esta tensi&oacute;n no resuelta genera rotaci&oacute;n, frustraci&oacute;n y estancamiento. Resolver este debate es <strong>prerrequisito para cualquier intervenci&oacute;n comercial</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: HALLAZGO 2 — PIPELINE COMO FICCION               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04 &mdash; Hallazgo 2</div>
+                <div class="section-title">Pipeline como ficci&oacute;n: el &ldquo;grand&iacute;simo vicio&rdquo;</div>
+            </div>
+
+            <p>El CEO dedic&oacute; un bloque significativo de la entrevista a describir un problema que considera <strong>grave y persistente</strong>: la total falta de confiabilidad del pipeline comercial.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Pipeline sistem&aacute;ticamente subvaluado</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    Los vendedores registran oportunidades por una fracci&oacute;n de su valor real. Una operaci&oacute;n de $100M se alimenta como $10M en el pipeline, y solo se actualiza cuando est&aacute; pr&aacute;cticamente cerrada. Esto hace <strong>imposible hacer forecast, planear recursos o tomar decisiones de negocio</strong>.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista CEO. Confirma que ha peleado este tema por a&ntilde;os sin &eacute;xito.</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Tienen el grand&iacute;simo vicio de... alimentar por 10 millones en el pipeline</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO, describiendo c&oacute;mo registran $10M cuando la operaci&oacute;n vale $100M</div>
+            </div>
+
+            <h3>Lo que el CEO ha pedido vs. lo que recibe</h3>
+
+            <table>
+                <thead><tr><th>Lo que pide el CEO</th><th>Lo que recibe</th><th>Consecuencia</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Pipeline ponderado por probabilidad</td><td>Montos arbitrarios sin ponderaci&oacute;n</td><td>No puede hacer forecast confiable</td></tr>
+                    <tr><td class="table-highlight">Visibilidad de oportunidades reales</td><td>Oportunidades subvaluadas 10:1</td><td>No sabe el tama&ntilde;o real de la demanda</td></tr>
+                    <tr><td class="table-highlight">Actualizaci&oacute;n continua de etapas</td><td>Actualizaci&oacute;n solo al cierre</td><td>Cero visibilidad del funnel</td></tr>
+                    <tr><td class="table-highlight">Herramienta de decisi&oacute;n de negocio</td><td>Reporte post-facto</td><td>Decisiones basadas en intuici&oacute;n</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Estoy seguro que no lo hacen</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO, sobre si realmente ponderan el pipeline por probabilidad</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Ra&iacute;z del problema</div>
+                <p>El CEO lo identifica como <strong>&ldquo;un problema de gesti&oacute;n originado por un tema cultural&rdquo;</strong>. No es un problema de herramienta (tienen Salesforce). Es una combinaci&oacute;n de: (1) vendedores que protegen su informaci&oacute;n, (2) gerentes que no exigen disciplina de registro, y (3) ausencia de consecuencias por pipeline irreal. Es el mismo patr&oacute;n que Roberto Zacatenco confirm&oacute; desde la trinchera operativa: <strong>Salesforce se usa como espejo retrovisor, no como herramienta de gesti&oacute;n</strong>.</p>
+            </div>
+
+            <h3>C&iacute;rculo vicioso pipeline-producto</h3>
+
+            <div class="process-map">
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 1</div>
+                    <div class="process-step-title">Pipeline irreal</div>
+                    <div class="process-step-detail">Montos subvaluados, sin etapas reales</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 2</div>
+                    <div class="process-step-title">Presi&oacute;n por cuota</div>
+                    <div class="process-step-detail">Sin visibilidad, se presiona m&aacute;s al vendedor</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 3</div>
+                    <div class="process-step-title">Piden m&aacute;s producto</div>
+                    <div class="process-step-detail">&ldquo;A falta de pipeline quieren regresar a pedir&rdquo; flexibilidad</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 4</div>
+                    <div class="process-step-title">Excusas, no datos</div>
+                    <div class="process-step-detail">Sin datos reales no se puede diagnosticar el cuello de botella</div>
+                </div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Convergencia con entrevista Roberto Zacatenco</div>
+                <p>Este hallazgo se confirma desde ambas perspectivas: el CEO lo ve como &ldquo;vicio cultural&rdquo; y el Director LMM lo vive como &ldquo;CRM espejo retrovisor&rdquo;. La triangulaci&oacute;n fortalece el diagn&oacute;stico: <strong>el pipeline no funciona como herramienta de gesti&oacute;n en ning&uacute;n nivel de la organizaci&oacute;n</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: HALLAZGO 3 — MICROMANAGEMENT Y ROTACION          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05 &mdash; Hallazgo 3</div>
+                <div class="section-title">Micromanagement y rotaci&oacute;n</div>
+            </div>
+
+            <p>El CEO habl&oacute; con franqueza sobre el estilo de liderazgo de <strong>Mauricio Piva</strong> (Director Comercial General) y su impacto en la operaci&oacute;n. Reconoci&oacute; sus fortalezas pero tambi&eacute;n identific&oacute; un patr&oacute;n problem&aacute;tico que ha requerido su intervenci&oacute;n directa.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Centralizaci&oacute;n excesiva de decisiones</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    Mauricio es reconocido como &ldquo;muy capaz en comprensi&oacute;n financiera y excelente vendedor&rdquo;, pero <strong>no deja que la capa gerencial tenga autonom&iacute;a</strong>. Descuentos, concesiones, contrataciones &mdash; todo pasa por &eacute;l. Los originadores prefer&iacute;an perder operaciones antes que pedir aprobaci&oacute;n (hallazgo confirmado tambi&eacute;n por Roberto Zacatenco).
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista CEO + intervenci&oacute;n directa del CEO para eliminar seguimientos diarios</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No deja que su capa gerencial y directiva tenga autonom&iacute;a. Atora muchas decisiones</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO, sobre Mauricio Piva</div>
+            </div>
+
+            <h3>Impacto en el ambiente y la rotaci&oacute;n</h3>
+
+            <p>El CEO tuvo que intervenir directamente para quitar puntos de seguimiento que se hab&iacute;an vuelto <strong>casi diarios</strong>. El nivel de control generaba un ambiente que el propio CEO describe con palabras fuertes:</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Se volv&iacute;a t&oacute;xico el ambiente</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO</div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Rotaci&oacute;n voluntaria</div>
+                    <div class="exec-card-value">25%</div>
+                    <div class="exec-card-desc">En la fuerza de ventas. Estudio con Korn Ferry en curso para entender las causas de las salidas.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Intervenci&oacute;n CEO</div>
+                    <div class="exec-card-value">Directa y recurrente</div>
+                    <div class="exec-card-desc">Tuvo que eliminar personalmente puntos de seguimiento diarios y arbitrar el nivel de control.</div>
+                </div>
+            </div>
+
+            <h3>La din&aacute;mica perversa</h3>
+
+            <div class="process-map">
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 1</div>
+                    <div class="process-step-title">Centralizaci&oacute;n</div>
+                    <div class="process-step-detail">Todas las decisiones pasan por Mauricio</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 2</div>
+                    <div class="process-step-title">Gerentes sin rol</div>
+                    <div class="process-step-detail">No pueden decidir, se dedican a vender</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 3</div>
+                    <div class="process-step-title">Ambiente t&oacute;xico</div>
+                    <div class="process-step-detail">Seguimientos excesivos, presi&oacute;n sin autonom&iacute;a</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 4</div>
+                    <div class="process-step-title">Rotaci&oacute;n 25%</div>
+                    <div class="process-step-detail">Salida de talento, p&eacute;rdida de relaciones comerciales</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Se&ntilde;al para LCG</div>
+                <p>Este tema es <strong>extremadamente sensible</strong>. El CEO lo reconoce abiertamente en una entrevista de diagn&oacute;stico, lo cual indica que busca apoyo externo para abordarlo. Sin embargo, cualquier recomendaci&oacute;n sobre el modelo de liderazgo debe formularse como <strong>dise&ntilde;o de governance y niveles de autonom&iacute;a</strong>, no como cr&iacute;tica a un individuo. El marco de HDI (transformaci&oacute;n de mindset) es el referente correcto para abordar este hallazgo.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: HALLAZGO 4 — PRODUCTO CORE EN MERCADO LMM        -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06 &mdash; Hallazgo 4</div>
+                <div class="section-title">Producto Core en mercado LMM</div>
+            </div>
+
+            <p>El CEO identifica una tensi&oacute;n cr&iacute;tica entre la sofisticaci&oacute;n del producto y las necesidades del mercado mid-market. La misma &ldquo;escuela de estructuraci&oacute;n&rdquo; de Core se baj&oacute; al LMM sin adaptarla.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Producto sobre-estructurado para el segmento</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Engen ofrece productos personalizados (Low-High, estructurados) que la competencia no tiene. Pero esta misma complejidad se aplic&oacute; al LMM, donde los clientes necesitan <strong>productos de anaquel</strong> &mdash; r&aacute;pidos, estandarizados, sin negociaci&oacute;n de estructura. &ldquo;No han querido hacer algo m&aacute;s de anaquel.&rdquo;
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista CEO + mystery shopper bianual + comparaci&oacute;n competitiva</div>
+            </div>
+
+            <h3>Lo que s&iacute; funciona vs. lo que no</h3>
+
+            <table>
+                <thead><tr><th>Dimensi&oacute;n</th><th>Estado</th><th>Detalle CEO</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Tasas</td><td style="color: var(--engen-green); font-weight: 700;">Competitivas</td><td>&ldquo;En las tasas estamos competitivos&rdquo; &mdash; cada 2 a&ntilde;os hacen mystery shopper para validar</td></tr>
+                    <tr><td class="table-highlight">Productos diferenciados</td><td style="color: var(--engen-green); font-weight: 700;">Ventaja</td><td>Low-High, estructurados, personalizados &mdash; competencia no los ofrece</td></tr>
+                    <tr><td class="table-highlight">Simplificaci&oacute;n de requisitos</td><td style="color: var(--warning); font-weight: 700;">En progreso</td><td>Han tratado de simplificar la informaci&oacute;n requerida al cliente</td></tr>
+                    <tr><td class="table-highlight">Producto de anaquel LMM</td><td style="color: var(--danger); font-weight: 700;">Ausente</td><td>Bajaron la misma escuela Core al LMM. Sin producto estandarizado r&aacute;pido.</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>El CEO ve un ciclo vicioso claro: como <strong>no hay pipeline confiable</strong>, la fuerza de ventas no puede demostrar qu&eacute; necesita el mercado. Entonces <strong>piden m&aacute;s flexibilidad de producto</strong> como excusa en lugar de aportar datos. Y como no hay datos, la organizaci&oacute;n no puede decidir si la soluci&oacute;n es producto, proceso o gente. <strong>Romper este ciclo requiere primero arreglar la visibilidad del pipeline.</strong></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: HALLAZGO 5 — PROCESO DE ORIGINACION TORTUOSO     -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07 &mdash; Hallazgo 5</div>
+                <div class="section-title">Proceso de originaci&oacute;n tortuoso</div>
+            </div>
+
+            <p>El CEO abord&oacute; dos dimensiones del proceso de originaci&oacute;n: la <strong>complejidad documental</strong> que genera fricci&oacute;n con el cliente, y la <strong>relaci&oacute;n disfuncional entre Ventas y Riesgo</strong>.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Fricci&oacute;n documental y falta de disciplina</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    El CEO reconoce que el proceso de contrataci&oacute;n es complejo, pero matiza: parte del problema es <strong>falta de disciplina interna</strong>, no solo exceso de requisitos. La gente comercial se queja del tiempo que pasa recopilando documentos, pero tambi&eacute;n &ldquo;se inventan nuevos procesos&rdquo; en lugar de seguir los existentes.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista CEO + quejas recurrentes del equipo comercial</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Es tortuosa la cantidad de informaci&oacute;n para hacer el contrato</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO</div>
+            </div>
+
+            <h3>La relaci&oacute;n Ventas &ndash; Riesgo</h3>
+
+            <p>El CEO describe una <strong>fractura comunicacional</strong> entre las &aacute;reas de Ventas y Riesgo que genera ineficiencia en todo el proceso de originaci&oacute;n:</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">&ldquo;Estos se&ntilde;ores no se hablan&rdquo;</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Hay un ir y venir constante entre vendedor, cliente y riesgo. <strong>Frustraciones de ambos lados</strong>: Ventas dice &ldquo;no me aprueban&rdquo;; Riesgo dice &ldquo;traes cualquier cosa&rdquo;. El SLA de riesgo solo empieza a contar desde que el expediente est&aacute; completo &mdash; si falta un documento, el reloj se reinicia.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista CEO + din&aacute;mica confirmada por m&uacute;ltiples fuentes</div>
+            </div>
+
+            <h3>El flujo de fricci&oacute;n</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Paso 1</div>
+                    <div class="process-step-title">Vendedor capta</div>
+                    <div class="process-step-detail">Identifica oportunidad en campo</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 2</div>
+                    <div class="process-step-title">Recopila docs</div>
+                    <div class="process-step-detail">&ldquo;Tortuoso&rdquo; &mdash; mucho tiempo en documentos</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 3</div>
+                    <div class="process-step-title">Env&iacute;a a Riesgo</div>
+                    <div class="process-step-detail">Si falta 1 doc, el SLA se reinicia</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 4</div>
+                    <div class="process-step-title">Ir y venir</div>
+                    <div class="process-step-detail">&ldquo;Estos se&ntilde;ores no se hablan&rdquo;</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 5</div>
+                    <div class="process-step-title">Contrato</div>
+                    <div class="process-step-detail">M&aacute;s documentaci&oacute;n para formalizar</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">La doble lectura del CEO</div>
+                <p>Juan Pablo tiene una posici&oacute;n matizada. Reconoce que el proceso es tortuoso, pero tambi&eacute;n se&ntilde;ala que parte del problema es la <strong>indisciplina de la fuerza comercial</strong>: &ldquo;Les falta disciplina&rdquo;, &ldquo;se inventan nuevos procesos&rdquo;. Esto sugiere que una intervenci&oacute;n en la f&aacute;brica de originaci&oacute;n debe abordar <strong>tanto el proceso como el cumplimiento del proceso existente</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: OPORTUNIDADES DE INTERVENCION                     -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08</div>
+                <div class="section-title">Oportunidades de intervenci&oacute;n</div>
+            </div>
+
+            <p>A partir de la visi&oacute;n del CEO, se identifican <strong>cinco oportunidades claras de intervenci&oacute;n</strong> que conectan directamente con las prioridades estrat&eacute;gicas de Engen Capital y con la experiencia de LCG en casos similares.</p>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Redise&ntilde;o del Modelo Comercial LMM</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">El perfil de vendedor no corresponde al segmento. Se contrata perfil financiero cuando el mercado medio requiere perfil comercial. Los gerentes venden en lugar de gestionar. Conversi&oacute;n de 125 clientes de 35,000 target (&lt;0.4%).</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Definici&oacute;n del perfil vendedor LMM vs. Core (competencias, perfil, compensaci&oacute;n)</li>
+                        <li>Dise&ntilde;o del modelo vendedor + soporte financiero (separaci&oacute;n de funciones)</li>
+                        <li>Redefinici&oacute;n del rol gerencial: de vendedor-gerente a gestor de equipo</li>
+                        <li>Programa de ramp-up para nuevos originadores (hoy &gt;5 meses improductivos)</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">125</div><div class="opp-impact-label">Clientes / a&ntilde;o a incrementar</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">35,000</div><div class="opp-impact-label">Empresas target disponibles</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Banregio</div><div class="opp-impact-label">Caso referencia LCG</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Pipeline y Forecast como Herramienta de Gesti&oacute;n</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Pipeline subvaluado 10:1, sin ponderaci&oacute;n por probabilidad, actualizado solo al cierre. El CEO no tiene visibilidad para tomar decisiones de negocio. A&ntilde;os peleando este tema sin resultado.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Definici&oacute;n de etapas del funnel con criterios de entrada y salida claros</li>
+                        <li>Modelo de ponderaci&oacute;n por probabilidad (lo que JP lleva a&ntilde;os pidiendo)</li>
+                        <li>Protocolo de actualizaci&oacute;n obligatoria con governance semanal</li>
+                        <li>Dashboard de forecast para CEO con visibilidad real del embudo</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">$1,700M</div><div class="opp-impact-label">Originaci&oacute;n a proteger</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">0%</div><div class="opp-impact-label">Confiabilidad actual pipeline</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Governance y Niveles de Autonom&iacute;a Comercial</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Centralizaci&oacute;n excesiva de decisiones que genera ambiente t&oacute;xico, rotaci&oacute;n del 25%, gerentes sin autonom&iacute;a que se dedican a vender. El CEO ya intervino pero el patr&oacute;n persiste.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Matriz de autonom&iacute;a por nivel (qu&eacute; decide cada quien sin escalar)</li>
+                        <li>Niveles de pricing/descuento por rango y tipo de operaci&oacute;n</li>
+                        <li>Rol y agenda del gerente: coaching, account planning, desarrollo (no venta directa)</li>
+                        <li>Cadencia de juntas redise&ntilde;ada: espacio estrat&eacute;gico dedicado a LMM</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">25%</div><div class="opp-impact-label">Rotaci&oacute;n a reducir</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">HDI</div><div class="opp-impact-label">Caso referencia LCG</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 4 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Optimizaci&oacute;n del Proceso de Originaci&oacute;n</div>
+                    <div class="opp-priority media">Prioridad Media-Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Proceso &ldquo;tortuoso&rdquo; de documentaci&oacute;n, relaci&oacute;n rota entre Ventas y Riesgo, SLA que se reinicia con cada documento faltante, gente que &ldquo;se inventa nuevos procesos&rdquo;.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Mapeo as-is del proceso de originaci&oacute;n LMM (discovery a fondeo)</li>
+                        <li>Simplificaci&oacute;n documental para tickets LMM (&lt;$10M)</li>
+                        <li>Protocolo de comunicaci&oacute;n Ventas-Riesgo (eliminar el &ldquo;ir y venir&rdquo;)</li>
+                        <li>SLA diferenciados para LMM con checkpoints de calidad previos al env&iacute;o a Riesgo</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">Banregio</div><div class="opp-impact-label">F&aacute;brica de cr&eacute;dito PyME</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">HDI</div><div class="opp-impact-label">80% reducci&oacute;n tiempos</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 5 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">05</div>
+                    <div class="opp-title">Producto de Anaquel para el Mid-Market</div>
+                    <div class="opp-priority media">Prioridad Media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">La escuela de estructuraci&oacute;n de Core se baj&oacute; al LMM sin adaptaci&oacute;n. El mid-market necesita productos estandarizados, r&aacute;pidos, de anaquel. Pero primero se necesita pipeline confiable para validar esta hip&oacute;tesis con datos.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>An&aacute;lisis de demanda real por tipo de producto (requiere pipeline funcional primero)</li>
+                        <li>Dise&ntilde;o de 2-3 productos estandarizados para LMM</li>
+                        <li>Fast-track de aprobaci&oacute;n para productos de anaquel</li>
+                        <li>Diferenciaci&oacute;n clara de oferta vs. Core en materiales comerciales</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">$5,200M</div><div class="opp-impact-label">Mercado total competidores</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">10</div><div class="opp-impact-label">Competidores en el segmento</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: CONCLUSION — TIENE VS. NECESITA                   -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Conclusi&oacute;n</div>
+                <div class="section-title">La brecha entre visi&oacute;n estrat&eacute;gica y ejecuci&oacute;n comercial</div>
+            </div>
+
+            <p>La entrevista con Juan Pablo Loperena revela a un CEO que <strong>tiene el diagn&oacute;stico correcto</strong> pero <strong>no ha logrado traducirlo en cambio operativo</strong>. Sabe que el mercado es suficiente, que el perfil de ventas est&aacute; equivocado, que el pipeline es ficci&oacute;n, que el liderazgo comercial centraliza demasiado. Lo ha intentado resolver internamente durante a&ntilde;os. La apertura a apoyo externo es evidente.</p>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Financieros que venden</div>
+                    <div class="exec-card-desc">Perfil &ldquo;muy letrado en finanzas&rdquo; sin habilidades comerciales b&aacute;sicas. No identifican competidores ni tomadores de decisi&oacute;n.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Vendedores con soporte</div>
+                    <div class="exec-card-desc">Colmillo comercial al frente, estructuraci&oacute;n financiera como back-office. Separar funciones.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Pipeline ficci&oacute;n</div>
+                    <div class="exec-card-desc">Montos subvaluados 10:1, sin ponderaci&oacute;n, actualizado solo al cierre. CEO sin visibilidad.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Forecast confiable</div>
+                    <div class="exec-card-desc">Etapas con criterios, ponderaci&oacute;n real, governance de actualizaci&oacute;n, dashboard para decisiones.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Centralizaci&oacute;n t&oacute;xica</div>
+                    <div class="exec-card-desc">Todas las decisiones pasan por un punto. Gerentes sin autonom&iacute;a. Rotaci&oacute;n 25%. Ambiente deteriorado.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Governance por niveles</div>
+                    <div class="exec-card-desc">Matriz de autonom&iacute;a clara, gerentes que gestionan (no venden), cadencia estrat&eacute;gica para LMM.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">La oportunidad para LCG</div>
+                <p>Juan Pablo Loperena es el <strong>sponsor natural</strong> de esta intervenci&oacute;n. Tiene el diagn&oacute;stico, tiene la autoridad, y tiene la disposici&oacute;n de abrir temas sensibles (micromanagement, rotaci&oacute;n, pipeline). Lo que necesita es un <strong>partner externo que convierta su diagn&oacute;stico en un plan de acci&oacute;n sistem&aacute;tico</strong>. Los hallazgos de esta entrevista conectan directamente con los tres ejes de HDI (excelencia operativa + transformaci&oacute;n digital + mindset) y con la experiencia Banregio en f&aacute;brica de cr&eacute;dito PyME. Engen tiene los recursos &mdash; mercado, gente, tecnolog&iacute;a. Lo que le falta es el <strong>modelo de gesti&oacute;n</strong> que conecte la visi&oacute;n del CEO con la ejecuci&oacute;n del equipo.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Siguiente paso</div>
+                <p>Completar las entrevistas con las &aacute;reas operativas (originadores, Team Leaders, Riesgos, Operaciones, Tecnolog&iacute;a) para <strong>triangular los hallazgos del CEO</strong> con la perspectiva operativa. Los datos del CEO son el marco estrat&eacute;gico; las entrevistas restantes aportar&aacute;n la evidencia de campo para cuantificar brechas y dise&ntilde;ar la intervenci&oacute;n.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

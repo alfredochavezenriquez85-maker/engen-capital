@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidades Comerciales LMM — Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #1a3a1a 0%, #004D40 40%, #00695C 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== TIMELINE ======================== */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            margin: 16px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--lcg-accent);
+            border: 2px solid white;
+        }
+
+        .timeline-item.red::before { background: var(--danger); }
+        .timeline-item.green::before { background: var(--engen-green); }
+        .timeline-item.amber::before { background: var(--warning); }
+
+        .timeline-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+        }
+
+        .timeline-text {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">An&aacute;lisis de Oportunidades</div>
+                <h1 class="cover-title">Dimensi&oacute;n Comercial LMM:<br>Hallazgos y Oportunidades</h1>
+                <p class="cover-subtitle">Deep-dive en la operaci&oacute;n comercial del Lower Middle Market a partir de la entrevista con el Director LMM</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Roberto Zacatenco, Dir. Comercial LMM</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">4 de marzo de 2026 &mdash; 90 min presencial CDMX</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento presenta un an&aacute;lisis detallado de las oportunidades de mejora en la operaci&oacute;n comercial del segmento <strong>Lower Middle Market (LMM)</strong> de Engen Capital, basado en la entrevista de 90 minutos con <strong>Roberto Zacatenco, Director Comercial LMM</strong>, realizada el 4 de marzo de 2026 en las oficinas de CDMX. Se complement&oacute; con revisi&oacute;n en vivo de Salesforce, reportes semanales, estructura de juntas y documentos internos del &aacute;rea.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value red">-28%</div><div class="kpi-label">Clientes nuevos '25 vs '24</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">$0</div><div class="kpi-label">Fondeo YTD originador nuevo (5 meses)</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">12</div><div class="kpi-label">Salidas comerciales en 2025</div></div>
+                <div class="kpi-item"><div class="kpi-value green">+6%</div><div class="kpi-label">Originaci&oacute;n LMM '25 vs '24</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">CRM como espejo retrovisor</div>
+                    <div class="exec-card-desc">Salesforce no se usa para gestionar &mdash; se usa para reportar despu&eacute;s de los hechos. No hay visibilidad prospectiva del pipeline. Los originadores agendan en papel o agenda personal.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">Onboarding sin proceso</div>
+                    <div class="exec-card-desc">Originadores nuevos tardan +5 meses sin producir. Vienen de banca donde ten&iacute;an cartera. En Engen deben prospectar en fr&iacute;o y no saben c&oacute;mo. El coaching es remedial, no sistem&aacute;tico.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo relevante</div>
+                    <div class="exec-card-value">5 juntas t&aacute;cticas, 0 estrat&eacute;gicas</div>
+                    <div class="exec-card-desc">La cadencia semanal est&aacute; llena de seguimiento operativo (citas, pipeline, giras). No hay espacio para planeaci&oacute;n estrat&eacute;gica: penetraci&oacute;n por industria, conversi&oacute;n del funnel, account planning.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Hallazgo estructural</div>
+                    <div class="exec-card-value">Centralizaci&oacute;n reci&eacute;n eliminada</div>
+                    <div class="exec-card-desc">Hasta hace 3 meses, pricing/plazo/residual lo aprobaba Maurizzio. Los originadores prefer&iacute;an perder operaciones a pedir aprobaci&oacute;n. Se descentraliz&oacute; pero el h&aacute;bito persiste.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central</div>
+                <p>La operaci&oacute;n comercial LMM tiene los recursos (gente, tecnolog&iacute;a, mercado) pero carece de <strong>procesos sistem&aacute;ticos de gesti&oacute;n</strong>. El seguimiento es reactivo, el onboarding es artesanal, la supervisi&oacute;n depende de promedios semanales que detectan problemas 2-3 semanas tarde, y las juntas son 100% t&aacute;cticas. <strong>Esto no requiere m&aacute;s gente ni m&aacute;s tecnolog&iacute;a &mdash; requiere redise&ntilde;o del modelo de gesti&oacute;n comercial.</strong></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: CONTEXTO — EL EQUIPO LMM                          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Contexto: el equipo LMM</div>
+            </div>
+
+            <p><strong>Roberto Zacatenco</strong> es Director Comercial del segmento Lower Middle Market. Viene de banca (Santander/BBVA). Maneja ~25 originadores organizados en equipos con Team Leaders, distribuidos en CDMX, Monterrey, Guadalajara y regiones. Reporta a <strong>Maurizzio Piva</strong> (Director Comercial General).</p>
+
+            <h3>Estructura del equipo</h3>
+
+            <table>
+                <thead><tr><th>Equipo</th><th>Team Leader</th><th>Ubicaci&oacute;n</th><th>Originadores</th><th>Observaci&oacute;n</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Equipo 1</td><td>Chuy Albarr&aacute;n</td><td>CDMX</td><td>~6-8</td><td>TL con varios a&ntilde;os. Atravesando duelo (p&eacute;rdida de hijo). Roberto quiere "recuperarlo al track"</td></tr>
+                    <tr><td class="table-highlight">Equipo 2</td><td>Fernando Cruz</td><td>CDMX + Veracruz</td><td>~6-8</td><td>Promovido internamente. Viene de Santander. Roberto lo considera m&aacute;s s&oacute;lido en metodolog&iacute;a</td></tr>
+                    <tr><td class="table-highlight">Equipo 3</td><td>Rafael Trevi&ntilde;o</td><td>Monterrey</td><td>~6-8</td><td>Viene de Cobalto. Cubre regi&oacute;n norte: MTY, Torre&oacute;n, Chihuahua, Hermosillo</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Perfil de originadores</h3>
+
+            <table>
+                <thead><tr><th>Perfil</th><th>Experiencia</th><th>Fortaleza</th><th>Riesgo</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Veteranos (+4 a&ntilde;os)</td><td>Ale Luna, Mariel Garc&iacute;a</td><td>Consistentes, cumplen meta, t&eacute;cnica s&oacute;lida</td><td>Pueden acomodarse a su zona de confort</td></tr>
+                    <tr><td class="table-highlight">Intermedios (2-4 a&ntilde;os)</td><td>Ale Ram&iacute;rez, Mirna Leika, Cisneros, Nava</td><td>Conocen el producto y mercado</td><td>Ale con baj&oacute;n post-2 a&ntilde;os. Mirna "tiene menos metodolog&iacute;a de todos"</td></tr>
+                    <tr><td class="table-highlight">Nuevos (&lt;1 a&ntilde;o)</td><td>Ila Misragil, Villal&oacute;n, otros 3</td><td>Proactivos, quieren aprender</td><td>Time-to-productivity demasiado largo. No saben prospectar en fr&iacute;o</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Dato clave</div>
+                <p><strong>12 personas salieron en 2025</strong> del &aacute;rea comercial. Roberto atribuye parte de la rotaci&oacute;n a la din&aacute;mica con la direcci&oacute;n ("rudo, el equipo lo ve con espanto") y a la centralizaci&oacute;n de decisiones que hac&iacute;a que los originadores prefirieran perder operaciones antes que pedir aprobaci&oacute;n.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: HALLAZGO 1 — CRM COMO ESPEJO RETROVISOR           -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 01</div>
+                <div class="section-title">Salesforce como espejo retrovisor: supervisi&oacute;n reactiva del pipeline</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Los originadores no agendan citas en Salesforce &mdash; solo reportan despu&eacute;s</div>
+                    <span class="finding-dimension comercial">Comercial</span>
+                </div>
+                <div class="finding-body">
+                    La herramienta principal del &aacute;rea comercial &mdash; Salesforce &mdash; <strong>no se utiliza para gestionar la actividad prospectiva</strong>. Los originadores llevan sus citas en agenda personal, papel o calendario del tel&eacute;fono. Salesforce se alimenta <strong>despu&eacute;s de que las citas ya ocurrieron</strong>.<br><br>
+                    El &aacute;rea de Alex &Aacute;lvarez (Marketing/CRM) genera un reporte semanal que Roberto revisa, pero es informaci&oacute;n <strong>post-facto</strong>. Roberto reconoce: <em>"Este reportito me lo empezaron a mandar hace unas semanas porque me di cuenta que yo estaba cometiendo un error."</em><br><br>
+                    <strong>&iquest;C&oacute;mo detecta problemas Roberto?</strong> Con el <strong>promedio m&oacute;vil de citas semanales</strong>. Si un originador baja de 1.5 citas/semana, interviene — pero hasta la semana 2 o 3 del baj&oacute;n. Para ese momento ya se perdieron semanas de productividad y oportunidades.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco + revisi&oacute;n en vivo de Salesforce, 4 marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No lo agendan. Okay, entonces Salesforce lo usan solo para report, para ya lo hicieron [...] lo llevan en sus agendas o en su papel normalmente.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, Dir. LMM, describiendo el uso real de Salesforce</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">&iquest;C&oacute;mo s&eacute; que la cita s&iacute; fue cita o si fue una reuni&oacute;n de hoy? O sea, &iquest;o si la declar&oacute; y realmente nunca ocurri&oacute;? [...] Normalmente eso salen, pero no dudo que todav&iacute;a hay alguien que lo haga de vez en cuando.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, sobre la veracidad del reporting de citas</div>
+            </div>
+
+            <h3>El mecanismo de control: promedio m&oacute;vil</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Semana 1</div>
+                    <div class="process-step-title">Originador baja ritmo</div>
+                    <div class="process-step-detail">Roberto no lo sabe a&uacute;n</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Semana 2</div>
+                    <div class="process-step-title">Promedio baja de 1.5</div>
+                    <div class="process-step-detail">Roberto lo detecta en reporte</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Semana 3</div>
+                    <div class="process-step-title">Roberto interviene</div>
+                    <div class="process-step-detail">"&iquest;Qu&eacute; est&aacute; pasando?"</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Resultado</div>
+                    <div class="process-step-title">2-3 semanas perdidas</div>
+                    <div class="process-step-detail">Oportunidades ya se enfriaron</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si es un promedio m&aacute;s abajo de 1.5 para abajo, ya entro yo [...] en 2 semanas, a la tercera yo entro, por eso tengo promedios.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, sobre su m&eacute;todo de detecci&oacute;n de baja productividad</div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Impacto</div>
+                <p>No hay gesti&oacute;n predictiva del funnel. No se pueden detectar problemas hasta que ya causaron da&ntilde;o. El CRM no es una herramienta de gesti&oacute;n viva &mdash; es un registro hist&oacute;rico. Esto significa que <strong>Roberto dirige a ~25 originadores mirando el espejo retrovisor</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: HALLAZGO 2 — CADENCIA SIN ESTRATEGIA              -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 02</div>
+                <div class="section-title">Cadencia semanal: 5 reuniones t&aacute;cticas, 0 estrat&eacute;gicas</div>
+            </div>
+
+            <p>Roberto opera con una cadencia semanal de <strong>5 reuniones recurrentes</strong>. Todas est&aacute;n orientadas a seguimiento operativo: &iquest;cu&aacute;ntas citas hiciste? &iquest;Qu&eacute; oportunidades tienes? &iquest;Qu&eacute; giras est&aacute;n planeadas? Ninguna tiene un componente de <strong>planeaci&oacute;n estrat&eacute;gica</strong>.</p>
+
+            <table>
+                <thead><tr><th>D&iacute;a</th><th>Reuni&oacute;n</th><th>Participantes</th><th>Contenido</th><th>Tipo</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Lunes</td><td>Pipeline por equipo</td><td>TL + originadores + Roberto</td><td>Revisi&oacute;n oportunidades, resultados semana anterior</td><td style="color: var(--warning); font-weight: 600;">T&aacute;ctico</td></tr>
+                    <tr><td class="table-highlight">Martes</td><td>Seguimiento TLs</td><td>Solo Team Leaders + Roberto</td><td>Cobertura, industria, ritmo operativo</td><td style="color: var(--warning); font-weight: 600;">T&aacute;ctico</td></tr>
+                    <tr><td class="table-highlight">Jueves AM</td><td>Seguimiento TLs</td><td>Solo Team Leaders + Roberto</td><td>Repaso gesti&oacute;n, temas pendientes</td><td style="color: var(--warning); font-weight: 600;">T&aacute;ctico</td></tr>
+                    <tr><td class="table-highlight">Jueves 3pm</td><td>Giras y citas pr&oacute;xima semana</td><td>Solo Team Leaders</td><td>Preparaci&oacute;n semana siguiente. <strong>Nueva</strong> &mdash; la agreg&oacute; porque "el viernes ya era tarde"</td><td style="color: var(--warning); font-weight: 600;">T&aacute;ctico</td></tr>
+                    <tr><td class="table-highlight">Viernes</td><td>Early Stage Coaching</td><td>TLs con equipos</td><td>Preparaci&oacute;n antes de citas: estrategia, conocimiento de cuenta</td><td style="color: var(--warning); font-weight: 600;">T&aacute;ctico</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Los viernes se ve&iacute;a Late Stage y tambi&eacute;n se mandaba un reporte de cu&aacute;les eran las citas para la pr&oacute;xima semana. Pero no estaban cumpliendo. Nos dimos cuenta en el baj&oacute;n de 2026 del ritmo operativo y ya el viernes ya es tarde. Entonces puse esta [junta del jueves] nada m&aacute;s con los team leaders.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, sobre por qu&eacute; agreg&oacute; una quinta junta semanal</div>
+            </div>
+
+            <h3>&iquest;Qu&eacute; falta en la cadencia?</h3>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">No hay espacio para planeaci&oacute;n estrat&eacute;gica en la rutina semanal</div>
+                    <span class="finding-dimension proceso">Proceso</span>
+                </div>
+                <div class="finding-body">
+                    Elementos que <strong>no aparecen</strong> en ninguna de las 5 juntas semanales:
+                    <ul style="margin: 8px 0 0 16px; list-style: disc; font-size: 12px; color: var(--text-secondary);">
+                        <li>Revisi&oacute;n de <strong>account sets</strong> vs. estrategia por industria y estado</li>
+                        <li>An&aacute;lisis de <strong>conversi&oacute;n del funnel</strong> (citas &rarr; oportunidades &rarr; fondeo)</li>
+                        <li>Penetraci&oacute;n por <strong>corredor industrial</strong> (Baj&iacute;o, MTY, Pac&iacute;fico, etc.)</li>
+                        <li>An&aacute;lisis de <strong>win/loss</strong>: &iquest;por qu&eacute; se pierden operaciones?</li>
+                        <li>Planeaci&oacute;n de <strong>capacidad</strong>: &iquest;cu&aacute;ntos originadores necesitamos por meta?</li>
+                        <li>Uso de <strong>inteligencia comercial</strong> de Da Vinci (5,000 prospectos con datos SAT)</li>
+                    </ul>
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco, 4 marzo 2026 &mdash; mapa completo de cadencia semanal</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Reflexi&oacute;n</div>
+                <p>Roberto agreg&oacute; la junta del jueves como reacci&oacute;n al baj&oacute;n de ritmo — es una soluci&oacute;n parche, no estructural. La respuesta a "no est&aacute;n preparando la semana" fue "agregar otra junta" en vez de cuestionar <strong>por qu&eacute; el proceso no genera disciplina autom&aacute;ticamente</strong>. Es la l&oacute;gica de "l&aacute;vate los dientes, l&aacute;vate los dientes" que Roberto describe &mdash; supervisi&oacute;n por repetici&oacute;n, no por sistema.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Esta es la realidad: es l&aacute;vate los dientes, l&aacute;vate los dientes, l&aacute;vate los dientes, l&aacute;vate los dientes. Y citas new, new, citas new.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, describiendo el modelo de supervisi&oacute;n actual</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: HALLAZGO 3 — ONBOARDING FALLIDO                   -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 03</div>
+                <div class="section-title">Onboarding comercial: el &ldquo;balde de agua fr&iacute;a&rdquo;</div>
+            </div>
+
+            <p>Roberto mostr&oacute; en vivo durante la entrevista el caso de <strong>Ila Misragil</strong>, originador con ~5 meses en Engen que viene de banca. Es el ejemplo m&aacute;s claro de una falla sist&eacute;mica en c&oacute;mo se incorporan originadores nuevos.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value red">$0</div><div class="kpi-label">Fondeo year-to-date</div></div>
+                <div class="kpi-item"><div class="kpi-value red">6%</div><div class="kpi-label">Pipeline vs. meta ($20M / $300M)</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">2</div><div class="kpi-label">Oportunidades creadas (ambas perdidas)</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">1.22</div><div class="kpi-label">Citas new/semana promedio</div></div>
+            </div>
+
+            <h3>El choque cultural: de banca a Engen</h3>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Originadores de banca no saben prospectar en fr&iacute;o &mdash; y Engen no les ense&ntilde;a sistem&aacute;ticamente</div>
+                    <span class="finding-dimension comercial">Comercial</span>
+                </div>
+                <div class="finding-body">
+                    El patr&oacute;n es claro: en banca (Santander, BBVA, Bancomer) les daban <strong>120 cuentas con cartera</strong> &mdash; solo ten&iacute;an que llamar y decir "soy de Santander." En Engen son <strong>120 prospectos sin relaci&oacute;n previa</strong>. Tiene que conseguir la cita en fr&iacute;o, y "&iquest;qui&eacute;n es Engen?" es la primera pregunta que recibe.<br><br>
+                    El plan de Roberto para Ila: hacer <strong>cold calling conjunto</strong> con el Team Leader &mdash; "1 hora durante varios d&iacute;as." Pero esto es coaching remedial de uno en uno, no un proceso sistem&aacute;tico de onboarding. Y surge solo despu&eacute;s de 5 meses de improductividad.
+                </div>
+                <div class="finding-evidence">Evidencia: Revisi&oacute;n en vivo de dashboard Salesforce durante entrevista, 4 marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No es como los bancos donde me daban mi cartera y me dec&iacute;an 'pues ya habla a 120 cuentas', pero que ya son cartera. Aqu&iacute; son 120 prospectos. Se llama Bodegas la Lupita y hay que ir a conseguir la cita. 'Soy de Engen.' '&iquest;Y qui&eacute;n es Engen?' Este es el balde de agua fr&iacute;a.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, Dir. LMM</div>
+            </div>
+
+            <h3>El proceso actual de onboarding: timeline real</h3>
+
+            <div class="timeline">
+                <div class="timeline-item green">
+                    <div class="timeline-title">D&iacute;a 1-2: Inducci&oacute;n general Engen</div>
+                    <div class="timeline-text">Onboarding corporativo general. Conocer la empresa, productos, cultura.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Semana 1-2: Asignaci&oacute;n de account set</div>
+                    <div class="timeline-text">Se le dan hasta 120 cuentas prospecto. El TL "palomea" si hacen sentido con industrias y estados objetivo.</div>
+                </div>
+                <div class="timeline-item amber">
+                    <div class="timeline-title">Mes 1-3: "A ver qu&eacute; pasa"</div>
+                    <div class="timeline-text">El originador empieza a prospectar con poca o nula gu&iacute;a sistem&aacute;tica. Cold calling sin entrenamiento formal. Aprende "por &oacute;smosis."</div>
+                </div>
+                <div class="timeline-item red">
+                    <div class="timeline-title">Mes 3-5: Detecci&oacute;n del problema</div>
+                    <div class="timeline-text">Roberto detecta via promedios m&oacute;viles que el originador no est&aacute; produciendo. Interviene con coaching 1:1 remedial.</div>
+                </div>
+                <div class="timeline-item red">
+                    <div class="timeline-title">Mes 5+: Coaching remedial</div>
+                    <div class="timeline-text">"Voy a hacer cold calling con &eacute;l, con el Team Leader. 1 hora durante varios d&iacute;as." Remedio individual, no proceso.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">&iquest;Cu&aacute;ntas horas est&aacute; utilizando la computadora? Oye, s&iacute; est&aacute; utilizando la computadora bastantito. Pues entonces, Team Leader, &iquest;qu&eacute; est&aacute; pasando? &iquest;Le has ense&ntilde;ado a prospectar o le est&aacute;s ense&ntilde;ando a hacer cold calling? &iquest;C&oacute;mo lo podemos apoyar?</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, sobre c&oacute;mo investiga la improductividad de un originador nuevo</div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Costo del onboarding fallido</div>
+                <p>Si un originador nuevo tarda 5+ meses en ser productivo, y hubo <strong>12 salidas en 2025</strong>, cada reemplazo implica ~5 meses de inversi&oacute;n sin retorno. Con un costo estimado de $40-60K/mes por originador (salario + comisiones base + gastos), cada onboarding fallido puede costar <strong>$200-300K pesos en productividad perdida</strong>. Multiplicado por los nuevos que entraron a reponer las 12 salidas, el impacto se amplifica.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: HALLAZGO 4 — ACCOUNT SETS Y PROSPECCION            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 04</div>
+                <div class="section-title">Account sets y prospecci&oacute;n: realidad vs. estrategia</div>
+            </div>
+
+            <p>Roberto describe un proceso de asignaci&oacute;n de cuentas que, en teor&iacute;a, est&aacute; alineado a la estrategia por industria y geograf&iacute;a. En la pr&aacute;ctica, hay desviaciones constantes que &eacute;l mismo detecta y corrige en revisiones semanales.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Los originadores se desv&iacute;an de la estrategia: operaciones fuera de target, geograf&iacute;as no priorizadas</div>
+                    <span class="finding-dimension comercial">Comercial</span>
+                </div>
+                <div class="finding-body">
+                    Roberto revisa semana a semana las oportunidades nuevas y contrasta contra la definici&oacute;n estrat&eacute;gica: industrias, estados, tama&ntilde;o. Descubre desviaciones constantes:
+                    <ul style="margin: 8px 0 0 16px; list-style: disc; font-size: 12px; color: var(--text-secondary);">
+                        <li><strong>Utilities</strong> apareciendo en pipeline cuando no est&aacute; en el foco</li>
+                        <li>Operaciones en <strong>Oaxaca</strong> cuando no es geograf&iacute;a prioritaria</li>
+                        <li>Operaciones de <strong>$4M</strong> que deber&iacute;an ir a digital/Julieta Medrano, no al originador LMM</li>
+                        <li>Originadores que encontraron un prospecto "por un conocido" y se encari&ntilde;aron con la oportunidad</li>
+                    </ul>
+                </div>
+                <div class="finding-evidence">Evidencia: Revisi&oacute;n en vivo de reporte semanal durante entrevista, 4 marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Yo digo telecom: &iquest;por qu&eacute; tel&eacute;fono? El ejemplo que me present&oacute;... No nos desenfoquemos, pero esas son oportunidades que hagas, pero s&iacute;, porque ac&aacute; atr&aacute;s est&aacute;n visitas de $4,000,000. Y seguimos: $1,000,000, $1,000,000...</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, revisando en vivo las desviaciones del pipeline</div>
+            </div>
+
+            <h3>La frontera con operaciones digitales</h3>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Operaciones &lt;$4M deber&iacute;an ir a digital, pero los originadores no las sueltan</div>
+                    <span class="finding-dimension proceso">Proceso</span>
+                </div>
+                <div class="finding-body">
+                    Existe una regla: operaciones menores a <strong>$4M</strong> son territorio de <strong>Julieta Medrano</strong> (digital, una sola persona). Pero los originadores que ya "encontraron" un prospecto peque&ntilde;o <strong>no quieren soltarlo</strong>: "Es que ya me encari&ntilde;&eacute; con la oportunidad." Esto genera fricci&oacute;n, consume tiempo del originador en deals que no mueven la aguja, y contamina el pipeline con operaciones sub-escala.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco, 4 marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Oye, no debemos de ver este tipo de oportunidad. S&iacute;, pero es que ya la encontr&eacute;, ya me encari&ntilde;&eacute; con la oportunidad. No, pues m&aacute;ndala a Julieta. Julieta — la idea es que en la tienda de cuatro para abajo.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, sobre operaciones que no corresponden a LMM</div>
+            </div>
+
+            <h3>El m&eacute;todo de account set</h3>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">120 cuentas por originador, revisadas con TL, pero sin scoring ni priorizaci&oacute;n sistem&aacute;tica</div>
+                    <span class="finding-dimension comercial">Comercial</span>
+                </div>
+                <div class="finding-body">
+                    Cada originador tiene hasta <strong>120 cuentas</strong> en su account set. El Team Leader las "palomea" para validar si son consistentes con la estrategia. Pero no hay un <strong>scoring de atractivo</strong> (CAPEX, tama&ntilde;o, industria, propensi&oacute;n) que priorice cu&aacute;les atacar primero. La l&oacute;gica es: "Tienes 120, rev&iacute;salas con tu TL, y empieza a llamar."<br><br>
+                    <strong>Dato cr&iacute;tico del CIO:</strong> Da Vinci ya tiene 5,000 prospectos con datos del SAT (concentraci&oacute;n, estacionalidad, entidades relacionadas). Esta inteligencia no se usa para enriquecer o priorizar los account sets.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco + Entrevista CIO Luis Padilla, 4 marzo 2026</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: HALLAZGO 5 — FACULTADES Y DINAMICA CON DIRECCION   -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 05</div>
+                <div class="section-title">Facultades, centralizaci&oacute;n y din&aacute;mica con la direcci&oacute;n</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Hasta hace 3 meses, todo pricing, plazo y residual lo aprobaba Maurizzio &mdash; operaciones se perd&iacute;an por inercia</div>
+                    <span class="finding-dimension cultural">Cultural</span>
+                </div>
+                <div class="finding-body">
+                    La estrategia de controlar el <strong>duration</strong> (plazo promedio ponderado) del portafolio llev&oacute; a centralizar <strong>todas las decisiones</strong> de pricing, plazo, residual y rentas anticipadas en Maurizzio Piva. El efecto: los originadores se sent&iacute;an <strong>"maniatados"</strong> y prefer&iacute;an perder operaciones antes que ir a pedir aprobaci&oacute;n a alguien que percib&iacute;an como "rudo."<br><br>
+                    <strong>Hace solo ~3 meses</strong> se descentraliz&oacute;: Roberto ahora tiene facultad de pricing dentro de cierto rango con m&eacute;tricas propias. Pero el <strong>h&aacute;bito</strong> de evitar tomar decisiones persiste en el equipo.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista Roberto Zacatenco, 4 marzo 2026</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Todo lo que tuviera que ver con un plazo bajo, residual bajo, rentas anticipadas, lo ten&iacute;a que aprobar Mau. Entonces pues la gente dec&iacute;a: como tengo la percepci&oacute;n de que es rudo, pues yo prefiero ir, perder operaciones...</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, Dir. LMM</div>
+            </div>
+
+            <h3>La autoconciencia de Roberto</h3>
+
+            <p>Al cierre de la entrevista, Roberto mostr&oacute; un <strong>apunte escrito</strong> con sus propias reflexiones. Es revelador porque muestra un l&iacute;der que reconoce lo que falta pero no tiene la estructura para resolverlo:</p>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Reflexi&oacute;n propia de Roberto: 5 prioridades que identifica</div>
+                    <span class="finding-dimension oportunidad">Oportunidad</span>
+                </div>
+                <div class="finding-body">
+                    <ol style="margin: 0 0 0 16px; font-size: 12px; color: var(--text-secondary); line-height: 2;">
+                        <li><strong>"Incrementar mi credibilidad incrementando pipeline"</strong> &mdash; sabe que necesita m&aacute;s volumen para tener voz</li>
+                        <li><strong>"Enfocarme al late stage"</strong> &mdash; reconoce que hay demasiadas oportunidades tempranas que no avanzan</li>
+                        <li><strong>"Eliminar operaciones de $4M"</strong> &mdash; sabe que su equipo pierde tiempo en deals sub-escala</li>
+                        <li><strong>"Onboarding de nuevos"</strong> &mdash; identifica que el proceso de incorporaci&oacute;n no funciona</li>
+                        <li><strong>"Recuperar a Chuy"</strong> &mdash; TL clave que est&aacute; emocionalmente golpeado y necesita apoyo</li>
+                    </ol>
+                </div>
+                <div class="finding-evidence">Evidencia: Apunte escrito mostrado por Roberto al cierre de entrevista, 4 marzo 2026</div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Lectura para LCG</div>
+                <p>Roberto es un l&iacute;der <strong>consciente de los problemas pero sin herramientas para resolverlos</strong>. Sus 5 prioridades son exactamente los temas que un proyecto de consultor&iacute;a deber&iacute;a abordar. No hay resistencia al cambio &mdash; hay <strong>falta de metodolog&iacute;a y estructura</strong>. Es un aliado natural del proyecto.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El modelo comercial debe de ser capaz de generar productividad a trav&eacute;s de procesos, productividad, consistencia, y con eso ya nos ganamos. Y eso te va a ir dando... que sea m&aacute;s predecible y por ende pues...</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, sobre lo que necesita el modelo comercial LMM</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: HALLAZGO 6 — METRICAS Y RESULTADOS                -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Hallazgo 06</div>
+                <div class="section-title">Los n&uacute;meros cuentan la historia: LMM es la &uacute;nica luz</div>
+            </div>
+
+            <p>Datos del <strong>All Employee Meeting 2026</strong> (febrero 2026). LMM es el &uacute;nico segmento que creci&oacute; en 2025. Pero los n&uacute;meros globales muestran una empresa que se est&aacute; encogiendo.</p>
+
+            <table>
+                <thead><tr><th>M&eacute;trica</th><th>2024</th><th>2025</th><th>Budget 2026</th><th>Tendencia</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Originaci&oacute;n Core</td><td>$4,981M</td><td>$4,494M</td><td>$4,452M</td><td style="color: var(--danger); font-weight: 600;">&darr; Tercer a&ntilde;o a la baja</td></tr>
+                    <tr><td class="table-highlight">Originaci&oacute;n LMM</td><td>$1,673M</td><td>$1,777M</td><td>$1,698M</td><td style="color: var(--engen-green); font-weight: 600;">&uarr; &Uacute;nico que creci&oacute; en '25</td></tr>
+                    <tr><td class="table-highlight">Originaci&oacute;n OFS (factoraje+)</td><td>$17.9M</td><td>$19.3M</td><td>$29.6M</td><td style="color: var(--engen-green); font-weight: 600;">&uarr; Apuesta fuerte (+62%)</td></tr>
+                    <tr><td class="table-highlight">Factoraje APES</td><td>$447.8M</td><td>$545.3M</td><td>$932.1M</td><td style="color: var(--engen-green); font-weight: 600;">&uarr; "Fortalecemos el equipo"</td></tr>
+                    <tr><td class="table-highlight">Clientes nuevos (total)</td><td>186</td><td>133</td><td>140</td><td style="color: var(--danger); font-weight: 600;">&darr; -28% en 2025</td></tr>
+                    <tr><td class="table-highlight">Valor contribuido ajustado</td><td>$1,375.1M</td><td>$1,341.5M</td><td>$1,312.4M</td><td style="color: var(--danger); font-weight: 600;">&darr; 3 a&ntilde;os consecutivos</td></tr>
+                    <tr><td class="table-highlight">Margen operativo</td><td>$569.7M</td><td>$514.0M</td><td>$465.1M</td><td style="color: var(--danger); font-weight: 600;">&darr; -10% por a&ntilde;o</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 11px; color: var(--text-muted);">Fuente: Resumen All Employee Meeting Engen Capital, febrero 2026.</p>
+
+            <div class="callout callout-red">
+                <div class="callout-label">La paradoja Engen</div>
+                <p>LMM creci&oacute; <strong>+6%</strong> en originaci&oacute;n pero la empresa perdi&oacute; <strong>-28%</strong> de clientes nuevos. Esto significa que LMM est&aacute; creciendo en volumen de operaciones con clientes existentes, <strong>no en expansi&oacute;n de base</strong>. El segmento con mayor potencial estrat&eacute;gico tiene el motor de adquisici&oacute;n roto. Si no se arregla el proceso de prospecci&oacute;n y onboarding, el crecimiento de LMM depende de exprimir la base actual &mdash; que es finita.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">La cartera est&aacute; en 15,000 y no ha incrementado, son 3,300 de nosotros [...] el portafolio no ha crecido y es un tema de duration y la colocaci&oacute;n.</div>
+                <div class="verbatim-source">&mdash; Roberto Zacatenco, sobre el estancamiento de la cartera</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: OPORTUNIDADES PARA LCG                            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07</div>
+                <div class="section-title">Oportunidades de Intervenci&oacute;n para LCG</div>
+            </div>
+
+            <p>A partir de los 6 hallazgos anteriores, identificamos <strong>5 oportunidades concretas</strong> de intervenci&oacute;n. Cada una tiene impacto directo en el desempe&ntilde;o comercial del LMM y conecta con las capacidades de London Consulting Group.</p>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Redise&ntilde;o del Modelo de Gesti&oacute;n Comercial</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Salesforce es un espejo retrovisor, no una herramienta de gesti&oacute;n. Las 5 juntas semanales son todas t&aacute;cticas. No hay visibilidad prospectiva del pipeline ni an&aacute;lisis de conversi&oacute;n del funnel. La supervisi&oacute;n se basa en "l&aacute;vate los dientes" por repetici&oacute;n.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Redise&ntilde;o de la cadencia semanal: separar lo t&aacute;ctico de lo estrat&eacute;gico</li>
+                        <li>Dashboard de gesti&oacute;n en tiempo real (no post-facto): actividad prospectiva, conversi&oacute;n por etapa, forecast</li>
+                        <li>Rutina de account planning mensual: penetraci&oacute;n por industria, geograf&iacute;a, tama&ntilde;o de deal</li>
+                        <li>Indicadores l&iacute;deres (predictivos) en lugar de lagging (promedio m&oacute;vil 3 semanas)</li>
+                        <li>Integraci&oacute;n de inteligencia de Da Vinci (5,000 prospectos SAT) al account planning</li>
+                    </ul>
+
+                    <div class="opp-section-label">Referencia LCG</div>
+                    <p class="opp-text"><strong>Banregio:</strong> 6 proyectos en modelo de operaci&oacute;n segmento PyME. "F&aacute;brica de cr&eacute;dito" y workflow de originaci&oacute;n como referencia directa.</p>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">~25</div><div class="opp-impact-label">Originadores impactados</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">2-3 sem</div><div class="opp-impact-label">Reducci&oacute;n en detecci&oacute;n de problemas</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">5 &rarr; 3</div><div class="opp-impact-label">Juntas optimizadas/semana</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Programa de Onboarding Comercial Sistem&aacute;tico</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Originadores nuevos tardan 5+ meses en ser productivos. No hay programa formal de ramp-up. El coaching es remedial (1:1 con TL despu&eacute;s del hecho) en vez de preventivo. Caso Ila Misragil: $0 de fondeo en 5 meses, 2 oportunidades creadas.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Programa de ramp-up con hitos claros: semana 1-2 (prospecci&oacute;n), semana 3-4 (primeras citas), mes 2 (primera oportunidad), mes 3 (primer fondeo)</li>
+                        <li>Playbook de prospecci&oacute;n en fr&iacute;o espec&iacute;fico para LMM (no banca)</li>
+                        <li>Buddy system: originador nuevo emparejado con veterano las primeras 4 semanas</li>
+                        <li>M&eacute;tricas de seguimiento diferenciadas para originadores en ramp-up vs. veteranos</li>
+                        <li>Programa de cold calling estructurado (no "una hora varios d&iacute;as con el TL")</li>
+                    </ul>
+
+                    <div class="opp-section-label">Referencia LCG</div>
+                    <p class="opp-text"><strong>HDI Seguros:</strong> Reducci&oacute;n de 80% en tiempos de cotizaci&oacute;n/suscripci&oacute;n. Modelo de aceleraci&oacute;n de productividad de nuevos agentes comerciales.</p>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">5 &rarr; 2</div><div class="opp-impact-label">Meses a productividad</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">$200-300K</div><div class="opp-impact-label">Ahorro por onboarding</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">-28%</div><div class="opp-impact-label">Ca&iacute;da en clientes nuevos a revertir</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 10: OPORTUNIDADES 3-5                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Segmentaci&oacute;n y Priorizaci&oacute;n de Account Sets</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Los 120 prospectos por originador no tienen scoring ni priorizaci&oacute;n. Da Vinci tiene 5,000 prospectos con datos SAT que no se usan para inteligencia comercial. Los originadores se desv&iacute;an hacia oportunidades fuera de target (Oaxaca, utilities, &lt;$4M).</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Scoring de prospectos basado en CAPEX, industria, tama&ntilde;o, propensi&oacute;n</li>
+                        <li>Integraci&oacute;n de datos Da Vinci (SAT) al proceso de asignaci&oacute;n de cuentas</li>
+                        <li>Reglas claras de escalamiento: &lt;$4M a digital, geograf&iacute;as fuera de foco requieren aprobaci&oacute;n</li>
+                        <li>Revisi&oacute;n trimestral de account sets vs. resultados por industria/estado</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">5,000</div><div class="opp-impact-label">Prospectos Da Vinci sin explotar</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">120</div><div class="opp-impact-label">Cuentas/originador a priorizar</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 4 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Modelo de Facultades y Empoderamiento del Equipo</div>
+                    <div class="opp-priority media">Prioridad Media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">La centralizaci&oacute;n de decisiones en Maurizzio durante a&ntilde;os cre&oacute; un patr&oacute;n de "aprendida indefensi&oacute;n" donde los originadores prefieren perder operaciones a tomar decisiones. Se descentraliz&oacute; hace 3 meses pero el h&aacute;bito persiste. 12 salidas en 2025.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Matriz clara de facultades por nivel: originador, TL, director, director general</li>
+                        <li>Comunicaci&oacute;n expl&iacute;cita de las nuevas reglas (no basta con "ya no necesitas pedir permiso")</li>
+                        <li>Acompa&ntilde;amiento al cambio de mindset: de "pido permiso" a "decido con criterio"</li>
+                        <li>M&eacute;tricas de autonom&iacute;a: % de operaciones que se cierran sin escalamiento</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">12</div><div class="opp-impact-label">Salidas 2025 a reducir</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">3 meses</div><div class="opp-impact-label">Desde descentralizaci&oacute;n</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 5 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">05</div>
+                    <div class="opp-title">Diferenciaci&oacute;n del Proceso LMM vs. Core</div>
+                    <div class="opp-priority media">Prioridad Media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">El CIO lo confirm&oacute;: "El modelo LMM es muy similar al de Core. Distinto mercado pero procesos iguales." Una transacci&oacute;n de $1M compite por la misma atenci&oacute;n operativa que una de $10M. LMM necesita ser m&aacute;s transaccional, no m&aacute;s especializado.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Flujos diferenciados en Salesforce para LMM (el CIO dice: "Podr&iacute;amos cambiar los flujos el d&iacute;a que quisi&eacute;ramos")</li>
+                        <li>Niveles de documentaci&oacute;n simplificados para operaciones &lt;$10M</li>
+                        <li>SLA diferenciados: pre-calificaci&oacute;n &lt;4 hrs, an&aacute;lisis 24-48 hrs, desembolso &lt;5 d&iacute;as</li>
+                        <li>Equipo de riesgo dedicado a LMM (hoy comparten con Factoraje)</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">$1,777M</div><div class="opp-impact-label">Originaci&oacute;n LMM 2025</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">0 d&iacute;as</div><div class="opp-impact-label">Restricci&oacute;n tecnol&oacute;gica (CIO)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 11: CONCLUSION Y NEXT STEPS                            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Conclusi&oacute;n</div>
+                <div class="section-title">La brecha entre ambici&oacute;n y ejecuci&oacute;n</div>
+            </div>
+
+            <p>La entrevista con Roberto Zacatenco revela una operaci&oacute;n comercial que tiene <strong>los ingredientes correctos</strong> &mdash; un mercado en crecimiento, un equipo de ~25 originadores, tecnolog&iacute;a robusta (Salesforce, Da Vinci, Super Trump), y un l&iacute;der consciente de sus retos &mdash; pero que opera con un <strong>modelo de gesti&oacute;n que no escala</strong>.</p>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Supervisi&oacute;n reactiva</div>
+                    <div class="exec-card-desc">Promedios m&oacute;viles 3 semanas tarde, Salesforce post-facto, sin indicadores l&iacute;deres</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Gesti&oacute;n predictiva</div>
+                    <div class="exec-card-desc">Visibilidad en tiempo real, forecast por etapa, alertas autom&aacute;ticas, account planning</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Onboarding artesanal</div>
+                    <div class="exec-card-desc">5+ meses a productividad, cold calling remedial 1:1, "balde de agua fr&iacute;a"</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Programa de ramp-up</div>
+                    <div class="exec-card-desc">Hitos claros, playbook de prospecci&oacute;n, buddy system, primer fondeo en 3 meses</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiene</div>
+                    <div class="exec-card-value">Proceso Core para LMM</div>
+                    <div class="exec-card-desc">$1M pelea la misma atenci&oacute;n que $10M, mismos flujos, mismo equipo de riesgo</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Necesita</div>
+                    <div class="exec-card-value">Proceso transaccional LMM</div>
+                    <div class="exec-card-desc">Flujos simplificados, SLAs agresivos, documentaci&oacute;n ligera, riesgo dedicado</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">La oportunidad para LCG</div>
+                <p>Este es un proyecto cl&aacute;sico de <strong>excelencia operativa en el modelo comercial</strong>. No requiere nueva tecnolog&iacute;a (el CIO lo confirma), no requiere m&aacute;s gente, y tiene un l&iacute;der de &aacute;rea (Roberto) que es aliado natural del cambio. Conecta directamente con los casos <strong>Banregio</strong> (f&aacute;brica de cr&eacute;dito PyME, 6 proyectos) y <strong>HDI</strong> (80% reducci&oacute;n en tiempos, transformaci&oacute;n digital + mindset). La brecha entre la ambici&oacute;n estrat&eacute;gica de crecer en LMM y la capacidad de ejecuci&oacute;n comercial es <strong>exactamente donde LCG genera valor</strong>.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Siguiente paso</div>
+                <p>Completar las entrevistas restantes (originadores, Team Leaders, Calidad, Riesgos) para triangular estos hallazgos y cuantificar el impacto potencial. Los datos de Roberto son el ancla &mdash; las dem&aacute;s entrevistas confirmar&aacute;n, ampliar&aacute;n o matizar&aacute;n.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

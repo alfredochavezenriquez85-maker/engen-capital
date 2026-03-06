@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi&oacute;n del Consejo: Tesis de Inversi&oacute;n y Crecimiento LMM &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #1a1a2e 50%, #0B1F3F 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+        .finding-dimension.estrategia { background: #ede7f6; color: #4527a0; }
+        .finding-dimension.riesgo { background: #fff8e1; color: #f57f17; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== TIMELINE ======================== */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            margin: 16px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--lcg-accent);
+            border: 2px solid white;
+        }
+
+        .timeline-item.red::before { background: var(--danger); }
+        .timeline-item.green::before { background: var(--engen-green); }
+        .timeline-item.amber::before { background: var(--warning); }
+
+        .timeline-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+        }
+
+        .timeline-text {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">An&aacute;lisis de Oportunidades</div>
+                <h1 class="cover-title">Visi&oacute;n del Consejo: Tesis de<br>Inversi&oacute;n y Crecimiento LMM</h1>
+                <p class="cover-subtitle">Perspectiva del accionista Linzor sobre la oportunidad del Lower Middle Market y las expectativas del Consejo</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">Marzo 2026 &mdash; ~30 min virtual CDMX</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza la perspectiva estrat&eacute;gica de <strong>Cipriano Santisteban</strong>, representante de <strong>Linzor Capital Partners</strong> en el Consejo de Administraci&oacute;n de Engen Capital. La entrevista de ~30 minutos realizada en marzo de 2026 aporta la visi&oacute;n del inversionista sobre la tesis de crecimiento del Lower Middle Market, el estancamiento reciente, las expectativas del consejo y la apertura a consultor&iacute;a externa.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value green">6-7x</div><div class="kpi-label">Crecimiento desde 2016</div></div>
+                <div class="kpi-item"><div class="kpi-value green">~2.5%</div><div class="kpi-label">Cartera vencida LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value">27%</div><div class="kpi-label">Tasa promedio LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value green">&lt;9%</div><div class="kpi-label">Costo de fondeo</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Contexto positivo</div>
+                    <div class="exec-card-value">Competencia eliminada</div>
+                    <div class="exec-card-desc">Unifin, Cr&eacute;dito Real y otros competidores quebraron. El mercado qued&oacute; abierto para Engen, pero no se ha capitalizado el espacio.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Se&ntilde;al de alerta</div>
+                    <div class="exec-card-value">Estancamiento 2024-25</div>
+                    <div class="exec-card-desc">Despu&eacute;s de buen crecimiento 2021-23, el LMM creci&oacute; menos en 2024 y decreci&oacute; en 2025. El consejo exige respuestas.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Tensi&oacute;n central</div>
+                    <div class="exec-card-value">Push, no Pull</div>
+                    <div class="exec-card-desc">El modelo de negocio depende de vendedores que prospectan activamente. Con rotaci&oacute;n importante en 2025, el motor comercial pierde tracci&oacute;n.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Decisi&oacute;n del consejo</div>
+                    <div class="exec-card-value">Traer visi&oacute;n externa</div>
+                    <div class="exec-card-desc">El consejo empuj&oacute; traer consultores para validar con datos d&oacute;nde est&aacute; la oportunidad y por qu&eacute; no se est&aacute; aprovechando.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central del consejo</div>
+                <p>El Consejo de Administraci&oacute;n ve una <strong>disonancia entre la oportunidad de mercado y los resultados</strong>. Los competidores quebraron, la cartera vencida es saludable, el spread es atractivo (27% tasa vs &lt;9% fondeo) &mdash; pero el LMM no crece. La pregunta del consejo es directa: <strong>&iquest;es el mercado o somos nosotros?</strong> Cipriano cree que es lo segundo: &ldquo;nada m&aacute;s no estamos apuntando correctamente.&rdquo;</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: DE GE CAPITAL A LINZOR                             -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Contexto: De GE Capital a Linzor</div>
+            </div>
+
+            <p>Engen Capital naci&oacute; como la divisi&oacute;n mexicana de <strong>GE Capital</strong>, operando arrendamiento a empresas grandes (segmento Core). En 2016, tras la crisis de 2008 que encareci&oacute; el fondeo y la regulaci&oacute;n para GE, <strong>Linzor Capital Partners</strong> adquiri&oacute; la operaci&oacute;n.</p>
+
+            <h3>La l&oacute;gica de GE vs. la l&oacute;gica de Linzor</h3>
+
+            <table>
+                <thead><tr><th>Dimensi&oacute;n</th><th>Era GE Capital</th><th>Era Linzor (post-2016)</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Foco</td><td>Grandes empresas (Core)</td><td>Core + Lower Middle Market</td></tr>
+                    <tr><td class="table-highlight">Prioridad</td><td>Tama&ntilde;o de cartera &mdash; &ldquo;si no crec&iacute;a, US office dec&iacute;a demasiado chico&rdquo;</td><td>Rentabilidad y spread</td></tr>
+                    <tr><td class="table-highlight">Tasa activa</td><td>Muy baja (competir con bancos)</td><td>Subieron tasa, bajaron volumen</td></tr>
+                    <tr><td class="table-highlight">Fondeo</td><td>Barato (respaldo GE)</td><td>Similar en pesos (swapeado) &mdash; &lt;9%</td></tr>
+                    <tr><td class="table-highlight">Estrategia</td><td>Volumen sobre margen</td><td>Margen sobre volumen + apertura LMM</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">A los managers de GE les era muy importante el tama&ntilde;o de la cartera. Si no crec&iacute;a, US office dec&iacute;a &lsquo;demasiado chico&rsquo;.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <p>Post-adquisici&oacute;n, Linzor <strong>subi&oacute; la tasa activa</strong> y <strong>baj&oacute; el volumen</strong>, enfoc&aacute;ndose en la parte baja del segmento Core. Pero r&aacute;pidamente vieron que competir con bancos en mega compa&ntilde;&iacute;as con su costo de fondeo no era sostenible. Necesitaban un nuevo segmento.</p>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Implicaci&oacute;n para LCG</div>
+                <p>La transformaci&oacute;n de GE Capital a Engen Capital no fue solo un cambio de nombre &mdash; fue un <strong>cambio de tesis de negocio</strong>: de volumen a rentabilidad, de grandes empresas a mid-market. Entender este ADN es fundamental para enmarcar cualquier propuesta de Go-to-Market.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: EL LMM COMO APUESTA ESTRATEGICA                   -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03 &mdash; Hallazgo 1</div>
+                <div class="section-title">El LMM como apuesta estrat&eacute;gica</div>
+            </div>
+
+            <p>En 2018 naci&oacute; la iniciativa de <strong>Lower Middle Market</strong>. La l&oacute;gica era clara: si no pueden competir con bancos en mega compa&ntilde;&iacute;as, hay que ir donde los bancos no llegan &mdash; empresas de <strong>$5M-$25M USD en ventas</strong>, a tasas significativamente mayores.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Primer intento fallido (2018)</div>
+                    <div class="finding-dimension estrategia">Estrategia</div>
+                </div>
+                <div class="finding-body">
+                    El primer intento de entrar al LMM <strong>no funcion&oacute;</strong>. Cipriano reconoce que &ldquo;nos preocupaba el riesgo crediticio y la primera vez no nos fue bien.&rdquo; Fue necesario cambiar management (Juan Pablo entr&oacute; en 2019), mejorar la tecnolog&iacute;a y recalibrar el modelo de cr&eacute;dito antes de lograr tracci&oacute;n.
+                </div>
+                <div class="finding-evidence">Evidencia: Testimonio directo del consejero sobre la evoluci&oacute;n del segmento</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">La primera vez no nos fue bien. Tuvimos que modificar.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No vamos a ir a competir con bancos en mega compa&ntilde;&iacute;as con este costo de fondeo.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <h3>Econom&iacute;a del LMM vs. Core</h3>
+
+            <table>
+                <thead><tr><th>M&eacute;trica</th><th>Core</th><th>LMM</th><th>Delta</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Tasa activa</td><td>~18%</td><td>~27%</td><td>+9 pp de spread</td></tr>
+                    <tr><td class="table-highlight">Costo de fondeo</td><td>&lt;9%</td><td>&lt;9%</td><td>Igual</td></tr>
+                    <tr><td class="table-highlight">Spread bruto</td><td>~9%</td><td>~18%</td><td>2x el margen</td></tr>
+                    <tr><td class="table-highlight">Cartera vencida</td><td>Baja</td><td>~2.5% por cosecha (3 a&ntilde;os)</td><td>Un poco m&aacute;s arriba</td></tr>
+                    <tr><td class="table-highlight">Tama&ntilde;o cliente</td><td>Empresas grandes</td><td>$5M-$25M USD ventas</td><td>Segmento inferior</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Lectura estrat&eacute;gica</div>
+                <p>El LMM duplica el spread del Core con cartera vencida manejable. El primer fracaso (2018) y la correcci&oacute;n posterior demuestran que <strong>el consejo aprende r&aacute;pido y est&aacute; dispuesto a iterar</strong>. Esta mentalidad es favorable para un proyecto de consultor&iacute;a: hay apertura al cambio basado en evidencia.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: CRECIMIENTO Y ESTANCAMIENTO                        -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04 &mdash; Hallazgo 2</div>
+                <div class="section-title">Crecimiento y estancamiento: la curva 2021-2025</div>
+            </div>
+
+            <p>Despu&eacute;s del ajuste de 2019-2020 (nuevo management + COVID), el LMM tuvo un ciclo claro de crecimiento seguido de un estancamiento preocupante para el consejo.</p>
+
+            <h3>Trayectoria del LMM seg&uacute;n el consejo</h3>
+
+            <div class="timeline">
+                <div class="timeline-item amber">
+                    <div class="timeline-title">2018 &mdash; Nacimiento del LMM</div>
+                    <div class="timeline-text">Primer intento. &ldquo;No nos fue bien.&rdquo; Problemas de riesgo crediticio y modelo comercial.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">2019 &mdash; Cambio de management</div>
+                    <div class="timeline-text">Entra Juan Pablo como CEO. Se mejora tecnolog&iacute;a y se recalibra el modelo de cr&eacute;dito.</div>
+                </div>
+                <div class="timeline-item amber">
+                    <div class="timeline-title">2020 &mdash; COVID</div>
+                    <div class="timeline-text">Poco crecimiento. Impacto generalizado en el mercado.</div>
+                </div>
+                <div class="timeline-item green">
+                    <div class="timeline-title">2021-2022 &mdash; Muy buen crecimiento</div>
+                    <div class="timeline-text">El LMM despega. Inversiones importantes en ampliar equipo de ventas.</div>
+                </div>
+                <div class="timeline-item green">
+                    <div class="timeline-title">2023 &mdash; Creci&oacute; muy bien</div>
+                    <div class="timeline-text">Continuaci&oacute;n del ciclo positivo. El modelo parece validado.</div>
+                </div>
+                <div class="timeline-item amber">
+                    <div class="timeline-title">2024 &mdash; Creci&oacute; pero bastante menos</div>
+                    <div class="timeline-text">Primera se&ntilde;al de desaceleraci&oacute;n. El consejo empieza a cuestionar.</div>
+                </div>
+                <div class="timeline-item red">
+                    <div class="timeline-title">2025 &mdash; Bastante estables y un poco abajo</div>
+                    <div class="timeline-text">Decrecimiento. Rotaci&oacute;n importante de vendedores. El consejo escala la presi&oacute;n.</div>
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">El consejo no acepta la narrativa del mercado</div>
+                    <div class="finding-dimension estrategia">Estrategia</div>
+                </div>
+                <div class="finding-body">
+                    Cuando el management argumenta que &ldquo;la situaci&oacute;n econ&oacute;mica est&aacute; muy dif&iacute;cil&rdquo;, el consejo responde con una contra-tesis: <strong>si los competidores quebraron, deber&iacute;a haber m&aacute;s oportunidad, no menos</strong>. La inversi&oacute;n baj&oacute; pero no se fue a cero, y la competencia desapareci&oacute;. El estancamiento no es solo del mercado &mdash; es de ejecuci&oacute;n.
+                </div>
+                <div class="finding-evidence">Evidencia: Posici&oacute;n expl&iacute;cita del consejero ante narrativa del management</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Oiga, &iquest;no puedo estar no creciendo en esto?</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">&iquest;D&oacute;nde est&aacute; el negocio? Baj&oacute; la inversi&oacute;n, pero se nos fue la competencia.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: DONDE ESTA EL NEGOCIO                             -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05 &mdash; Hallazgo 3</div>
+                <div class="section-title">&ldquo;&iquest;D&oacute;nde est&aacute; el negocio?&rdquo; &mdash; La pregunta biangular</div>
+            </div>
+
+            <p>El consejo de Engen Capital tiene dos preguntas que se retroalimentan y que son el detonante directo de la b&uacute;squeda de consultor&iacute;a externa:</p>
+
+            <div class="exec-grid">
+                <div class="exec-card">
+                    <div class="exec-card-label">Pregunta 1</div>
+                    <div class="exec-card-value">&iquest;Qu&eacute; estrategias para crecer el LMM?</div>
+                    <div class="exec-card-desc">El consejo quiere saber qu&eacute; palancas mover: &iquest;m&aacute;s vendedores? &iquest;Otros sectores? &iquest;Otro modelo comercial? &iquest;M&aacute;s apertura de riesgo?</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Pregunta 2</div>
+                    <div class="exec-card-value">&iquest;Cu&aacute;l es la oportunidad real?</div>
+                    <div class="exec-card-desc">Dimensionar el mercado post-Unifin. &iquest;Cu&aacute;nto vale el espacio que dejaron los competidores? &iquest;Es suficiente para justificar la inversi&oacute;n?</div>
+                </div>
+            </div>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">La tensi&oacute;n entre management y consejo</div>
+                    <div class="finding-dimension estrategia">Estrategia</div>
+                </div>
+                <div class="finding-body">
+                    Existe una tensi&oacute;n sana pero real entre la posici&oacute;n del management (&ldquo;la situaci&oacute;n econ&oacute;mica est&aacute; muy dif&iacute;cil&rdquo;) y la del consejo (&ldquo;todos nuestros competidores quebraron, &iquest;por qu&eacute; no estamos creciendo?&rdquo;). Cipriano reconoce que <strong>ambas posiciones pueden ser ciertas simult&aacute;neamente</strong>, pero cree que la balanza se inclina hacia un problema de enfoque: &ldquo;igual es as&iacute;, nada m&aacute;s no estamos apuntando correctamente.&rdquo;
+                </div>
+                <div class="finding-evidence">Evidencia: Declaraci&oacute;n directa del consejero sobre la din&aacute;mica consejo-management</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Igual es as&iacute;, nada m&aacute;s no estamos apuntando correctamente.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Buenos an&aacute;lisis para saber d&oacute;nde estamos parados, identificar la oportunidad, desarrollar buena estrategia.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Relevancia para LCG</div>
+                <p>Esta es exactamente la propuesta de valor del Estudio de Mercado ya entregado. El gap de <strong>$50,000-$85,000 MDP</strong> en mid-market que identificamos responde directamente a la pregunta del consejo. Tenemos los datos que Cipriano est&aacute; pidiendo &mdash; la oportunidad es conectarlos con una estrategia de ejecuci&oacute;n.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: MODELO PUSH                                        -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06 &mdash; Hallazgo 4</div>
+                <div class="section-title">Modelo Push: la dependencia del vendedor</div>
+            </div>
+
+            <p>Cipriano describe sin ambig&uuml;edad el modelo de negocio de Engen Capital en el LMM: <strong>los clientes no llegan solos</strong>. Cada operaci&oacute;n depende de un agente de ventas que desarrolla una relaci&oacute;n personal con el prospecto.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El modelo de negocio es un modelo Push, no Pull. Los clientes no nos llegan solos, nosotros vamos a buscar.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Rotaci&oacute;n de vendedores en 2025</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    En 2022-2023 se hicieron <strong>inversiones importantes en ampliar el equipo de ventas</strong>. Sin embargo, en 2025 hubo una <strong>rotaci&oacute;n bien importante de vendedores</strong>. En un modelo Push donde todo depende del originador, perder vendedores equivale a perder el motor de crecimiento. Cada vendedor que se va se lleva sus relaciones, su conocimiento del territorio y su pipeline.
+                </div>
+                <div class="finding-evidence">Evidencia: Coincide con hallazgos de Roberto Zacatenco (12 salidas comerciales en 2025)</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Modelo centrado en el vendedor individual</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    El modelo est&aacute; &ldquo;centrado en un agente de ventas que desarrolla una relaci&oacute;n.&rdquo; Esto genera una <strong>dependencia cr&iacute;tica de personas individuales</strong> en lugar de un sistema replicable. No hay evidencia de procesos sistem&aacute;ticos de prospecci&oacute;n, ni de generaci&oacute;n de demanda inbound que complemente el esfuerzo Push.
+                </div>
+                <div class="finding-evidence">Evidencia: Descripci&oacute;n del modelo de negocio por el consejero</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Vulnerabilidad estructural</div>
+                <p>Un modelo 100% Push sin componente Pull es <strong>inherentemente fr&aacute;gil</strong>. Si la rotaci&oacute;n sube, el crecimiento cae mec&aacute;nicamente. Es el hallazgo m&aacute;s consistente entre la visi&oacute;n del consejo (Cipriano), la visi&oacute;n comercial (Roberto Zacatenco) y el Estudio de Mercado: <strong>el modelo comercial necesita evolucionarse</strong>, no solo &ldquo;m&aacute;s vendedores&rdquo;.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Es 51% comercial, 49% riesgo.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: LA LLAVE DE RIESGO                                 -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07 &mdash; Hallazgo 5</div>
+                <div class="section-title">La llave de riesgo: cu&aacute;nto abrir sin perder el control</div>
+            </div>
+
+            <p>Una de las discusiones m&aacute;s sofisticadas del consejo es sobre la <strong>apertura del apetito de riesgo</strong>. Cipriano presenta la ecuaci&oacute;n con claridad:</p>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">A favor de abrir</div>
+                    <div class="exec-card-value">Spread de 18+ pp</div>
+                    <div class="exec-card-desc">Con tasa al 27% y fondeo debajo del 9%, hay margen para absorber 1.5-2% m&aacute;s de riesgo crediticio sin comprometer la rentabilidad.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Riesgo de abrir</div>
+                    <div class="exec-card-value">Curva exponencial</div>
+                    <div class="exec-card-desc">&ldquo;El cr&eacute;dito crece linealmente y de repente se va exponenciando.&rdquo; Hay un punto de inflexi&oacute;n donde la cartera vencida se dispara.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si nos gast&aacute;ramos un 1.5-2% m&aacute;s [de riesgo] &iquest;cu&aacute;l es el problema? Prestando al 27%, costo de fondeo debajo del 9%.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El cr&eacute;dito crece linealmente y de repente se va exponenciando. Debemos quedarnos mucho antes de ese punto.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">L&iacute;nea roja del consejo: 5% de cartera vencida</div>
+                    <div class="finding-dimension riesgo">Riesgo</div>
+                </div>
+                <div class="finding-body">
+                    El consejo ha establecido un l&iacute;mite expl&iacute;cito: <strong>nunca superar el 5% de cartera vencida</strong>. Con el nivel actual de ~2.5% por cosecha en 3 a&ntilde;os, hay espacio te&oacute;rico para crecer, pero el consejo es consciente de la no-linealidad del riesgo crediticio. La consigna es: <strong>fluir m&aacute;s r&aacute;pido + abrirle un poco, pero de forma controlada</strong>.
+                </div>
+                <div class="finding-evidence">Evidencia: Par&aacute;metros de riesgo definidos expl&iacute;citamente por el consejero</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Nunca queremos llegar a carteras arriba del 5% de cartera vencida.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Dato para la propuesta LCG</div>
+                <p>La discusi&oacute;n de riesgo del consejo valida la <strong>Oportunidad #3 del CLAUDE.md</strong> (Calibraci&oacute;n del Modelo de Riesgo, Prioridad Media-Alta). El consejo no quiere cerrar la llave &mdash; quiere <strong>calibrarla con datos</strong>. Un an&aacute;lisis de cosechas por sector, tama&ntilde;o de operaci&oacute;n y geograf&iacute;a podr&iacute;a identificar d&oacute;nde hay margen para abrir sin acercarse al punto de inflexi&oacute;n.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: CONFIANZA EN MANAGEMENT                            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08 &mdash; Hallazgo 6</div>
+                <div class="section-title">Confianza en management, pero necesitan &ldquo;segunda opini&oacute;n&rdquo;</div>
+            </div>
+
+            <p>Cipriano expresa <strong>confianza genuina</strong> en Juan Pablo y el equipo directivo, pero tambi&eacute;n una necesidad clara de validaci&oacute;n externa.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Juan Pablo es un muy buen l&iacute;der... la compa&ntilde;&iacute;a es 6-7x el tama&ntilde;o que ten&iacute;a.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Son muy buen management team, ejecutan bien, por eso seguimos vivos.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">El consejo empuj&oacute; la contrataci&oacute;n de consultores</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    La iniciativa de traer consultores <strong>no naci&oacute; del management &mdash; naci&oacute; del consejo</strong>. Cipriano describe un ciclo repetido: el management explica el estancamiento por factores de mercado, el consejo responde que deber&iacute;a haber m&aacute;s oportunidad dada la desaparici&oacute;n de competidores. Despu&eacute;s de varias rondas de esta tensi&oacute;n, el consejo dijo: &ldquo;traigamos gente de fuera.&rdquo;
+                </div>
+                <div class="finding-evidence">Evidencia: Relato del proceso de decisi&oacute;n por el propio consejero</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">La idea de traer consultores viene porque ya llevamos tremendo el consejo de &lsquo;aqu&iacute; hay oportunidad, &iquest;por qu&eacute; no la est&aacute;n aprovechando?&rsquo;</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Traigamos gente de fuera que nos ayude con buenos datos y an&aacute;lisis reales.</div>
+                <div class="verbatim-source">&mdash; Cipriano Santisteban, Consejero (Linzor Capital Partners)</div>
+            </div>
+
+            <h3>Proceso de decisi&oacute;n para la propuesta</h3>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Juan Pablo tiene la &uacute;ltima palabra</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Aunque la iniciativa viene del consejo, la decisi&oacute;n operativa recae en <strong>Juan Pablo</strong>. Cipriano confirma que JP &ldquo;toma la gran mayor&iacute;a de decisiones&rdquo; y las presenta al comit&eacute; del consejo, donde las decisiones se toman &ldquo;casi siempre por consenso.&rdquo; El consejo <strong>no se mete en la operaci&oacute;n</strong> &mdash; da la direcci&oacute;n estrat&eacute;gica y espera resultados.
+                </div>
+                <div class="finding-evidence">Evidencia: Estructura de gobernanza descrita por el consejero</div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Implicaci&oacute;n para la venta</div>
+                <p>Tener al consejo como <strong>patrocinador activo</strong> de la consultor&iacute;a es una posici&oacute;n de fuerza inusual. Normalmente el consultor debe &ldquo;vender hacia arriba&rdquo;; aqu&iacute; el impulso viene de arriba hacia abajo. La propuesta debe hablarle a <strong>ambas audiencias</strong>: al consejo (oportunidad de mercado, ROI, datos) y a Juan Pablo (ejecuci&oacute;n pr&aacute;ctica, respeto a su liderazgo, no ser intrusi&oacute;n).</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: OPORTUNIDADES DE INTERVENCION LCG                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 09</div>
+                <div class="section-title">Oportunidades de intervenci&oacute;n para LCG</div>
+            </div>
+
+            <p>A partir de la visi&oacute;n del consejo, se identifican <strong>4 &aacute;reas de intervenci&oacute;n</strong> que conectan directamente con las preguntas que Cipriano plantea y con las oportunidades previamente mapeadas.</p>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Dimensionamiento y estrategia de mercado LMM</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Qu&eacute; pide el consejo</div>
+                    <div class="opp-text">&ldquo;Buenos an&aacute;lisis para saber d&oacute;nde estamos parados, identificar la oportunidad, desarrollar buena estrategia.&rdquo;</div>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>Dimensionar oportunidad post-Unifin por sector y geograf&iacute;a</li>
+                        <li>Identificar los 5-7 sectores de mayor potencial CAPEX para el segmento $5M-$25M USD</li>
+                        <li>Dise&ntilde;ar estrategia Go-to-Market con priorizaci&oacute;n por atractivo y capacidad de ejecuci&oacute;n</li>
+                        <li>Benchmarking de modelos comerciales en financieras mid-market de AL</li>
+                    </ul>
+                    <div class="opp-section-label">Referencia LCG</div>
+                    <div class="opp-text">Banregio &mdash; 6 proyectos en segmento PyME. Estudio de Mercado ya entregado (gap $50K-$85K MDP).</div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Evoluci&oacute;n del modelo comercial Push</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Qu&eacute; pide el consejo</div>
+                    <div class="opp-text">&ldquo;El modelo es Push, no Pull&rdquo; + preocupaci&oacute;n por rotaci&oacute;n de vendedores + estancamiento.</div>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>Redise&ntilde;o del modelo de gesti&oacute;n comercial (cadencias, KPIs, supervisi&oacute;n)</li>
+                        <li>Programa de onboarding y ramp-up para originadores nuevos</li>
+                        <li>Desarrollo de componente Pull (marketing digital, alianzas, referidos)</li>
+                        <li>Sistematizaci&oacute;n del pipeline y forecast en Salesforce</li>
+                    </ul>
+                    <div class="opp-section-label">Referencia LCG</div>
+                    <div class="opp-text">HDI Seguros &mdash; Transformaci&oacute;n de modelo comercial multicanal. Banregio &mdash; F&aacute;brica de cr&eacute;dito PyME.</div>
+                </div>
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Calibraci&oacute;n del apetito de riesgo LMM</div>
+                    <div class="opp-priority media">Prioridad Media-Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Qu&eacute; pide el consejo</div>
+                    <div class="opp-text">&ldquo;Si nos gast&aacute;ramos un 1.5-2% m&aacute;s, &iquest;cu&aacute;l es el problema?&rdquo; pero &ldquo;nunca arriba del 5%.&rdquo;</div>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>An&aacute;lisis de cosechas por sector, tama&ntilde;o de operaci&oacute;n y geograf&iacute;a</li>
+                        <li>Modelaci&oacute;n de escenarios de apertura de riesgo con impacto en P&amp;L</li>
+                        <li>Definici&oacute;n de l&iacute;mites por segmento y pol&iacute;ticas diferenciadas Core vs. LMM</li>
+                        <li>Dashboard de monitoreo continuo de riesgo crediticio</li>
+                    </ul>
+                    <div class="opp-section-label">Referencia LCG</div>
+                    <div class="opp-text">HDI &mdash; Modelo de suscripci&oacute;n de riesgo. Banbaj&iacute;o &mdash; Param&eacute;tricos de cr&eacute;dito.</div>
+                </div>
+            </div>
+
+            <!-- OPP 4 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Optimizaci&oacute;n de la f&aacute;brica de originaci&oacute;n</div>
+                    <div class="opp-priority media">Prioridad Media-Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Qu&eacute; pide el consejo</div>
+                    <div class="opp-text">&ldquo;Necesita fluir m&aacute;s r&aacute;pido&rdquo; &mdash; la velocidad de originaci&oacute;n como palanca de crecimiento.</div>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>Mapeo end-to-end del proceso de originaci&oacute;n LMM (as-is / to-be)</li>
+                        <li>Identificaci&oacute;n de cuellos de botella y tiempos muertos</li>
+                        <li>Simplificaci&oacute;n de documentaci&oacute;n y flujos para operaciones LMM</li>
+                        <li>SLAs diferenciados por tama&ntilde;o de operaci&oacute;n</li>
+                    </ul>
+                    <div class="opp-section-label">Referencia LCG</div>
+                    <div class="opp-text">Banregio &mdash; F&aacute;brica de cr&eacute;dito. HDI &mdash; 80% reducci&oacute;n en tiempos de cotizaci&oacute;n/suscripci&oacute;n.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 10: CONCLUSION                                         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Conclusi&oacute;n</div>
+                <div class="section-title">Lo que busca el consejo</div>
+            </div>
+
+            <p>La entrevista con Cipriano Santisteban revela un <strong>consejo de administraci&oacute;n activo, sofisticado y con una tesis clara</strong>: el LMM es la apuesta estrat&eacute;gica de Engen Capital, el mercado dej&oacute; espacio (post-Unifin), el spread es atractivo, pero el crecimiento se estanc&oacute;. Algo no est&aacute; funcionando en la ejecuci&oacute;n.</p>
+
+            <div class="exec-grid">
+                <div class="exec-card">
+                    <div class="exec-card-label">El consejo busca</div>
+                    <div class="exec-card-value">Datos, no opiniones</div>
+                    <div class="exec-card-desc">&ldquo;Buenos an&aacute;lisis para saber d&oacute;nde estamos parados.&rdquo; Quieren evidencia cuantitativa que les permita tomar decisiones informadas sobre d&oacute;nde invertir y cu&aacute;nto riesgo tomar.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">El consejo ofrece</div>
+                    <div class="exec-card-value">Patrocinio activo</div>
+                    <div class="exec-card-desc">La idea de traer consultores vino del consejo, no del management. Esto da legitimidad al proyecto y asegura presupuesto. Es un sponsor que empuja desde arriba.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">El consejo necesita</div>
+                    <div class="exec-card-value">Respuestas concretas</div>
+                    <div class="exec-card-desc">&iquest;D&oacute;nde est&aacute; el negocio? &iquest;Qu&eacute; estrategias para crecer? &iquest;Cu&aacute;nto riesgo podemos tomar? No buscan teor&iacute;a &mdash; buscan un plan ejecutable.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">El consejo respeta</div>
+                    <div class="exec-card-value">La autonom&iacute;a de JP</div>
+                    <div class="exec-card-desc">Juan Pablo tiene la &uacute;ltima palabra operativa. El consejo da direcci&oacute;n pero no se mete en la operaci&oacute;n. La propuesta debe trabajar con ambos niveles.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">La oportunidad para LCG</div>
+                <p>Rara vez un proyecto de consultor&iacute;a llega con <strong>patrocinio del consejo de administraci&oacute;n</strong>. Cipriano valida que la oportunidad de mercado existe, que el management es competente pero necesita apoyo estrat&eacute;gico, y que el consejo est&aacute; dispuesto a invertir en resolver el estancamiento. La propuesta debe aterrizar con <strong>3 elementos</strong>: (1) datos que dimensionen la oportunidad (Estudio de Mercado), (2) diagn&oacute;stico de por qu&eacute; no se est&aacute; capturando (Pre-diagn&oacute;stico), y (3) un plan de acci&oacute;n ejecutable que respete la gobernanza existente.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Siguiente paso</div>
+                <p>Triangular la visi&oacute;n del consejo con las entrevistas operativas (Comercial, Riesgos, Originaci&oacute;n, Tecnolog&iacute;a) para construir un diagn&oacute;stico completo. La perspectiva de Cipriano es el &ldquo;para qu&eacute;&rdquo; &mdash; las entrevistas operativas dar&aacute;n el &ldquo;por qu&eacute;&rdquo; y el &ldquo;c&oacute;mo.&rdquo;</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
