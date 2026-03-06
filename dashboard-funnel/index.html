@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Funnel de Oportunidades | Engen Capital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lcg-navy: #0B1F3F;
+  --lcg-navy-light: #132d54;
+  --lcg-accent: #2E6DB4;
+  --lcg-accent-light: #4a8fd4;
+  --engen-green: #00B388;
+  --engen-dark: #004D40;
+  --amber: #F59E0B;
+  --amber-light: #FCD34D;
+  --red: #EF4444;
+  --red-light: #FCA5A5;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --gray-900: #111827;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cover Page */
+.cover-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--lcg-navy) 0%, #1a3a6b 40%, var(--lcg-accent) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+.cover-page::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(46,109,180,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover-page::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--engen-green), var(--lcg-accent-light), var(--amber));
+}
+
+.cover-badge {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.5rem 1.5rem;
+  border-radius: 100px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  max-width: 800px;
+}
+
+.cover-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.cover-stats {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.cover-stat {
+  text-align: center;
+}
+
+.cover-stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+}
+
+.cover-stat-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.cover-meta {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Main content */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+  page-break-inside: avoid;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.section-number {
+  background: var(--lcg-navy);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--lcg-navy);
+}
+
+.section-desc {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-left: auto;
+}
+
+/* KPI Banner */
+.kpi-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.kpi-card.navy::before { background: var(--lcg-navy); }
+.kpi-card.blue::before { background: var(--lcg-accent); }
+.kpi-card.green::before { background: var(--engen-green); }
+.kpi-card.amber::before { background: var(--amber); }
+
+.kpi-label {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1;
+}
+
+.kpi-sub {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  margin-top: 0.3rem;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+}
+
+/* Funnel Visualization */
+.funnel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 1rem 0;
+}
+
+.funnel-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+}
+
+.funnel-label {
+  width: 160px;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  flex-shrink: 0;
+}
+
+.funnel-bar-container {
+  flex: 1;
+  position: relative;
+}
+
+.funnel-bar {
+  height: 36px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 60px;
+  transition: all 0.3s;
+}
+
+.funnel-bar.stage-1 { background: linear-gradient(90deg, #1e40af, #3b82f6); }
+.funnel-bar.stage-2 { background: linear-gradient(90deg, #1d4ed8, #60a5fa); }
+.funnel-bar.stage-3 { background: linear-gradient(90deg, #0369a1, #38bdf8); }
+.funnel-bar.stage-4 { background: linear-gradient(90deg, #0e7490, #22d3ee); }
+.funnel-bar.stage-5 { background: linear-gradient(90deg, #047857, #34d399); }
+.funnel-bar.stage-6 { background: linear-gradient(90deg, #059669, var(--engen-green)); }
+
+.funnel-count {
+  margin-left: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  white-space: nowrap;
+}
+
+.funnel-rate {
+  font-size: 0.7rem;
+  color: var(--gray-400);
+  margin-left: 0.5rem;
+}
+
+/* Bar charts */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bar-label {
+  width: 180px;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--gray-100);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  min-width: 40px;
+}
+
+.bar-fill.navy { background: linear-gradient(90deg, var(--lcg-navy), var(--lcg-navy-light)); }
+.bar-fill.blue { background: linear-gradient(90deg, var(--lcg-accent), var(--lcg-accent-light)); }
+.bar-fill.green { background: linear-gradient(90deg, var(--engen-dark), var(--engen-green)); }
+.bar-fill.amber { background: linear-gradient(90deg, #d97706, var(--amber)); }
+.bar-fill.red { background: linear-gradient(90deg, #dc2626, var(--red)); }
+.bar-fill.teal { background: linear-gradient(90deg, #0d9488, #14b8a6); }
+.bar-fill.purple { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+.bar-fill.pink { background: linear-gradient(90deg, #db2777, #f472b6); }
+
+.bar-value {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin-left: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Grid layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Timing table */
+.timing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.85rem;
+}
+
+.timing-table thead th {
+  background: var(--lcg-navy);
+  color: white;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timing-table thead th:first-child {
+  text-align: left;
+  border-radius: var(--radius-sm) 0 0 0;
+}
+
+.timing-table thead th:last-child {
+  border-radius: 0 var(--radius-sm) 0 0;
+}
+
+.timing-table tbody td {
+  padding: 0.65rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.timing-table tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.timing-table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 var(--radius-sm);
+}
+
+.timing-table tbody tr:last-child td:last-child {
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.timing-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.timing-table .highlight-col {
+  background: rgba(46,109,180,0.05);
+  font-weight: 700;
+  color: var(--lcg-accent);
+}
+
+/* Conversion rates */
+.conversion-chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.conv-node {
+  text-align: center;
+  padding: 0.75rem 1rem;
+}
+
+.conv-stage {
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+.conv-count {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gray-900);
+}
+
+.conv-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.25rem;
+}
+
+.conv-arrow-line {
+  width: 40px;
+  height: 2px;
+  background: var(--gray-300);
+  position: relative;
+}
+
+.conv-arrow-line::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--gray-300);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.conv-rate {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--engen-green);
+  margin-top: 0.25rem;
+}
+
+/* Monthly trend */
+.trend-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 200px;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.trend-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.trend-bar-fill {
+  width: 100%;
+  min-height: 4px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, var(--lcg-accent), var(--lcg-navy));
+  position: relative;
+}
+
+.trend-bar-fill .trend-val {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--gray-600);
+  white-space: nowrap;
+}
+
+.trend-month {
+  font-size: 0.6rem;
+  color: var(--gray-400);
+  margin-top: 0.5rem;
+  transform: rotate(-45deg);
+  white-space: nowrap;
+}
+
+/* Callout */
+.callout {
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.callout.blue {
+  background: #EFF6FF;
+  border-left: 4px solid var(--lcg-accent);
+  color: #1e40af;
+}
+
+.callout.green {
+  background: #ECFDF5;
+  border-left: 4px solid var(--engen-green);
+  color: #065f46;
+}
+
+.callout.amber {
+  background: #FFFBEB;
+  border-left: 4px solid var(--amber);
+  color: #92400e;
+}
+
+.callout strong {
+  font-weight: 700;
+}
+
+/* Stage distribution donut-like */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.stage-chip {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.stage-chip-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--gray-900);
+}
+
+.stage-chip-label {
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  margin-top: 0.2rem;
+}
+
+.stage-chip-pct {
+  font-size: 0.65rem;
+  color: var(--gray-400);
+}
+
+.stage-chip.active {
+  background: linear-gradient(135deg, var(--lcg-navy), var(--lcg-accent));
+  border-color: transparent;
+}
+
+.stage-chip.active .stage-chip-value,
+.stage-chip.active .stage-chip-label { color: white; }
+.stage-chip.active .stage-chip-pct { color: rgba(255,255,255,0.6); }
+
+.stage-chip.green-bg {
+  background: linear-gradient(135deg, var(--engen-dark), var(--engen-green));
+  border-color: transparent;
+}
+
+.stage-chip.green-bg .stage-chip-value,
+.stage-chip.green-bg .stage-chip-label { color: white; }
+.stage-chip.green-bg .stage-chip-pct { color: rgba(255,255,255,0.6); }
+
+/* Print */
+@media print {
+  body { background: white; }
+  .cover-page { min-height: auto; height: 100vh; }
+  .dashboard-container { padding: 1rem; }
+  .kpi-card, .card { box-shadow: none; border: 1px solid #ddd; }
+  .section { page-break-inside: avoid; }
+  .no-print { display: none; }
+}
+
+@media (max-width: 768px) {
+  .cover-title { font-size: 2rem; }
+  .kpi-banner { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .stage-grid { grid-template-columns: repeat(2, 1fr); }
+  .conversion-chain { flex-direction: column; }
+  .bar-label { width: 120px; }
+  .funnel-label { width: 100px; font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div class="cover-badge">Confidencial</div>
+  <h1 class="cover-title">Dashboard de Funnel<br>de Oportunidades</h1>
+  <p class="cover-subtitle">Analisis del pipeline comercial 2025-2026 &mdash; 3,670 oportunidades procesadas</p>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <div class="cover-stat-value">3,670</div>
+      <div class="cover-stat-label">Oportunidades</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-value">80</div>
+      <div class="cover-stat-label">Fondeadas</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-value">2.2%</div>
+      <div class="cover-stat-label">Tasa de cierre</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-value">~$1,040M</div>
+      <div class="cover-stat-label">Monto fondeado (MXN)</div>
+    </div>
+  </div>
+  <div class="cover-meta">
+    <span>Engen Capital</span>
+    <span>|</span>
+    <span>London Consulting Group</span>
+    <span>|</span>
+    <span>Marzo 2026</span>
+    <span>|</span>
+    <span>Fuente: Oportunidades 2025-2026.csv</span>
+  </div>
+</div>
+
+<!-- DASHBOARD CONTENT -->
+<div class="dashboard-container">
+
+  <!-- KPI BANNER -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2 class="section-title">Indicadores Clave del Pipeline</h2>
+      <span class="section-desc">Vista general del funnel comercial</span>
+    </div>
+
+    <div class="kpi-banner">
+      <div class="kpi-card navy">
+        <div class="kpi-label">Total oportunidades</div>
+        <div class="kpi-value">3,670</div>
+        <div class="kpi-sub">Periodo 2025-2026</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">Oportunidades fondeadas</div>
+        <div class="kpi-value">80</div>
+        <div class="kpi-sub">2.2% tasa de cierre global</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Pipeline activo</div>
+        <div class="kpi-value">701</div>
+        <div class="kpi-sub">Proposal + Awarded + In Credit + Backlog</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">Lineas de negocio</div>
+        <div class="kpi-value">7</div>
+        <div class="kpi-sub">Equipment lidera con 65%</div>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <strong>Lectura clave:</strong> De 3,670 oportunidades registradas, solo 80 (2.2%) llegaron a fondeo. El 40.7% se perdio como Lost Deal y el 15.9% fue descalificado en etapa Lead. El pipeline activo (701 oportunidades en etapas intermedias) representa potencial de conversion inmediata.
+    </div>
+  </section>
+
+  <!-- FUNNEL VISUALIZATION -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2 class="section-title">Funnel de Conversion</h2>
+      <span class="section-desc">Etapas del proceso comercial</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Embudo de oportunidades por etapa del proceso</div>
+      <div class="funnel-container">
+        <div class="funnel-step">
+          <div class="funnel-label">Identificada</div>
+          <div class="funnel-bar-container">
+            <div class="funnel-bar stage-1" style="width: 100%;">3,670</div>
+          </div>
+          <span class="funnel-count">100%</span>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">Proposal</div>
+          <div class="funnel-bar-container">
+            <div class="funnel-bar stage-2" style="width: 42%;">1,537</div>
+          </div>
+          <span class="funnel-count">41.9%</span>
+          <span class="funnel-rate">de identificadas</span>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">Awarded</div>
+          <div class="funnel-bar-container">
+            <div class="funnel-bar stage-3" style="width: 26%;">953</div>
+          </div>
+          <span class="funnel-count">26.0%</span>
+          <span class="funnel-rate">de identificadas</span>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">In Credit</div>
+          <div class="funnel-bar-container">
+            <div class="funnel-bar stage-4" style="width: 21%;">780</div>
+          </div>
+          <span class="funnel-count">21.3%</span>
+          <span class="funnel-rate">de identificadas</span>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">Backlog</div>
+          <div class="funnel-bar-container">
+            <div class="funnel-bar stage-5" style="width: 13%;">490</div>
+          </div>
+          <span class="funnel-count">13.4%</span>
+          <span class="funnel-rate">de identificadas</span>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">Funded</div>
+          <div class="funnel-bar-container">
+            <div class="funnel-bar stage-6" style="width: 2.2%;">80</div>
+          </div>
+          <span class="funnel-count">2.2%</span>
+          <span class="funnel-rate">de identificadas</span>
+        </div>
+      </div>
+
+      <div class="callout amber">
+        <strong>Nota metodologica:</strong> Las cifras del funnel reflejan cuantas oportunidades tienen fecha registrada en cada etapa (cols 21-26 del CRM). Una oportunidad puede tener fecha de Proposal pero no de Awarded si fue rechazada en esa etapa. El conteo decrece porque solo las que avanzan obtienen la fecha siguiente.
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE DISTRIBUTION -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2 class="section-title">Distribucion por Stage Actual</h2>
+      <span class="section-desc">Estado vigente de cada oportunidad</span>
+    </div>
+
+    <div class="stage-grid">
+      <div class="stage-chip">
+        <div class="stage-chip-value">1,493</div>
+        <div class="stage-chip-label">Lost Deal</div>
+        <div class="stage-chip-pct">40.7%</div>
+      </div>
+      <div class="stage-chip">
+        <div class="stage-chip-value">585</div>
+        <div class="stage-chip-label">Lead Disqualified</div>
+        <div class="stage-chip-pct">15.9%</div>
+      </div>
+      <div class="stage-chip active">
+        <div class="stage-chip-value">563</div>
+        <div class="stage-chip-label">Lead</div>
+        <div class="stage-chip-pct">15.3%</div>
+      </div>
+      <div class="stage-chip active">
+        <div class="stage-chip-value">271</div>
+        <div class="stage-chip-label">Opp. Identified</div>
+        <div class="stage-chip-pct">7.4%</div>
+      </div>
+      <div class="stage-chip active">
+        <div class="stage-chip-value">211</div>
+        <div class="stage-chip-label">Backlog c/fundings</div>
+        <div class="stage-chip-pct">5.7%</div>
+      </div>
+      <div class="stage-chip active">
+        <div class="stage-chip-value">149</div>
+        <div class="stage-chip-label">Backlog</div>
+        <div class="stage-chip-pct">4.1%</div>
+      </div>
+      <div class="stage-chip active">
+        <div class="stage-chip-value">139</div>
+        <div class="stage-chip-label">Proposal</div>
+        <div class="stage-chip-pct">3.8%</div>
+      </div>
+      <div class="stage-chip green-bg">
+        <div class="stage-chip-value">80</div>
+        <div class="stage-chip-label">Funded</div>
+        <div class="stage-chip-pct">2.2%</div>
+      </div>
+      <div class="stage-chip active">
+        <div class="stage-chip-value">76</div>
+        <div class="stage-chip-label">In Credit</div>
+        <div class="stage-chip-pct">2.1%</div>
+      </div>
+      <div class="stage-chip active">
+        <div class="stage-chip-value">56</div>
+        <div class="stage-chip-label">Proposal Awarded</div>
+        <div class="stage-chip-pct">1.5%</div>
+      </div>
+      <div class="stage-chip">
+        <div class="stage-chip-value">25</div>
+        <div class="stage-chip-label">Completado</div>
+        <div class="stage-chip-pct">0.7%</div>
+      </div>
+      <div class="stage-chip">
+        <div class="stage-chip-value">22</div>
+        <div class="stage-chip-label">Otros</div>
+        <div class="stage-chip-pct">0.6%</div>
+      </div>
+    </div>
+
+    <div class="callout green" style="margin-top: 1rem;">
+      <strong>Pipeline activo:</strong> 701 oportunidades (19.1%) estan en etapas activas del pipeline (Proposal, Proposal Awarded, In Credit, Backlog, Backlog c/fundings). Estas representan el potencial de conversion a corto y mediano plazo. Adicionalmente, 834 oportunidades en Lead/Opp. Identified estan en etapas tempranas (22.7%).
+    </div>
+  </section>
+
+  <!-- STAGE TIMING ANALYSIS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2 class="section-title">Tiempos entre Etapas</h2>
+      <span class="section-desc">Dias entre transiciones del funnel (solo oportunidades fondeadas)</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Estadisticas de ciclo de vida (basado en 80 oportunidades fondeadas)</div>
+      <table class="timing-table">
+        <thead>
+          <tr>
+            <th>Transicion</th>
+            <th>n</th>
+            <th class="highlight-col">Mediana</th>
+            <th>Promedio</th>
+            <th>P25</th>
+            <th>P75</th>
+            <th>Min</th>
+            <th>Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Identified &rarr; Proposal</td>
+            <td>76</td>
+            <td class="highlight-col">8</td>
+            <td>18</td>
+            <td>1</td>
+            <td>21</td>
+            <td>0</td>
+            <td>134</td>
+          </tr>
+          <tr>
+            <td>Proposal &rarr; Awarded</td>
+            <td>72</td>
+            <td class="highlight-col">7</td>
+            <td>14</td>
+            <td>0</td>
+            <td>15</td>
+            <td>0</td>
+            <td>105</td>
+          </tr>
+          <tr>
+            <td>Awarded &rarr; In Credit</td>
+            <td>71</td>
+            <td class="highlight-col">5</td>
+            <td>11</td>
+            <td>0</td>
+            <td>10</td>
+            <td>0</td>
+            <td>82</td>
+          </tr>
+          <tr>
+            <td>In Credit &rarr; Backlog</td>
+            <td>70</td>
+            <td class="highlight-col">12</td>
+            <td>20</td>
+            <td>2</td>
+            <td>25</td>
+            <td>0</td>
+            <td>107</td>
+          </tr>
+          <tr>
+            <td>Backlog &rarr; Funded</td>
+            <td>69</td>
+            <td class="highlight-col">28</td>
+            <td>44</td>
+            <td>14</td>
+            <td>60</td>
+            <td>0</td>
+            <td>289</td>
+          </tr>
+          <tr style="background: rgba(0,179,136,0.05); font-weight: 600;">
+            <td>Identified &rarr; Funded (total)</td>
+            <td>67</td>
+            <td class="highlight-col">75</td>
+            <td>93</td>
+            <td>42</td>
+            <td>120</td>
+            <td>0</td>
+            <td>295</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout blue" style="margin-top: 1rem;">
+        <strong>Hallazgo:</strong> El ciclo total desde identificacion hasta fondeo tiene una mediana de <strong>75 dias</strong> (~2.5 meses). Las etapas de mayor duracion son Backlog&rarr;Funded (mediana 28 dias) e In Credit&rarr;Backlog (mediana 12 dias). Las etapas de negociacion (Identified&rarr;Proposal&rarr;Awarded) son relativamente rapidas (mediana 8 y 7 dias respectivamente).
+      </div>
+    </div>
+  </section>
+
+  <!-- CONVERSION RATES -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2 class="section-title">Tasas de Conversion entre Etapas</h2>
+      <span class="section-desc">Basado en oportunidades con fecha registrada en cada etapa</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Cadena de conversion del funnel</div>
+      <div class="conversion-chain">
+        <div class="conv-node">
+          <div class="conv-stage">Identified</div>
+          <div class="conv-count">3,670</div>
+        </div>
+        <div class="conv-arrow">
+          <div class="conv-arrow-line"></div>
+          <div class="conv-rate">41.9%</div>
+        </div>
+        <div class="conv-node">
+          <div class="conv-stage">Proposal</div>
+          <div class="conv-count">1,537</div>
+        </div>
+        <div class="conv-arrow">
+          <div class="conv-arrow-line"></div>
+          <div class="conv-rate">62.0%</div>
+        </div>
+        <div class="conv-node">
+          <div class="conv-stage">Awarded</div>
+          <div class="conv-count">953</div>
+        </div>
+        <div class="conv-arrow">
+          <div class="conv-arrow-line"></div>
+          <div class="conv-rate">81.8%</div>
+        </div>
+        <div class="conv-node">
+          <div class="conv-stage">In Credit</div>
+          <div class="conv-count">780</div>
+        </div>
+        <div class="conv-arrow">
+          <div class="conv-arrow-line"></div>
+          <div class="conv-rate">62.8%</div>
+        </div>
+        <div class="conv-node">
+          <div class="conv-stage">Backlog</div>
+          <div class="conv-count">490</div>
+        </div>
+        <div class="conv-arrow">
+          <div class="conv-arrow-line"></div>
+          <div class="conv-rate">16.3%</div>
+        </div>
+        <div class="conv-node">
+          <div class="conv-stage">Funded</div>
+          <div class="conv-count">80</div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 1rem;">
+        <div class="callout amber">
+          <strong>Cuello de botella 1:</strong> Solo 41.9% de oportunidades identificadas llegan a Proposal. El 58% se pierde en calificacion inicial.
+        </div>
+        <div class="callout amber">
+          <strong>Cuello de botella 2:</strong> De Proposal a Awarded se retiene el 62%. Un 38% se pierde en la negociacion de propuesta.
+        </div>
+        <div class="callout amber">
+          <strong>Cuello de botella 3:</strong> De Backlog a Funded solo 16.3% se materializa. Este es el mayor punto de perdida en etapas avanzadas.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE BY LOB -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2 class="section-title">Pipeline por Linea de Negocio</h2>
+      <span class="section-desc">Distribucion de oportunidades por LOB</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Volumen de oportunidades por Line of Business</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Equipment</div>
+          <div class="bar-track">
+            <div class="bar-fill navy" style="width: 100%;">2,385</div>
+          </div>
+          <div class="bar-value">65.0%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Fleet</div>
+          <div class="bar-track">
+            <div class="bar-fill blue" style="width: 21.5%;">513</div>
+          </div>
+          <div class="bar-value">14.0%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Factoring</div>
+          <div class="bar-track">
+            <div class="bar-fill green" style="width: 21.1%;">504</div>
+          </div>
+          <div class="bar-value">13.7%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Technology</div>
+          <div class="bar-track">
+            <div class="bar-fill teal" style="width: 4.4%;">104</div>
+          </div>
+          <div class="bar-value">2.8%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Energy</div>
+          <div class="bar-track">
+            <div class="bar-fill amber" style="width: 3.1%;">73</div>
+          </div>
+          <div class="bar-value">2.0%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Real Estate</div>
+          <div class="bar-track">
+            <div class="bar-fill purple" style="width: 2.1%;">50</div>
+          </div>
+          <div class="bar-value">1.4%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Originate to Sale</div>
+          <div class="bar-track">
+            <div class="bar-fill pink" style="width: 0.5%;">12</div>
+          </div>
+          <div class="bar-value">0.3%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">(Sin LOB)</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: 1.2%; background: var(--gray-400);">29</div>
+          </div>
+          <div class="bar-value">0.8%</div>
+        </div>
+      </div>
+
+      <div class="callout green" style="margin-top: 1rem;">
+        <strong>Dominancia Equipment:</strong> Arrendamiento de equipos representa el 65% del pipeline total, seguido por Fleet (14%) y Factoring (13.7%). Energy y Real Estate son segmentos emergentes con potencial de crecimiento. Factoring (Engen Factoraje) con 504 oportunidades muestra traccion del producto digital lanzado en 2023.
+      </div>
+
+      <div class="card-title" style="margin-top: 1.5rem;">Tasa de fondeo por LOB</div>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
+        <div style="flex: 1; min-width: 120px; background: var(--gray-50); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; border: 1px solid var(--gray-200);">
+          <div style="font-size: 1.2rem; font-weight: 800; color: var(--engen-green);">2.85%</div>
+          <div style="font-size: 0.7rem; color: var(--gray-500);">Equipment</div>
+          <div style="font-size: 0.65rem; color: var(--gray-400);">68 de 2,385</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; background: var(--gray-50); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; border: 1px solid var(--gray-200);">
+          <div style="font-size: 1.2rem; font-weight: 800; color: var(--lcg-accent);">2.14%</div>
+          <div style="font-size: 0.7rem; color: var(--gray-500);">Fleet</div>
+          <div style="font-size: 0.65rem; color: var(--gray-400);">11 de 513</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; background: var(--gray-50); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; border: 1px solid var(--gray-200);">
+          <div style="font-size: 1.2rem; font-weight: 800; color: var(--amber);">0.96%</div>
+          <div style="font-size: 0.7rem; color: var(--gray-500);">Technology</div>
+          <div style="font-size: 0.65rem; color: var(--gray-400);">1 de 104</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; background: var(--gray-50); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; border: 1px solid var(--red-light);">
+          <div style="font-size: 1.2rem; font-weight: 800; color: var(--red);">0%</div>
+          <div style="font-size: 0.7rem; color: var(--gray-500);">Factoring</div>
+          <div style="font-size: 0.65rem; color: var(--gray-400);">0 de 504</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE BY REGION -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2 class="section-title">Pipeline por Region</h2>
+      <span class="section-desc">Distribucion geografica de oportunidades</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Top 15 Regiones por volumen</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">LMM 3</div>
+            <div class="bar-track"><div class="bar-fill navy" style="width: 100%;">372</div></div>
+            <div class="bar-value">10.1%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">LMM 5</div>
+            <div class="bar-track"><div class="bar-fill navy" style="width: 93%;">346</div></div>
+            <div class="bar-value">9.4%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">LMM 4</div>
+            <div class="bar-track"><div class="bar-fill navy" style="width: 88%;">328</div></div>
+            <div class="bar-value">8.9%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Monterrey 1</div>
+            <div class="bar-track"><div class="bar-fill blue" style="width: 86%;">321</div></div>
+            <div class="bar-value">8.7%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Mexico 2</div>
+            <div class="bar-track"><div class="bar-fill blue" style="width: 84%;">312</div></div>
+            <div class="bar-value">8.5%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">LMM 1</div>
+            <div class="bar-track"><div class="bar-fill navy" style="width: 81%;">301</div></div>
+            <div class="bar-value">8.2%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Mexico 1</div>
+            <div class="bar-track"><div class="bar-fill blue" style="width: 72%;">268</div></div>
+            <div class="bar-value">7.3%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Guadalajara 1</div>
+            <div class="bar-track"><div class="bar-fill green" style="width: 55%;">204</div></div>
+            <div class="bar-value">5.6%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">LMM 2</div>
+            <div class="bar-track"><div class="bar-fill navy" style="width: 48%;">179</div></div>
+            <div class="bar-value">4.9%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Vendor</div>
+            <div class="bar-track"><div class="bar-fill amber" style="width: 44%;">163</div></div>
+            <div class="bar-value">4.4%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">SWATT LMM 1</div>
+            <div class="bar-track"><div class="bar-fill teal" style="width: 34%;">126</div></div>
+            <div class="bar-value">3.4%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Fleet</div>
+            <div class="bar-track"><div class="bar-fill purple" style="width: 26%;">96</div></div>
+            <div class="bar-value">2.6%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Mexico 3</div>
+            <div class="bar-track"><div class="bar-fill blue" style="width: 18%;">67</div></div>
+            <div class="bar-value">1.8%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Factoring</div>
+            <div class="bar-track"><div class="bar-fill green" style="width: 16%;">59</div></div>
+            <div class="bar-value">1.6%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">SWATT LMM 2</div>
+            <div class="bar-track"><div class="bar-fill teal" style="width: 13%;">48</div></div>
+            <div class="bar-value">1.3%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Concentracion por segmento</div>
+        <div style="padding: 1rem 0;">
+
+          <div style="margin-bottom: 1.5rem;">
+            <div style="font-weight: 700; color: var(--lcg-navy); margin-bottom: 0.5rem; font-size: 0.9rem;">Segmento LMM (Low-Mid Market)</div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <div style="flex: 1; height: 24px; background: var(--gray-100); border-radius: 4px; overflow: hidden;">
+                <div style="width: 41.6%; height: 100%; background: linear-gradient(90deg, var(--lcg-navy), var(--lcg-accent)); border-radius: 4px; display: flex; align-items: center; padding: 0 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">1,526</div>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--gray-500);">41.6%</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">LMM 1-5 combinados</div>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <div style="font-weight: 700; color: var(--lcg-accent); margin-bottom: 0.5rem; font-size: 0.9rem;">Segmento Mexico + Guadalajara</div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <div style="flex: 1; height: 24px; background: var(--gray-100); border-radius: 4px; overflow: hidden;">
+                <div style="width: 23.2%; height: 100%; background: linear-gradient(90deg, var(--lcg-accent), var(--lcg-accent-light)); border-radius: 4px; display: flex; align-items: center; padding: 0 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">851</div>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--gray-500);">23.2%</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">Mexico 1-3 + Guadalajara 1</div>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <div style="font-weight: 700; color: var(--engen-green); margin-bottom: 0.5rem; font-size: 0.9rem;">Monterrey</div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <div style="flex: 1; height: 24px; background: var(--gray-100); border-radius: 4px; overflow: hidden;">
+                <div style="width: 8.7%; height: 100%; background: linear-gradient(90deg, var(--engen-dark), var(--engen-green)); border-radius: 4px; display: flex; align-items: center; padding: 0 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">321</div>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--gray-500);">8.7%</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">Monterrey 1</div>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <div style="font-weight: 700; color: var(--amber); margin-bottom: 0.5rem; font-size: 0.9rem;">SWATT + Canales Especializados</div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <div style="flex: 1; height: 24px; background: var(--gray-100); border-radius: 4px; overflow: hidden;">
+                <div style="width: 14.9%; height: 100%; background: linear-gradient(90deg, #d97706, var(--amber)); border-radius: 4px; display: flex; align-items: center; padding: 0 0.5rem; color: white; font-size: 0.75rem; font-weight: 600;">547</div>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--gray-500);">14.9%</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">SWATT, Vendor, Fleet, Factoring, IMMEX, otros</div>
+          </div>
+
+        </div>
+
+        <div class="callout green">
+          <strong>LMM domina:</strong> El segmento Low-Mid Market concentra el 41.6% del pipeline total (1,526 oportunidades), validando la estrategia de crecimiento hacia el mid-market. Las regiones LMM 3 y LMM 5 son las mas activas.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENCY SPLIT -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2 class="section-title">Distribucion por Moneda</h2>
+      <span class="section-desc">MXN vs USD</span>
+    </div>
+
+    <div class="grid-3">
+      <div class="kpi-card navy">
+        <div class="kpi-label">Oportunidades en MXN</div>
+        <div class="kpi-value">3,198</div>
+        <div class="kpi-sub">87.1% del total</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">Oportunidades en USD</div>
+        <div class="kpi-value">458</div>
+        <div class="kpi-sub">12.5% del total</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">Sin moneda definida</div>
+        <div class="kpi-value">14</div>
+        <div class="kpi-sub">0.4% del total</div>
+      </div>
+    </div>
+
+    <div class="callout blue" style="margin-top: 1rem;">
+      <strong>Nota:</strong> El tipo de cambio utilizado para homologar montos es USD 1 = MXN 17.50. Las oportunidades en USD (12.5%) tienden a concentrarse en segmentos como IMMEX, Monterrey y operaciones con empresas internacionales.
+    </div>
+  </section>
+
+  <!-- FUNDED ANALYSIS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2 class="section-title">Analisis de Oportunidades Fondeadas</h2>
+      <span class="section-desc">Detalle de las 80 oportunidades que llegaron a fondeo</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Monto total fondeado</div>
+        <div style="text-align: center; padding: 1.5rem 0;">
+          <div style="font-size: 3rem; font-weight: 800; color: var(--engen-green);">$1,027M</div>
+          <div style="font-size: 1rem; color: var(--gray-500); margin-top: 0.3rem;">MXN (incluyendo conversion USD a 17.5)</div>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem; padding-top: 1rem; border-top: 1px solid var(--gray-200);">
+          <div style="text-align: center;">
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--gray-800);">$758M</div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">Monto MXN directo (65 ops)</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--gray-800);">$269M</div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">Monto USD convertido (15 ops)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Ticket promedio fondeado</div>
+        <div style="text-align: center; padding: 1.5rem 0;">
+          <div style="font-size: 3rem; font-weight: 800; color: var(--lcg-accent);">$12.8M</div>
+          <div style="font-size: 1rem; color: var(--gray-500); margin-top: 0.3rem;">MXN por oportunidad fondeada</div>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem; padding-top: 1rem; border-top: 1px solid var(--gray-200);">
+          <div style="text-align: center;">
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--gray-800);">$138.2M</div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">Ticket maximo MXN (American Poly)</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--gray-800);">$321K</div>
+            <div style="font-size: 0.75rem; color: var(--gray-400);">Ticket minimo MXN (Bala Consultoria)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Top 10 oportunidades fondeadas por monto</div>
+      <table class="timing-table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Region</th>
+            <th>Moneda</th>
+            <th>Monto</th>
+            <th>LOB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>American Poly Del Norte</td><td>Monterrey 1</td><td>MXN</td><td>$138,240,000</td><td>Equipment</td></tr>
+          <tr><td>Logistics Interoceanica</td><td>Guadalajara 1</td><td>USD</td><td>$7,000,000 <span style="font-size:0.7rem;color:var(--gray-400);">($122.5M MXN)</span></td><td>Equipment</td></tr>
+          <tr><td>Aveymas</td><td>Monterrey 1</td><td>MXN</td><td>$57,000,000</td><td>Equipment</td></tr>
+          <tr><td>XIMPLE Logistics</td><td>Monterrey 1</td><td>MXN</td><td>$52,279,816</td><td>Equipment</td></tr>
+          <tr><td>Baja Gas and Oil (2)</td><td>SWATT LMM 1</td><td>MXN</td><td>$50,562,000</td><td>Equipment</td></tr>
+          <tr><td>Sisamex (Quimmco)</td><td>Monterrey 1</td><td>USD</td><td>$2,500,000 <span style="font-size:0.7rem;color:var(--gray-400);">($43.8M MXN)</span></td><td>Equipment</td></tr>
+          <tr><td>Grupo Garza Ponce</td><td>Monterrey 1</td><td>MXN</td><td>$34,425,234</td><td>Equipment</td></tr>
+          <tr><td>Pasteurizadora Productores</td><td>SWATT LMM 1</td><td>MXN</td><td>$30,086,207</td><td>Equipment</td></tr>
+          <tr><td>Maquinaria y Elev. Juarez</td><td>LMM 4</td><td>MXN</td><td>$25,313,832</td><td>Equipment</td></tr>
+          <tr><td>Transportes Valbo</td><td>LMM 3</td><td>MXN</td><td>$24,732,312</td><td>Equipment</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Fondeos por trimestre fiscal</div>
+        <div style="display: flex; align-items: flex-end; gap: 0.75rem; height: 160px; padding: 0.5rem 0;">
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--lcg-navy); margin-bottom: 0.2rem;">17</div>
+            <div style="width: 100%; height: 73.9%; background: var(--lcg-navy); border-radius: 4px 4px 0 0;"></div>
+            <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.3rem;">Q1-25</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--engen-green); margin-bottom: 0.2rem;">23</div>
+            <div style="width: 100%; height: 100%; background: var(--engen-green); border-radius: 4px 4px 0 0;"></div>
+            <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.3rem;">Q2-25</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--lcg-accent); margin-bottom: 0.2rem;">21</div>
+            <div style="width: 100%; height: 91.3%; background: var(--lcg-accent); border-radius: 4px 4px 0 0;"></div>
+            <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.3rem;">Q3-25</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--lcg-navy); margin-bottom: 0.2rem;">18</div>
+            <div style="width: 100%; height: 78.3%; background: var(--lcg-navy); border-radius: 4px 4px 0 0;"></div>
+            <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.3rem;">Q4-25</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--gray-400); margin-bottom: 0.2rem;">1</div>
+            <div style="width: 100%; height: 4.3%; background: var(--gray-300); border-radius: 4px 4px 0 0; min-height: 4px;"></div>
+            <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.3rem;">Q1-26</div>
+          </div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--gray-400); text-align: center; margin-top: 0.5rem;">Q2-25 fue el trimestre con mas fondeos (23). Ritmo estable de 17-23 fondeos/trimestre en 2025.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Fondeos por LOB</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">Equipment</div>
+            <div class="bar-track"><div class="bar-fill navy" style="width: 100%;">68</div></div>
+            <div class="bar-value">85.0%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Fleet</div>
+            <div class="bar-track"><div class="bar-fill green" style="width: 16.2%;">11</div></div>
+            <div class="bar-value">13.8%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Technology</div>
+            <div class="bar-track"><div class="bar-fill amber" style="width: 1.5%;">1</div></div>
+            <div class="bar-value">1.3%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Factoring</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 0%; background: var(--red-light); min-width: 2px;">0</div></div>
+            <div class="bar-value">0%</div>
+          </div>
+        </div>
+        <div class="callout amber" style="margin-top: 0.75rem;">
+          <strong>Factoring sin fondeos:</strong> A pesar de 504 oportunidades en pipeline, ninguna ha llegado a fondeo. Esto requiere investigacion inmediata sobre las causas de abandono.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUARTERLY TREND -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2 class="section-title">Tendencia Trimestral del Pipeline</h2>
+      <span class="section-desc">Oportunidades por Fiscal Period (Q1-2025 a Q4-2026)</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Volumen de oportunidades por trimestre fiscal</div>
+      <div style="display: flex; align-items: flex-end; gap: 1rem; height: 240px; padding: 1rem 0;">
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--lcg-navy); margin-bottom: 0.3rem;">282</div>
+          <div style="width: 100%; height: 29.3%; background: linear-gradient(180deg, var(--lcg-accent), var(--lcg-navy)); border-radius: 6px 6px 0 0;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q1-25</div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--lcg-navy); margin-bottom: 0.3rem;">659</div>
+          <div style="width: 100%; height: 68.4%; background: linear-gradient(180deg, var(--lcg-accent), var(--lcg-navy)); border-radius: 6px 6px 0 0;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q2-25</div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--lcg-navy); margin-bottom: 0.3rem;">712</div>
+          <div style="width: 100%; height: 73.9%; background: linear-gradient(180deg, var(--lcg-accent), var(--lcg-navy)); border-radius: 6px 6px 0 0;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q3-25</div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--engen-green); margin-bottom: 0.3rem;">963</div>
+          <div style="width: 100%; height: 100%; background: linear-gradient(180deg, var(--engen-green), var(--engen-dark)); border-radius: 6px 6px 0 0;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q4-25</div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--lcg-navy); margin-bottom: 0.3rem;">710</div>
+          <div style="width: 100%; height: 73.7%; background: linear-gradient(180deg, var(--lcg-accent), var(--lcg-navy)); border-radius: 6px 6px 0 0;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q1-26</div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--gray-400); margin-bottom: 0.3rem;">289</div>
+          <div style="width: 100%; height: 30%; background: linear-gradient(180deg, var(--gray-300), var(--gray-400)); border-radius: 6px 6px 0 0;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q2-26</div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--gray-400); margin-bottom: 0.3rem;">16</div>
+          <div style="width: 100%; height: 1.7%; background: linear-gradient(180deg, var(--gray-300), var(--gray-400)); border-radius: 6px 6px 0 0; min-height: 4px;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q3-26</div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--gray-400); margin-bottom: 0.3rem;">33</div>
+          <div style="width: 100%; height: 3.4%; background: linear-gradient(180deg, var(--gray-300), var(--gray-400)); border-radius: 6px 6px 0 0; min-height: 4px;"></div>
+          <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center;">Q4-26</div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 1rem;">
+        <div class="callout green">
+          <strong>Pico en Q4-2025:</strong> El trimestre con mayor actividad fue Q4-2025 con 963 oportunidades (26.3% del total), seguido por Q3-2025 (712) y Q1-2026 (710).
+        </div>
+        <div class="callout blue">
+          <strong>Tendencia creciente:</strong> El pipeline muestra crecimiento sostenido desde Q1-2025 (282) hasta Q4-2025 (963), un incremento de 3.4x en volumen trimestral.
+        </div>
+        <div class="callout amber">
+          <strong>Q2-2026 parcial:</strong> Los trimestres Q2-Q4 2026 muestran datos parciales ya que son periodos futuros con oportunidades en etapas tempranas de planificacion.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY INSIGHTS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">11</div>
+      <h2 class="section-title">Hallazgos y Oportunidades de Mejora</h2>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="border-left: 4px solid var(--red);">
+        <div class="card-title" style="color: var(--red);">Puntos de Friccion</div>
+        <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: var(--gray-600);">
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>58% de oportunidades nunca llegan a Proposal.</strong> El mayor cuello de botella esta en la calificacion/nutricion inicial del lead.</li>
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Backlog&rarr;Funded: solo 16.3% de conversion.</strong> Las oportunidades que ya pasaron por credito y estan en backlog aun se pierden en fondeo.</li>
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Mediana de ciclo total: 75 dias.</strong> La etapa Backlog&rarr;Funded (28 dias mediana) es la que mas tiempo consume del proceso post-aprobacion.</li>
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Lead Disqualified: 585 oportunidades (15.9%).</strong> Una alta tasa de descalificacion sugiere oportunidades de mejora en la calificacion upfront del pipeline.</li>
+          <li style="padding: 0.5rem 0;"><strong>Factoring sin fondeos (0/504).</strong> El producto digital Engen Factoraje genera pipeline pero 0% llega a fondeo. Brecha critica entre generacion de demanda y cierre operativo.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-left: 4px solid var(--engen-green);">
+        <div class="card-title" style="color: var(--engen-green);">Oportunidades de Mejora</div>
+        <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: var(--gray-600);">
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Optimizar calificacion de leads:</strong> Mejor ICP y paramétrico podria reducir el 58% de perdida pre-Proposal.</li>
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Reducir tiempo Backlog&rarr;Funded:</strong> Automatizar documentacion y desembolso para bajar de 28 dias mediana.</li>
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Pipeline activo de 701 oportunidades:</strong> Foco en conversion de las que ya estan en etapas intermedias para incremento rapido de fondeo.</li>
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Factoring: 0% tasa de fondeo.</strong> A pesar de 504 oportunidades (13.7% del pipeline), ninguna ha llegado a fondeo. Requiere diagnostico urgente del proceso de conversion.</li>
+          <li style="padding: 0.5rem 0;"><strong>Crecimiento 3.4x en pipeline:</strong> Q1 a Q4 2025 muestra aceleracion sostenida (282&rarr;963 oportunidades). La capacidad de fondeo (~20/trimestre) debe escalar proporcionalmente.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div style="text-align: center; padding: 2rem 0; color: var(--gray-400); font-size: 0.75rem; border-top: 1px solid var(--gray-200); margin-top: 2rem;">
+    <div style="margin-bottom: 0.5rem;">Dashboard de Funnel de Oportunidades | Engen Capital</div>
+    <div>Confidencial &mdash; London Consulting Group | Marzo 2026</div>
+    <div style="margin-top: 0.5rem;">Fuente: Oportunidades 2025-2026.csv | 3,670 registros procesados | TC: USD 1 = MXN 17.50</div>
+  </div>
+
+</div>
+
+</body>
+</html>
