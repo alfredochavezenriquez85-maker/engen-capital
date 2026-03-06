@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista Alejandro &Aacute;lvarez: Inteligencia Comercial y Generaci&oacute;n de Demanda &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #1A3A6B 60%, #2E6DB4 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== TIMELINE ======================== */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            margin: 16px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--lcg-accent);
+            border: 2px solid white;
+        }
+
+        .timeline-item.red::before { background: var(--danger); }
+        .timeline-item.green::before { background: var(--engen-green); }
+        .timeline-item.amber::before { background: var(--warning); }
+
+        .timeline-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+        }
+
+        .timeline-text {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">Diagn&oacute;stico de Campo</div>
+                <h1 class="cover-title">Entrevista Alejandro &Aacute;lvarez</h1>
+                <p class="cover-subtitle">Director de Marketing &mdash; Inteligencia Comercial y Generaci&oacute;n de Demanda</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Alejandro &Aacute;lvarez, Director de Marketing</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">5 de marzo de 2026 &mdash; Presencial</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza los hallazgos de la entrevista con <strong>Alejandro &Aacute;lvarez, Director de Marketing de Engen Capital</strong>, realizada el 5 de marzo de 2026 (presencial). La conversaci&oacute;n cubri&oacute; tres ejes fundamentales: el dimensionamiento del mercado LMM y la base de datos de inteligencia comercial, los estudios de competencia (mystery shopping), y la m&aacute;quina de generaci&oacute;n de demanda. Alejandro aporta la perspectiva del &aacute;rea que alimenta al equipo comercial con inteligencia, leads y herramientas &mdash; y revela una brecha masiva entre el universo de mercado identificado y la penetraci&oacute;n real.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value amber">380</div><div class="kpi-label">Cuentas activas LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value red">18K-38K</div><div class="kpi-label">Empresas target identificadas</div></div>
+                <div class="kpi-item"><div class="kpi-value green">22%</div><div class="kpi-label">Clientes nuevos v&iacute;a marketing</div></div>
+                <div class="kpi-item"><div class="kpi-value green">40-50%</div><div class="kpi-label">Conversi&oacute;n citas MKT a oportunidad</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">Brecha universo vs. penetraci&oacute;n</div>
+                    <div class="exec-card-desc">Marketing identific&oacute; 18,000-38,000 empresas relevantes para LMM. Engen tiene ~380 cuentas activas. Menos del 2% de penetraci&oacute;n sobre el universo identificado.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Fortaleza validada</div>
+                    <div class="exec-card-value">M&aacute;quina de demanda funcional</div>
+                    <div class="exec-card-desc">Marketing contribuye 22% de clientes nuevos (tendencia: 13% &rarr; 19% &rarr; 22%). Leads de MKT convierten 40-50% vs. 30-35% de esfuerzo directo de ventas. Tiempo de respuesta &lt;1 hora.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo relevante</div>
+                    <div class="exec-card-value">Crisis de managers comerciales</div>
+                    <div class="exec-card-desc">Engen perdi&oacute; muchos managers recientemente. Los nuevos no tienen experiencia. &ldquo;El ciego ense&ntilde;&aacute;ndole al ciego.&rdquo; Los que quedan se enfocan en cerrar, no en desarrollar al equipo.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Hallazgo competitivo</div>
+                    <div class="exec-card-value">Competitivos en proceso, no en precio</div>
+                    <div class="exec-card-desc">Mystery shopping muestra que Engen est&aacute; en l&iacute;nea con el mercado en requisitos y tiempos. Las brechas principales son en condiciones financieras (pago inicial, tasa visible), no en checklist documental.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central de la entrevista</div>
+                <p>Marketing ha construido una base de inteligencia comercial de 60,000-70,000 empresas y una m&aacute;quina de generaci&oacute;n de demanda que funciona. Pero la brecha entre el universo identificado (18,000-38,000 empresas target) y la penetraci&oacute;n real (~380 cuentas activas) revela que <strong>el cuello de botella no est&aacute; en la inteligencia ni en la generaci&oacute;n de demanda &mdash; est&aacute; en la capacidad de captura comercial</strong>. Si hoy Engen tiene el 7-8% del mercado, la oportunidad m&aacute;s importante est&aacute; en la atracci&oacute;n y conversi&oacute;n, no en redise&ntilde;ar el proceso interno.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: DIMENSIONAMIENTO DEL MERCADO                      -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02 &mdash; Hallazgo 1</div>
+                <div class="section-title">Dimensionamiento del Mercado e Inteligencia Competitiva</div>
+            </div>
+
+            <p>Alejandro &Aacute;lvarez lidera un &aacute;rea de Marketing donde <strong>m&aacute;s del 40% del equipo est&aacute; dedicado a investigaci&oacute;n de mercado e inteligencia de negocios</strong>. En 2020, plante&oacute; una estrategia para construir la &ldquo;base de datos m&aacute;s poderosa de la industria&rdquo;, pasando de 7,000 cuentas en el CRM a las 70,000 actuales.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">No existe un market sizing formal del segmento LMM</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Engen no cuenta con un dimensionamiento formal del mercado LMM espec&iacute;fico para arrendamiento de maquinaria y equipo. La informaci&oacute;n p&uacute;blica (INEGI, ANISOFAC) tiene limitaciones de desagregaci&oacute;n y actualizaci&oacute;n. ANISOFAC dej&oacute; de publicar datos detallados por miembros. El indicador que siguen es la <strong>formaci&oacute;n fija de capital privada</strong>, pero sin poder aterrizarlo al nivel de detalle que requiere su segmento.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista directa + datos ANISOFAC hist&oacute;ricos mostrados durante la sesi&oacute;n</div>
+            </div>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Base de inteligencia propia: de 7,000 a 70,000 empresas</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    Ante la falta de fuentes externas confiables, Marketing construy&oacute; una base propia comprando m&uacute;ltiples fuentes de datos y complement&aacute;ndolas con el esfuerzo comercial. Hoy tienen <strong>~70,000 empresas identificadas</strong>, clasificadas por industria, tama&ntilde;o, ubicaci&oacute;n, decision maker. Recientemente compraron licencias de <strong>S&amp;P y Fernando</strong> para rastrear proyectos de inversi&oacute;n activos en empresas espec&iacute;ficas.
+                </div>
+                <div class="finding-evidence">Evidencia: Dato directo de Alejandro &Aacute;lvarez + herramientas mencionadas en entrevista</div>
+            </div>
+
+            <h3>El universo de mercado seg&uacute;n Marketing</h3>
+
+            <table>
+                <thead><tr><th>Variable</th><th>Dato</th><th>Fuente / Nota</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Empresas en base de datos</td><td>~70,000</td><td>Construida desde 2020 (de 7,000 a 70,000)</td></tr>
+                    <tr><td class="table-highlight">Universo inicial (60K-70K)</td><td>60,000-70,000</td><td>Coincide con an&aacute;lisis propio LCG (~60,000)</td></tr>
+                    <tr><td class="table-highlight">Filtrado para LMM</td><td>18,000-38,000</td><td>Seg&uacute;n industrias afines y tama&ntilde;o</td></tr>
+                    <tr><td class="table-highlight">Cuentas activas LMM</td><td>~380</td><td>Contratos activos + hist&oacute;ricos recientes</td></tr>
+                    <tr><td class="table-highlight">Market share estimado</td><td>7-10%</td><td>ANISOFAC hist&oacute;rico; CEO confirma ~7%</td></tr>
+                    <tr><td class="table-highlight">Cartera total Engen</td><td>~$15,000M</td><td>De los cuales ~$3,000M+ son LMM</td></tr>
+                    <tr><td class="table-highlight">Segmento LMM</td><td>$50M-$500M ventas</td><td>Empez&oacute; en $350M, luego baj&oacute; a $50M</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Hay entre 18,000 y 38,000 empresas por las que podemos ir, pero volte&eacute; a ver cu&aacute;ntas tenemos y son 380.</div>
+                <div class="verbatim-source">&mdash; Alfredo Ch&aacute;vez (LCG), conclusi&oacute;n compartida con Alejandro &Aacute;lvarez durante la entrevista</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Convergencia con an&aacute;lisis LCG</div>
+                <p>El an&aacute;lisis propio de LCG identific&oacute; ~60,000 empresas en el universo amplio, coincidiendo con el rango de Marketing. La conclusi&oacute;n es la misma desde ambas perspectivas: <strong>el mercado es m&aacute;s que suficiente</strong>. La pregunta no es si hay mercado, sino por qu&eacute; de 18,000-38,000 empresas target, Engen solo tiene ~380 como clientes activos. La brecha de penetraci&oacute;n es el hallazgo central.</p>
+            </div>
+
+            <h3>La filosof&iacute;a de Alejandro sobre market sizing</h3>
+
+            <p>Alejandro tiene una posici&oacute;n pragm&aacute;tica sobre los grandes n&uacute;meros de mercado: le importan poco los miles de millones de pesos en abstracci&oacute;n. Lo que le interesa es <strong>llevar la inteligencia a la &ldquo;econom&iacute;a real&rdquo;</strong> &mdash; que el vendedor tenga el nombre de la empresa, sepa que est&aacute; invirtiendo, tenga el contacto y pueda llamar. Su equipo invierte en hacer cada vez m&aacute;s precisa esa informaci&oacute;n a nivel de cuenta individual.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si quiero hacer un proyecto con ustedes, quiero ver si hay potencial, porque si no vale... pero si hoy tuviera el 7-8% del mercado, la oportunidad m&aacute;s importante est&aacute; en la atracci&oacute;n.</div>
+                <div class="verbatim-source">&mdash; Alejandro &Aacute;lvarez, Dir. Marketing, sobre d&oacute;nde est&aacute; la verdadera oportunidad</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: MAQUINA DE GENERACION DE DEMANDA                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03 &mdash; Hallazgo 2</div>
+                <div class="section-title">M&aacute;quina de Generaci&oacute;n de Demanda</div>
+            </div>
+
+            <p>El mandato principal de Marketing en Engen es la <strong>generaci&oacute;n de demanda</strong>. El &aacute;rea opera una m&aacute;quina completa: desde la pauta digital hasta la entrega de citas calificadas de negocio al equipo de originadores. Alejandro fue enf&aacute;tico: &ldquo;nosotros no cerramos, no cotizamos &mdash; acercamos el pez, t&uacute; ya lo pescas.&rdquo;</p>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">22% de clientes nuevos provienen de Marketing</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    Marketing contribuye el <strong>22% de los clientes nuevos</strong> de Engen, con una tendencia creciente (13% &rarr; 19% &rarr; 22% en los &uacute;ltimos a&ntilde;os). En volumen de negocio, aporta <strong>~$620M MXN</strong>, que representa aproximadamente el 10% del volumen total. La meta estrat&eacute;gica: <strong>contribuir 30% de forma consistente</strong>.
+                </div>
+                <div class="finding-evidence">Evidencia: Datos compartidos por Alejandro &Aacute;lvarez durante la entrevista + slides mostrados</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">22% de los clientes nuevos vienen de marketing. Y ha venido subiendo.</div>
+                <div class="verbatim-source">&mdash; Alejandro &Aacute;lvarez, Dir. Marketing</div>
+            </div>
+
+            <h3>Canales de generaci&oacute;n de demanda</h3>
+
+            <table>
+                <thead><tr><th>Canal</th><th>Descripci&oacute;n</th><th>Efectividad</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Pauta digital (Google + Instagram)</td><td>Publicidad pagada con formularios de captura de datos</td><td style="color: var(--engen-green); font-weight: 700;">Alta &mdash; respuesta &lt;1 hora</td></tr>
+                    <tr><td class="table-highlight">Cold calling (telemarketing)</td><td>Equipo SDR/BDR que califica y agenda citas desde la base de datos</td><td style="color: var(--engen-green); font-weight: 700;">Alta &mdash; motor principal</td></tr>
+                    <tr><td class="table-highlight">Campa&ntilde;as de email</td><td>Secuencias automatizadas sobre base de contactos</td><td style="color: var(--engen-green); font-weight: 700;">Muy alta &mdash; &ldquo;much&iacute;simo&rdquo;</td></tr>
+                    <tr><td class="table-highlight">Programas de alianzas (vendor finance)</td><td>Asociaciones con fabricantes de maquinaria/equipo</td><td style="color: var(--warning); font-weight: 700;">Media &mdash; tercer canal</td></tr>
+                    <tr><td class="table-highlight">Eventos / desayunos</td><td>Eventos presenciales con prospectos</td><td style="color: var(--warning); font-weight: 700;">Media &mdash; reconocimiento</td></tr>
+                    <tr><td class="table-highlight">Casos de &eacute;xito / webinars / blogs</td><td>Contenido para generar inter&eacute;s y calentar el pipeline</td><td style="color: var(--warning); font-weight: 700;">Media &mdash; nurturing</td></tr>
+                </tbody>
+            </table>
+
+            <h3>El embudo de Marketing a Ventas</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Paso 1</div>
+                    <div class="process-step-title">Atracci&oacute;n</div>
+                    <div class="process-step-detail">Pauta, email, alianzas, eventos</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">Paso 2</div>
+                    <div class="process-step-title">Calificaci&oacute;n</div>
+                    <div class="process-step-detail">SDR verifica perfil, tama&ntilde;o, oportunidad</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">Paso 3</div>
+                    <div class="process-step-title">Cita calificada</div>
+                    <div class="process-step-detail">Entrega al originador</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">Paso 4</div>
+                    <div class="process-step-title">Oportunidad</div>
+                    <div class="process-step-detail">40-50% conversi&oacute;n</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 5</div>
+                    <div class="process-step-title">Cierre</div>
+                    <div class="process-step-detail">Depende del originador</div>
+                </div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Conversi&oacute;n leads de MKT</div>
+                    <div class="exec-card-value">40-50%</div>
+                    <div class="exec-card-desc">De cada cita que Marketing pone, 40-50% se convierte en oportunidad de negocio identificada por el vendedor.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Conversi&oacute;n esfuerzo directo</div>
+                    <div class="exec-card-value">30-35%</div>
+                    <div class="exec-card-desc">Cuando el vendedor genera la oportunidad por s&iacute; mismo, la conversi&oacute;n es menor. Los leads de MKT son m&aacute;s calientes.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">De cada cita que marketing pone, un 40-50% se convierte en oportunidad de negocio.</div>
+                <div class="verbatim-source">&mdash; Alejandro &Aacute;lvarez, Dir. Marketing</div>
+            </div>
+
+            <h3>Tiempo de respuesta: un diferenciador real</h3>
+
+            <p>Alejandro demostr&oacute; en vivo la velocidad de respuesta: dej&oacute; sus datos en Instagram la noche anterior a la entrevista. A las 8:30 de la ma&ntilde;ana siguiente, <strong>ya le estaban llamando</strong>. El est&aacute;ndar interno es responder en <strong>menos de 1 hora</strong> a cualquier lead inbound.</p>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Fortaleza cr&iacute;tica para la propuesta</div>
+                <p>La m&aacute;quina de generaci&oacute;n de demanda de Marketing es <strong>un activo que funciona</strong>. No requiere construirse &mdash; requiere <strong>escalarse</strong>. La contribuci&oacute;n del 22% al 30% es alcanzable si el equipo comercial puede absorber y convertir m&aacute;s leads. Esto refuerza que la intervenci&oacute;n prioritaria est&aacute; en la <strong>capacidad de captura comercial</strong>, no en la generaci&oacute;n de demanda.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: PRODUCTIVIDAD POR TENURE Y CRISIS DE MANAGERS    -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04 &mdash; Hallazgo 3</div>
+                <div class="section-title">Productividad por Tenure y Crisis de Managers</div>
+            </div>
+
+            <p>Alejandro comparti&oacute; datos de productividad por antig&uuml;edad de los originadores que revelan una curva clara de madurez &mdash; y una ausencia cr&iacute;tica de talento &ldquo;born and raised&rdquo; en el segmento LMM.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Curva de productividad por tenure: 4 a&ntilde;os para madurar</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Marketing estudia la productividad de originadores por cohorte de antig&uuml;edad. Los datos muestran una curva predecible: un originador nuevo produce <strong>~$12M/a&ntilde;o</strong>, se estanca en a&ntilde;os 2-3, y solo despu&eacute;s de <strong>4 a&ntilde;os</strong> empieza a generar vol&uacute;menes significativos (<strong>$28M, $45M+</strong>). El reto: <strong>no existe un solo originador &ldquo;born and raised&rdquo; en LMM</strong> &mdash; todos son transferencias de Core.
+                </div>
+                <div class="finding-evidence">Evidencia: Reporte de productividad por tenure mostrado durante la entrevista (muestra de 92 vendedores Core, ~50 LMM)</div>
+            </div>
+
+            <h3>Curva de productividad promedio</h3>
+
+            <table>
+                <thead><tr><th>Tenure</th><th>Producci&oacute;n anual</th><th>Caracter&iacute;sticas</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">New (&lt;12 meses)</td><td>~$12M</td><td>Ramp-up. Posiciones abiertas promedian ~6 meses. Baja productividad.</td></tr>
+                    <tr><td class="table-highlight">12-24 meses</td><td>$12-18M</td><td>Estancamiento. Curva plana mientras aprende el negocio.</td></tr>
+                    <tr><td class="table-highlight">Mid tenure (24-48 meses)</td><td>$18-28M</td><td>Empieza a consolidar cartera y relaciones.</td></tr>
+                    <tr><td class="table-highlight">High tenure (&gt;48 meses)</td><td>$28M-$45M+</td><td>Cartera consolidada. Nivel de expertise que &ldquo;se monetiza.&rdquo;</td></tr>
+                </tbody>
+            </table>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El secreto est&aacute; en el nivel de expertise... tengo vendedores de Core, los pas&eacute; a LMM y hacen vol&uacute;menes as&iacute;.</div>
+                <div class="verbatim-source">&mdash; Alejandro &Aacute;lvarez, Dir. Marketing, sobre la relaci&oacute;n entre experiencia y productividad</div>
+            </div>
+
+            <h3>Crisis de managers: el ciego ense&ntilde;&aacute;ndole al ciego</h3>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">P&eacute;rdida de managers y ruptura de la cadena de desarrollo</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    Engen <strong>perdi&oacute; muchos managers recientemente</strong>, lo cual represent&oacute; la p&eacute;rdida del &ldquo;secreto del equipo comercial.&rdquo; Los managers actuales son nuevos y sin experiencia suficiente. Los que quedan se enfocan en la <strong>operaci&oacute;n y en cerrar negocios</strong>, descuidando el desarrollo de los originadores nuevos que m&aacute;s lo necesitan. Roberto (Dir. Comercial LMM) est&aacute; <strong>visiblemente nervioso y presionado</strong>.
+                </div>
+                <div class="finding-evidence">Evidencia: Percepci&oacute;n directa de Alejandro + observaci&oacute;n del entrevistador durante la sesi&oacute;n</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Perdimos muchos managers. Es el ciego ense&ntilde;&aacute;ndole al ciego.</div>
+                <div class="verbatim-source">&mdash; Alejandro &Aacute;lvarez, Dir. Marketing</div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tensi&oacute;n detectada</div>
+                    <div class="exec-card-value">No se puede presionar</div>
+                    <div class="exec-card-desc">Roberto reconoce que no puede ser muy exigente con los nuevos originadores porque podr&iacute;a &ldquo;tronarlos&rdquo; &mdash; los pocos que acaban de entrar se ir&iacute;an. Dilema entre exigencia y retenci&oacute;n.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Managers se enfocan mal</div>
+                    <div class="exec-card-value">Cierran en vez de desarrollar</div>
+                    <div class="exec-card-desc">Los managers se dedican a cerrar operaciones con vendedores productivos, descuidando el acompa&ntilde;amiento a los nuevos que necesitan identificar oportunidades.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Convergencia cr&iacute;tica con entrevista CEO</div>
+                <p>Este hallazgo confirma desde una tercera perspectiva lo que Juan Pablo Loperena (CEO) ya diagnostic&oacute;: la <strong>capa gerencial no est&aacute; cumpliendo su funci&oacute;n de desarrollo</strong>. El CEO lo ve como un problema de dise&ntilde;o; Alejandro lo ve como resultado de la rotaci&oacute;n. Ambos convergen: sin managers efectivos, la curva de productividad de 4 a&ntilde;os no se acelera y el equipo LMM no madura. Esto refuerza la oportunidad de intervenci&oacute;n en <strong>governance y modelo de gesti&oacute;n comercial</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: POSICIONAMIENTO COMPETITIVO (MYSTERY SHOPPING)    -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05 &mdash; Hallazgo 4</div>
+                <div class="section-title">Posicionamiento Competitivo (Mystery Shopping)</div>
+            </div>
+
+            <p>Marketing ejecuta estudios de <strong>mystery shopping peri&oacute;dicos</strong> con una empresa profesional externa. La metodolog&iacute;a consiste en crear empresas reales como &ldquo;panel&rdquo;, enviar RFQs a competidores y evaluar todo el proceso: desde el primer contacto hasta la aprobaci&oacute;n (o declinaci&oacute;n). Los estudios se han realizado en <strong>2021, 2023, 2025 y actualmente el de 2026 est&aacute; en proceso</strong>.</p>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">Engen est&aacute; en l&iacute;nea con el mercado en requisitos y proceso</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Contra la percepci&oacute;n interna de que &ldquo;pedimos muchos requisitos y somos muy lentos&rdquo;, el mystery shopping muestra que <strong>Engen est&aacute; dentro del rango competitivo</strong> en documentaci&oacute;n solicitada, tiempos de proceso y nivel de atenci&oacute;n. Hay competidores m&aacute;s r&aacute;pidos y otros m&aacute;s lentos, pero no existe ning&uacute;n jugador que &ldquo;lo haga en la tercera parte del tiempo con la tercera parte de requisitos.&rdquo;
+                </div>
+                <div class="finding-evidence">Evidencia: Estudio mystery shopping 2023-2025 mostrado durante la entrevista + estudio 2026 en curso</div>
+            </div>
+
+            <h3>Hallazgo clave: tiempo te&oacute;rico vs. tiempo real</h3>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Brecha masiva entre promesas y realidad de aprobaci&oacute;n</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Los competidores prometen tiempos de aprobaci&oacute;n de <strong>5 d&iacute;as</strong>, pero la realidad medida fue de <strong>32 d&iacute;as</strong>. Este gap entre lo te&oacute;rico y lo real es generalizado en la industria. Cuando se compara Engen con otros, los tiempos no difieren dr&aacute;sticamente &mdash; todos tardan m&aacute;s de lo que dicen. Esto sugiere que <strong>la ineficiencia es estructural de la industria</strong>, no exclusiva de Engen.
+                </div>
+                <div class="finding-evidence">Evidencia: Datos del estudio mystery shopping 2023 + comparativo mostrado</div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiempo te&oacute;rico (promesa)</div>
+                    <div class="exec-card-value">5 d&iacute;as</div>
+                    <div class="exec-card-desc">Lo que los competidores declaran como tiempo de aprobaci&oacute;n en el mystery shopping.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tiempo real (medido)</div>
+                    <div class="exec-card-value">32 d&iacute;as</div>
+                    <div class="exec-card-desc">Lo que realmente tard&oacute; la aprobaci&oacute;n completa en el estudio. M&aacute;s de 6x la promesa.</div>
+                </div>
+            </div>
+
+            <h3>Qu&eacute; eval&uacute;a el mystery shopping</h3>
+
+            <table>
+                <thead><tr><th>Dimensi&oacute;n</th><th>Qu&eacute; mide</th><th>Posici&oacute;n Engen</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Documentaci&oacute;n requerida</td><td>Cantidad de documentos, adicionales post-solicitud</td><td style="color: var(--engen-green); font-weight: 700;">En l&iacute;nea con mercado</td></tr>
+                    <tr><td class="table-highlight">Tiempos de preaprobaci&oacute;n</td><td>D&iacute;as te&oacute;ricos vs. reales</td><td style="color: var(--warning); font-weight: 700;">Competitivo (todos tardan m&aacute;s)</td></tr>
+                    <tr><td class="table-highlight">Nivel de atenci&oacute;n</td><td>34 criterios: seguimiento, conocimiento, proactividad</td><td style="color: var(--engen-green); font-weight: 700;">Mejorando (tendencia positiva)</td></tr>
+                    <tr><td class="table-highlight">Condiciones financieras</td><td>Tasa, pago inicial, comisi&oacute;n apertura, plazo</td><td style="color: var(--danger); font-weight: 700;">Brecha &mdash; precios m&aacute;s altos</td></tr>
+                    <tr><td class="table-highlight">Flexibilidad / negociaci&oacute;n</td><td>Mejora entre propuesta inicial y final</td><td style="color: var(--warning); font-weight: 700;">Algunos competidores mejoran m&aacute;s</td></tr>
+                    <tr><td class="table-highlight">Herramientas digitales</td><td>Portal, app, proceso digital</td><td style="color: var(--warning); font-weight: 700;">Mixto</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Competidores evaluados</h3>
+
+            <p>Los estudios incluyen a: <strong>Afirme, Bancoppel, Banregio, Banco del Baj&iacute;o, BBVA, Santander</strong> y diversas arrendadoras independientes. Se eval&uacute;an activos nuevos y usados, m&uacute;ltiples clases (transporte, tecnolog&iacute;a, maquinaria industrial). El estudio 2026 actualmente est&aacute; en la fase de propuesta comercial y documentaci&oacute;n &mdash; a&uacute;n no llega a la fase de aprobaci&oacute;n.</p>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Implicaci&oacute;n para la propuesta LCG</div>
+                <p>El mystery shopping desmonta la narrativa interna de que &ldquo;somos los m&aacute;s lentos y burocr&aacute;ticos.&rdquo; <strong>Engen no es significativamente peor que la competencia en proceso</strong> &mdash; la brecha real est&aacute; en <strong>condiciones financieras</strong> (costo de fondeo m&aacute;s alto) y en <strong>la percepci&oacute;n vs. realidad del producto</strong>. Esto refuerza que la intervenci&oacute;n de mayor impacto no es simplificar el proceso (que ya es competitivo), sino mejorar la <strong>propuesta de valor y la ejecuci&oacute;n comercial</strong> para justificar el premium de precio.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: ENABLEMENT DE ORIGINADORES                       -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06 &mdash; Hallazgo 5</div>
+                <div class="section-title">Enablement de Originadores y Gesti&oacute;n de Cuentas</div>
+            </div>
+
+            <p>Adem&aacute;s de generar demanda, Marketing cumple un rol de <strong>habilitaci&oacute;n del equipo comercial</strong>: provee inteligencia de cuentas, datos de importaci&oacute;n, proyectos de inversi&oacute;n, revisiones de territorio y capacitaci&oacute;n.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">100-120 cuentas asignadas por originador (reducidas de &ldquo;latifundios&rdquo; de 1,500)</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Cada originador tiene entre <strong>100 y 120 cuentas asignadas</strong>. Anteriormente ten&iacute;an &ldquo;latifundios&rdquo; de hasta 1,500 cuentas que nadie pod&iacute;a atender. Se redujo para forzar rotaci&oacute;n: si un originador no trabaja una cuenta, se libera y pasa a otro. Marketing provee <strong>datos de importaci&oacute;n, inteligencia de inversiones y revisiones de territorio trimestrales</strong> para guiar el enfoque.
+                </div>
+                <div class="finding-evidence">Evidencia: Entrevista directa + reportes de asignaci&oacute;n mencionados</div>
+            </div>
+
+            <h3>Herramientas de enablement que provee Marketing</h3>
+
+            <table>
+                <thead><tr><th>Herramienta</th><th>Descripci&oacute;n</th><th>Frecuencia</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Datos de importaci&oacute;n</td><td>Empresas de la cartera con importaciones recientes de maquinaria</td><td>Continua</td></tr>
+                    <tr><td class="table-highlight">S&amp;P / Fernando</td><td>Proyectos de inversi&oacute;n activos en empresas espec&iacute;ficas</td><td>Reciente adquisici&oacute;n</td></tr>
+                    <tr><td class="table-highlight">Revisiones de territorio</td><td>An&aacute;lisis de cartera asignada vs. foco estrat&eacute;gico</td><td>Trimestral</td></tr>
+                    <tr><td class="table-highlight">Escuela de Ventas</td><td>Programa completo de capacitaci&oacute;n comercial</td><td>Continua</td></tr>
+                    <tr><td class="table-highlight">LinkedIn Sales Navigator</td><td>Herramienta de prospecci&oacute;n digital (integrada con base interna)</td><td>Continua</td></tr>
+                </tbody>
+            </table>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">La ejecuci&oacute;n depende de los managers &mdash; y los managers fallan</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    Marketing entrega la inteligencia y las herramientas, pero la ejecuci&oacute;n del plan de cuentas depende del <strong>manager directo</strong>. Y aqu&iacute; converge con el hallazgo anterior: los managers <strong>se enfocan en cerrar</strong>, no en asegurar que los originadores trabajen las cuentas correctas. El reporte de alineaci&oacute;n de cartera se acaba de implementar, pero a&uacute;n no se ve reflejado en la ejecuci&oacute;n diaria.
+                </div>
+                <div class="finding-evidence">Evidencia: Observaci&oacute;n de Alejandro sobre desconexión entre informaci&oacute;n entregada y plan de trabajo del originador</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>La infraestructura de enablement existe: base de datos, herramientas de inversi&oacute;n, capacitaci&oacute;n, revisiones de territorio. El gap est&aacute; en la <strong>&uacute;ltima milla de ejecuci&oacute;n</strong>: los originadores no siempre trabajan las cuentas que Marketing identifica como prioritarias, los planes de trabajo se cargan tarde (o vac&iacute;os), y la supervisi&oacute;n del manager se diluye. Es un problema de <strong>governance y cadencia de gesti&oacute;n</strong>, no de falta de informaci&oacute;n.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: OPORTUNIDADES DE INTERVENCION                     -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07</div>
+                <div class="section-title">Oportunidades de Intervenci&oacute;n</div>
+            </div>
+
+            <p>A partir de la perspectiva de Marketing, se confirman y refinan <strong>cuatro oportunidades de intervenci&oacute;n</strong> que conectan con los hallazgos del CEO y del Director Comercial LMM.</p>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Escalamiento de la M&aacute;quina de Atracci&oacute;n Comercial</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">De 18,000-38,000 empresas target, solo 380 son clientes activos. Marketing contribuye el 22% de clientes nuevos pero el potencial de penetraci&oacute;n es enorme. La m&aacute;quina funciona pero opera por debajo de su capacidad.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Optimizaci&oacute;n del funnel MKT-Ventas: del 22% al 30% de contribuci&oacute;n consistente</li>
+                        <li>Alineaci&oacute;n entre inteligencia de Marketing y plan de trabajo del originador</li>
+                        <li>Protocolo de seguimiento de cuentas target con governance semanal</li>
+                        <li>Modelo de scoring de cuentas para priorizar las 18K-38K empresas</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">380</div><div class="opp-impact-label">Cuentas activas hoy</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">18K-38K</div><div class="opp-impact-label">Empresas target</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Banregio</div><div class="opp-impact-label">Caso referencia LCG</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Modelo de Gesti&oacute;n de Managers y Desarrollo de Originadores</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">P&eacute;rdida de managers clave, reemplazos sin experiencia, foco en operaci&oacute;n/cierre en vez de desarrollo. Originadores LMM son transferencias de Core sin formaci&oacute;n nativa en el segmento. Curva de 4 a&ntilde;os para madurar.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Redefinici&oacute;n del rol de manager: de closer a coach/desarrollador</li>
+                        <li>Programa de aceleraci&oacute;n de ramp-up para originadores LMM (reducir curva de 4 a 2 a&ntilde;os)</li>
+                        <li>Cadencia de account planning con informaci&oacute;n de Marketing integrada</li>
+                        <li>M&eacute;tricas de gesti&oacute;n del manager (no solo cuota del equipo)</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">$12M</div><div class="opp-impact-label">Producci&oacute;n a&ntilde;o 1 (hoy)</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">$45M+</div><div class="opp-impact-label">Producci&oacute;n high tenure</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">HDI</div><div class="opp-impact-label">Caso referencia LCG</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Diferenciaci&oacute;n de Propuesta de Valor vs. Competencia</div>
+                    <div class="opp-priority media">Prioridad Media-Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">El mystery shopping muestra que Engen es competitivo en proceso pero m&aacute;s caro. Sin una propuesta de valor diferenciada que justifique el premium, el originador compite en precio &mdash; donde pierde.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Construcci&oacute;n de propuesta de valor por vertical/industria</li>
+                        <li>Materiales de venta que articulen beneficios m&aacute;s all&aacute; del precio</li>
+                        <li>Entrenamiento de originadores en venta consultiva (no transaccional)</li>
+                        <li>Leverageo del dato de mystery shopping para posicionamiento competitivo</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">7-10%</div><div class="opp-impact-label">Market share actual</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">$620M</div><div class="opp-impact-label">Pipeline MKT actual</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: ONE-PAGER EJECUTIVO                               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">One-Pager</div>
+                <div class="section-title">Resumen: Entrevista Alejandro &Aacute;lvarez &mdash; Dir. Marketing</div>
+            </div>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value amber">~70K</div><div class="kpi-label">Empresas en base de datos</div></div>
+                <div class="kpi-item"><div class="kpi-value red">380</div><div class="kpi-label">Cuentas activas LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value green">$620M</div><div class="kpi-label">Pipeline generado por MKT</div></div>
+                <div class="kpi-item"><div class="kpi-value green">22%</div><div class="kpi-label">Contribuci&oacute;n a clientes nuevos</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Brecha de penetraci&oacute;n</div>
+                    <div class="exec-card-value">&lt;2% del universo target</div>
+                    <div class="exec-card-desc">De 18,000-38,000 empresas identificadas como relevantes, solo ~380 son clientes activos. El mercado est&aacute; ah&iacute; &mdash; la capacidad de captura no.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Activo que funciona</div>
+                    <div class="exec-card-value">M&aacute;quina de demanda MKT</div>
+                    <div class="exec-card-desc">Leads de MKT convierten 40-50% (vs. 30-35% directo). Respuesta &lt;1 hora. Tendencia: 13% &rarr; 19% &rarr; 22% de contribuci&oacute;n. Meta: 30%.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Crisis de gesti&oacute;n</div>
+                    <div class="exec-card-value">P&eacute;rdida de managers</div>
+                    <div class="exec-card-desc">&ldquo;El ciego ense&ntilde;&aacute;ndole al ciego.&rdquo; Managers nuevos sin experiencia. Los que quedan cierran en vez de desarrollar. Originadores sin mentor.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Competitividad validada</div>
+                    <div class="exec-card-value">En proceso, no en precio</div>
+                    <div class="exec-card-desc">Mystery shopping (2021-2025) confirma: Engen est&aacute; en l&iacute;nea con el mercado en requisitos. Brecha real: condiciones financieras, no burocracia.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Conclusi&oacute;n estrat&eacute;gica</div>
+                <p>Alejandro &Aacute;lvarez aporta una perspectiva &uacute;nica: la del &aacute;rea que <strong>genera la inteligencia y alimenta la m&aacute;quina comercial</strong>. Sus datos confirman tres tesis centrales del diagn&oacute;stico:</p>
+                <p><strong>1. El mercado es m&aacute;s que suficiente</strong> &mdash; 18K-38K empresas target vs. 380 activas.<br>
+                <strong>2. La m&aacute;quina de Marketing funciona</strong> &mdash; 22% de contribuci&oacute;n con mayor conversi&oacute;n que el esfuerzo directo.<br>
+                <strong>3. El cuello de botella est&aacute; en la ejecuci&oacute;n comercial</strong> &mdash; managers, desarrollo de originadores, &uacute;ltima milla entre inteligencia y acci&oacute;n.</p>
+                <p>La oportunidad para LCG se confirma: <strong>no es un problema de informaci&oacute;n ni de demanda. Es un problema de modelo de gesti&oacute;n comercial</strong>. La intervenci&oacute;n debe enfocarse en governance, desarrollo de managers, aceleraci&oacute;n de ramp-up y alineaci&oacute;n inteligencia-ejecuci&oacute;n.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Siguiente paso</div>
+                <p>Solicitar a Alejandro el <strong>estudio de mystery shopping completo</strong> (2023 o m&aacute;s reciente) y los <strong>slides de contribuci&oacute;n de Marketing y canales de generaci&oacute;n</strong>. Integrar los datos duros de productividad por tenure con los hallazgos de Roberto y Juan Pablo para construir el business case cuantificado de la intervenci&oacute;n.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

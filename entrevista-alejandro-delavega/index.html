@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista Alejandro de la Vega: Middle Office &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #1A3A6B 60%, #2E6DB4 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">Hallazgos de Entrevista</div>
+                <h1 class="cover-title">Entrevista Alejandro de la Vega</h1>
+                <p class="cover-subtitle">Gerente de Estrategia y Gesti&oacute;n Comercial &mdash; Middle Office / Inside Sales</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Entrevistado</div>
+                        <div class="cover-meta-value">Alejandro de la Vega, Gerente Estrategia y Gesti&oacute;n Comercial</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">5 de marzo de 2026 &mdash; Presencial</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza los hallazgos de la entrevista con <strong>Alejandro de la Vega, Gerente de Estrategia y Gesti&oacute;n Comercial</strong> de Engen Capital, realizada el 5 de marzo de 2026 (presencial). La conversaci&oacute;n cubri&oacute; la estructura y operaci&oacute;n del equipo de Inside Sales Coordinators (ISC) &mdash; el &ldquo;middle office&rdquo; que opera las transacciones entre el equipo comercial y las &aacute;reas de riesgos, legal y mesa de control. Se exploraron KPIs de Front y Back, la iniciativa de reducci&oacute;n de checklist con Riesgos, brechas de comunicaci&oacute;n, y la visi&oacute;n cr&iacute;tica de Alejandro sobre las &aacute;reas de Riesgos y Originaci&oacute;n.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value">28</div><div class="kpi-label">Personas en el equipo ISC</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">7 d&iacute;as</div><div class="kpi-label">Target expediente LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value red">~2.0</div><div class="kpi-label">Reworks Gate 1 &mdash; LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">10&rarr;8</div><div class="kpi-label">Reducci&oacute;n checklist Handoff 1</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">M&eacute;tricas sin acci&oacute;n</div>
+                    <div class="exec-card-desc">El equipo tiene KPIs detallados y dashboards, pero no existe un ciclo estructurado de post-mortem o Pareto que convierta los datos en acciones de mejora. &ldquo;Las tenemos, pero no necesariamente les damos seguimiento.&rdquo;</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo cr&iacute;tico</div>
+                    <div class="exec-card-value">Brecha de comunicaci&oacute;n</div>
+                    <div class="exec-card-desc">El equipo ISC no comunica proactivamente el estatus de las transacciones al equipo comercial. Los originadores se desesperan o pierden conciencia del estado de sus deals.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo relevante</div>
+                    <div class="exec-card-value">Reworks mayores en LMM</div>
+                    <div class="exec-card-desc">El &iacute;ndice de reworks (rechazos por Mesa de Control) es m&aacute;s alto en LMM que en Core. Cercano a 2 pasadas por Gate 1 vs. menos para Core. Causas: tipo de cambio, IVA, montos incorrectos.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Hallazgo estructural</div>
+                    <div class="exec-card-value">Rotaci&oacute;n devasta know-how</div>
+                    <div class="exec-card-desc">La rotaci&oacute;n del equipo comercial LMM ha destruido el conocimiento acumulado. Las nuevas incorporaciones est&aacute;n menos preparadas que quienes se fueron. &ldquo;Es el ciego ense&ntilde;&aacute;ndole al ciego.&rdquo;</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central de la entrevista</div>
+                <p>El Middle Office de Engen es una pieza cr&iacute;tica pero invisible: opera las transacciones, mide tiempos y reworks, pero <strong>carece de un ciclo formal de mejora continua</strong> que traduzca sus m&eacute;tricas en acciones. La comunicaci&oacute;n con el equipo comercial es reactiva, no proactiva. El resultado: originadores frustrados, transacciones retrabajadas y un equipo que &ldquo;corre&rdquo; sin tiempo para mejorar. El problema se agrava porque las &aacute;reas que alimentan al Middle Office &mdash; Riesgos y Originaci&oacute;n &mdash; tienen sus propios cuellos de botella (centralizaci&oacute;n de aprobaciones y falta de profundidad en negociaci&oacute;n).</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: ESTRUCTURA Y ROL DEL MIDDLE OFFICE                -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02 &mdash; Hallazgo 1</div>
+                <div class="section-title">Estructura y Rol del Middle Office (Front / Back / Factoraje)</div>
+            </div>
+
+            <p>Alejandro de la Vega lidera un equipo de 28 personas que funciona como el <strong>middle office</strong> de Engen Capital: el engranaje operativo entre el equipo comercial (originadores) y las &aacute;reas internas (riesgos, legal, mesa de control, seguros, fondeo). Sin este equipo, las transacciones no avanzan.</p>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">El ISC es el operador invisible de cada transacci&oacute;n</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    El equipo de 28 personas (25 ISCs + 3 managers) est&aacute; dividido en tres equipos: <strong>Front</strong> (desde &ldquo;Proposal Awarded&rdquo; hasta la aprobaci&oacute;n de cr&eacute;dito), <strong>Back</strong> (desde la aprobaci&oacute;n hasta el fondeo) y <strong>Factoraje</strong> (l&iacute;nea independiente). El ISC recopila expedientes, crea Credit Approvals en sistema, da seguimiento con riesgos, coordina con seguros, mesa de control y contrataci&oacute;n. La distribuci&oacute;n geogr&aacute;fica es CDMX (mayor&iacute;a), Guadalajara (2 ISCs + 1 manager) y Monterrey (1 ISC).
+                </div>
+                <div class="finding-evidence">Evidencia: Organigrama mostrado en entrevista + descripci&oacute;n verbal del entrevistado</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El originador es el que trae la transacci&oacute;n y el equipo de ISC es quien la opera. Es una especie de middle office.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, Gerente Estrategia y Gesti&oacute;n Comercial</div>
+            </div>
+
+            <h3>Estructura del equipo ISC</h3>
+
+            <table>
+                <thead><tr><th>Equipo</th><th>Alcance</th><th>Personas (LMM)</th><th>Funci&oacute;n clave</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Front</td><td>Proposal Awarded &rarr; Credit Approval</td><td>~8 ISCs + 2 managers</td><td>Recopilaci&oacute;n de expediente, creaci&oacute;n de CA, seguimiento con riesgos</td></tr>
+                    <tr><td class="table-highlight">Back</td><td>Credit Approval &rarr; Fondeo</td><td>Equipo dedicado</td><td>Mesa de control, seguros, contrataci&oacute;n, firma, fondeo</td></tr>
+                    <tr><td class="table-highlight">Factoraje</td><td>Proceso independiente</td><td>Equipo dedicado</td><td>Operaci&oacute;n de factoraje (CxC/CxP)</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Mapa del proceso: Front &rarr; Back</h3>
+
+            <div class="process-map">
+                <div class="process-step ok">
+                    <div class="process-step-label">Etapa 1</div>
+                    <div class="process-step-title">Proposal Awarded</div>
+                    <div class="process-step-detail">Cliente dijo &ldquo;s&iacute;&rdquo;</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Etapa 2</div>
+                    <div class="process-step-title">Expediente</div>
+                    <div class="process-step-detail">ISC Front recopila docs (target: 7 d&iacute;as LMM)</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Etapa 3</div>
+                    <div class="process-step-title">Handoff 1 + In Credit</div>
+                    <div class="process-step-detail">Credit Approval creado, entra a Riesgos</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Etapa 4</div>
+                    <div class="process-step-title">Aprobaci&oacute;n</div>
+                    <div class="process-step-detail">Comit&eacute; o firma (2-3 d&iacute;as extra)</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Etapa 5</div>
+                    <div class="process-step-title">Back: Mesa de Control</div>
+                    <div class="process-step-detail">Gate 1 &mdash; reworks frecuentes</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step ok">
+                    <div class="process-step-label">Etapa 6</div>
+                    <div class="process-step-title">Fondeo</div>
+                    <div class="process-step-detail">Firma + desembolso</div>
+                </div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>La mancuerna ISC-originador es el factor diferenciador entre equipos exitosos y equipos con problemas. Donde la relaci&oacute;n est&aacute; afianzada, las transacciones fluyen; donde hay rotaci&oacute;n o territorialidad del originador, el proceso se traba. Esto confirma que <strong>el modelo operativo depende cr&iacute;ticamente de relaciones interpersonales, no de procesos est&aacute;ndar</strong> &mdash; un riesgo estructural.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Los equipos m&aacute;s exitosos son los que tienen mejor mancuerna ISC-originador.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, Gerente Estrategia y Gesti&oacute;n Comercial</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: KPIs DEL FRONT — TIEMPOS DE EXPEDIENTE            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03 &mdash; Hallazgo 2</div>
+                <div class="section-title">KPIs del Front: Tiempos de Expediente</div>
+            </div>
+
+            <p>El equipo Front mide el tiempo entre etapas (&ldquo;Proposal Awarded&rdquo; &rarr; &ldquo;In Credit&rdquo;) y el balance de carga de trabajo entre ISCs. El target para LMM es <strong>7 d&iacute;as</strong> para completar el expediente, pero la variabilidad entre ISCs es significativa.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Alta variabilidad en tiempos de expediente entre ISCs</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    El target de expediente para LMM es 7 d&iacute;as, pero el rango real va de <strong>2 d&iacute;as hasta 8.3 d&iacute;as</strong> seg&uacute;n el ISC. Un ejemplo mostrado en pantalla: una ISC promedi&oacute; 6.8 d&iacute;as (mezcla de 2 y 8.3 d&iacute;as en dos transacciones). Otra ISC mostr&oacute; 5.8 d&iacute;as. Los tiempos dependen fuertemente de la relaci&oacute;n con el originador &mdash; si comparte el contacto del cliente o es &ldquo;celoso&rdquo; y pide que todo pase por &eacute;l.
+                </div>
+                <div class="finding-evidence">Evidencia: Dashboard de KPIs mostrado en pantalla durante la entrevista (enero-febrero 2026)</div>
+            </div>
+
+            <h3>Variables que mide el equipo Front</h3>
+
+            <table>
+                <thead><tr><th>Variable</th><th>Qu&eacute; mide</th><th>Target LMM</th><th>Situaci&oacute;n actual</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Tiempo entre etapas</td><td>Proposal Awarded &rarr; In Credit</td><td>7 d&iacute;as</td><td>Rango 2-8.3 d&iacute;as seg&uacute;n ISC</td></tr>
+                    <tr><td class="table-highlight">Balance de cargas</td><td>Distribuci&oacute;n equitativa de CAs entre ISCs</td><td>Equidad</td><td>Se monitorea pero con desbalances</td></tr>
+                    <tr><td class="table-highlight">Excepciones / pendientes</td><td>Documentos o tr&aacute;mites pendientes post-aprobaci&oacute;n</td><td>Resolver dentro de vigencia</td><td>Se da seguimiento pero se acumulan</td></tr>
+                    <tr><td class="table-highlight">Credit Approvals creados</td><td>Volumen de CAs por ISC por mes</td><td>Var&iacute;a</td><td>Tracking mensual activo</td></tr>
+                </tbody>
+            </table>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Dependencia del estilo del originador</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    La velocidad de armado del expediente depende cr&iacute;ticamente de c&oacute;mo trabaja el originador: hay quienes comparten directamente el contacto del cliente (&ldquo;aqu&iacute; est&aacute; el contacto, b&uacute;scalo&rdquo;), otros que los presentan desde la primera reuni&oacute;n, y otros que son &ldquo;celosos&rdquo; del contacto y piden que todo fluya a trav&eacute;s de ellos. Esto genera un cuello de botella no estandarizado que depende de la personalidad del originador, no del proceso.
+                </div>
+                <div class="finding-evidence">Evidencia: Descripci&oacute;n verbal durante la entrevista</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Discrepancia de m&eacute;tricas con Calidad</div>
+                <p>Alejandro aclar&oacute; que sus m&eacute;tricas difieren de las del equipo de Calidad porque &eacute;l <strong>descarta deals declinados o abandonados</strong> que distorsionan los promedios (ejemplo: un caso de 240 d&iacute;as por complejidad del cliente, no por ineficiencia del ISC). La base de datos es la misma, pero los filtros son distintos. Esto implica que <strong>no existe una &ldquo;verdad &uacute;nica&rdquo; sobre los tiempos del proceso</strong> &mdash; cada &aacute;rea mide con criterios diferentes.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: KPIs DEL BACK — REWORKS Y MESA DE CONTROL         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04 &mdash; Hallazgo 3</div>
+                <div class="section-title">KPIs del Back: Reworks y Mesa de Control</div>
+            </div>
+
+            <p>El equipo Back se enfoca en <strong>eficiencia, no en velocidad</strong>: su m&eacute;trica principal es la cantidad de veces que una transacci&oacute;n pasa por Mesa de Control (Tolga) antes de ser aprobada para firma y fondeo. El objetivo es pasar a la primera.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">LMM tiene mayor tasa de rework que Core</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    El target para 2026 est&aacute; en ~1.70 pasadas por Gate 1. En enero, el promedio general fue 1.79. Sin embargo, <strong>LMM est&aacute; m&aacute;s cercano a 2.0 pasadas</strong>, mientras que Core tiene un &iacute;ndice menor. Las causas de rechazo incluyen: tipo de cambio incorrecto (FX), IVA que no cuadra con el total del progress payment, montos incorrectos en pricing, y documentos faltantes. Cada rechazo implica que el ISC debe corregir y reenviar, generando ciclos adicionales.
+                </div>
+                <div class="finding-evidence">Evidencia: Dashboard de KPIs Back mostrado en sistema durante la entrevista (enero 2026)</div>
+            </div>
+
+            <h3>Causas principales de rework identificadas</h3>
+
+            <table>
+                <thead><tr><th>Causa</th><th>Descripci&oacute;n</th><th>Frecuencia</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Tipo de cambio (FX)</td><td>Tipo de cambio aplicado no corresponde al correcto</td><td>Recurrente</td></tr>
+                    <tr><td class="table-highlight">IVA vs. progress payment</td><td>El IVA no cuadra con el monto total del progress</td><td>Recurrente</td></tr>
+                    <tr><td class="table-highlight">Montos incorrectos</td><td>Error en pricing o montos de la operaci&oacute;n</td><td>Frecuente</td></tr>
+                    <tr><td class="table-highlight">Documentos faltantes</td><td>P&oacute;lizas de seguro, tarjetas de circulaci&oacute;n, etc.</td><td>Ocasional</td></tr>
+                </tbody>
+            </table>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Sin an&aacute;lisis Pareto formal de causas de rework</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Aunque las causas de cada rechazo se registran en sistema, <strong>no existe un an&aacute;lisis tipo Pareto</strong> que identifique las 2-3 causas ra&iacute;z m&aacute;s frecuentes para atacarlas sistem&aacute;ticamente. El seguimiento es ad-hoc: Alejandro revisa mes a mes qui&eacute;nes tuvieron mayor &iacute;ndice de reworks, analiza las causas, y tiene sesiones de feedback con los managers y los ISCs involucrados. Pero no hay un ciclo formal de mejora continua que convierta los datos en acciones preventivas.
+                </div>
+                <div class="finding-evidence">Evidencia: Descripci&oacute;n del proceso de revisi&oacute;n mensual durante la entrevista</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Las m&eacute;tricas las tenemos muy precisas, pero por el rush del negocio no les damos seguimiento tan puntual.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, Gerente Estrategia y Gesti&oacute;n Comercial</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>El equipo tiene la <strong>infraestructura de datos</strong> para hacer mejora continua: mide tiempos, registra causas de rechazo, identifica outliers por persona. Lo que falta es el <strong>ciclo de acci&oacute;n</strong>: Pareto &rarr; causa ra&iacute;z &rarr; acci&oacute;n correctiva &rarr; seguimiento &rarr; validaci&oacute;n. Esto es exactamente lo que se implement&oacute; en HDI con resultados de 80% de reducci&oacute;n en tiempos y 24% en tr&aacute;mites devueltos. La oportunidad est&aacute; en formalizar lo que ya existe informalmente.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: INICIATIVA DE REDUCCION DE CHECKLIST              -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05 &mdash; Hallazgo 4</div>
+                <div class="section-title">Iniciativa de Reducci&oacute;n de Checklist</div>
+            </div>
+
+            <p>Un d&iacute;a antes de la entrevista, Alejandro, junto con Riesgos y Calidad, acord&oacute; una reestructuraci&oacute;n del checklist de documentos para LMM. La iniciativa busca que Riesgos pueda iniciar su an&aacute;lisis m&aacute;s r&aacute;pido, sin esperar el expediente completo.</p>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Reducci&oacute;n de Handoff 1 de 10 a 8 documentos</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    La reestructuraci&oacute;n consiste en <strong>redistribuir documentos entre Handoff 1 y Handoff 2</strong>, no en eliminar requisitos. <strong>Handoff 1</strong> pasa de 10 a 8 documentos &mdash; lo m&iacute;nimo indispensable para que Riesgos inicie el an&aacute;lisis. <strong>Handoff 2</strong> recibe los documentos restantes que se pueden recopilar mientras Riesgos ya est&aacute; analizando. Se elimina un documento y se adelanta la constancia de identificaci&oacute;n fiscal al Handoff 1. La l&oacute;gica: &ldquo;t&uacute; no me detengas el an&aacute;lisis de momento&rdquo;.
+                </div>
+                <div class="finding-evidence">Evidencia: Documento de checklist comparativo (actual vs. propuesto) mostrado en pantalla</div>
+            </div>
+
+            <h3>Estructura Handoff 1 vs. Handoff 2</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Handoff 1 (antes)</div>
+                    <div class="exec-card-value">10 documentos</div>
+                    <div class="exec-card-desc">Todo el expediente completo antes de que Riesgos iniciara an&aacute;lisis. Generaba esperas innecesarias.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Handoff 1 (propuesto)</div>
+                    <div class="exec-card-value">8 documentos</div>
+                    <div class="exec-card-desc">M&iacute;nimo indispensable para que Riesgos inicie. Documentos faltantes se entregan en Handoff 2 mientras se analiza.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">S&iacute; se redujo, pero tampoco es que digas h&iacute;jole, ya qued&oacute; en un 20% de documentos.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, sobre el impacto real de la reducci&oacute;n de checklist</div>
+            </div>
+
+            <h3>Estudio competitivo de requisitos (~1 a&ntilde;o atr&aacute;s)</h3>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">Engen est&aacute; en l&iacute;nea con la competencia en requisitos documentales</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Alejandro refiere un estudio de benchmarking competitivo realizado hace aproximadamente un a&ntilde;o que compar&oacute; los requisitos de Engen contra la competencia. La conclusi&oacute;n: <strong>Engen estaba en l&iacute;nea en tema de checklist y requisitos documentales</strong>. Las brechas principales estaban en <strong>condiciones financieras</strong> (pagos iniciales, tasa visible al cliente), no en proceso o checklist. El estudio necesita ser re-encontrado y compartido para validar esta afirmaci&oacute;n.
+                </div>
+                <div class="finding-evidence">Evidencia: Referencia verbal; documento pendiente de localizar y compartir</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Valoraci&oacute;n LCG</div>
+                <p>La reducci&oacute;n de 10 a 8 documentos es un paso incremental, no transformador. El propio Alejandro lo reconoce. El cambio m&aacute;s significativo es <strong>permitir que Riesgos inicie an&aacute;lisis con expediente parcial</strong> &mdash; esto s&iacute; puede reducir el ciclo total si Riesgos efectivamente arranca sin esperar el Handoff 2. Sin embargo, la autocritic&iacute;a sugiere que se necesita una revisi&oacute;n m&aacute;s profunda, posiblemente diferenciando radicalmente los requisitos de LMM vs. Core, no solo redistribuyendo los mismos documentos.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: BRECHAS DE COMUNICACION Y GOBERNANZA DE METRICAS  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06 &mdash; Hallazgos 5 y 6</div>
+                <div class="section-title">Brechas de Comunicaci&oacute;n y Gobernanza de M&eacute;tricas</div>
+            </div>
+
+            <p>Cuando se le pregunt&oacute; directamente &ldquo;&iquest;qu&eacute; mejorar&iacute;as de tu &aacute;rea?&rdquo;, Alejandro identific&oacute; dos debilidades autodiagnosticadas que impactan directamente la experiencia del equipo comercial y la eficacia operativa.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Falta de comunicaci&oacute;n proactiva de estatus al equipo comercial</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    El equipo ISC no comunica el estatus de las transacciones de forma proactiva hacia los originadores. El resultado: el equipo comercial se desespera, pierde conciencia del avance de sus deals, y en ocasiones genera fricci&oacute;n innecesaria. Alejandro lo reconoce como la debilidad n&uacute;mero uno de su &aacute;rea. No es un problema de herramientas &mdash; es un problema de h&aacute;bito y prioridad operativa.
+                </div>
+                <div class="finding-evidence">Evidencia: Autodiagn&oacute;stico del entrevistado al preguntarle &ldquo;&iquest;qu&eacute; mejorar&iacute;as?&rdquo;</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No comunicamos estatus de las transacciones hacia el equipo comercial y entonces se desesperan.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, Gerente Estrategia y Gesti&oacute;n Comercial</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">M&eacute;tricas existen pero no generan acciones de mejora</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    El equipo tiene KPIs detallados, dashboards, tracking por persona y por segmento. Pero el &ldquo;rush del negocio&rdquo; impide que se les d&eacute; seguimiento puntual. No existe un ciclo formal de: m&eacute;trica &rarr; an&aacute;lisis de causa &rarr; acci&oacute;n correctiva &rarr; validaci&oacute;n de resultado. Alejandro identifica esta brecha como su segunda &aacute;rea de oportunidad: tener acciones concretas sobre los resultados, m&aacute;s all&aacute; de s&oacute;lo medir.
+                </div>
+                <div class="finding-evidence">Evidencia: Autodiagn&oacute;stico del entrevistado + dashboards mostrados sin plan de acci&oacute;n asociado</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Las m&eacute;tricas las tenemos muy precisas, pero por el rush del negocio no les damos seguimiento tan puntual.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, Gerente Estrategia y Gesti&oacute;n Comercial</div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Patr&oacute;n recurrente en el diagn&oacute;stico</div>
+                <p>Estas dos brechas confirman un patr&oacute;n que emerge en m&uacute;ltiples entrevistas: Engen Capital <strong>tiene los datos pero no tiene el sistema de gesti&oacute;n</strong> para convertirlos en mejora continua. La informaci&oacute;n existe en dashboards, reportes y Excel. Lo que falta es la <strong>gobernanza operativa</strong>: cadencias de revisi&oacute;n, ownership de acciones, seguimiento de causas ra&iacute;z, y rituales de accountability. Esto es territorio cl&aacute;sico de intervenci&oacute;n LCG &mdash; similar al modelo implementado en HDI y Banregio.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: VISION CRITICA — RIESGOS Y ORIGINACION            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07 &mdash; Hallazgos 7 y 8</div>
+                <div class="section-title">Visi&oacute;n Cr&iacute;tica: Riesgos y Originaci&oacute;n</div>
+            </div>
+
+            <p>Se le pidi&oacute; a Alejandro que se pusiera &ldquo;en los zapatos&rdquo; de Fernando Garza (Riesgos) y Roberto Zacatenco (Originaci&oacute;n LMM) para identificar qu&eacute; mejorar&iacute;a en cada &aacute;rea. Su perspectiva desde el middle office &mdash; entre ambos mundos &mdash; ofrece una visi&oacute;n privilegiada de los cuellos de botella.</p>
+
+            <h3>Cr&iacute;tica al &aacute;rea de Riesgos (&ldquo;si yo fuera Fernando Garza&rdquo;)</h3>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Centralizaci&oacute;n de aprobaciones: cuello de botella de 2-3 d&iacute;as</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    El an&aacute;lisis de riesgo puede completarse r&aacute;pidamente, pero la <strong>aprobaci&oacute;n final se queda 2-3 d&iacute;as adicionales</strong> esperando la firma de Federico Blantex o Fernando Garza. Todo se escala hasta los niveles m&aacute;s altos. El equipo de riesgos no tiene empoderamiento para aprobar dentro de par&aacute;metros definidos. Alejandro lo identifica como el freno principal de agilidad.
+                </div>
+                <div class="finding-evidence">Evidencia: Perspectiva del middle office, confirmada por tiempos observados entre an&aacute;lisis y aprobaci&oacute;n</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No somos &aacute;giles porque todo se termina escalando hasta Federico o Fernando Garza.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, sobre el cuello de botella en aprobaciones de Riesgos</div>
+            </div>
+
+            <h3>Cr&iacute;tica al &aacute;rea de Originaci&oacute;n (&ldquo;si yo fuera Roberto Zacatenco&rdquo;)</h3>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Falta de profundidad en negociaci&oacute;n genera retrabajo en cadena</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Las operaciones llegan al middle office y a riesgos con negociaciones incompletas o con expectativas mal planteadas al cliente. Riesgos analiza y aprueba una estructura, pero el cliente dice &ldquo;eso no es lo que quiero&rdquo; porque el originador no identific&oacute; correctamente al tomador de decisi&oacute;n (&ldquo;nunca llegu&eacute; hasta el due&ntilde;o&rdquo;) o cre&oacute; expectativas que no correspond&iacute;an a la realidad del producto. El resultado: <strong>retrabajo para ISC, retrabajo para Riesgos, y frustraci&oacute;n para todos</strong>.
+                </div>
+                <div class="finding-evidence">Evidencia: Perspectiva del middle office + experiencia operativa directa</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Hemos perdido mucho el know-how. La gente que se fue era mucho m&aacute;s preparada que las nuevas incorporaciones.</div>
+                <div class="verbatim-source">&mdash; Alejandro de la Vega, sobre la rotaci&oacute;n en el equipo comercial LMM</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Rotaci&oacute;n destruye know-how y la curva de aprendizaje no compensa</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    La rotaci&oacute;n del equipo comercial LMM ha sido &ldquo;incre&iacute;ble&rdquo;. El conocimiento acumulado se perdi&oacute; con las salidas y no se ha recuperado con las nuevas contrataciones. Alejandro percibe que las nuevas incorporaciones est&aacute;n menos preparadas que quienes se fueron, y que la capacitaci&oacute;n es insuficiente &mdash; confirmando la frase de Alejandro &Aacute;lvarez: &ldquo;es el ciego ense&ntilde;&aacute;ndole al ciego&rdquo;. En contraste, la rotaci&oacute;n en el equipo ISC ha sido mucho menor y generalmente por decisi&oacute;n propia (low performance), no por fuga de talento.
+                </div>
+                <div class="finding-evidence">Evidencia: Perspectiva del middle office + comparaci&oacute;n con rotaci&oacute;n propia del equipo ISC</div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Triangulaci&oacute;n con otras entrevistas</div>
+                <p>Los hallazgos de Alejandro de la Vega <strong>confirman y refuerzan</strong> tres temas que emergen consistentemente en el diagn&oacute;stico: (1) la <strong>centralizaci&oacute;n de aprobaciones en Riesgos</strong> como cuello de botella, (2) la <strong>falta de profundidad en negociaci&oacute;n comercial</strong> que genera retrabajo aguas abajo, y (3) la <strong>p&eacute;rdida de know-how por rotaci&oacute;n</strong> en el equipo de originaci&oacute;n LMM. La perspectiva del middle office es especialmente valiosa porque estos problemas les impactan directamente &mdash; son quienes absorben las consecuencias operativas de ambas brechas.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: OPORTUNIDADES DETECTADAS                          -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08</div>
+                <div class="section-title">Oportunidades Detectadas</div>
+            </div>
+
+            <!-- OPP 1 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Ciclo Formal de Mejora Continua (M&eacute;tricas &rarr; Acci&oacute;n)</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">KPIs detallados que existen pero no generan acciones sistem&aacute;ticas de mejora. El equipo mide reworks, tiempos y excepciones pero no tiene un ciclo Pareto &rarr; causa ra&iacute;z &rarr; acci&oacute;n correctiva &rarr; seguimiento.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>An&aacute;lisis Pareto mensual de causas de rework en Gate 1</li>
+                        <li>Plan de acci&oacute;n con due&ntilde;o y fecha para las 2-3 causas principales</li>
+                        <li>Cadencia de revisi&oacute;n semanal/quincenal con managers</li>
+                        <li>Dashboard de tendencia para validar si las acciones est&aacute;n funcionando</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">~2.0</div><div class="opp-impact-label">Reworks LMM actuales</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">HDI</div><div class="opp-impact-label">24% reducci&oacute;n devueltos</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 2 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Protocolo de Comunicaci&oacute;n ISC &rarr; Comercial</div>
+                    <div class="opp-priority alta">Prioridad Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Falta de comunicaci&oacute;n proactiva de estatus hacia originadores, que genera frustraci&oacute;n, duplicidad de seguimiento y fricci&oacute;n entre &aacute;reas.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Definici&oacute;n de momentos de comunicaci&oacute;n obligatoria (cambio de etapa, bloqueo, pendiente)</li>
+                        <li>Formato est&aacute;ndar de actualizaci&oacute;n (puede ser automatizado v&iacute;a sistema)</li>
+                        <li>Acuerdo de servicio ISC-Originador con expectativas claras</li>
+                        <li>M&eacute;trica de satisfacci&oacute;n del originador con su ISC</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">28</div><div class="opp-impact-label">ISCs impactados</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Quick Win</div><div class="opp-impact-label">Implementaci&oacute;n r&aacute;pida</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 3 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Empoderamiento del Equipo de Riesgos</div>
+                    <div class="opp-priority media">Prioridad Media-Alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">Centralizaci&oacute;n de todas las aprobaciones en 2 personas (Federico Blantex / Fernando Garza) que genera 2-3 d&iacute;as adicionales post-an&aacute;lisis. El equipo no tiene autonom&iacute;a para aprobar dentro de par&aacute;metros definidos.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Matriz de autonom&iacute;a de aprobaci&oacute;n por monto y tipo de operaci&oacute;n</li>
+                        <li>Definici&oacute;n de par&aacute;metros dentro de los cuales el equipo puede aprobar sin escalar</li>
+                        <li>Escalamiento solo para excepciones fuera de par&aacute;metros</li>
+                        <li>SLA de aprobaci&oacute;n diferenciado: LMM &lt; 24 hrs post-an&aacute;lisis</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">2-3 d&iacute;as</div><div class="opp-impact-label">Demora actual en aprobaci&oacute;n</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Banregio</div><div class="opp-impact-label">Caso referencia LCG</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPP 4 -->
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Estandarizaci&oacute;n de la Mancuerna ISC-Originador</div>
+                    <div class="opp-priority media">Prioridad Media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema que resuelve</div>
+                    <p class="opp-text">El &eacute;xito del proceso depende de la relaci&oacute;n personal ISC-originador, no de un est&aacute;ndar de operaci&oacute;n. Originadores &ldquo;celosos&rdquo; del contacto con cliente retrasan el expediente. La variabilidad de tiempos (2 a 8+ d&iacute;as) est&aacute; vinculada al estilo del originador.</p>
+
+                    <div class="opp-section-label">&iquest;Qu&eacute; incluye?</div>
+                    <ul class="opp-bullets">
+                        <li>Protocolo est&aacute;ndar de inicio de operaci&oacute;n: presentaci&oacute;n ISC-cliente desde el d&iacute;a 1</li>
+                        <li>Acceso directo del ISC al contacto del cliente como regla, no como excepci&oacute;n</li>
+                        <li>Checklist de &ldquo;kick-off de operaci&oacute;n&rdquo; entre ISC y originador</li>
+                        <li>Reconocimiento a las mancuernas con mejores resultados</li>
+                    </ul>
+
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">7 d&iacute;as</div><div class="opp-impact-label">Target expediente LMM</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">2-8.3</div><div class="opp-impact-label">Rango actual (d&iacute;as)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: ONE-PAGER EJECUTIVO                               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">One-Pager</div>
+                <div class="section-title">Resumen Ejecutivo &mdash; Alejandro de la Vega</div>
+            </div>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value">28</div><div class="kpi-label">Equipo ISC total</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">7 d&iacute;as</div><div class="kpi-label">Target expediente LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value red">~2.0</div><div class="kpi-label">Reworks LMM (Gate 1)</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">10&rarr;8</div><div class="kpi-label">Docs Handoff 1</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card">
+                    <div class="exec-card-label">Rol del entrevistado</div>
+                    <div class="exec-card-value">Middle Office</div>
+                    <div class="exec-card-desc">Gerente de Estrategia y Gesti&oacute;n Comercial. Lidera el equipo de ISC (25 personas + 3 managers) que opera las transacciones entre comercial y &aacute;reas internas. Tambi&eacute;n responsable de forecast de fondeos y coordinaci&oacute;n con tesorer&iacute;a.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo #1</div>
+                    <div class="exec-card-value">M&eacute;tricas sin ciclo de acci&oacute;n</div>
+                    <div class="exec-card-desc">KPIs detallados existen pero no generan acciones de mejora sistem&aacute;ticas. Sin Pareto, sin post-mortem, sin seguimiento estructurado de causas ra&iacute;z.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo #2</div>
+                    <div class="exec-card-value">Brecha de comunicaci&oacute;n</div>
+                    <div class="exec-card-desc">ISCs no comunican proactivamente estatus a originadores. Genera frustraci&oacute;n y p&eacute;rdida de conciencia del avance de deals.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo #3</div>
+                    <div class="exec-card-value">LMM con m&aacute;s reworks</div>
+                    <div class="exec-card-desc">Gate 1 cercano a 2.0 pasadas en LMM vs. menor en Core. Causas: FX, IVA, montos, documentos. Sin Pareto formal.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo #4</div>
+                    <div class="exec-card-value">Checklist: avance incremental</div>
+                    <div class="exec-card-desc">Reducci&oacute;n de 10 a 8 docs en Handoff 1. Redistribuci&oacute;n m&aacute;s que eliminaci&oacute;n. Riesgos puede iniciar an&aacute;lisis sin expediente completo.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Hallazgo #5</div>
+                    <div class="exec-card-value">Aprobaciones centralizadas</div>
+                    <div class="exec-card-desc">Todo escala a Federico o Fernando Garza. 2-3 d&iacute;as extra post-an&aacute;lisis. Necesidad de empoderamiento acotado del equipo de Riesgos.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Hallazgo #6</div>
+                    <div class="exec-card-value">Rotaci&oacute;n destruye know-how</div>
+                    <div class="exec-card-desc">Equipo comercial LMM con rotaci&oacute;n &ldquo;incre&iacute;ble&rdquo;. Nuevas contrataciones menos preparadas. ISC (middle office) es m&aacute;s estable y funciona como ancla.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Valor de esta entrevista para el diagn&oacute;stico</div>
+                <p>Alejandro de la Vega aporta la <strong>perspectiva del operador que est&aacute; en medio</strong> de las dos dimensiones del reto de Engen: la comercial y la operativa. Su equipo absorbe las consecuencias de ambas brechas &mdash; negociaciones mal hechas por un lado, aprobaciones lentas por el otro. El dato m&aacute;s valioso es que <strong>la infraestructura de datos ya existe</strong>; lo que falta es el sistema de gesti&oacute;n para convertirla en mejora continua. Esto reduce el esfuerzo de implementaci&oacute;n: no hay que construir la medici&oacute;n, solo el ciclo de acci&oacute;n.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Siguiente paso</div>
+                <p>Solicitar a Alejandro el <strong>estudio competitivo de requisitos</strong> (~1 a&ntilde;o atr&aacute;s) para cruzar con la iniciativa de reducci&oacute;n de checklist. Entrevistar a los originadores y Team Leaders para triangular la brecha de comunicaci&oacute;n identificada. Validar con Fernando Garza la perspectiva sobre centralizaci&oacute;n de aprobaciones.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
