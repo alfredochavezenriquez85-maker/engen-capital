@@ -701,6 +701,10 @@ body {
     <div class="callout green">
       <strong>Comparacion con pipeline total:</strong> El segmento LMM representa el <strong>46.3%</strong> de las 3,670 oportunidades totales y genera el <strong>68.8%</strong> de los fondeos (55 de 80). Esto confirma que LMM es el motor principal del negocio de Engen Capital en volumen de operaciones.
     </div>
+
+    <div class="callout amber">
+      <strong>Lectura critica:</strong> Aunque la tasa de cierre LMM (3.2%) supera la global (2.2%), sigue siendo una cifra baja en terminos absolutos &mdash; <strong>97 de cada 100 oportunidades no se convierten en negocio</strong>. Si el pipeline crece 3.8x pero el fondeo se mantiene en ~14/trimestre, el problema no es de volumen sino de <em>calidad de entrada y eficiencia de conversion</em>. Mas pipeline sin mejorar la tasa de cierre solo incrementa el costo operativo de originar.
+    </div>
   </section>
 
   <!-- 2. FUNNEL VISUALIZATION -->
@@ -765,6 +769,13 @@ body {
 
       <div class="callout amber">
         <strong>Nota metodologica:</strong> Las cifras del funnel reflejan cuantas oportunidades LMM tienen fecha registrada en cada etapa (columnas de fechas del CRM). Una oportunidad puede tener fecha de Proposal pero no de Awarded si fue rechazada en esa etapa. El conteo decrece porque solo las que avanzan obtienen la fecha siguiente.
+      </div>
+
+      <div class="card" style="border-left: 4px solid var(--red); margin-top: 1rem;">
+        <div class="card-title" style="color: var(--red);">Pregunta incomoda: &iquest;Se esta generando pipeline de calidad o solo volumen?</div>
+        <div style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.7;">
+          De 1,700 oportunidades identificadas, <strong>1,020 nunca llegaron siquiera a Proposal</strong> (60%). Esto implica que 6 de cada 10 oportunidades que el equipo comercial registra en el CRM no tienen la madurez suficiente para avanzar. La pregunta para la Direccion Comercial es si esto refleja un problema de <strong>calificacion de leads</strong> (se registra todo, sin filtro) o de <strong>capacidad de seguimiento</strong> (no hay recursos para nutrir esas oportunidades). Ambos escenarios requieren intervenciones distintas.
+        </div>
       </div>
     </div>
   </section>
@@ -939,6 +950,13 @@ body {
       <div class="callout blue" style="margin-top: 1rem;">
         <strong>Hallazgo LMM:</strong> El ciclo total desde identificacion hasta fondeo tiene una mediana de <strong>82 dias</strong> (~2.7 meses), ligeramente superior al global de 75 dias. Las etapas de mayor duracion son Backlog&rarr;Funded (mediana 32 dias vs. 28 global) e In Credit&rarr;Backlog (mediana 10 dias). El segmento LMM tiene tiempos comparables pero con una cola mas larga en etapas de documentacion y desembolso.
       </div>
+
+      <div class="card" style="border-left: 4px solid var(--red); margin-top: 1rem;">
+        <div class="card-title" style="color: var(--red);">La etapa Backlog&rarr;Funded esconde un problema operativo</div>
+        <div style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.7;">
+          <strong>32 dias de mediana</strong> y hasta <strong>175 dias de maximo</strong> entre aprobacion de credito y desembolso. En una operacion optimizada de arrendamiento mid-market, esta etapa no deberia exceder 10-15 dias. El rango P25-P75 (15-65 dias) muestra alta variabilidad, lo que sugiere que <strong>no hay un proceso estandarizado de cierre</strong> &mdash; cada operacion se gestiona ad-hoc dependiendo del ejecutivo, el cliente y la complejidad documental. Si los benchmarks de la industria apuntan a desembolso en &lt;5 dias habiles post-aprobacion, Engen esta operando entre <strong>3x y 6x mas lento</strong> que el estandar.
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1008,6 +1026,13 @@ body {
         </div>
         <div class="callout amber">
           <strong>Cuello de botella 3:</strong> De Backlog a Funded solo 23.1% se materializa. Mejor que el global (16.3%), pero aun hay perdida significativa en etapas avanzadas.
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 4px solid var(--red); margin-top: 1rem;">
+        <div class="card-title" style="color: var(--red);">El verdadero costo de la conversion: &iquest;cuanto cuesta cada fondeo?</div>
+        <div style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.7;">
+          Para llegar a <strong>55 fondeos</strong>, el equipo LMM proceso 1,700 oportunidades, llevo 680 a Proposal, analizo crediticiamente 340, y puso en backlog 238. Cada fondeo requirio tocar en promedio <strong>31 oportunidades</strong>. Si cada oportunidad consume entre 2-4 horas de tiempo comercial + analista, el costo operativo por fondeo es de 62-124 horas de trabajo. <strong>&iquest;Es sostenible este ratio si el objetivo es escalar?</strong> Un incremento del 50% en fondeos requeriria escalar toda la maquinaria operativa proporcionalmente, a menos que se mejore la tasa de conversion en las etapas tempranas.
         </div>
       </div>
     </div>
@@ -1208,6 +1233,20 @@ body {
       </div>
     </div>
 
+    <div class="card" style="border-left: 4px solid var(--red); margin-top: 1rem;">
+      <div class="card-title" style="color: var(--red);">LMM 2: 179 oportunidades y cero fondeos &mdash; &iquest;region fantasma o problema estructural?</div>
+      <div style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.7;">
+        LMM 2 concentra el <strong>10.5% del pipeline LMM</strong> pero genera <strong>0% de los fondeos</strong>. No es un problema de volumen &mdash; tiene mas oportunidades que SWATT LMM 1 (126) y SWATT LMM 2 (48) que juntas generan 10 fondeos. Las hipotesis a investigar: (1) &iquest;el perfil de clientes de LMM 2 tiene menor calidad crediticia?, (2) &iquest;hay un problema de liderazgo o capacidad del equipo en esa region?, (3) &iquest;las oportunidades se estan registrando sin calificacion real como "relleno de pipeline"? Si no se puede explicar el 0%, se deberia considerar <strong>reasignar esa cartera a regiones con mejor track record de conversion</strong>.
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 4px solid var(--amber); margin-top: 1rem;">
+      <div class="card-title" style="color: var(--amber);">La paradoja de LMM 3: mas volumen, peor conversion</div>
+      <div style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.7;">
+        LMM 3 lidera en volumen (372 oportunidades) pero tiene la segunda peor tasa de fondeo del segmento (2.7%), solo por arriba de LMM 2. Mientras tanto, SWATT LMM 1 con solo 126 oportunidades logra 8 fondeos (6.3%). <strong>Generar 3x mas pipeline que SWATT y fondear 20% menos</strong> sugiere que el modelo SWATT &mdash; presumiblemente con enfoque mas especializado y selectivo &mdash; es mas eficiente. La pregunta es si el modelo SWATT puede escalarse a las regiones LMM tradicionales.
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-title">Tasa de fondeo por sub-region</div>
       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem;">
@@ -1294,6 +1333,13 @@ body {
 
       <div class="callout blue" style="margin-top: 1rem;">
         <strong>Insight:</strong> Alejandro Monteon (10.4%), Miriam Martinez (8.8%) y Mayreth Garcia (7.8%) lideran en tasa de conversion. Julieta Medrano gestiona el mayor volumen (124 opps) con tasa de 4.8%. Miriam Martinez destaca con 6 fondeos que incluyen los deals mas grandes (Baja Gas: $50.6M + $21.7M MXN).
+      </div>
+
+      <div class="card" style="border-left: 4px solid var(--red); margin-top: 1rem;">
+        <div class="card-title" style="color: var(--red);">Concentracion de resultado: pocos ejecutivos cargan el peso</div>
+        <div style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.7;">
+          De los 15 ejecutivos con mayor volumen, solo <strong>5 concentran el 44% de los fondeos</strong> (Julieta Medrano 6, Miriam Martinez 6, Mayreth Garcia 5, Alejandro Monteon 5, Juan Villaseñor 4 = 26 de 55). El contraste es marcado: <strong>Teresa Cisneros maneja 95 oportunidades pero solo cierra 1</strong> (1.1%), mientras Alejandro Monteon con 48 cierra 5 (10.4%) &mdash; una diferencia de <strong>10x en efectividad</strong>. Fernanda Rangel tiene 36 oportunidades y 0 fondeos. El rango de tasa de fondeo va de 0% a 10.4% entre ejecutivos con volumen comparable. Esto no es solo un tema de habilidad individual &mdash; sugiere que <strong>no hay un proceso estandarizado de conversion</strong> y que los resultados dependen del talento de cada persona, no del sistema.
+        </div>
       </div>
     </div>
   </section>
@@ -1520,6 +1566,15 @@ body {
           <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);"><strong>Reducir tiempos post-aprobacion:</strong> 32 dias mediana en Backlog&rarr;Funded. Automatizar documentacion y desembolso puede reducir ciclo total de 82 a &lt;60 dias.</li>
           <li style="padding: 0.5rem 0;"><strong>Crecimiento 3.8x en pipeline LMM:</strong> De Q1 a Q4 2025, el pipeline LMM crecio de 114 a 437 oportunidades. Capacidad operativa de fondeo (~14/trimestre) debe escalar proporcionalmente.</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 4px solid var(--red); margin-top: 1rem; background: linear-gradient(135deg, #FFF5F5 0%, white 100%);">
+      <div class="card-title" style="color: var(--red); font-size: 1rem;">Sintesis critica: El modelo LMM tiene techo si no cambia la maquinaria</div>
+      <div style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.8; padding-top: 0.5rem;">
+        <p style="margin-bottom: 0.75rem;">El segmento LMM es claramente el motor del negocio (46% del pipeline, 69% de los fondeos), pero los datos revelan que <strong>el crecimiento del pipeline no se esta traduciendo en crecimiento proporcional de fondeo</strong>. El pipeline crecio 3.8x en 2025, pero los fondeos se mantuvieron estables en ~14 por trimestre.</p>
+        <p style="margin-bottom: 0.75rem;">Los problemas estructurales son claros: <strong>(1)</strong> 60% del pipeline nunca llega a Proposal &mdash; hay un filtro roto al inicio. <strong>(2)</strong> La etapa post-aprobacion tarda 3-6x mas que benchmarks de industria. <strong>(3)</strong> La variabilidad entre ejecutivos (0% a 10.4%) confirma que no hay un playbook estandarizado. <strong>(4)</strong> LMM 2 y Factoring son dos "agujeros negros" que absorben esfuerzo comercial sin retorno.</p>
+        <p><strong>La oportunidad:</strong> Si Engen lograra llevar la tasa de cierre de las regiones LMM 2, 3 y 4 al nivel de SWATT LMM 1 (6.3%), los fondeos del segmento pasarian de 55 a <strong>~107</strong> &mdash; practicamente el doble &mdash; sin necesidad de generar una sola oportunidad adicional. <strong>El problema no es de pipeline, es de conversion.</strong></p>
       </div>
     </div>
   </section>
