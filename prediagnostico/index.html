@@ -231,22 +231,25 @@
         .onepager-card-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
         .onepager-card-text { font-size: 11px; color: var(--text-primary); font-weight: 500; line-height: 1.5; }
 
-        /* AREA MAP */
-        .area-map { position: relative; margin: 30px 0; }
-        .area-map-level { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
-        .area-card { background: white; border: 2px solid var(--border); border-radius: 12px; padding: 16px 20px; width: 220px; text-align: center; position: relative; transition: transform 0.2s; }
-        .area-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-        .area-card.strategic { border-color: var(--lcg-accent); background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%); }
-        .area-card.tension { border-color: var(--diag-primary); background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%); }
-        .area-card.enabler { border-color: var(--engen-green); background: linear-gradient(135deg, #f0faf7 0%, #e8f7f2 100%); }
-        .area-card-icon { font-size: 28px; margin-bottom: 8px; }
-        .area-card-name { font-size: 14px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 2px; }
-        .area-card-person { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
-        .area-card-finding { font-size: 11px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 10px; }
-        .area-card-link { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: white; background: var(--lcg-navy); padding: 6px 14px; border-radius: 20px; text-decoration: none; }
-        .area-card-link:hover { background: var(--lcg-accent); }
-        .area-connector { text-align: center; color: var(--text-muted); font-size: 20px; margin: -8px 0; }
-        .area-connector-label { font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; display: block; margin-top: -4px; }
+        /* AREA MAP — minimal grid */
+        .area-map { margin: 24px 0; }
+        .area-level-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; padding-left: 4px; }
+        .area-level-label .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+        .area-level-label .dot-blue { background: var(--lcg-accent); }
+        .area-level-label .dot-orange { background: var(--diag-primary); }
+        .area-level-label .dot-green { background: var(--engen-green); }
+        .area-row { display: grid; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+        .area-row.cols-2 { grid-template-columns: 1fr 1fr; }
+        .area-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .area-row.cols-4 { grid-template-columns: 1fr 1fr; }
+        .area-cell { background: white; padding: 12px 14px; }
+        .area-cell-name { font-size: 12px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 2px; }
+        .area-cell-person { font-size: 10px; color: var(--text-muted); margin-bottom: 6px; }
+        .area-cell-finding { font-size: 10px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px; }
+        .area-cell-link { font-size: 9px; font-weight: 600; color: var(--lcg-accent); text-decoration: none; letter-spacing: 0.5px; }
+        .area-cell-link:hover { text-decoration: underline; }
+        .area-connector { text-align: center; color: var(--text-muted); font-size: 14px; margin: 4px 0 8px; }
+        .area-connector-label { font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
 
         /* INTERVIEW SUMMARY CARD */
         .interview-summary { background: var(--bg-light); border-radius: 12px; padding: 24px; margin: 16px 0; border-left: 4px solid var(--lcg-accent); }
@@ -392,88 +395,82 @@
 
         <div class="area-map">
             <!-- NIVEL 1: Estrategico -->
-            <div class="area-map-level">
-                <div class="area-card strategic">
-                    <div class="area-card-icon">&#x1F3AF;</div>
-                    <div class="area-card-name">Direccion General</div>
-                    <div class="area-card-person">Juan Pablo Loperena — CEO</div>
-                    <div class="area-card-finding">~35K empresas target, &lt;0.4% penetracion. Perfil vendedor desalineado. Rotacion 25%.</div>
-                    <a href="../entrevista-juan-pablo/" class="area-card-link">Ver detalle &rarr;</a>
+            <div class="area-level-label"><span class="dot dot-blue"></span>Estrategico</div>
+            <div class="area-row cols-3">
+                <div class="area-cell">
+                    <div class="area-cell-name">Direccion General</div>
+                    <div class="area-cell-person">Juan Pablo Loperena — CEO</div>
+                    <div class="area-cell-finding">~35K empresas target, &lt;0.4% penetracion. Perfil vendedor desalineado. Rotacion 25%.</div>
+                    <a href="../entrevista-juan-pablo/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
-                <div class="area-card strategic">
-                    <div class="area-card-icon">&#x1F4CA;</div>
-                    <div class="area-card-name">Consejo / Linzor Capital</div>
-                    <div class="area-card-person">Cipriano Santisteban — Consejero</div>
-                    <div class="area-card-finding">"&iquest;Podemos crecer 10x en 5 anos?" Linea roja: nunca &gt;5% NPL. Mandato de crecimiento.</div>
-                    <a href="../entrevista-cipriano-santisteban/" class="area-card-link">Ver detalle &rarr;</a>
+                <div class="area-cell">
+                    <div class="area-cell-name">Consejo / Linzor</div>
+                    <div class="area-cell-person">Cipriano Santisteban — Consejero</div>
+                    <div class="area-cell-finding">"&iquest;Podemos crecer 10x en 5 anos?" Linea roja: nunca &gt;5% NPL.</div>
+                    <a href="../entrevista-cipriano-santisteban/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
-                <div class="area-card strategic">
-                    <div class="area-card-icon">&#x1F4B0;</div>
-                    <div class="area-card-name">Inversionista / Linzor Capital</div>
-                    <div class="area-card-person">Gerardo Biagi — Partner</div>
-                    <div class="area-card-finding">Competidores eliminados. Parametrico sin recalibrar 3-4 anos. Funnel LMM ~40% menor que Core. "Salto del tigre."</div>
-                    <a href="../entrevista-gerardo-biagi/" class="area-card-link">Ver detalle &rarr;</a>
+                <div class="area-cell">
+                    <div class="area-cell-name">Inversionista / Linzor</div>
+                    <div class="area-cell-person">Gerardo Biagi — Partner</div>
+                    <div class="area-cell-finding">Competidores eliminados. Parametrico sin recalibrar 3-4 anos. Funnel LMM ~40% menor.</div>
+                    <a href="../entrevista-gerardo-biagi/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
             </div>
 
-            <div class="area-connector">&#x2193; &#x2193; &#x2193;<br><span class="area-connector-label">Mandato estrategico &rarr; ejecucion</span></div>
+            <div class="area-connector">&darr; &darr; &darr; <span class="area-connector-label">Mandato estrategico &rarr; ejecucion</span></div>
 
             <!-- NIVEL 2: Operativo -->
-            <div class="area-map-level">
-                <div class="area-card tension">
-                    <div class="area-card-icon">&#x1F4BC;</div>
-                    <div class="area-card-name">Comercial LMM</div>
-                    <div class="area-card-person">Roberto Zacatenco — Dir. LMM</div>
-                    <div class="area-card-finding">CRM como espejo retrovisor. Originadores no prospectan. 5 juntas/semana, todas tacticas.</div>
-                    <a href="../oportunidades-comercial/" class="area-card-link">Ver detalle &rarr;</a>
+            <div class="area-level-label"><span class="dot dot-orange"></span>Tension operativa</div>
+            <div class="area-row cols-2">
+                <div class="area-cell">
+                    <div class="area-cell-name">Comercial LMM</div>
+                    <div class="area-cell-person">Roberto Zacatenco — Dir. LMM</div>
+                    <div class="area-cell-finding">CRM como espejo retrovisor. Originadores no prospectan. 5 juntas/semana, todas tacticas.</div>
+                    <a href="../oportunidades-comercial/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
-                <div class="area-card tension">
-                    <div class="area-card-icon">&#x26A0;</div>
-                    <div class="area-card-name">Riesgos</div>
-                    <div class="area-card-person">Fernando Garza — Dir. Riesgo</div>
-                    <div class="area-card-finding">Watchlist LMM 25.8%. Modelos de grandes aplicados a medianas. "Fabrica de bolillos."</div>
-                    <a href="../entrevista-fernando-garza/" class="area-card-link">Ver detalle &rarr;</a>
+                <div class="area-cell">
+                    <div class="area-cell-name">Riesgos</div>
+                    <div class="area-cell-person">Fernando Garza — Dir. Riesgo</div>
+                    <div class="area-cell-finding">Watchlist LMM 25.8%. Modelos de grandes aplicados a medianas. "Fabrica de bolillos."</div>
+                    <a href="../entrevista-fernando-garza/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
             </div>
 
-            <div class="area-connector">&#x2194;<br><span class="area-connector-label">Tension comercial &harr; riesgo</span></div>
+            <div class="area-connector">&harr; <span class="area-connector-label">Tension comercial &harr; riesgo</span></div>
 
             <!-- NIVEL 3: Habilitadores -->
-            <div class="area-map-level">
-                <div class="area-card enabler">
-                    <div class="area-card-icon">&#x1F4BB;</div>
-                    <div class="area-card-name">Tecnologia</div>
-                    <div class="area-card-person">Luis Padilla — CIO</div>
-                    <div class="area-card-finding">Da Vinci 5K prospectos sin usar. "Podriamos cambiar los flujos manana." Bloqueo organizacional.</div>
-                    <a href="../entrevista-luis-padilla/" class="area-card-link">Ver detalle &rarr;</a>
+            <div class="area-level-label"><span class="dot dot-green"></span>Habilitadores</div>
+            <div class="area-row cols-4">
+                <div class="area-cell">
+                    <div class="area-cell-name">Tecnologia</div>
+                    <div class="area-cell-person">Luis Padilla — CIO</div>
+                    <div class="area-cell-finding">Da Vinci 5K prospectos sin usar. Flujos podrian cambiar manana. Bloqueo organizacional.</div>
+                    <a href="../entrevista-luis-padilla/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
-                <div class="area-card enabler">
-                    <div class="area-card-icon">&#x2705;</div>
-                    <div class="area-card-name">Calidad / CX</div>
-                    <div class="area-card-person">Guillermo Llantada — Calidad</div>
-                    <div class="area-card-finding">80%+ cotizaciones LMM con complejidad Core. Sin medicion end-to-end. 3 detractores NPS = LMM.</div>
-                    <a href="../entrevista-guillermo-llantada/" class="area-card-link">Ver detalle &rarr;</a>
+                <div class="area-cell">
+                    <div class="area-cell-name">Calidad / CX</div>
+                    <div class="area-cell-person">Guillermo Llantada</div>
+                    <div class="area-cell-finding">80%+ cotizaciones LMM con complejidad Core. 3 detractores NPS = LMM.</div>
+                    <a href="../entrevista-guillermo-llantada/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
-                <div class="area-card enabler">
-                    <div class="area-card-icon">&#x1F4E3;</div>
-                    <div class="area-card-name">Marketing</div>
-                    <div class="area-card-person">Alejandro Alvarez — Dir. Marketing</div>
-                    <div class="area-card-finding">18K-38K empresas target, solo 380 activas. 22% clientes de MKT (meta 30%). Mystery shopping: gap 6x vs competencia.</div>
-                    <a href="../entrevista-alejandro-alvarez/" class="area-card-link">Ver detalle &rarr;</a>
+                <div class="area-cell">
+                    <div class="area-cell-name">Marketing</div>
+                    <div class="area-cell-person">Alejandro Alvarez — Dir. MKT</div>
+                    <div class="area-cell-finding">18K-38K target, solo 380 activas. 22% clientes de MKT. Gap 6x mystery shopping.</div>
+                    <a href="../entrevista-alejandro-alvarez/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
-                <div class="area-card enabler">
-                    <div class="area-card-icon">&#x1F4CB;</div>
-                    <div class="area-card-name">Middle Office (ISC)</div>
-                    <div class="area-card-person">Alejandro de la Vega — Ger. Estrategia Comercial</div>
-                    <div class="area-card-finding">28 ISCs front/back. Target 7 dias expediente LMM. ~2.0 reworks promedio. Cuello de botella en aprobacion riesgos.</div>
-                    <a href="../entrevista-alejandro-delavega/" class="area-card-link">Ver detalle &rarr;</a>
+                <div class="area-cell">
+                    <div class="area-cell-name">Middle Office</div>
+                    <div class="area-cell-person">Alejandro de la Vega</div>
+                    <div class="area-cell-finding">28 ISCs. Target 7 dias LMM. ~2.0 reworks. Cuello de botella en aprobacion riesgos.</div>
+                    <a href="../entrevista-alejandro-delavega/" class="area-cell-link">Ver detalle &rarr;</a>
                 </div>
             </div>
         </div>
 
         <div class="callout callout-amber">
             <div class="callout-label">Lectura del mapa</div>
-            <p><strong>Azul = Estrategico</strong> (CEO y Consejo definen el mandato de crecimiento LMM). <strong>Naranja = Tension</strong> (Comercial y Riesgo son los ejes donde se manifiestan los problemas operativos). <strong>Verde = Habilitadores</strong> (TI, Calidad, Marketing y Middle Office tienen la capacidad tecnica para resolver, pero estan subutilizados). La tension central del diagnostico es entre Comercial y Riesgo: ventas no genera pipeline calificado, riesgo cuestiona si el mercado existe para sus modelos. Los habilitadores estan listos pero esperan una decision organizacional.</p>
+            <p><strong><span style="color:var(--lcg-accent);">&#9679;</span> Estrategico</strong> — CEO y Consejo/Linzor definen el mandato de crecimiento LMM. <strong><span style="color:var(--diag-primary);">&#9679;</span> Tension</strong> — Comercial y Riesgo son los ejes donde se manifiestan los problemas operativos. <strong><span style="color:var(--engen-green);">&#9679;</span> Habilitadores</strong> — TI, Calidad, Marketing y Middle Office tienen la capacidad tecnica para resolver, pero estan subutilizados. La tension central: ventas no genera pipeline calificado, riesgo cuestiona si el mercado existe para sus modelos. Los habilitadores esperan una decision organizacional.</p>
         </div>
     </div>
 
