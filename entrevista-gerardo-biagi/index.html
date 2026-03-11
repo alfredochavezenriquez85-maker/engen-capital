@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi&oacute;n del Inversionista: Ejecuci&oacute;n, Riesgo y Valor Econ&oacute;mico &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 0; }
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-primary); line-height: 1.6; background: #eef1f5; }
+        .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+        .cover-page { background: linear-gradient(135deg, #0B1F3F 0%, #1a1a2e 50%, #0B1F3F 100%); color: white; padding: 60px 60px 50px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: rgba(46, 109, 180, 0.08); }
+        .cover-page::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 400px; height: 400px; border-radius: 50%; background: rgba(0, 179, 136, 0.06); }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+        .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--engen-green); margin-bottom: 20px; }
+        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 40px; }
+        .cover-divider { width: 80px; height: 3px; background: var(--engen-green); margin-bottom: 40px; }
+        .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+        .cover-footer { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.4); }
+        .content-page { padding: 50px 60px; display: flex; flex-direction: column; }
+        .page-header-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--lcg-navy); }
+        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 8px; }
+        .section-title { font-size: 26px; font-weight: 700; color: var(--lcg-navy); line-height: 1.3; }
+        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-blue); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--engen-green); }
+        p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+        .kpi-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--lcg-navy); border-radius: 10px; overflow: hidden; margin: 24px 0; }
+        .kpi-item { padding: 16px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
+        .kpi-item:last-child { border-right: none; }
+        .kpi-value { font-size: 22px; font-weight: 800; color: white; }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+        .kpi-label { font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+        thead th { background: var(--lcg-navy); color: white; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 12px; text-align: left; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+        tr:nth-child(even) { background: var(--bg-light); }
+        .finding-card { background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--danger); margin: 12px 0; overflow: hidden; }
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+        .finding-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(0,0,0,0.02); border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+        .finding-dimension { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 3px; flex-shrink: 0; margin-left: 12px; }
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+        .finding-dimension.estrategia { background: #ede7f6; color: #4527a0; }
+        .finding-dimension.riesgo { background: #fff8e1; color: #f57f17; }
+        .finding-body { padding: 14px 16px; font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+        .finding-evidence { padding: 8px 16px; font-size: 10px; color: var(--text-muted); background: rgba(0,0,0,0.02); border-top: 1px solid rgba(0,0,0,0.04); }
+        .verbatim { background: linear-gradient(135deg, #fafbfc, #f5f6f8); border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 12px 0; }
+        .verbatim-text { font-size: 13px; font-style: italic; color: var(--text-primary); line-height: 1.7; }
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+        .verbatim-source { font-size: 10px; color: var(--text-muted); margin-top: 8px; font-style: normal; font-weight: 600; }
+        .opp-card { background: white; border: 2px solid var(--engen-green); border-radius: 10px; margin: 16px 0; overflow: hidden; }
+        .opp-header { background: linear-gradient(135deg, var(--engen-dark), #00796B); color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .opp-number { font-size: 28px; font-weight: 900; opacity: 0.3; margin-right: 16px; }
+        .opp-title { font-size: 15px; font-weight: 700; flex: 1; }
+        .opp-priority { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 4px; margin-left: 12px; }
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+        .opp-body { padding: 20px; }
+        .opp-section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin: 16px 0 8px; }
+        .opp-section-label:first-child { margin-top: 0; }
+        .opp-text { font-size: 12px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
+        .opp-bullets { list-style: none; padding: 0; }
+        .opp-bullets li { font-size: 12px; color: var(--text-secondary); line-height: 1.6; padding: 4px 0 4px 20px; position: relative; }
+        .opp-bullets li::before { content: '\2713'; position: absolute; left: 0; color: var(--engen-green); font-weight: 700; }
+        .opp-impact { display: flex; gap: 12px; margin-top: 12px; }
+        .opp-impact-item { background: var(--bg-light); border-radius: 6px; padding: 10px 14px; flex: 1; text-align: center; }
+        .opp-impact-value { font-size: 18px; font-weight: 800; color: var(--lcg-navy); }
+        .opp-impact-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+        .callout { border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: 12px; line-height: 1.7; }
+        .callout-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+        .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .exec-card { background: var(--bg-light); border-radius: 8px; padding: 20px; border-left: 4px solid var(--lcg-accent); }
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+        .exec-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+        .exec-card-value { font-size: 22px; font-weight: 800; color: var(--lcg-navy); margin-bottom: 4px; }
+        .exec-card-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+        .exec-card-full { grid-column: 1 / -1; }
+        .page-source { font-size: 9px; color: var(--text-muted); margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">Entrevista de Prediagn&oacute;stico</div>
+                <h1 class="cover-title">Visi&oacute;n del Inversionista:<br>Ejecuci&oacute;n, Riesgo y Valor Econ&oacute;mico</h1>
+                <p class="cover-subtitle">Perspectiva del fondo de capital privado sobre la brecha entre oportunidad de mercado y resultados operativos del LMM</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Gerardo Biagi, Partner (Linzor Capital Partners)</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">10 marzo 2026 &mdash; ~45 min videoconferencia</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: CONTEXTO Y RESUMEN EJECUTIVO                      -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Contexto y Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza la perspectiva de <strong>Gerardo Biagi</strong>, Partner de <strong>Linzor Capital Partners</strong> (fondo de capital privado que adquiri&oacute; Engen Capital en 2016). Biagi aporta la visi&oacute;n del inversionista con nivel de detalle operativo inusual &mdash; conoce el funnel, los par&aacute;metros de riesgo, los perfiles de vendedores y la din&aacute;mica gerencial. Es la segunda entrevista con Linzor (la primera fue Cipriano Santisteban, Consejero).</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value amber">~40%</div><div class="kpi-label">Menor conversi&oacute;n LMM vs Core</div></div>
+                <div class="kpi-item"><div class="kpi-value green">~3%</div><div class="kpi-label">NPL LMM (saludable)</div></div>
+                <div class="kpi-item"><div class="kpi-value">3</div><div class="kpi-label">Oficinas LMM vs 14+ TIP</div></div>
+                <div class="kpi-item"><div class="kpi-value red">1.5+ a&ntilde;os</div><div class="kpi-label">Board flagging underperformance</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Hip&oacute;tesis central</div>
+                    <div class="exec-card-value">El mercado existe</div>
+                    <div class="exec-card-desc">Competidores hist&oacute;ricos desaparecieron (Unifin, Mega, Docuformas). El mercado est&aacute; desatendido y es atractivo. El problema es interno.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Diagn&oacute;stico del inversionista</div>
+                    <div class="exec-card-value">Salud &ne; Valor econ&oacute;mico</div>
+                    <div class="exec-card-desc">Se maximiza la salud del portafolio (NPL ~3%), pero no el valor econ&oacute;mico. Se deja ir negocio rentable por modelos de riesgo dise&ntilde;ados para Core.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Mandato consensuado</div>
+                    <div class="exec-card-value">&ldquo;Ya le mov&iacute; de todo&rdquo;</div>
+                    <div class="exec-card-desc">Juan Pablo (CEO) confes&oacute; al Board: &ldquo;ya le mov&iacute; de todo y no s&eacute; ni qu&eacute; hacer.&rdquo; Consejo y CEO acordaron traer visi&oacute;n externa.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Expectativa de LCG</div>
+                    <div class="exec-card-value">Quick wins + estrategia</div>
+                    <div class="exec-card-desc">Validar hip&oacute;tesis de mercado, benchmark competitivo, identificar errores de dise&ntilde;o en Go-to-Market y procesos operativos. Propuesta debe venir de JP.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">La neta es que ya le mov&iacute; de todo y no s&eacute; ni qu&eacute; hacer, o sea, igual vale la pena traer a alguien tercero.</div>
+                <div class="verbatim-source">&mdash; Juan Pablo (CEO), citado por Gerardo Biagi</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: HIPOTESIS DEL INVERSIONISTA                       -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Hip&oacute;tesis del Inversionista &mdash; El Mercado Existe, la Ejecuci&oacute;n Falla</div>
+            </div>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Competidores hist&oacute;ricos eliminados &mdash; oportunidad abierta</div>
+                    <div class="finding-dimension estrategia">Estrategia</div>
+                </div>
+                <div class="finding-body">
+                    Unifin, Mega, Docuformas y otros competidores independientes <strong>desaparecieron del mercado</strong>. El espacio qued&oacute; abierto para quienes sobrevivieron. Biagi: &ldquo;El mercado est&aacute; ah&iacute;. Adem&aacute;s de que todav&iacute;a no est&aacute; atendido, tiene necesidades particulares.&rdquo;
+                </div>
+                <div class="finding-evidence">Evidencia: Confirmado por AMSOFAC (Unifin 27% market share eliminado), consistente con estudio de mercado LCG</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Crecimiento LMM se aplan&oacute; &mdash; gap entre expectativa y realidad</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    El LMM arranc&oacute; con buenos crecimientos (base peque&ntilde;a), pero recientemente &ldquo;hemos visto cierto alentamiento y un gap importante con lo que nosotros creemos que la oportunidad est&aacute; ah&iacute;.&rdquo; Cambios en direcci&oacute;n comercial, reestrategizaci&oacute;n de fuerza de ventas y contexto macro contribuyen, pero <strong>Biagi cree que la causa principal es interna</strong>.
+                </div>
+                <div class="finding-evidence">Evidencia: Consejo lleva 1.5+ a&ntilde;os se&ntilde;alando el underperformance</div>
+            </div>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">Mandato consensuado Board + CEO &mdash; no impuesto</div>
+                    <div class="finding-dimension oportunidad">Gobernanza</div>
+                </div>
+                <div class="finding-body">
+                    La iniciativa de traer consultor&iacute;a no es impuesta por el Consejo. <strong>Es consensuada con Juan Pablo.</strong> Viene de &ldquo;una pl&aacute;tica muy honesta y franca&rdquo; donde el CEO reconoci&oacute; que necesita ayuda externa. Biagi quiere que la propuesta de LCG <strong>venga de Juan Pablo al Board</strong>, no al rev&eacute;s: &ldquo;Para que esto jale, la tiene que ejecutar &eacute;l.&rdquo;
+                </div>
+                <div class="finding-evidence">Evidencia: Testimonio directo del Partner</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Parte de este trabajo va a venir de ajustes en nuestra estrategia y de quick wins en procesos operativos. Tampoco somos ilusos &mdash; sabemos que la situaci&oacute;n macro no est&aacute; boyante. Pero s&iacute; creo que la hip&oacute;tesis inicial es correcta: el mercado est&aacute;.</div>
+                <div class="verbatim-source">&mdash; Gerardo Biagi, Partner (Linzor Capital Partners)</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: MODELO DE RIESGO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03</div>
+                <div class="section-title">Modelo de Riesgo &mdash; Salud del Portafolio vs. Valor Econ&oacute;mico</div>
+            </div>
+
+            <p>Biagi identifica el modelo de riesgo como el <strong>primer cuello de botella estructural</strong>. El LMM reporta a la unidad de riesgos de Core, con metodolog&iacute;as y procesos heredados que contradicen la propuesta de valor de agilidad.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Se maximiza salud del portafolio, no valor econ&oacute;mico</div>
+                    <div class="finding-dimension riesgo">Riesgo</div>
+                </div>
+                <div class="finding-body">
+                    <strong>NPL LMM en ~3%</strong> con tasa de colocaci&oacute;n de 26-17%. Biagi es expl&iacute;cito: &ldquo;Fernando dice que aqu&iacute; le aguanta sin ning&uacute;n problema <strong>duplicar NPL</strong> si esto se traduce en originar 50-60% m&aacute;s.&rdquo; La pregunta que el Board se hace: <strong>&iquest;estamos dejando ir negocio rentable por exceso de cautela?</strong>
+                </div>
+                <div class="finding-evidence">Evidencia: Datos de cartera LMM + testimonio de tolerancia del CRO (Fernando Garza) v&iacute;a Biagi</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Maximizamos la salud del portafolio, pero no s&eacute; si estamos maximizando el economic value. En el negocio financiero, traer 0% de cartera vencida no es un buen indicador &mdash; quiere decir que puedes abrir la llave.</div>
+                <div class="verbatim-source">&mdash; Gerardo Biagi, Partner (Linzor Capital Partners)</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Param&eacute;trico de riesgo sin recalibrar en 3-4 a&ntilde;os</div>
+                    <div class="finding-dimension riesgo">Riesgo</div>
+                </div>
+                <div class="finding-body">
+                    El motor de riesgo (fast track / semiparam&eacute;trico) se dise&ntilde;&oacute; hace 3-4 a&ntilde;os cuando el portafolio LMM apenas crec&iacute;a y no hab&iacute;a data de comportamiento. <strong>Hoy hay datos suficientes para recalibrar</strong>, pero no se ha hecho. ~40% de la originaci&oacute;n LMM pasa por este fast track con &ldquo;muchos bateos.&rdquo; Biagi pide un <strong>an&aacute;lisis estad&iacute;stico de correlaciones</strong>: qu&eacute; par&aacute;metros causan rechazo vs cu&aacute;les causan default. Los que tienen alta incidencia en rechazo pero baja en default deber&iacute;an eliminarse.
+                </div>
+                <div class="finding-evidence">Evidencia: Solicitud directa del Partner para recalibraci&oacute;n basada en data</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Convergencia con Fernando Garza (CRO)</div>
+                <p>Biagi confirma desde la perspectiva del Board lo que Fernando Garza (Dir. Riesgo) indic&oacute; en su entrevista: la watchlist LMM de 25.8% y los modelos de &ldquo;grandes aplicados a medianas&rdquo; son conocidos por el Consejo. La diferencia: <strong>Biagi lo enmarca como una decisi&oacute;n de negocio</strong> (optimizar riesgo-rendimiento), no como un problema t&eacute;cnico.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: FUNNEL DE CONVERSION                              -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04</div>
+                <div class="section-title">Funnel de Conversi&oacute;n y Productividad Comercial</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Conversi&oacute;n LMM es ~40% menor que Core &mdash; &ldquo;el salto del tigre&rdquo;</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Biagi corta el funnel en 3 tramos: (1) oportunidad identificada &rarr; enviada a riesgos, (2) enviada &rarr; aprobada, (3) aprobada &rarr; fondeada. La conversi&oacute;n total LMM es <strong>~60% inferior a Core</strong>. La mayor deficiencia est&aacute; en el <strong>primer tramo</strong>: del prospecto a pasarla a riesgos. &ldquo;Algo est&aacute; pasando en este salto del tigre.&rdquo;
+                </div>
+                <div class="finding-evidence">Evidencia: M&eacute;tricas internas de pipeline. Consistente con CSV Salesforce (60% de ops LMM nunca pasan de Stage 1)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Algo est&aacute; pasando en este salto del tigre. Seguramente hay una parte que es una decisi&oacute;n adelantada de riesgo en la que el propio vendedor ya vio las cifras y dice &lsquo;esta madre no jala&rsquo; y lo elimina antes. Y seguramente hay cosas donde el vendedor sube cosas que no tienen sentido.</div>
+                <div class="verbatim-source">&mdash; Gerardo Biagi, Partner (Linzor Capital Partners)</div>
+            </div>
+
+            <h3>Dos causas del &ldquo;salto del tigre&rdquo;</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Causa 1</div>
+                    <div class="exec-card-value">Auto-filtrado prematuro</div>
+                    <div class="exec-card-desc">El vendedor anticipa que riesgos rechazar&aacute; el deal y lo elimina antes de enviarlo. El param&eacute;trico estricto genera una &ldquo;sombra de riesgo&rdquo; que inhibe la originaci&oacute;n desde la fuente.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Causa 2</div>
+                    <div class="exec-card-value">Pipeline de baja calidad</div>
+                    <div class="exec-card-desc">Vendedores suben oportunidades que &ldquo;no tienen sentido&rdquo; &mdash; esfuerzo de originaci&oacute;n invertido en deals sin probabilidad de cierre. Tiempo perdido que reduce productividad real.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Validaci&oacute;n cuantitativa (CSV Salesforce)</div>
+                <p>El an&aacute;lisis del pipeline LMM confirma la observaci&oacute;n de Biagi: de <strong>1,700 oportunidades LMM</strong>, el 60% (1,020) nunca avanza m&aacute;s all&aacute; de la primera etapa. Solo 55 llegan a fondeo (3.2% de conversi&oacute;n). La regi&oacute;n LMM 2 tiene 179 oportunidades y <strong>cero fondeos</strong>. <a href="../dashboard-funnel-lmm/" style="color: var(--lcg-accent);">Ver dashboard LMM &rarr;</a></p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: COMPLEJIDAD DE PRODUCTO                           -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05</div>
+                <div class="section-title">Complejidad de Producto &mdash; ADN Core Aplicado al LMM</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Tailoring de Core en deals de $300K-$1.4M USD &mdash; no escala</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    En el negocio Core, se hace <strong>mucho tailoring</strong>: meses de gracia, pagos low-high, balance, estructuras complejas. Es un approach de &ldquo;consultor financiero.&rdquo; Biagi es categ&oacute;rico: <strong>&ldquo;Eso no puedes hacerlo para un deal de $300K-$1.4M USD &mdash; quita tiempo.&rdquo;</strong> El LMM necesita productos <strong>cookie cutter</strong>: simples, r&aacute;pidos, estandarizados.
+                </div>
+                <div class="finding-evidence">Evidencia: Consistente con Guillermo Llantada (80%+ cotizaciones LMM con complejidad Core)</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Lo que t&uacute; necesitas en tu go-to-market es la simplicidad y la agilidad. No el approach de consultor en la estructuraci&oacute;n de financiamiento. Tienes que regresar al cookie cutter de cosas mucho m&aacute;s simples.</div>
+                <div class="verbatim-source">&mdash; Gerardo Biagi, Partner (Linzor Capital Partners)</div>
+            </div>
+
+            <table>
+                <thead><tr><th>Dimensi&oacute;n</th><th>Modelo Core</th><th>Lo que necesita LMM</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Estructuraci&oacute;n</td><td>Tailor-made: gracia, low-high, balance</td><td>Cookie cutter: 3-4 productos est&aacute;ndar</td></tr>
+                    <tr><td class="table-highlight">Propuesta de valor</td><td>Consultor&iacute;a financiera personalizada</td><td>Agilidad y acceso a liquidez</td></tr>
+                    <tr><td class="table-highlight">Percepci&oacute;n del cliente</td><td>Pricing es sensible</td><td>Pricing es secundario &mdash; rapidez importa m&aacute;s</td></tr>
+                    <tr><td class="table-highlight">Ticket</td><td>$5M+ USD</td><td>$300K &mdash; $1.4M USD</td></tr>
+                    <tr><td class="table-highlight">Tiempo de cierre</td><td>Semanas-meses (justificable)</td><td>D&iacute;as (imperativo competitivo)</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Insight estrat&eacute;gico</div>
+                <p>Biagi confirma lo que Calidad, Riesgos y Comercial ya identificaron por separado: <strong>el LMM opera con el traje de Core</strong>. Pero lo enmarca como un error de dise&ntilde;o estrat&eacute;gico, no solo operativo. La propuesta de valor del LMM es <strong>rapidez y flexibilidad</strong> &mdash; pero el proceso interno contradice esa promesa. Incluso la capacitaci&oacute;n de vendedores est&aacute; sesgada hacia la estructuraci&oacute;n compleja.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: TALENTO, LIDERAZGO Y COBERTURA                   -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06</div>
+                <div class="section-title">Talento, Liderazgo y Cobertura Geogr&aacute;fica</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Perfil de vendedor cuestionado &mdash; &iquest;sirve el de banca para LMM?</div>
+                    <div class="finding-dimension cultural">Talento</div>
+                </div>
+                <div class="finding-body">
+                    &ldquo;Un error que podemos estar haciendo es traer gente que no sabe vender en este segmento.&rdquo; La fuerza de ventas LMM es <strong>&ldquo;relativamente mixta&rdquo;</strong>: veteranos de Core con ADN bancario mezclados con nuevas contrataciones. Las cabezas vienen de banca corporativa &mdash; un contexto donde el cliente llega solo, no donde hay que prospectarlo en fr&iacute;o.
+                </div>
+                <div class="finding-evidence">Evidencia: Consistente con Roberto Zacatenco (&ldquo;originadores de banca no saben prospectar en fr&iacute;o&rdquo;) y JP (&ldquo;perfil desalineado&rdquo;)</div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Roberto &ldquo;fiscado&rdquo; &mdash; atrapado entre n&uacute;meros y retenci&oacute;n</div>
+                    <div class="finding-dimension cultural">Liderazgo</div>
+                </div>
+                <div class="finding-body">
+                    El Director LMM (Roberto Zacatenco) est&aacute; en una posici&oacute;n dif&iacute;cil: el n&uacute;mero no llega, pero con la rotaci&oacute;n que ha tenido (12 salidas en 2025), <strong>no aprieta al equipo por miedo a perder a los que quedan</strong>. Biagi lo describe sin rodeos como &ldquo;fiscado&rdquo; &mdash; paralizado.
+                </div>
+                <div class="finding-evidence">Evidencia: Visi&oacute;n del Board sobre el liderazgo operativo</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">No los aprieto mucho, no vaya a ser que se me vayan los que me quedan.</div>
+                <div class="verbatim-source">&mdash; Sobre Roberto Zacatenco, citado por Gerardo Biagi</div>
+            </div>
+
+            <h3>Cobertura geogr&aacute;fica: &iquest;3 oficinas son suficientes?</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Engen LMM</div>
+                    <div class="exec-card-value">3 oficinas</div>
+                    <div class="exec-card-desc">Monterrey, CDMX y Guadalajara. Modelo centralizado para un segmento que requiere cercan&iacute;a y presencia local.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">TIP M&eacute;xico (subsidiaria)</div>
+                    <div class="exec-card-value">14+ oficinas</div>
+                    <div class="exec-card-desc">Representaci&oacute;n en todo el pa&iacute;s para arrendamiento de remolques. Clientes similares al LMM. &iquest;Se podr&iacute;a compartir cobertura?</div>
+                </div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Cuestionamiento del Board</div>
+                <p>Biagi plantea dos preguntas estrat&eacute;gicas: (1) &iquest;Necesita LMM m&aacute;s puntos de presencia f&iacute;sica para competir? y (2) &iquest;Tiene sentido que el <strong>aparato de riesgo del LMM se maneje desde TIP</strong>, dado que los clientes son m&aacute;s similares a los de TIP que a los de Core? Ambas son decisiones de dise&ntilde;o organizacional que afectan directamente la capacidad de originaci&oacute;n.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: OPORTUNIDADES DE INTERVENCION                     -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07</div>
+                <div class="section-title">Oportunidades de Intervenci&oacute;n</div>
+            </div>
+
+            <p>A partir de la perspectiva del inversionista, se identifican <strong>4 oportunidades</strong> que conectan directamente con los hallazgos de las entrevistas anteriores.</p>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Recalibraci&oacute;n del Param&eacute;trico de Riesgo LMM</div>
+                    <div class="opp-priority alta">Prioridad alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema</div>
+                    <p class="opp-text">Motor de riesgo dise&ntilde;ado hace 3-4 a&ntilde;os sin data de comportamiento. Hoy hay suficientes datos para hacer an&aacute;lisis estad&iacute;stico de correlaciones: par&aacute;metros que causan rechazo vs los que causan default. NPL a ~3% indica margen para abrir la llave.</p>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>An&aacute;lisis de correlaci&oacute;n rechazo vs default por par&aacute;metro</li>
+                        <li>Recalibraci&oacute;n del fast track / semiparam&eacute;trico</li>
+                        <li>Modelo de optimizaci&oacute;n riesgo-rendimiento (no solo salud)</li>
+                        <li>Evaluaci&oacute;n de mover riesgo LMM a TIP</li>
+                    </ul>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">+50-60%</div><div class="opp-impact-label">M&aacute;s originaci&oacute;n potencial</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">~3% &rarr; ~5%</div><div class="opp-impact-label">NPL tolerable seg&uacute;n CRO</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Redise&ntilde;o del Funnel Comercial LMM</div>
+                    <div class="opp-priority alta">Prioridad alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema</div>
+                    <p class="opp-text">Conversi&oacute;n LMM ~40% menor que Core. Mayor ca&iacute;da en el primer tramo (oportunidad &rarr; riesgo). Vendedores auto-filtran o suben deals de baja calidad. Esfuerzo invertido en oportunidades sin probabilidad de cierre.</p>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>Diagn&oacute;stico de ca&iacute;da por tramo del funnel con datos reales</li>
+                        <li>Criterios de calificaci&oacute;n de pipeline para vendedores</li>
+                        <li>Enfoque de vendedores en deals con mayor probabilidad de cierre</li>
+                        <li>Integraci&oacute;n con inteligencia de Marketing (ICP, verticales)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Simplificaci&oacute;n de Producto LMM &mdash; Cookie Cutter</div>
+                    <div class="opp-priority alta">Prioridad alta</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema</div>
+                    <p class="opp-text">Productos con complejidad de Core (low-high, secure deposit, gracia) aplicados a deals de $300K-$1.4M USD. Contradice la propuesta de valor de agilidad y quita tiempo al vendedor.</p>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>Dise&ntilde;o de 3-4 productos est&aacute;ndar LMM (arrendamiento puro simple)</li>
+                        <li>Capacitaci&oacute;n en simplicidad: vender agilidad, no estructuraci&oacute;n</li>
+                        <li>Diferenciaci&oacute;n de flujos operativos LMM vs Core</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Talento, Liderazgo y Modelo de Cobertura</div>
+                    <div class="opp-priority media">Prioridad media</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Problema</div>
+                    <p class="opp-text">Perfil de vendedor bancario en segmento que requiere prospecci&oacute;n activa. Liderazgo paralizado entre resultados y retenci&oacute;n. Solo 3 oficinas para un pa&iacute;s que requiere presencia local.</p>
+                    <div class="opp-section-label">Alcance</div>
+                    <ul class="opp-bullets">
+                        <li>Evaluaci&oacute;n de perfiles y competencias vs requerimientos LMM</li>
+                        <li>Modelo de gesti&oacute;n gerencial: de fiscalizaci&oacute;n a coaching</li>
+                        <li>An&aacute;lisis costo-beneficio de expandir presencia f&iacute;sica (o aprovechar TIP)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: ONE-PAGER EJECUTIVO                               -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08</div>
+                <div class="section-title">One-Pager Ejecutivo &mdash; Gerardo Biagi</div>
+            </div>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value amber">~40%</div><div class="kpi-label">Menos conversi&oacute;n LMM vs Core</div></div>
+                <div class="kpi-item"><div class="kpi-value green">~3%</div><div class="kpi-label">NPL LMM (margen para crecer)</div></div>
+                <div class="kpi-item"><div class="kpi-value red">3 vs 14+</div><div class="kpi-label">Oficinas LMM vs TIP</div></div>
+                <div class="kpi-item"><div class="kpi-value">1.5+ a&ntilde;os</div><div class="kpi-label">Board flagging gap</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Hip&oacute;tesis validada</div>
+                    <div class="exec-card-value">El mercado existe</div>
+                    <div class="exec-card-desc">Competidores desaparecieron. Mercado desatendido con necesidades particulares. No es macro &mdash; es ejecuci&oacute;n interna.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Riesgo</div>
+                    <div class="exec-card-value">Salud &ne; Valor</div>
+                    <div class="exec-card-desc">NPL ~3% con tolerancia para duplicar. Param&eacute;trico sin recalibrar en 3-4 a&ntilde;os. Necesita an&aacute;lisis estad&iacute;stico correlaci&oacute;n rechazo vs default.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Funnel</div>
+                    <div class="exec-card-value">&ldquo;El salto del tigre&rdquo;</div>
+                    <div class="exec-card-desc">Mayor ca&iacute;da: oportunidad &rarr; riesgo. Vendedores auto-filtran o suben deals malos. 60% de ops LMM muere en Stage 1.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Producto</div>
+                    <div class="exec-card-value">ADN Core en LMM</div>
+                    <div class="exec-card-desc">Tailoring de Core para deals de $300K-$1.4M USD. Necesita cookie cutter: simplicidad y agilidad como propuesta de valor.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Talento</div>
+                    <div class="exec-card-value">Perfil bancario</div>
+                    <div class="exec-card-desc">Vendedores de Core no prospectan en fr&iacute;o. Roberto &ldquo;fiscado&rdquo; &mdash; no aprieta por miedo a m&aacute;s rotaci&oacute;n.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Gobernanza</div>
+                    <div class="exec-card-value">Buy-in total</div>
+                    <div class="exec-card-desc">Mandato consensuado Board + CEO. Juan Pablo reconoce que necesita ayuda externa. Propuesta debe venir de &eacute;l.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Convergencia con 8 entrevistas anteriores</div>
+                <p>Biagi confirma desde la perspectiva del inversionista lo que las 8 entrevistas operativas ya identificaron: <strong>el LMM opera con el modelo de Core</strong> &mdash; mismo riesgo, mismos productos, mismo perfil de vendedor, misma cobertura. La diferencia es que Biagi lo enmarca como una <strong>oportunidad de valor econ&oacute;mico</strong>, no solo de eficiencia operativa. El Board est&aacute; listo para invertir en el cambio si la propuesta tiene sustento.</p>
+            </div>
+
+            <div class="page-source">
+                Fuente: Entrevista con Gerardo Biagi, Partner de Linzor Capital Partners. 10 de marzo de 2026, videoconferencia (~45 min). Elabor&oacute;: Alfredo Ch&aacute;vez, London Consulting Group.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
