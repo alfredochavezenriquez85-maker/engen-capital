@@ -5,20 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playbook Comercial LMM — Engen Capital | London Consulting Group</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Archivo:wght@300;400;500;600;700;800;900&display=swap');
 
         :root {
-            --lcg-navy: #0B1F3F;
-            --lcg-blue: #1A3A6B;
-            --lcg-accent: #2E6DB4;
-            --lcg-light-blue: #E8F0FE;
+            --lcg-dark: #003D2D;
+            --lcg-teal: #009672;
+            --lcg-mint: #31EB97;
+            --lcg-sage: #CDDCC9;
+            --lcg-navy: #003D2D;
+            --lcg-blue: #00523B;
+            --lcg-accent: #009672;
+            --lcg-light-blue: #EAF5EE;
             --engen-green: #00B388;
             --engen-dark: #004D40;
-            --text-primary: #1a1a2e;
-            --text-secondary: #4a4a6a;
-            --text-muted: #7a7a9a;
-            --border: #e0e4ea;
-            --bg-light: #f7f8fb;
+            --text-primary: #1D1D1B;
+            --text-secondary: #4a4a4a;
+            --text-muted: #7a7a7a;
+            --border: #CDDCC9;
+            --bg-light: #F3F3F3;
             --bg-card: #ffffff;
             --success: #00B388;
             --warning: #F5A623;
@@ -42,30 +46,30 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text-primary);
             line-height: 1.6;
-            background: #eef1f5;
+            background: #f0f2ee;
         }
 
         .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
 
         /* ======================== COVER ======================== */
         .cover-page {
-            background: linear-gradient(135deg, #0B1F3F 0%, #004D40 50%, #00B388 100%);
+            background: linear-gradient(160deg, #001A13 0%, var(--lcg-dark) 40%, #00523B 70%, var(--lcg-teal) 100%);
             color: white; padding: 60px; min-height: 100vh;
             display: flex; flex-direction: column; justify-content: space-between;
             position: relative; overflow: hidden;
         }
-        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(49,235,151,0.12) 0%, transparent 70%); }
         .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
         .cover-logos img { height: 45px; filter: brightness(0) invert(1); }
         .cover-logos img:last-child { height: 65px; border-radius: 6px; filter: none; }
         .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
-        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
-        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
-        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 40px; }
-        .cover-divider { width: 80px; height: 3px; background: rgba(255,255,255,0.4); margin-bottom: 30px; }
+        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--lcg-mint); margin-bottom: 20px; }
+        .cover-title { font-family: 'DM Serif Text', Georgia, serif; font-size: 40px; font-weight: 400; line-height: 1.2; margin-bottom: 16px; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 40px; }
+        .cover-divider { width: 80px; height: 3px; background: var(--lcg-mint); margin-bottom: 30px; opacity: 0.6; }
         .cover-stats { display: flex; gap: 32px; margin-bottom: 40px; }
         .cover-stat { text-align: center; }
         .cover-stat-value { font-size: 36px; font-weight: 800; }
@@ -77,7 +81,7 @@
 
         /* ======================== TOC ======================== */
         .toc-page { padding: 60px; }
-        .toc-title { font-size: 28px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 8px; }
+        .toc-title { font-family: 'DM Serif Text', serif; font-size: 28px; font-weight: 400; color: var(--lcg-dark); margin-bottom: 8px; }
         .toc-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 40px; }
         .toc-list { list-style: none; }
         .toc-item { display: flex; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
@@ -87,16 +91,16 @@
 
         /* ======================== CONTENT ======================== */
         .content-page { padding: 50px 60px; }
-        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--lcg-navy); }
-        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 8px; }
-        .section-title { font-size: 26px; font-weight: 700; color: var(--lcg-navy); line-height: 1.3; }
-        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-blue); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--engen-green); }
+        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--lcg-teal); }
+        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-teal); margin-bottom: 8px; }
+        .section-title { font-family: 'DM Serif Text', serif; font-size: 26px; font-weight: 400; color: var(--lcg-dark); line-height: 1.3; }
+        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-dark); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--lcg-teal); }
         p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
 
         /* ======================== KPI BANNER ======================== */
         .kpi-banner { display: flex; gap: 12px; margin: 16px 0; }
-        .kpi-item { flex: 1; background: var(--bg-light); border-radius: 10px; padding: 16px; text-align: center; border-top: 3px solid var(--lcg-accent); }
-        .kpi-value { font-size: 28px; font-weight: 800; color: var(--lcg-navy); }
+        .kpi-item { flex: 1; background: var(--bg-light); border-radius: 10px; padding: 16px; text-align: center; border-top: 3px solid var(--lcg-teal); }
+        .kpi-value { font-size: 28px; font-weight: 800; color: var(--lcg-dark); }
         .kpi-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
         .kpi-item.green { border-top-color: var(--engen-green); }
         .kpi-item.green .kpi-value { color: var(--engen-dark); }
@@ -108,10 +112,10 @@
         /* ======================== FINDING CARDS ======================== */
         .finding-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
         .finding-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
-        .finding-number { width: 44px; height: 44px; border-radius: 50%; background: var(--lcg-navy); color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
-        .finding-title { font-size: 15px; font-weight: 700; color: var(--lcg-navy); border: none; padding: 0; margin: 0; }
+        .finding-number { width: 44px; height: 44px; border-radius: 50%; background: var(--lcg-dark); color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+        .finding-title { font-size: 15px; font-weight: 700; color: var(--lcg-dark); border: none; padding: 0; margin: 0; }
         .finding-kpi { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 16px; font-weight: 800; margin-bottom: 10px; }
-        .kpi-blue { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .kpi-blue { background: #EAF5EE; color: var(--lcg-dark); }
         .kpi-red { background: #fde8e8; color: #c62828; }
         .kpi-orange { background: #fff3e0; color: #e65100; }
         .kpi-green { background: #e0f2f1; color: var(--engen-dark); }
@@ -127,7 +131,7 @@
         /* ======================== STAGE SECTION ======================== */
         .stage-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--engen-green); }
         .stage-badge { width: 48px; height: 48px; border-radius: 50%; background: var(--engen-green); color: white; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; flex-shrink: 0; }
-        .stage-title { font-size: 20px; font-weight: 700; color: var(--lcg-navy); border: none; padding: 0; margin: 0; }
+        .stage-title { font-family: 'DM Serif Text', serif; font-size: 20px; font-weight: 400; color: var(--lcg-dark); border: none; padding: 0; margin: 0; }
         .stage-subtitle { font-size: 13px; color: var(--text-muted); font-weight: 400; }
 
         /* ======================== ACTION ITEMS ======================== */
@@ -148,8 +152,8 @@
         .callout-orange .callout-label { color: #e65100; }
         .callout-red { background: #fde8e8; border-left-color: #c62828; }
         .callout-red .callout-label { color: #c62828; }
-        .callout-navy { background: #e8edf5; border-left-color: var(--lcg-navy); }
-        .callout-navy .callout-label { color: var(--lcg-navy); }
+        .callout-navy { background: #EAF5EE; border-left-color: var(--lcg-dark); }
+        .callout-navy .callout-label { color: var(--lcg-dark); }
 
         /* ======================== TABLES ======================== */
         table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0; }
@@ -166,7 +170,7 @@
         .delta-down { color: #c62828; }
 
         /* ======================== RISK BOX ======================== */
-        .risk-box { background: linear-gradient(135deg, #0B1F3F 0%, #004D40 100%); color: white; border-radius: 12px; padding: 32px; margin: 24px 0; }
+        .risk-box { background: linear-gradient(135deg, var(--lcg-dark) 0%, #00523B 100%); color: white; border-radius: 12px; padding: 32px; margin: 24px 0; }
         .risk-box h3 { color: var(--engen-green); border-left-color: rgba(255,255,255,0.3); font-size: 18px; margin-top: 0; }
         .risk-box p { color: rgba(255,255,255,0.85); }
         .risk-box .risk-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
@@ -177,7 +181,7 @@
         .tag-green { background: #e0f7ef; color: var(--engen-dark); }
         .tag-red { background: #fde8e8; color: #c62828; }
         .tag-orange { background: #fff3e0; color: #e65100; }
-        .tag-blue { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .tag-blue { background: #EAF5EE; color: var(--lcg-dark); }
 
         .page-source { font-size: 10px; color: var(--text-muted); margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--border); }
 
@@ -227,7 +231,7 @@
         .ba-col.after .ba-value { color: var(--engen-dark); }
 
         /* ======================== HERO STAT ======================== */
-        .hero-stat { background: linear-gradient(135deg, var(--lcg-navy), var(--engen-dark)); color: white; border-radius: 16px; padding: 32px; text-align: center; margin: 20px 0; }
+        .hero-stat { background: linear-gradient(135deg, var(--lcg-dark), #00523B); color: white; border-radius: 16px; padding: 32px; text-align: center; margin: 20px 0; }
         .hero-stat .hero-num { font-size: 64px; font-weight: 900; line-height: 1; }
         .hero-stat .hero-label { font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.7); margin-top: 8px; }
         .hero-stat .hero-sub { font-size: 13px; color: var(--engen-green); margin-top: 4px; font-weight: 600; }
@@ -324,6 +328,13 @@
                     <div class="toc-desc">Tabla consolidada de m&eacute;tricas objetivo + Nota sobre la tesis de riesgo</div>
                 </div>
             </li>
+            <li class="toc-item">
+                <span class="toc-number">04</span>
+                <div>
+                    <div class="toc-text">Plan de Proyecto &mdash; Metodolog&iacute;a LCG</div>
+                    <div class="toc-desc">Roadmap de 34 semanas, etapas, entregables, equipo y modelo de gobierno</div>
+                </div>
+            </li>
         </ul>
     </div>
 
@@ -375,17 +386,17 @@
         <div class="v-funnel">
             <div class="v-funnel-step">
                 <div class="v-funnel-meta"><div class="meta-rate">25</div><div class="meta-label">Originadores LMM</div></div>
-                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 100%; background: linear-gradient(90deg, var(--lcg-navy), var(--lcg-blue));"><span class="bar-num">25</span> originadores &mdash; 22 productivos + 3 nuevos</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 100%; background: linear-gradient(90deg, var(--lcg-dark), #00523B);"><span class="bar-num">25</span> originadores &mdash; 22 productivos + 3 nuevos</div></div>
             </div>
             <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">Promedio 1.38 citas/sem (meta: 3.00)</span></div>
             <div class="v-funnel-step">
                 <div class="v-funnel-meta"><div class="meta-rate" style="color: #c62828;">46%</div><div class="meta-label">Achievement Citas</div></div>
-                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 80%; background: linear-gradient(90deg, #163a5f, #1e4d7a);"><span class="bar-num">4,582</span> citas realizadas (-10% YoY)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 80%; background: linear-gradient(90deg, #003D2D, #007A56);"><span class="bar-num">4,582</span> citas realizadas (-10% YoY)</div></div>
             </div>
             <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">0.86 opps/cita (meta: 1.00)</span></div>
             <div class="v-funnel-step">
                 <div class="v-funnel-meta"><div class="meta-rate" style="color: #e65100;">86%</div><div class="meta-label">Achievement Opps</div></div>
-                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 55%; background: linear-gradient(90deg, #1e4d7a, #2E6DB4);"><span class="bar-num">1,126</span> oportunidades generadas (-17%)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 55%; background: linear-gradient(90deg, #007A56, var(--lcg-teal));"><span class="bar-num">1,126</span> oportunidades generadas (-17%)</div></div>
             </div>
             <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">Pipeline $1,370M de $2,899M meta</span></div>
             <div class="v-funnel-step">
@@ -465,12 +476,12 @@
         <div class="v-funnel">
             <div class="v-funnel-step">
                 <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">20,000</div><div class="meta-label">En CRM (de 12K)</div></div>
-                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 100%; background: linear-gradient(90deg, var(--lcg-navy), var(--lcg-blue));"><span class="bar-num">20K</span> en CRM (+67%)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 100%; background: linear-gradient(90deg, var(--lcg-dark), #00523B);"><span class="bar-num">20K</span> en CRM (+67%)</div></div>
             </div>
             <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">&gt;60% contactados (de 24%)</span></div>
             <div class="v-funnel-step">
                 <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">5,500+</div><div class="meta-label">Citas (+20%)</div></div>
-                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 65%; background: linear-gradient(90deg, #1e4d7a, #2E6DB4);"><span class="bar-num">5,500</span> citas</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 65%; background: linear-gradient(90deg, #007A56, var(--lcg-teal));"><span class="bar-num">5,500</span> citas</div></div>
             </div>
             <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">&gt;30% conversi&oacute;n (de 24.5%)</span></div>
             <div class="v-funnel-step">
@@ -692,9 +703,9 @@
 
         <!-- Funnel visual -->
         <div class="pipeline-funnel">
-            <div class="pipeline-stage" style="background: #0B1F3F;"><div class="stage-num">1</div>Planeaci&oacute;n<br>Comercial</div>
-            <div class="pipeline-stage" style="background: #163a5f;"><div class="stage-num">2</div>Generaci&oacute;n<br>de Demanda</div>
-            <div class="pipeline-stage" style="background: #1e4d7a;"><div class="stage-num">3</div>Conversi&oacute;n y<br>Perfilamiento</div>
+            <div class="pipeline-stage" style="background: #003D2D;"><div class="stage-num">1</div>Planeaci&oacute;n<br>Comercial</div>
+            <div class="pipeline-stage" style="background: #00523B;"><div class="stage-num">2</div>Generaci&oacute;n<br>de Demanda</div>
+            <div class="pipeline-stage" style="background: #007A56;"><div class="stage-num">3</div>Conversi&oacute;n y<br>Perfilamiento</div>
             <div class="pipeline-stage" style="background: #004D40;"><div class="stage-num">4</div>Suscripci&oacute;n y<br>Aprobaci&oacute;n</div>
             <div class="pipeline-stage" style="background: #00796b;"><div class="stage-num">5</div>Disposici&oacute;n de<br>Soluciones</div>
             <div class="pipeline-stage" style="background: #00B388;"><div class="stage-num">6</div>Capital<br>Humano</div>
@@ -1013,6 +1024,439 @@
 
         <div class="page-source" style="margin-top: 24px; text-align: center; font-style: italic;">
             Documento de trabajo &mdash; Las metas son indicativas y deben validarse en la fase de An&aacute;lisis Exhaustivo del proyecto LCG.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PARTE 04: PLAN DE PROYECTO — METODOLOG&Iacute;A LCG              -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Parte 04</div>
+            <div class="section-title">Plan de Proyecto &mdash; Metodolog&iacute;a LCG</div>
+        </div>
+
+        <p style="font-size: 14px; max-width: 800px; line-height: 1.8; margin-bottom: 24px;">London Consulting Group propone un proyecto integral de <strong>34 semanas (Fase 1)</strong> que abarca desde el an&aacute;lisis exhaustivo hasta la documentaci&oacute;n final, con una segunda fase opcional de 20 semanas para consolidaci&oacute;n. La metodolog&iacute;a combina <strong>quick wins</strong> tempranos con transformaci&oacute;n estructural profunda.</p>
+
+        <!-- ROADMAP VISUAL -->
+        <h3>Etapas del Proyecto (Roadmap)</h3>
+
+        <div style="display: flex; gap: 0; margin: 24px 0; border-radius: 10px; overflow: hidden; font-size: 11px; font-weight: 700;">
+            <div style="flex: 1; background: var(--lcg-dark); color: white; padding: 18px 10px; text-align: center; position: relative;">
+                <div style="font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px;">PRE-DX</div>
+                <div style="font-size: 10px; color: rgba(255,255,255,0.5);">&#x2713; Completado</div>
+            </div>
+            <div style="flex: 2.5; background: var(--lcg-teal); color: white; padding: 18px 14px; text-align: center;">
+                <div style="font-family: 'DM Serif Text', serif; font-size: 16px; font-weight: 400;">Analizar</div>
+                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px;">Estrategia &amp; Estructura</div>
+            </div>
+            <div style="flex: 3; background: #00523B; color: white; padding: 18px 14px; text-align: center;">
+                <div style="font-family: 'DM Serif Text', serif; font-size: 16px; font-weight: 400;">Dise&ntilde;ar</div>
+                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px;">Modelos &amp; Entregables</div>
+            </div>
+            <div style="flex: 4; background: var(--lcg-dark); color: white; padding: 18px 14px; text-align: center; position: relative;">
+                <div style="font-family: 'DM Serif Text', serif; font-size: 16px; font-weight: 400;">Implementar</div>
+                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px;">Procesos, Herramientas &amp; Modelo de Gesti&oacute;n</div>
+            </div>
+            <div style="flex: 1; background: #1D1D1B; color: white; padding: 18px 10px; text-align: center;">
+                <div style="font-family: 'DM Serif Text', serif; font-size: 13px; font-weight: 400;">Entrega</div>
+                <div style="font-size: 9px; color: rgba(255,255,255,0.5); margin-top: 2px;">Documental</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 2px; margin: -8px 0 20px; font-size: 10px; text-align: center;">
+            <div style="flex: 1; padding: 6px; background: var(--lcg-mint); color: var(--lcg-dark); font-weight: 700; border-radius: 0 0 0 6px;">QUICK WINS (Sem 05-15)</div>
+            <div style="flex: 2; padding: 6px; background: #EAF5EE; color: var(--lcg-dark); font-weight: 600;">CAPACITACI&Oacute;N (Sem 20-22)</div>
+            <div style="flex: 2; padding: 6px; background: var(--lcg-sage); color: var(--lcg-dark); font-weight: 600; border-radius: 0 0 6px 0;">CURVA ROI &amp; SISTEMA</div>
+        </div>
+
+        <div style="text-align: center; font-size: 11px; font-weight: 600; color: var(--lcg-teal); letter-spacing: 2px; text-transform: uppercase; margin: 12px 0 28px; padding: 8px; border: 1px dashed var(--lcg-sage); border-radius: 6px;">&#x25B6; Juntas Semanales de Avance &#x25C0;</div>
+
+        <!-- DETAILED PHASES TABLE -->
+        <h3>Detalle por Fase</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 18%;">Fase</th>
+                    <th style="width: 12%;">Semanas</th>
+                    <th style="width: 45%;">Actividades</th>
+                    <th style="width: 25%;">Entregables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #EAF5EE;">
+                    <td class="table-highlight" style="font-size: 13px;">&#x1F50D; An&aacute;lisis Exhaustivo</td>
+                    <td style="font-weight: 800; color: var(--lcg-dark);">Sem 01-04</td>
+                    <td style="font-size: 12px;">
+                        &bull; Levantamiento de Value Stream Maps (VSMs) por proceso<br>
+                        &bull; An&aacute;lisis de Perfiles &amp; Mindset del equipo<br>
+                        &bull; Anal&iacute;tica de Datos (cartera, pipeline, conversiones, tiempos)<br>
+                        &bull; Gemba Walks &mdash; observaci&oacute;n directa en campo<br>
+                        &bull; Definici&oacute;n de Estructura Organizacional<br>
+                        &bull; Backlog de Historias de mejora
+                    </td>
+                    <td style="font-size: 12px;">Diagn&oacute;stico completo, VSMs as-is, mapa de oportunidades priorizado, an&aacute;lisis de brechas</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight" style="font-size: 13px;">&#x26A1; Quick Wins</td>
+                    <td style="font-weight: 800; color: var(--lcg-dark);">Sem 05-15</td>
+                    <td style="font-size: 12px;">
+                        &bull; Iniciativas R&aacute;pidas de Alto Impacto y Bajo Esfuerzo<br>
+                        &bull; Ejecutadas en paralelo con Estrategia &amp; Dise&ntilde;o<br>
+                        &bull; Resultados visibles desde el primer mes
+                    </td>
+                    <td style="font-size: 12px;">Mejoras implementadas con impacto medible en KPIs seleccionados</td>
+                </tr>
+                <tr style="background: #EAF5EE;">
+                    <td class="table-highlight" style="font-size: 13px;">&#x1F3AF; Estrategia &amp; Estructura</td>
+                    <td style="font-weight: 800; color: var(--lcg-dark);">Sem 06-10</td>
+                    <td style="font-size: 12px;">
+                        &bull; Alineaci&oacute;n Estrat&eacute;gica con direcci&oacute;n<br>
+                        &bull; Dise&ntilde;o de Macroestructura organizacional<br>
+                        &bull; Dise&ntilde;o de Microestructura por &aacute;rea<br>
+                        &bull; Plan Maestro del proyecto
+                    </td>
+                    <td style="font-size: 12px;">Nuevo organigrama, roles y responsabilidades, plan maestro aprobado</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight" style="font-size: 13px;">&#x1F4D0; Dise&ntilde;o</td>
+                    <td style="font-weight: 800; color: var(--lcg-dark);">Sem 05-20</td>
+                    <td style="font-size: 12px;">
+                        &bull; Modelos Operativos to-be por proceso<br>
+                        &bull; Procesos e Indicadores (KPIs por rol)<br>
+                        &bull; Herramientas Digitales (CRM, param&eacute;trico, dashboards)<br>
+                        &bull; D&iacute;as T&iacute;picos de Puestos Clave<br>
+                        &bull; Pol&iacute;ticas actualizadas<br>
+                        &bull; Pre-Manuales operativos<br>
+                        &bull; Plan de Capacitaci&oacute;n e Implementaci&oacute;n
+                    </td>
+                    <td style="font-size: 12px;">VSMs to-be, manuales de proceso, tableros de gesti&oacute;n, herramientas configuradas</td>
+                </tr>
+                <tr style="background: #EAF5EE;">
+                    <td class="table-highlight" style="font-size: 13px;">&#x1F393; Capacitaci&oacute;n</td>
+                    <td style="font-weight: 800; color: var(--lcg-dark);">Sem 20-22</td>
+                    <td style="font-size: 12px;">
+                        &bull; Ejecuci&oacute;n del plan de capacitaci&oacute;n<br>
+                        &bull; Certificaci&oacute;n te&oacute;rica (conocimiento)<br>
+                        &bull; Certificaci&oacute;n pr&aacute;ctica (role-playing, simulaci&oacute;n)
+                    </td>
+                    <td style="font-size: 12px;">Equipo certificado, evaluaciones por persona, gaps identificados</td>
+                </tr>
+                <tr>
+                    <td class="table-highlight" style="font-size: 13px;">&#x1F680; Implementaci&oacute;n</td>
+                    <td style="font-weight: 800; color: var(--lcg-dark);">Sem 15-34</td>
+                    <td style="font-size: 12px;">
+                        &bull; Acompa&ntilde;amiento Hombro a Hombro en campo<br>
+                        &bull; Nivel de Implementaci&oacute;n de Procesos &amp; Digital<br>
+                        &bull; Nivel de Coaching gerencial y liderazgo
+                    </td>
+                    <td style="font-size: 12px;">Procesos operando, niveles de adopci&oacute;n medidos, coaching completado</td>
+                </tr>
+                <tr style="background: #EAF5EE;">
+                    <td class="table-highlight" style="font-size: 13px;">&#x1F4CB; Documentaci&oacute;n</td>
+                    <td style="font-weight: 800; color: var(--lcg-dark);">Sem 33-34</td>
+                    <td style="font-size: 12px;">
+                        &bull; Matriz de auditor&iacute;a de procesos<br>
+                        &bull; Procesos implementados documentados<br>
+                        &bull; Entrega formal de resultados
+                    </td>
+                    <td style="font-size: 12px;">Documentaci&oacute;n final, cuarto de control, matriz de sostenibilidad</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PLAN DE PROYECTO (cont.) — CHANGE MANAGEMENT                  -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Parte 04 &mdash; Continuaci&oacute;n</div>
+            <div class="section-title">Growth Management &amp; Modelo de Gobierno</div>
+        </div>
+
+        <p style="font-size: 14px; max-width: 800px; line-height: 1.8; margin-bottom: 24px;">La transformaci&oacute;n comercial y operativa de LMM no es solo de procesos &mdash; requiere un cambio profundo en <strong>h&aacute;bitos, mentalidad y liderazgo</strong>. LCG integra su modelo de Growth Management como eje transversal en todo el proyecto.</p>
+
+        <!-- 6 PILLARS OF CHANGE MANAGEMENT -->
+        <h3>6 Pilares de Growth Management</h3>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+            <div style="background: var(--lcg-dark); color: white; border-radius: 10px; padding: 20px; text-align: center;">
+                <div style="font-size: 28px; margin-bottom: 8px;">&#x1F4E2;</div>
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 6px;">Comunicaci&oacute;n e Identidad</div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5;">Kick Off, Plan de Comunicaci&oacute;n, Identidad del Proyecto, Town Halls mensuales</div>
+            </div>
+            <div style="background: var(--lcg-dark); color: white; border-radius: 10px; padding: 20px; text-align: center;">
+                <div style="font-size: 28px; margin-bottom: 8px;">&#x1F465;</div>
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 6px;">An&aacute;lisis de Talento</div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5;">Evaluaci&oacute;n de perfiles, brechas de competencia, estructura organizacional</div>
+            </div>
+            <div style="background: var(--lcg-dark); color: white; border-radius: 10px; padding: 20px; text-align: center;">
+                <div style="font-size: 28px; margin-bottom: 8px;">&#x1F4AA;</div>
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 6px;">Desarrollo de Talento</div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5;">Liderazgo &Aacute;gil (10 sesiones), Aceleradores de Liderazgo</div>
+            </div>
+            <div style="background: #00523B; color: white; border-radius: 10px; padding: 20px; text-align: center;">
+                <div style="font-size: 28px; margin-bottom: 8px;">&#x1F4CB;</div>
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 6px;">Desarrollo Individual</div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5;">Plan individual por persona, capacitaci&oacute;n personalizada, documentaci&oacute;n de progreso</div>
+            </div>
+            <div style="background: #00523B; color: white; border-radius: 10px; padding: 20px; text-align: center;">
+                <div style="font-size: 28px; margin-bottom: 8px;">&#x1F4A1;</div>
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 6px;">Hub de Innovaci&oacute;n</div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5;">Estrategia, acompa&ntilde;amiento metodol&oacute;gico, modelo de gobierno, log&iacute;stica</div>
+            </div>
+            <div style="background: #00523B; color: white; border-radius: 10px; padding: 20px; text-align: center;">
+                <div style="font-size: 28px; margin-bottom: 8px;">&#x1F504;</div>
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 6px;">Gesti&oacute;n del Cambio</div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5;">Plan Sponsor, Reconocimiento, Mapa Resistencias, Evaluaci&oacute;n ADKAR</div>
+            </div>
+        </div>
+
+        <!-- GOVERNANCE MODEL -->
+        <h3>Modelo de Gobierno Propuesto</h3>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0; margin: 20px 0;">
+            <div style="background: var(--lcg-dark); color: white; padding: 16px 48px; border-radius: 10px 10px 0 0; font-weight: 700; font-size: 14px; text-align: center; width: 400px;">
+                <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--lcg-mint); margin-bottom: 4px;">Nivel Estrat&eacute;gico</div>
+                Patronato
+                <div style="font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.6); margin-top: 2px;">Sesi&oacute;n mensual &mdash; Direcci&oacute;n General Engen + Socio LCG</div>
+            </div>
+            <div style="width: 2px; height: 12px; background: var(--lcg-sage);"></div>
+            <div style="background: var(--lcg-teal); color: white; padding: 16px 48px; border-radius: 10px; font-weight: 700; font-size: 14px; text-align: center; width: 500px;">
+                <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 4px;">Nivel T&aacute;ctico</div>
+                Comit&eacute; T&aacute;ctico
+                <div style="font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.8); margin-top: 2px;">Semanal &mdash; Director Operaciones LCG + Directivos Engen</div>
+            </div>
+            <div style="width: 2px; height: 12px; background: var(--lcg-sage);"></div>
+            <div style="display: flex; gap: 12px; width: 100%;">
+                <div style="flex: 1; background: #EAF5EE; border: 2px solid var(--lcg-sage); border-radius: 10px; padding: 16px; text-align: center;">
+                    <div style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--lcg-teal); font-weight: 700; margin-bottom: 4px;">Operativo LCG</div>
+                    <div style="font-size: 13px; font-weight: 700; color: var(--lcg-dark);">Gerente de Proyecto</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Consultores especialistas por eje</div>
+                </div>
+                <div style="flex: 1; background: #EAF5EE; border: 2px solid var(--lcg-sage); border-radius: 10px; padding: 16px; text-align: center;">
+                    <div style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--lcg-teal); font-weight: 700; margin-bottom: 4px;">Operativo Engen</div>
+                    <div style="font-size: 13px; font-weight: 700; color: var(--lcg-dark);">Equipos Integrados</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">L&iacute;deres por &aacute;rea + Comit&eacute;s &Aacute;giles</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIMELINE GANTT-STYLE -->
+        <h3>Cronograma Visual &mdash; 34 Semanas</h3>
+
+        <div style="margin: 16px 0; font-size: 11px;">
+            <div style="display: flex; margin-bottom: 2px;">
+                <div style="width: 140px; font-weight: 700; color: var(--text-primary); padding: 8px 0; font-size: 11px;">Mes</div>
+                <div style="flex: 1; display: flex;">
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa; border-right: 1px solid #eee;">Mes 1</div>
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa; border-right: 1px solid #eee;">Mes 2</div>
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa; border-right: 1px solid #eee;">Mes 3</div>
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa; border-right: 1px solid #eee;">Mes 4</div>
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa; border-right: 1px solid #eee;">Mes 5</div>
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa; border-right: 1px solid #eee;">Mes 6</div>
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa; border-right: 1px solid #eee;">Mes 7</div>
+                    <div style="flex: 1; text-align: center; padding: 8px 0; font-weight: 700; color: var(--lcg-dark); background: #fafafa;">Mes 8</div>
+                </div>
+            </div>
+            <!-- An&aacute;lisis Sem 1-4 -->
+            <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                <div style="width: 140px; font-weight: 600; color: var(--text-primary); padding: 6px 0; font-size: 11px;">An&aacute;lisis</div>
+                <div style="flex: 1; position: relative; height: 22px;">
+                    <div style="position: absolute; left: 0%; width: 12.5%; height: 100%; background: var(--lcg-dark); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 700;">S01-04</div>
+                </div>
+            </div>
+            <!-- Quick Wins Sem 5-15 -->
+            <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                <div style="width: 140px; font-weight: 600; color: var(--text-primary); padding: 6px 0; font-size: 11px;">Quick Wins</div>
+                <div style="flex: 1; position: relative; height: 22px;">
+                    <div style="position: absolute; left: 12.5%; width: 32%; height: 100%; background: var(--lcg-mint); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--lcg-dark); font-size: 9px; font-weight: 700;">S05-15</div>
+                </div>
+            </div>
+            <!-- Estrategia Sem 6-10 -->
+            <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                <div style="width: 140px; font-weight: 600; color: var(--text-primary); padding: 6px 0; font-size: 11px;">Estrategia</div>
+                <div style="flex: 1; position: relative; height: 22px;">
+                    <div style="position: absolute; left: 15.6%; width: 14.7%; height: 100%; background: var(--lcg-teal); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 700;">S06-10</div>
+                </div>
+            </div>
+            <!-- Dise&ntilde;o Sem 5-20 -->
+            <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                <div style="width: 140px; font-weight: 600; color: var(--text-primary); padding: 6px 0; font-size: 11px;">Dise&ntilde;o</div>
+                <div style="flex: 1; position: relative; height: 22px;">
+                    <div style="position: absolute; left: 12.5%; width: 47%; height: 100%; background: #00523B; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 700;">S05-20</div>
+                </div>
+            </div>
+            <!-- Capacitaci&oacute;n Sem 20-22 -->
+            <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                <div style="width: 140px; font-weight: 600; color: var(--text-primary); padding: 6px 0; font-size: 11px;">Capacitaci&oacute;n</div>
+                <div style="flex: 1; position: relative; height: 22px;">
+                    <div style="position: absolute; left: 59%; width: 7.5%; height: 100%; background: var(--lcg-teal); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 700;">S20-22</div>
+                </div>
+            </div>
+            <!-- Implementaci&oacute;n Sem 15-34 -->
+            <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                <div style="width: 140px; font-weight: 600; color: var(--text-primary); padding: 6px 0; font-size: 11px;">Implementaci&oacute;n</div>
+                <div style="flex: 1; position: relative; height: 22px;">
+                    <div style="position: absolute; left: 44%; width: 56%; height: 100%; background: var(--lcg-dark); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 700;">S15-34</div>
+                </div>
+            </div>
+            <!-- Documentaci&oacute;n Sem 33-34 -->
+            <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                <div style="width: 140px; font-weight: 600; color: var(--text-primary); padding: 6px 0; font-size: 11px;">Documentaci&oacute;n</div>
+                <div style="flex: 1; position: relative; height: 22px;">
+                    <div style="position: absolute; left: 94%; width: 6%; height: 100%; background: #1D1D1B; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 700;">S33-34</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PLAN DE PROYECTO (cont.) — INVERSI&Oacute;N & EQUIPO            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Parte 04 &mdash; Inversi&oacute;n</div>
+            <div class="section-title">Dimensionamiento del Proyecto</div>
+        </div>
+
+        <h3>Escenario en Dos Fases</h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 16px 0;">
+            <div style="background: var(--lcg-dark); color: white; border-radius: 10px; padding: 24px; text-align: center;">
+                <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--lcg-mint); margin-bottom: 8px;">Fase 1 &mdash; Transformaci&oacute;n</div>
+                <div style="font-size: 36px; font-weight: 900; color: var(--lcg-mint);">34</div>
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7);">semanas calendario</div>
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.15);">
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">Recursos LCG</div>
+                    <div style="font-size: 20px; font-weight: 800;">95</div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">semanas/recurso</div>
+                </div>
+                <div style="margin-top: 12px;">
+                    <div style="font-size: 24px; font-weight: 900;">$572K</div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">USD (65% del total)</div>
+                </div>
+            </div>
+            <div style="background: #00523B; color: white; border-radius: 10px; padding: 24px; text-align: center;">
+                <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--lcg-mint); margin-bottom: 8px;">Fase 2 &mdash; Consolidaci&oacute;n</div>
+                <div style="font-size: 36px; font-weight: 900; color: var(--lcg-mint);">20</div>
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7);">semanas calendario</div>
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.15);">
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">Recursos LCG</div>
+                    <div style="font-size: 20px; font-weight: 800;">52</div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">semanas/recurso</div>
+                </div>
+                <div style="margin-top: 12px;">
+                    <div style="font-size: 24px; font-weight: 900;">$312K</div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">USD (35% del total)</div>
+                </div>
+            </div>
+            <div style="background: linear-gradient(135deg, var(--lcg-dark), var(--lcg-teal)); color: white; border-radius: 10px; padding: 24px; text-align: center;">
+                <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--lcg-mint); margin-bottom: 8px;">Total Proyecto</div>
+                <div style="font-size: 36px; font-weight: 900; color: white;">54</div>
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7);">semanas calendario</div>
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.15);">
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">Tarifa semanal</div>
+                    <div style="font-size: 20px; font-weight: 800;">$6,000</div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">USD / sem-consultor</div>
+                </div>
+                <div style="margin-top: 12px;">
+                    <div style="font-size: 32px; font-weight: 900; color: var(--lcg-mint);">$884K</div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.5);">USD inversi&oacute;n total</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Detalle Financiero</h3>
+
+        <table>
+            <thead>
+                <tr><th>Concepto</th><th>Fase 1</th><th>Fase 2</th><th>Total</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="table-highlight">Semanas calendario</td><td>34</td><td>20</td><td style="font-weight: 800;">54</td></tr>
+                <tr><td class="table-highlight">Total semanas/recurso LCG</td><td>95</td><td>52</td><td style="font-weight: 800;">147</td></tr>
+                <tr><td class="table-highlight">Total semanas/recurso Engen</td><td>95</td><td>46</td><td style="font-weight: 800;">141</td></tr>
+                <tr><td class="table-highlight">Semana Consultor (USD)</td><td>$6,000</td><td>$6,000</td><td>&mdash;</td></tr>
+                <tr style="background: #EAF5EE;"><td class="table-highlight" style="font-size: 13px;">Inversi&oacute;n total (USD)</td><td style="font-weight: 800; font-size: 14px;">$572,000</td><td style="font-weight: 800; font-size: 14px;">$312,000</td><td style="font-weight: 900; font-size: 15px; color: var(--lcg-dark);">$884,000</td></tr>
+                <tr><td class="table-highlight">Anticipo (10%)</td><td>$57,200</td><td>$31,200</td><td>&mdash;</td></tr>
+                <tr><td class="table-highlight">Pago semanal</td><td>$15,141</td><td>$14,040</td><td>&mdash;</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-navy" style="margin-top: 16px;">
+            <div class="callout-label">Notas importantes</div>
+            <p style="font-size: 12px; margin: 0; line-height: 1.7;">
+                &bull; Inversi&oacute;n no incluye IVA<br>
+                &bull; No incluye inversi&oacute;n en software o licencias requeridas por el proyecto<br>
+                &bull; No incluye traslados y hospedaje fuera de CDMX<br>
+                &bull; Se requiere auto utilitario para consultores en campo<br>
+                &bull; London no labora semana de Navidad
+            </p>
+        </div>
+
+        <!-- WHAT ENGEN GETS -->
+        <h3>&iquest;Qu&eacute; obtiene Engen con este proyecto?</h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+            <div style="background: #EAF5EE; border-radius: 8px; padding: 16px; border-left: 4px solid var(--lcg-teal);">
+                <div style="font-size: 13px; font-weight: 700; color: var(--lcg-dark); margin-bottom: 6px;">Ejes de transformaci&oacute;n</div>
+                <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    &bull; Modelo comercial redise&ntilde;ado para LMM<br>
+                    &bull; F&aacute;brica de originaci&oacute;n optimizada<br>
+                    &bull; Param&eacute;trico ampliado (de 9% a &gt;40%)<br>
+                    &bull; Equipo capacitado y certificado
+                </div>
+            </div>
+            <div style="background: #EAF5EE; border-radius: 8px; padding: 16px; border-left: 4px solid var(--lcg-teal);">
+                <div style="font-size: 13px; font-weight: 700; color: var(--lcg-dark); margin-bottom: 6px;">Entregables tangibles</div>
+                <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    &bull; VSMs as-is y to-be documentados<br>
+                    &bull; Manuales de proceso por &aacute;rea<br>
+                    &bull; Tableros de gesti&oacute;n operativos<br>
+                    &bull; Matriz de auditor&iacute;a y sostenibilidad
+                </div>
+            </div>
+            <div style="background: #EAF5EE; border-radius: 8px; padding: 16px; border-left: 4px solid var(--lcg-mint);">
+                <div style="font-size: 13px; font-weight: 700; color: var(--lcg-dark); margin-bottom: 6px;">Impacto proyectado (12M)</div>
+                <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    &bull; De 271 a 400+ clientes LMM<br>
+                    &bull; De 61 a 130+ fondeos/a&ntilde;o<br>
+                    &bull; Aprobaci&oacute;n del 66% al 78-80%<br>
+                    &bull; Volumen de $1,021M a $1,400M+
+                </div>
+            </div>
+            <div style="background: #EAF5EE; border-radius: 8px; padding: 16px; border-left: 4px solid var(--lcg-mint);">
+                <div style="font-size: 13px; font-weight: 700; color: var(--lcg-dark); margin-bottom: 6px;">Cambio cultural</div>
+                <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    &bull; Liderazgo &aacute;gil en gerentes<br>
+                    &bull; Mindset de prospecci&oacute;n activa<br>
+                    &bull; Cultura de datos y seguimiento<br>
+                    &bull; Sostenibilidad post-proyecto
+                </div>
+            </div>
+        </div>
+
+        <!-- REFERENCE CASES -->
+        <div class="risk-box" style="margin-top: 24px;">
+            <h3 style="margin-top: 0;">Casos de Referencia LCG</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; color: var(--lcg-mint); margin-bottom: 6px;">HDI Seguros</div>
+                    <div style="font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.6;">Transformaci&oacute;n en tres ejes: excelencia operativa, transformaci&oacute;n digital, mindset &aacute;gil. <strong style="color: var(--lcg-mint);">80% reducci&oacute;n en tiempos de cotizaci&oacute;n</strong>, 24% reducci&oacute;n en tr&aacute;mites devueltos.</div>
+                </div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; color: var(--lcg-mint); margin-bottom: 6px;">Banregio &mdash; Segmento PyME</div>
+                    <div style="font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.6;">6 proyectos en modelo de operaci&oacute;n PyME. <strong style="color: var(--lcg-mint);">F&aacute;brica de cr&eacute;dito y workflow de originaci&oacute;n</strong> como referencia directa para Engen LMM.</div>
+                </div>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: rgba(255,255,255,0.5);">Referencias secundarias: Banbaj&iacute;o, Banamex (seguros), GNP, Zurich, Santander.</div>
+        </div>
+
+        <div class="page-source" style="margin-top: 24px; text-align: center; font-style: italic;">
+            Documento de trabajo &mdash; Inversi&oacute;n y alcances sujetos a validaci&oacute;n en fase de An&aacute;lisis Exhaustivo.
         </div>
     </div>
 
