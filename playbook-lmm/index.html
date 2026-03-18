@@ -215,7 +215,7 @@
         .v-funnel { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 20px auto; max-width: 900px; }
         .v-funnel-step { display: flex; align-items: center; gap: 16px; width: 100%; }
         .v-funnel-bar-wrap { flex: 1; position: relative; }
-        .v-funnel-bar { height: 48px; border-radius: 6px; display: flex; align-items: center; padding: 0 18px; color: white; font-weight: 700; font-size: 14px; position: relative; transition: width 0.5s; min-width: 200px; white-space: nowrap; }
+        .v-funnel-bar { height: 48px; border-radius: 6px; display: flex; align-items: center; padding: 0 18px; color: white; font-weight: 700; font-size: 14px; position: relative; transition: width 0.5s; min-width: 180px; overflow: hidden; text-overflow: ellipsis; }
         .v-funnel-bar .bar-num { font-size: 22px; font-weight: 900; margin-right: 10px; }
         .v-funnel-meta { width: 160px; text-align: right; flex-shrink: 0; }
         .v-funnel-meta .meta-rate { font-size: 16px; font-weight: 800; }
@@ -245,6 +245,111 @@
         .hero-stat .hero-num { font-size: 64px; font-weight: 900; line-height: 1; }
         .hero-stat .hero-label { font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.7); margin-top: 8px; }
         .hero-stat .hero-sub { font-size: 13px; color: var(--engen-green); margin-top: 4px; font-weight: 600; }
+
+        /* ======================== MOBILE RESPONSIVE ======================== */
+        @media (max-width: 900px) {
+            .cover-page { padding: 40px 24px; }
+            .cover-title { font-size: 32px; }
+            .cover-subtitle { font-size: 15px; }
+            .cover-stats { flex-wrap: wrap; gap: 20px; }
+            .cover-stat-value { font-size: 32px; }
+            .cover-meta { grid-template-columns: 1fr; gap: 12px; }
+            .cover-logos img { height: 32px; }
+            .cover-logos img:last-child { height: 48px; }
+
+            .content-page, .toc-page { padding: 28px 20px !important; margin: 0 8px 16px !important; }
+            .section-title { font-size: 24px; }
+            h3 { font-size: 17px; }
+            p { font-size: 14px; }
+
+            .page-logos img:first-child { height: 22px; }
+            .page-logos img:last-child { height: 28px; }
+
+            /* Gauges stack */
+            .gauge-row { flex-direction: column; gap: 10px; }
+            .gauge-card { min-width: 100%; }
+            .gauge-value { font-size: 36px; }
+
+            /* Funnel vertical — stack fully */
+            .v-funnel { max-width: 100%; }
+            .v-funnel-step { flex-direction: column; align-items: stretch; gap: 4px; }
+            .v-funnel-meta { width: 100%; text-align: left; display: flex; align-items: baseline; gap: 8px; }
+            .v-funnel-meta .meta-rate { font-size: 14px; }
+            .v-funnel-meta .meta-label { font-size: 11px; }
+            .v-funnel-bar { width: 100% !important; min-width: unset; font-size: 12px; height: 40px; padding: 0 12px; }
+            .v-funnel-bar .bar-num { font-size: 16px; margin-right: 6px; }
+            .v-funnel-conv { margin: 2px 0 2px 0; }
+            .v-funnel-conv .conv-pct { font-size: 11px; }
+
+            /* Hero stat */
+            .hero-stat { padding: 20px 16px; }
+            .hero-stat .hero-num { font-size: 48px; }
+            .hero-stat .hero-label { font-size: 13px; }
+            .hero-stat div[style*="display: flex"] { flex-wrap: wrap; gap: 20px !important; }
+            .hero-stat div[style*="font-size: 48px"] { font-size: 36px !important; }
+
+            /* BA grid stack */
+            .ba-grid { grid-template-columns: 1fr; }
+            .ba-col { padding: 16px; }
+            .ba-metric { font-size: 12px; }
+            .ba-value { font-size: 13px; }
+
+            /* Pipeline funnel */
+            .pipeline-funnel { flex-wrap: wrap; }
+            .pipeline-stage { min-width: 30%; flex: 1 1 30%; padding: 10px 4px; font-size: 10px; }
+            .pipeline-stage .stage-num { font-size: 16px; }
+
+            /* Findings */
+            .finding-card { padding: 18px; }
+            .finding-title { font-size: 15px; }
+            .finding-kpi { font-size: 14px; }
+            .finding-text { font-size: 13px; }
+            .finding-number { width: 36px; height: 36px; font-size: 15px; }
+
+            /* Actions */
+            .action-title { font-size: 13px; }
+            .action-desc { font-size: 12px; }
+
+            /* Tables scroll horizontal */
+            .metrics-table, table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            thead th { font-size: 11px; padding: 8px 10px; white-space: nowrap; }
+            tbody td { font-size: 12px; padding: 8px 10px; white-space: nowrap; }
+
+            /* Stage header */
+            .stage-badge { width: 40px; height: 40px; font-size: 18px; }
+            .stage-title { font-size: 20px; }
+
+            /* Callouts */
+            .callout { padding: 14px 16px; }
+
+            /* Risk box */
+            .risk-box { padding: 20px; }
+            .risk-box h3 { font-size: 16px; }
+
+            /* Tags */
+            .tag { font-size: 10px; padding: 3px 8px; }
+
+            /* Plan de proyecto responsive */
+            div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+            div[style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+            div[style*="grid-template-columns: 1fr 1fr;"] { grid-template-columns: 1fr !important; }
+            div[style*="grid-template-columns: repeat(5"] { grid-template-columns: repeat(2, 1fr) !important; }
+
+            /* Gantt chart hide on mobile — too complex */
+            .toc-number { font-size: 24px; width: 40px; }
+            .toc-text { font-size: 15px; }
+            .toc-desc { font-size: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .cover-title { font-size: 26px; }
+            .cover-page { padding: 32px 18px; }
+            .content-page, .toc-page { padding: 20px 14px !important; margin: 0 4px 12px !important; }
+            .section-title { font-size: 20px; }
+            h3 { font-size: 15px; }
+            .gauge-value { font-size: 30px; }
+            .pipeline-stage { min-width: 45%; }
+        }
     </style>
 </head>
 <body>
@@ -428,7 +533,7 @@
             <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">$5M GM logrado de $51M meta</span></div>
             <div class="v-funnel-step">
                 <div class="v-funnel-meta"><div class="meta-rate" style="color: #c62828;">11%</div><div class="meta-label">Achievement GM</div></div>
-                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 10%; min-width: 100px; background: linear-gradient(90deg, #c62828, #e74c5e);"><span class="bar-num">$5M</span> Gross Margin</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 18%; background: linear-gradient(90deg, #c62828, #e74c5e);"><span class="bar-num">$5M</span> Gross Margin</div></div>
             </div>
         </div>
 
@@ -517,7 +622,7 @@
             <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">&gt;65% fondeo (de 55.3%)</span></div>
             <div class="v-funnel-step">
                 <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">~130+</div><div class="meta-label">Fondeadas (&gt;5%)</div></div>
-                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 16%; min-width: 100px; background: linear-gradient(90deg, var(--engen-dark), var(--engen-green));"><span class="bar-num">130+</span> fondeos</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 20%; background: linear-gradient(90deg, var(--engen-dark), var(--engen-green));"><span class="bar-num">130+</span> fondeos</div></div>
             </div>
         </div>
 
