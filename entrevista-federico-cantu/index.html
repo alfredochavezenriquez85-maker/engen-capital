@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tesis de Riesgo: Modelos, Sensibilidad y Pipeline &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 0; }
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-primary); line-height: 1.6; background: #eef1f5; }
+        .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+        .cover-page { background: linear-gradient(135deg, #0B1F3F 0%, #1a1a2e 50%, #0B1F3F 100%); color: white; padding: 60px 60px 50px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: rgba(46, 109, 180, 0.08); }
+        .cover-page::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 400px; height: 400px; border-radius: 50%; background: rgba(0, 179, 136, 0.06); }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+        .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--engen-green); margin-bottom: 20px; }
+        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 40px; }
+        .cover-divider { width: 80px; height: 3px; background: var(--engen-green); margin-bottom: 40px; }
+        .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+        .cover-footer { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.4); }
+        .content-page { padding: 50px 60px; display: flex; flex-direction: column; }
+        .page-header-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--lcg-navy); }
+        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 8px; }
+        .section-title { font-size: 26px; font-weight: 700; color: var(--lcg-navy); line-height: 1.3; }
+        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-blue); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--engen-green); }
+        p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+        .kpi-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--lcg-navy); border-radius: 10px; overflow: hidden; margin: 24px 0; }
+        .kpi-item { padding: 16px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
+        .kpi-item:last-child { border-right: none; }
+        .kpi-value { font-size: 22px; font-weight: 800; color: white; }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+        .kpi-label { font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+        thead th { background: var(--lcg-navy); color: white; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 12px; text-align: left; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+        tr:nth-child(even) { background: var(--bg-light); }
+        .finding-card { background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--danger); margin: 12px 0; overflow: hidden; }
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+        .finding-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(0,0,0,0.02); border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+        .finding-dimension { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 3px; flex-shrink: 0; margin-left: 12px; }
+        .finding-dimension.riesgo { background: #fff8e1; color: #f57f17; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.estrategia { background: #ede7f6; color: #4527a0; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+        .finding-body { padding: 14px 16px; font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+        .finding-evidence { padding: 8px 16px; font-size: 10px; color: var(--text-muted); background: rgba(0,0,0,0.02); border-top: 1px solid rgba(0,0,0,0.04); }
+        .verbatim { background: linear-gradient(135deg, #fafbfc, #f5f6f8); border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 12px 0; }
+        .verbatim-text { font-size: 13px; font-style: italic; color: var(--text-primary); line-height: 1.7; }
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+        .verbatim-source { font-size: 10px; color: var(--text-muted); margin-top: 8px; font-style: normal; font-weight: 600; }
+        .opp-card { background: white; border: 2px solid var(--engen-green); border-radius: 10px; margin: 16px 0; overflow: hidden; }
+        .opp-header { background: linear-gradient(135deg, var(--engen-dark), #00796B); color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .opp-number { font-size: 28px; font-weight: 900; opacity: 0.3; margin-right: 16px; }
+        .opp-title { font-size: 15px; font-weight: 700; flex: 1; }
+        .opp-priority { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 4px; margin-left: 12px; }
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+        .opp-body { padding: 20px; }
+        .opp-section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin: 16px 0 8px; }
+        .opp-section-label:first-child { margin-top: 0; }
+        .opp-text { font-size: 12px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
+        .opp-bullets { list-style: none; padding: 0; }
+        .opp-bullets li { font-size: 12px; color: var(--text-secondary); line-height: 1.6; padding: 4px 0 4px 20px; position: relative; }
+        .opp-bullets li::before { content: '\2713'; position: absolute; left: 0; color: var(--engen-green); font-weight: 700; }
+        .opp-impact { display: flex; gap: 12px; margin-top: 12px; }
+        .opp-impact-item { background: var(--bg-light); border-radius: 6px; padding: 10px 14px; flex: 1; text-align: center; }
+        .opp-impact-value { font-size: 18px; font-weight: 800; color: var(--lcg-navy); }
+        .opp-impact-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+        .callout { border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: 12px; line-height: 1.7; }
+        .callout-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+        .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .exec-card { background: var(--bg-light); border-radius: 8px; padding: 20px; border-left: 4px solid var(--lcg-accent); }
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+        .exec-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+        .exec-card-value { font-size: 22px; font-weight: 800; color: var(--lcg-navy); margin-bottom: 4px; }
+        .exec-card-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+        .exec-card-full { grid-column: 1 / -1; }
+        .page-source { font-size: 9px; color: var(--text-muted); margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--border); }
+        @media (max-width: 900px) {
+            .cover-page { padding: 40px 24px; }
+            .cover-title { font-size: 28px; }
+            .cover-meta { grid-template-columns: 1fr; gap: 12px; }
+            .document { max-width: 100%; box-shadow: none; }
+            .content-page { padding: 28px 20px !important; }
+            .section-title { font-size: 20px; }
+            h3 { font-size: 14px; }
+            p { font-size: 12px; }
+            .kpi-banner { grid-template-columns: repeat(2, 1fr); }
+            .kpi-value { font-size: 18px; }
+            .exec-grid { grid-template-columns: 1fr; }
+            table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .opp-impact { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">Entrevista de Prediagn&oacute;stico</div>
+                <h1 class="cover-title">La Tesis de Riesgo:<br>Modelos, Sensibilidad y Pipeline</h1>
+                <p class="cover-subtitle">An&aacute;lisis profundo de los modelos de cr&eacute;dito LMM, ejercicio de sensibilidad con 5 escenarios, y la evidencia de que el breakthrough est&aacute; en la tuber&iacute;a comercial</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Federico Cant&uacute;, Responsable de Riesgo LMM</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">18 marzo 2026 &mdash; Segunda entrevista + an&aacute;lisis de modelos</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: CONTEXTO Y RESUMEN EJECUTIVO                      -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Contexto y Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza la segunda entrevista con <strong>Federico Cant&uacute;</strong>, <strong>Responsable de Riesgo LMM</strong> en Engen Capital. La sesi&oacute;n se enfoc&oacute; en entender la simplificaci&oacute;n de los modelos de cr&eacute;dito y los escenarios para abrir la llave de riesgo. Federico utiliz&oacute; la presentaci&oacute;n interna &ldquo;Revisi&oacute;n Modelos LMM 2025&rdquo; como material de apoyo. Los hallazgos fueron previamente discutidos con Juan Pablo Loperena (Director General), Gerardo Biagi (Linzor Capital) y Fernando Garza (Director de Riesgo).</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value amber">89 &rarr; 18</div><div class="kpi-label">Colapso Param&eacute;trico 2023&rarr;2025</div></div>
+                <div class="kpi-item"><div class="kpi-value red">-19%</div><div class="kpi-label">Total resoluciones en 2 a&ntilde;os</div></div>
+                <div class="kpi-item"><div class="kpi-value green">+3.7%</div><div class="kpi-label">M&aacute;x upside abriendo llave</div></div>
+                <div class="kpi-item"><div class="kpi-value">85%</div><div class="kpi-label">Rechazos multifactoriales</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Tesis central de Federico</div>
+                    <div class="exec-card-value">El problema es la tuber&iacute;a</div>
+                    <div class="exec-card-desc">No los modelos de cr&eacute;dito. Si el vendedor solo trae una oportunidad, la pelea aunque est&eacute; quemada. Con 10 oportunidades, un rechazo no duele.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Ejercicio de sensibilidad</div>
+                    <div class="exec-card-value">$43MM incremental m&aacute;x</div>
+                    <div class="exec-card-desc">Incluso en el escenario m&aacute;s agresivo (Esc. 5), el fondeo incremental realista es ~$43MM sobre meta de $1,176MM = +3.7%.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Consenso directivo</div>
+                    <div class="exec-card-value">Pipeline, no modelos</div>
+                    <div class="exec-card-desc">Juan Pablo, Biagi y Fernando Garza coinciden: el breakthrough no est&aacute; en mover variables. Est&aacute; en la generaci&oacute;n de pipeline comercial.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Oportunidades t&aacute;cticas</div>
+                    <div class="exec-card-value">6 quick wins de riesgo</div>
+                    <div class="exec-card-desc">Subir topes Fast App/Param&eacute;trico, eliminar &lt;$3MM, regresi&oacute;n de portafolio con IA, modelo simplificado Bur&oacute;+Flujo.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Donde siento yo que estamos teniendo un problema es que no estamos generando el suficiente volumen de oportunidades. Si t&uacute; como vendedor traes 10 oportunidades y me rechazan 4 de cada 10, no pasa nada. Donde empieza el problema es cuando la oportunidad que no pasa es la &uacute;nica que traigo en mi bolsa.</div>
+                <div class="verbatim-source">&mdash; Federico Cant&uacute;, Responsable de Riesgo LMM</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: LA FABRICA DE BOLILLOS                            -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">La F&aacute;brica de Bolillos &mdash; El Modelo Original vs. la Realidad</div>
+            </div>
+
+            <p>Federico usa la met&aacute;fora de una panader&iacute;a para explicar c&oacute;mo <strong>deber&iacute;a</strong> funcionar el segmento LMM versus c&oacute;mo funciona hoy:</p>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">F&aacute;brica de Bolillos &mdash; Fast App + Param&eacute;trico (dise&ntilde;o original)</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Operaciones que entran, se eval&uacute;an r&aacute;pido, pasan o no pasan, y si no pasan, <strong>a la siguiente</strong>. Sin detenerte a &ldquo;ver si el bolillo quemado se puede rescatar&rdquo;. Volumen alto, decisiones r&aacute;pidas, fricci&oacute;n m&iacute;nima. <strong>Viabilidad en 24 horas. Si brinca viabilidad, &gt;90% se aprueba.</strong>
+                </div>
+                <div class="finding-evidence">Aplica a: Fast Application (&lt;$150K USD) y Param&eacute;trico (&lt;$500K USD)</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">F&aacute;brica de Baguettes &mdash; Estudio Corto (el &ldquo;mini-Core&rdquo;)</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Ya no es un bolillo simple. Hay que entrevistar al cliente, hacer cuestionario, validar puntos que brincaron en el modelo. Expectativa de mayor complejidad. Operaciones hasta $1MM USD (~$20MM MXN).
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">El problema: LMM dej&oacute; de ser f&aacute;brica de bolillos</div>
+                    <div class="finding-dimension riesgo">Riesgo</div>
+                </div>
+                <div class="finding-body">
+                    Cuando una oportunidad no pasa el Param&eacute;trico, en lugar de descartarla y pasar a la siguiente, el originador <strong>la pelea porque es la &uacute;nica que trae en la bolsa</strong>. Esto genera que operaciones que deb&iacute;an resolverse en 24 horas se conviertan en ejercicios de cr&eacute;dito de semanas. <strong>El Param&eacute;trico colaps&oacute; de 89 operaciones (36% del mix) a 18 (9%).</strong> Las operaciones migran a Estudio Corto, consumiendo exponencialmente m&aacute;s tiempo y recursos.
+                </div>
+                <div class="finding-evidence">Evidencia: Tabla de resoluciones LMM 2023-2025. 27 operaciones por $151MM migraron de Param&eacute;trico a Corto. 100% est&aacute;n CURRENT.</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Ya dej&oacute; de ser la f&aacute;brica de bolillos. Le raspamos, le quitamos, le hacemos &mdash; y lo que deb&iacute;a resolverse en 72 horas se convierte en un ejercicio de 7+ d&iacute;as.</div>
+                <div class="verbatim-source">&mdash; Federico Cant&uacute;, Responsable de Riesgo LMM</div>
+            </div>
+
+            <h3>Evoluci&oacute;n de resoluciones LMM por modelo (2023-2025)</h3>
+
+            <table>
+                <thead>
+                    <tr><th>Modelo</th><th>2023</th><th>%</th><th>2024</th><th>%</th><th>2025</th><th>%</th><th>Tendencia</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Fast Application</td><td>94</td><td>38%</td><td>94</td><td>41%</td><td>88</td><td>44%</td><td>Estable en #, sube en mix</td></tr>
+                    <tr style="background: #fce4ec;"><td class="table-highlight">LMM Param&eacute;trico</td><td class="table-highlight">89</td><td>36%</td><td>67</td><td>29%</td><td style="color: var(--danger); font-weight: 800;">18</td><td style="color: var(--danger); font-weight: 800;">9%</td><td style="color: var(--danger); font-weight: 700;">Colapso: -80%</td></tr>
+                    <tr><td>LMM Corto</td><td>39</td><td>16%</td><td>43</td><td>19%</td><td>63</td><td>31%</td><td>Absorbe Param&eacute;trico</td></tr>
+                    <tr><td>Full Underwriting</td><td>27</td><td>11%</td><td>25</td><td>11%</td><td>32</td><td>16%</td><td>M&aacute;s operaciones complejas</td></tr>
+                    <tr style="background: var(--bg-light); font-weight: 700;"><td class="table-highlight">TOTAL</td><td class="table-highlight">249</td><td>100%</td><td class="table-highlight">229</td><td>100%</td><td class="table-highlight">201</td><td>100%</td><td style="color: var(--danger);">-19% en 2 a&ntilde;os</td></tr>
+                </tbody>
+            </table>
+
+            <div class="page-source">Fuente: Presentaci&oacute;n &ldquo;Revisi&oacute;n Modelos LMM 2025&rdquo;, Cr&eacute;dito Engen. No incluye Factoraje, MACs y &ldquo;others&rdquo;.</div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: EJERCICIO DE SENSIBILIDAD                         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03</div>
+                <div class="section-title">Ejercicio de Sensibilidad &mdash; 5 Escenarios, Resultado Marginal</div>
+            </div>
+
+            <p>Cr&eacute;dito corri&oacute; un ejercicio de sensibilidad sobre <strong>27 deals rechazados (US$5.9MM)</strong> flexibilizando 5 variables simult&aacute;neamente. El objetivo: cuantificar cu&aacute;nto volumen incremental generar&iacute;a abrir la llave.</p>
+
+            <h3>Variables y escenarios de flexibilizaci&oacute;n</h3>
+
+            <table>
+                <thead>
+                    <tr><th>Variable</th><th>Target actual</th><th>Esc. 1</th><th>Esc. 3</th><th>Esc. 5 (m&aacute;x)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="table-highlight">FCC (x)</td><td>1.2x &ndash; 1.5x</td><td>&gt;1.0x</td><td>&gt;0.85x</td><td style="font-weight: 700; color: var(--danger);">&gt;0.75x</td></tr>
+                    <tr><td class="table-highlight">Concentraci&oacute;n Clientes (%)</td><td>&lt;30%</td><td>&lt;50%</td><td>&lt;60%</td><td style="font-weight: 700; color: var(--danger);">&lt;70%</td></tr>
+                    <tr><td class="table-highlight">EBITDA Leverage (x)</td><td>3.0 &ndash; 3.25x</td><td>3.5x</td><td>4.0x</td><td style="font-weight: 700; color: var(--danger);">4.5x</td></tr>
+                    <tr><td class="table-highlight">Ratio L&iacute;nea/Activo (x)</td><td>0.5x</td><td>1.0x</td><td>2.0x</td><td style="font-weight: 700; color: var(--danger);">4.0x</td></tr>
+                    <tr><td class="table-highlight">BDC no Representativo</td><td>25% iniciales PG+</td><td colspan="3" style="text-align: center;">Sin cambio en todos los escenarios</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Resultado por escenario</h3>
+
+            <table>
+                <thead>
+                    <tr><th>Escenario</th><th># Deals aprobados</th><th>US$ MM</th><th>% del rechazado</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Escenario 1 (conservador)</td><td>3</td><td>$0.3</td><td>6%</td></tr>
+                    <tr><td>Escenario 2</td><td>4</td><td>$0.4</td><td>7%</td></tr>
+                    <tr><td>Escenario 3 (moderado)</td><td>6</td><td>$0.95</td><td>16%</td></tr>
+                    <tr><td>Escenario 4</td><td>9</td><td>$1.62</td><td>27%</td></tr>
+                    <tr style="background: #fce4ec;"><td class="table-highlight">Escenario 5 (m&aacute;xima apertura)</td><td class="table-highlight">11</td><td class="table-highlight">$1.88</td><td class="table-highlight" style="color: var(--danger);">32%</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-red">
+                <div class="callout-label">El c&aacute;lculo que importa</div>
+                <p>Del universo de 48 rechazos por modelo ($245MM), en el Escenario 5 rescatas ~24 ops, ~$78MM. Con ratio fondeado/aprobado de 55%, el <strong>fondeo incremental realista es ~$43MM</strong>. Sobre meta de $1,176MM (LMM Iniciativa 2026) = <strong>+3.7%</strong>. Eso no lleva del 1x al 2x.</p>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si yo te abriera la llave &mdash; en el mejor de los escenarios son $250MM de pesos m&aacute;s. Y nunca vas a ir por los 250, vas por una parte de eso. &iquest;$100MM de pesos te van a hacer la diferencia en tu estrategia comercial? No.</div>
+                <div class="verbatim-source">&mdash; Federico Cant&uacute;, Responsable de Riesgo LMM</div>
+            </div>
+
+            <h3>Rechazos multifactoriales: no hay palanca m&aacute;gica</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">85% rechazos con 2+ variables</div>
+                    <div class="exec-card-value">Multifactorial</div>
+                    <div class="exec-card-desc">2 variables: 19 ops (40%). 3 variables: 12 ops (25%). 4-5 variables: 10 ops (21%). Solo 7 rechazos por 1 variable &mdash; todos KOs autom&aacute;ticos (AML, BILs, info alterada).</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Top causa de rechazo</div>
+                    <div class="exec-card-value">FCC &lt; 1 (17 casos)</div>
+                    <div class="exec-card-desc">Flujo insuficiente lidera. Seguido de: inconsistencia info (7), atrasos bur&oacute; (4), deterioro financiero (3). Las causas se acumulan, no son aisladas.</div>
+                </div>
+            </div>
+
+            <div class="page-source">Fuente: An&aacute;lisis de rechazos 2024-2025, Cr&eacute;dito LMM. Muestra de 48 operaciones rechazadas por modelo (Fast App + Param&eacute;trico).</div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: CARTERA VENCIDA Y ALIVIOS                         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04</div>
+                <div class="section-title">Cartera Vencida y Alivios &mdash; D&oacute;nde S&iacute; Hay Se&ntilde;ales de Alerta</div>
+            </div>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value">$234.9M</div><div class="kpi-label">DLQ Total / 10.2%</div></div>
+                <div class="kpi-item"><div class="kpi-value green">$158.8M</div><div class="kpi-label">DLQ Ajustado / 6.9%</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">$605M</div><div class="kpi-label">Alivios acumulados 22-25</div></div>
+                <div class="kpi-item"><div class="kpi-value red">58%</div><div class="kpi-label">Alivios concentrados en 2025</div></div>
+            </div>
+
+            <h3>DLQ del Param&eacute;trico (el modelo en cuesti&oacute;n)</h3>
+
+            <table>
+                <thead>
+                    <tr><th>Aging</th><th># Clientes</th><th>$ (MM)</th><th>% DLQ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>DLQ 30</td><td>5</td><td>$17.5</td><td>4.8%</td></tr>
+                    <tr><td>DLQ 60</td><td>5</td><td>$24.7</td><td>6.7%</td></tr>
+                    <tr style="background: #fce4ec;"><td class="table-highlight">DLQ 90+</td><td class="table-highlight">8</td><td class="table-highlight">$24.9</td><td class="table-highlight" style="color: var(--danger);">6.8%</td></tr>
+                    <tr style="font-weight: 700;"><td class="table-highlight">Total DLQ Param&eacute;trico</td><td class="table-highlight">18</td><td class="table-highlight">$67.1</td><td class="table-highlight" style="color: var(--danger);">18.3%</td></tr>
+                </tbody>
+            </table>
+            <p><em>DLQ Param&eacute;trico ajustado (sin Health/Care): 15% total / 4.5% 90+</em></p>
+
+            <h3>Aceleraci&oacute;n de alivios y reestructuras</h3>
+
+            <table>
+                <thead>
+                    <tr><th>Per&iacute;odo</th><th># Alivios</th><th>$ (MM)</th><th>% acumulado</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2022</td><td>5</td><td>$39.19</td><td>7%</td></tr>
+                    <tr><td>2023</td><td>8</td><td>$65.97</td><td>11%</td></tr>
+                    <tr><td>2024</td><td>17</td><td>$127.77</td><td>24%</td></tr>
+                    <tr style="background: #fce4ec;"><td class="table-highlight">2025</td><td class="table-highlight">41</td><td class="table-highlight">$372.34</td><td class="table-highlight" style="color: var(--danger);">58%</td></tr>
+                    <tr style="font-weight: 700;"><td class="table-highlight">ACUMULADO</td><td class="table-highlight">71</td><td class="table-highlight">$605.27</td><td class="table-highlight">100%</td></tr>
+                </tbody>
+            </table>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">Concentraci&oacute;n de clientes = predictor #1 de deterioro en LMM</div>
+                    <div class="finding-dimension riesgo">Riesgo</div>
+                </div>
+                <div class="finding-body">
+                    De 51 casos revisados por modelos LMM, <strong>65% (33 casos) muestran concentraci&oacute;n &ge;50% con sus 2 clientes principales</strong>. Las cosechas 2022-2023 concentran la mayor&iacute;a del deterioro. Las cosechas 2024-2025 a&uacute;n no muestran solicitudes de alivio (buena se&ntilde;al temprana). <strong>Operaciones &lt;$3MM MXN</strong>: 27% de las operaciones, solo 9% del monto, DLQ 14%. Recomendaci&oacute;n de Cr&eacute;dito: <strong>eliminarlas</strong>.
+                </div>
+                <div class="finding-evidence">Evidencia: An&aacute;lisis de alivios por modelo y cosecha. Alivios por modelo: LMM Corto 45%, Param&eacute;trico 27%, Full 16%, Fast App 12%.</div>
+            </div>
+
+            <div class="page-source">Fuente: Data de cartera vencida y alivios Dic-2025, Cr&eacute;dito Engen.</div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: POSICIONES DE LA DIRECCIÓN                        -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05</div>
+                <div class="section-title">Posiciones de la Direcci&oacute;n &mdash; Tres Visiones, Una Conclusi&oacute;n</div>
+            </div>
+
+            <div class="finding-card blue">
+                <div class="finding-header">
+                    <div class="finding-title">Gerardo Biagi (Linzor Capital &mdash; Accionista): Regresi&oacute;n del portafolio</div>
+                    <div class="finding-dimension estrategia">Estrategia</div>
+                </div>
+                <div class="finding-body">
+                    Deep dive en las variables. Quiere entender, del portafolio en cartera vencida, cu&aacute;les son las variables que realmente impactan y cu&aacute;les no. Pidi&oacute; una <strong>regresi&oacute;n del portafolio</strong> para revisitar el modelo y ver si est&aacute; capturando de m&aacute;s o de menos. <strong>Usar inteligencia artificial para el an&aacute;lisis.</strong>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Oye, pues yo creo que vale hacer un estudio, una regresi&oacute;n del portafolio, y ver cu&aacute;les son las variables que realmente lo est&aacute;n impactando y cu&aacute;les no, para revisitar el modelo.</div>
+                <div class="verbatim-source">&mdash; Gerardo Biagi, parafraseado por Federico Cant&uacute;</div>
+            </div>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Juan Pablo Loperena (Director General): Modelo simplificado Bur&oacute; + Flujo</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    Propuesta m&aacute;s radical: modelo que solo use <strong>bur&oacute; de cr&eacute;dito + estados de cuenta bancarios</strong>. L&oacute;gica: &ldquo;si veo sus flujos en el estado de cuenta bancaria y en el bur&oacute; se porta bien, a lo mejor le puedes hacer algo ah&iacute; m&aacute;s r&aacute;pido.&rdquo; Si coincide &gt;90% con modelo actual, implementar como canal express.
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">&iquest;Por qu&eacute; no hacemos un modelo en el cual lo tenemos como base &uacute;nicamente estados de cuenta bancarios y bur&oacute;? Corre con eso la simulaci&oacute;n y dime qu&eacute; te hubiera aprobado contra lo que actualmente est&aacute;s aprobando. A lo mejor resulta que con estos documentos me da 95% de confianza y le podr&iacute;a prestar hasta $6MM en 5 minutos.</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, parafraseado por Federico Cant&uacute;</div>
+            </div>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Fernando Garza (Director de Riesgo): Alineado &mdash; no es tema de modelos</div>
+                    <div class="finding-dimension riesgo">Riesgo</div>
+                </div>
+                <div class="finding-body">
+                    Posici&oacute;n clara y alineada con Federico: <strong>abrir la llave de los modelos no es la soluci&oacute;n</strong>. Mover variables individuales (apalancamiento de 3 a 4, FCC de 1 a 0.9) no genera el breakthrough. 200 millones de pesos no mueven la aguja cuando la meta es multiplicar 2x-3x.
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Fer est&aacute; muy claro: abrir la llave de los modelos no es la soluci&oacute;n. Que te cambie el apalancamiento de 3 a 4, que el FCC ya no sea de 1 sino de 0.9 &mdash; eso no va a ser el breakthrough para que despegue la iniciativa.</div>
+                <div class="verbatim-source">&mdash; Federico Cant&uacute; citando a Fernando Garza</div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Conclusi&oacute;n consensuada</div>
+                <p>Los tres directivos convergen: <strong>el breakthrough est&aacute; en la generaci&oacute;n de pipeline comercial, no en los modelos de cr&eacute;dito</strong>. Las oportunidades de calibraci&oacute;n existen (subir topes, regresi&oacute;n, modelo simplificado), pero complementan la estrategia comercial &mdash; no la sustituyen. Por eso se contrat&oacute; a LCG.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: OPORTUNIDADES                                     -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06</div>
+                <div class="section-title">Oportunidades Identificadas &mdash; Quick Wins + Propuestas Estrat&eacute;gicas</div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">01</div>
+                    <div class="opp-title">Subir tope Fast Application a $300K+ USD</div>
+                    <div class="opp-priority alta">Quick Win</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text">El tope actual es $150K USD (~$3MM MXN). El ticket promedio LMM es $12M. <strong>El 80% de las operaciones quedan fuera del canal m&aacute;s r&aacute;pido por monto, no por riesgo.</strong></div>
+                    <div class="opp-section-label">Acci&oacute;n</div>
+                    <div class="opp-text">Duplicar el tope captura 2-3x m&aacute;s operaciones en el canal de viabilidad en 24 horas.</div>
+                    <div class="opp-impact">
+                        <div class="opp-impact-item"><div class="opp-impact-value">+2-3x</div><div class="opp-impact-label">Ops en canal r&aacute;pido</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">&lt;24h</div><div class="opp-impact-label">Viabilidad</div></div>
+                        <div class="opp-impact-item"><div class="opp-impact-value">Baja</div><div class="opp-impact-label">Complejidad</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">02</div>
+                    <div class="opp-title">Subir tope Param&eacute;trico a $600K+ USD</div>
+                    <div class="opp-priority alta">Quick Win</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text">Tope actual $500K USD. La mayor&iacute;a de las operaciones brincan a Corto por monto, no por riesgo. El canal dise&ntilde;ado para el segmento canaliza solo 9% del volumen.</div>
+                    <div class="opp-section-label">Acci&oacute;n</div>
+                    <div class="opp-text">Ajustar para cubrir el 80% de los deals LMM en el canal param&eacute;trico. Recuperar la f&aacute;brica de bolillos.</div>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">03</div>
+                    <div class="opp-title">Eliminar operaciones &lt;$3MM MXN</div>
+                    <div class="opp-priority alta">Quick Win</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text"><strong>27% de las operaciones, solo 9% del monto, DLQ de 14%.</strong> El esfuerzo operativo es desproporcionado al volumen generado y la tasa de deterioro es la m&aacute;s alta del portafolio.</div>
+                    <div class="opp-section-label">Acci&oacute;n</div>
+                    <div class="opp-text">Liberar capacidad operativa de cr&eacute;dito para operaciones de mayor impacto. Redirigir a Factoraje o canal digital.</div>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">04</div>
+                    <div class="opp-title">Regresi&oacute;n del portafolio con IA (propuesta Biagi)</div>
+                    <div class="opp-priority media">Estrat&eacute;gica</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Objetivo</div>
+                    <div class="opp-text">An&aacute;lisis estad&iacute;stico de variables del modelo vs. cartera vencida real. Identificar cu&aacute;les son realmente predictivas de deterioro y cu&aacute;les agregan fricci&oacute;n sin valor. <strong>Incluir en propuesta del proyecto LCG.</strong></div>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">05</div>
+                    <div class="opp-title">Modelo simplificado Bur&oacute; + Flujo bancario (propuesta JP)</div>
+                    <div class="opp-priority media">Estrat&eacute;gica</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Objetivo</div>
+                    <div class="opp-text">Simular cu&aacute;ntas operaciones se hubieran aprobado con solo bur&oacute; de cr&eacute;dito + estados de cuenta bancarios. Si coincidencia &gt;90% con modelo actual, implementar como <strong>canal express para tickets &lt;$6MM. Potencial: aprobaci&oacute;n en 5 minutos.</strong></div>
+                </div>
+            </div>
+
+            <div class="opp-card">
+                <div class="opp-header">
+                    <div class="opp-number">06</div>
+                    <div class="opp-title">Reforzar concentraci&oacute;n de clientes como filtro predictivo</div>
+                    <div class="opp-priority alta">Quick Win</div>
+                </div>
+                <div class="opp-body">
+                    <div class="opp-section-label">Situaci&oacute;n</div>
+                    <div class="opp-text">65% de los casos en alivio ten&iacute;an concentraci&oacute;n &ge;50% con 2 clientes principales. Es el predictor #1 de deterioro. <strong>Reforzar este criterio como red flag temprana</strong> en lugar de relajarlo.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">La conclusi&oacute;n de Federico</div>
+                <p>&ldquo;&iquest;D&oacute;nde est&aacute; la carnita? Necesitamos tener un pipeline mucho m&aacute;s robusto. En el prediagn&oacute;stico, s&iacute; me dio mucho eso: andan bien bajitos en citas, no est&aacute;n usando Salesforce, no est&aacute; clara la agenda. Es un hecho que hay algo m&aacute;s ah&iacute; que tenemos que trabajar.&rdquo;</p>
+            </div>
+
+            <div class="page-source">Entrevista Federico Cant&uacute; (Responsable de Riesgo LMM), 18 marzo 2026. Presentaci&oacute;n &ldquo;Revisi&oacute;n Modelos LMM 2025&rdquo; (PPT interna Cr&eacute;dito Engen). Datos validados por Fernando Garza (Dir. Riesgo). Material de apoyo: transcript completo y detalle de resoluciones disponible en prediagn&oacute;stico/evidencia/riesgos/.</div>
+        </div>
+    </div>
+</body>
+</html>
