@@ -34,15 +34,15 @@
 
         @media print {
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            body { font-size: 9pt; background: white !important; }
+            body { background: white !important; }
             .document { box-shadow: none; max-width: 100%; }
             .no-print { display: none !important; }
             .page-break { page-break-before: always; break-before: page; }
-            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; }
-            .content-page { padding: 40px 50px; }
-            table { font-size: 8pt; page-break-inside: avoid; }
-            h2 { font-size: 16pt; }
-            h3 { font-size: 11pt; page-break-after: avoid; }
+            .cover-page { min-height: 100vh; page-break-after: always; }
+            .content-page { break-inside: avoid; padding: 48px 64px; box-shadow: none; border-radius: 0; }
+            .toc-page { box-shadow: none; border-radius: 0; }
+            table { page-break-inside: avoid; }
+            h3 { page-break-after: avoid; }
         }
 
         body {
@@ -52,56 +52,66 @@
             background: #f0f2ee;
         }
 
-        .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+        .document { max-width: 100%; margin: 0 auto; background: transparent; }
+
+        /* ======================== PAGE LOGOS ======================== */
+        .page-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid #eee; }
+        .page-logos img:first-child { height: 28px; filter: brightness(0.2); opacity: 0.8; }
+        .page-logos img:last-child { height: 36px; border-radius: 4px; opacity: 0.8; }
 
         /* ======================== COVER ======================== */
         .cover-page {
             background: linear-gradient(160deg, #001A13 0%, var(--lcg-dark) 40%, #00523B 70%, var(--lcg-teal) 100%);
-            color: white; padding: 60px; min-height: 100vh;
+            color: white; padding: 80px 72px; min-height: 100vh;
             display: flex; flex-direction: column; justify-content: space-between;
             position: relative; overflow: hidden;
         }
-        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(49,235,151,0.12) 0%, transparent 70%); }
-        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-page::before { content: ''; position: absolute; top: -20%; right: -10%; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(49,235,151,0.12) 0%, transparent 70%); }
+        .cover-page::after { content: ''; position: absolute; bottom: -15%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,150,114,0.15) 0%, transparent 70%); border-radius: 50%; }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; margin-bottom: 80px; }
         .cover-logos img { height: 45px; filter: brightness(0) invert(1); }
         .cover-logos img:last-child { height: 65px; border-radius: 6px; filter: none; }
         .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
-        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--lcg-mint); margin-bottom: 20px; }
-        .cover-title { font-family: 'DM Serif Text', Georgia, serif; font-size: 40px; font-weight: 400; line-height: 1.2; margin-bottom: 16px; }
-        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 40px; }
+        .cover-label { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--lcg-mint); margin-bottom: 16px; }
+        .cover-title { font-family: 'DM Serif Text', Georgia, serif; font-size: 54px; font-weight: 400; line-height: 1.1; margin-bottom: 20px; }
+        .cover-title span { color: var(--lcg-mint); }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 48px; max-width: 600px; line-height: 1.7; }
         .cover-divider { width: 80px; height: 3px; background: var(--lcg-mint); margin-bottom: 30px; opacity: 0.6; }
-        .cover-stats { display: flex; gap: 32px; margin-bottom: 40px; }
+        .cover-stats { display: flex; gap: 40px; margin-bottom: 40px; }
         .cover-stat { text-align: center; }
-        .cover-stat-value { font-size: 36px; font-weight: 800; }
-        .cover-stat-label { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
+        .cover-stat-value { font-size: 42px; font-weight: 900; color: var(--lcg-mint); }
+        .cover-stat-label { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
         .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .cover-meta-label { color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; font-size: 13px; }
-        .cover-footer { position: relative; z-index: 1; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.4); }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; font-size: 14px; }
+        .cover-footer { position: relative; z-index: 1; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 60px; }
 
         /* ======================== TOC ======================== */
-        .toc-page { padding: 60px; }
-        .toc-title { font-family: 'DM Serif Text', serif; font-size: 28px; font-weight: 400; color: var(--lcg-dark); margin-bottom: 8px; }
-        .toc-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 40px; }
+        .toc-page { padding: 56px 72px; }
+        .toc-title { font-family: 'DM Serif Text', serif; font-size: 34px; font-weight: 400; color: var(--lcg-dark); margin-bottom: 10px; }
+        .toc-subtitle { font-size: 16px; color: var(--text-muted); margin-bottom: 40px; }
         .toc-list { list-style: none; }
-        .toc-item { display: flex; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
-        .toc-number { font-size: 28px; font-weight: 800; color: var(--lcg-accent); width: 50px; flex-shrink: 0; }
-        .toc-text { font-size: 15px; font-weight: 500; color: var(--text-primary); }
-        .toc-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .toc-item { display: flex; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--border); }
+        .toc-number { font-size: 32px; font-weight: 800; color: var(--lcg-accent); width: 60px; flex-shrink: 0; }
+        .toc-text { font-size: 17px; font-weight: 500; color: var(--text-primary); }
+        .toc-desc { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
 
         /* ======================== CONTENT ======================== */
-        .content-page { padding: 50px 60px; }
-        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--lcg-teal); }
-        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-teal); margin-bottom: 8px; }
-        .section-title { font-family: 'DM Serif Text', serif; font-size: 26px; font-weight: 400; color: var(--lcg-dark); line-height: 1.3; }
-        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-dark); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--lcg-teal); }
-        p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+        @media screen {
+            .content-page { max-width: 1340px; margin: 0 auto 28px; background: white; border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 56px 72px; }
+            .toc-page { max-width: 1340px; margin: 0 auto 28px; background: white; border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        }
+        .section-header { margin-bottom: 36px; padding-bottom: 18px; border-bottom: 3px solid var(--lcg-teal); }
+        .section-number { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-teal); margin-bottom: 8px; }
+        .section-title { font-family: 'DM Serif Text', serif; font-size: 34px; font-weight: 400; color: var(--lcg-dark); line-height: 1.2; }
+        h3 { font-size: 20px; font-weight: 800; color: var(--lcg-dark); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--lcg-teal); }
+        p { font-size: 15px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.7; }
 
         /* ======================== KPI BANNER ======================== */
         .kpi-banner { display: flex; gap: 12px; margin: 16px 0; }
         .kpi-item { flex: 1; background: var(--bg-light); border-radius: 10px; padding: 16px; text-align: center; border-top: 3px solid var(--lcg-teal); }
-        .kpi-value { font-size: 28px; font-weight: 800; color: var(--lcg-dark); }
-        .kpi-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+        .kpi-value { font-size: 32px; font-weight: 900; color: var(--lcg-dark); }
+        .kpi-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
         .kpi-item.green { border-top-color: var(--engen-green); }
         .kpi-item.green .kpi-value { color: var(--engen-dark); }
         .kpi-item.orange { border-top-color: var(--warning); }
@@ -110,42 +120,42 @@
         .kpi-item.red .kpi-value { color: #c62828; }
 
         /* ======================== FINDING CARDS ======================== */
-        .finding-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
-        .finding-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+        .finding-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-bottom: 20px; border-left: 4px solid var(--lcg-teal); }
+        .finding-header { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
         .finding-number { width: 44px; height: 44px; border-radius: 50%; background: var(--lcg-dark); color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
-        .finding-title { font-size: 15px; font-weight: 700; color: var(--lcg-dark); border: none; padding: 0; margin: 0; }
-        .finding-kpi { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+        .finding-title { font-size: 18px; font-weight: 700; color: var(--lcg-dark); border: none; padding: 0; margin: 0; }
+        .finding-kpi { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 17px; font-weight: 800; margin-bottom: 10px; }
         .kpi-blue { background: #EAF5EE; color: var(--lcg-dark); }
         .kpi-red { background: #fde8e8; color: #c62828; }
         .kpi-orange { background: #fff3e0; color: #e65100; }
         .kpi-green { background: #e0f2f1; color: var(--engen-dark); }
-        .finding-text { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+        .finding-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
 
         /* ======================== PIPELINE FUNNEL ======================== */
         .pipeline-funnel { display: flex; align-items: stretch; gap: 2px; margin: 24px 0; }
-        .pipeline-stage { flex: 1; text-align: center; padding: 14px 6px; color: white; font-size: 10px; font-weight: 700; line-height: 1.3; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+        .pipeline-stage { flex: 1; text-align: center; padding: 18px 8px; color: white; font-size: 12px; font-weight: 700; line-height: 1.3; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
         .pipeline-stage:first-child { border-radius: 8px 0 0 8px; }
         .pipeline-stage:last-child { border-radius: 0 8px 8px 0; }
-        .pipeline-stage .stage-num { font-size: 18px; font-weight: 800; }
+        .pipeline-stage .stage-num { font-size: 22px; font-weight: 800; }
 
         /* ======================== STAGE SECTION ======================== */
-        .stage-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--engen-green); }
-        .stage-badge { width: 48px; height: 48px; border-radius: 50%; background: var(--engen-green); color: white; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; flex-shrink: 0; }
-        .stage-title { font-family: 'DM Serif Text', serif; font-size: 20px; font-weight: 400; color: var(--lcg-dark); border: none; padding: 0; margin: 0; }
-        .stage-subtitle { font-size: 13px; color: var(--text-muted); font-weight: 400; }
+        .stage-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 3px solid var(--lcg-teal); }
+        .stage-badge { width: 52px; height: 52px; border-radius: 50%; background: var(--lcg-teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; flex-shrink: 0; }
+        .stage-title { font-family: 'DM Serif Text', serif; font-size: 26px; font-weight: 400; color: var(--lcg-dark); border: none; padding: 0; margin: 0; }
+        .stage-subtitle { font-size: 15px; color: var(--text-muted); font-weight: 400; }
 
         /* ======================== ACTION ITEMS ======================== */
         .action-list { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 12px 0; }
-        .action-item { display: flex; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+        .action-item { display: flex; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--border); align-items: flex-start; }
         .action-item:last-child { border-bottom: none; }
         .action-item:nth-child(odd) { background: var(--bg-light); }
-        .action-num { width: 24px; height: 24px; border-radius: 50%; background: var(--engen-green); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
-        .action-title { font-size: 12px; font-weight: 700; color: var(--text-primary); }
-        .action-desc { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+        .action-num { width: 28px; height: 28px; border-radius: 50%; background: var(--lcg-teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+        .action-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+        .action-desc { font-size: 13px; color: var(--text-secondary); margin-top: 3px; line-height: 1.6; }
 
         /* ======================== CALLOUTS ======================== */
-        .callout { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 16px 0; }
-        .callout-label { font-size: 11px; font-weight: 700; color: var(--lcg-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .callout { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 20px 0; }
+        .callout-label { font-size: 12px; font-weight: 700; color: var(--lcg-accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
         .callout-green { background: #e0f7ef; border-left-color: var(--engen-green); }
         .callout-green .callout-label { color: var(--engen-dark); }
         .callout-orange { background: #fff3e0; border-left-color: #e65100; }
@@ -156,9 +166,9 @@
         .callout-navy .callout-label { color: var(--lcg-dark); }
 
         /* ======================== TABLES ======================== */
-        table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0; }
-        thead th { background: var(--lcg-navy); color: white; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.5px; }
-        tbody td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+        thead th { background: var(--lcg-dark); color: white; padding: 12px 14px; text-align: left; font-weight: 600; font-size: 13px; letter-spacing: 0.3px; }
+        tbody td { padding: 11px 14px; border-bottom: 1px solid #eee; }
         tbody tr:hover { background: var(--bg-light); }
         .table-highlight { font-weight: 700; color: var(--text-primary); }
 
@@ -177,13 +187,13 @@
         .risk-box .risk-num { background: var(--engen-green); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
 
         /* ======================== TAGS ======================== */
-        .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.3px; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; }
         .tag-green { background: #e0f7ef; color: var(--engen-dark); }
         .tag-red { background: #fde8e8; color: #c62828; }
         .tag-orange { background: #fff3e0; color: #e65100; }
         .tag-blue { background: #EAF5EE; color: var(--lcg-dark); }
 
-        .page-source { font-size: 10px; color: var(--text-muted); margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+        .page-source { font-size: 12px; color: var(--text-muted); margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border); }
 
         /* ======================== ACHIEVEMENT GAUGES ======================== */
         .gauge-row { display: flex; gap: 16px; margin: 20px 0; }
@@ -202,22 +212,22 @@
         .gauge-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
 
         /* ======================== VISUAL FUNNEL (vertical) ======================== */
-        .v-funnel { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 20px auto; max-width: 700px; }
+        .v-funnel { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 20px auto; max-width: 100%; }
         .v-funnel-step { display: flex; align-items: center; gap: 16px; width: 100%; }
         .v-funnel-bar-wrap { flex: 1; position: relative; }
-        .v-funnel-bar { height: 44px; border-radius: 6px; display: flex; align-items: center; padding: 0 16px; color: white; font-weight: 700; font-size: 13px; position: relative; transition: width 0.5s; }
-        .v-funnel-bar .bar-num { font-size: 20px; font-weight: 900; margin-right: 8px; }
-        .v-funnel-meta { width: 140px; text-align: right; flex-shrink: 0; }
-        .v-funnel-meta .meta-rate { font-size: 14px; font-weight: 800; }
-        .v-funnel-meta .meta-label { font-size: 10px; color: var(--text-muted); }
+        .v-funnel-bar { height: 48px; border-radius: 6px; display: flex; align-items: center; padding: 0 18px; color: white; font-weight: 700; font-size: 14px; position: relative; transition: width 0.5s; }
+        .v-funnel-bar .bar-num { font-size: 22px; font-weight: 900; margin-right: 10px; }
+        .v-funnel-meta { width: 160px; text-align: right; flex-shrink: 0; }
+        .v-funnel-meta .meta-rate { font-size: 16px; font-weight: 800; }
+        .v-funnel-meta .meta-label { font-size: 12px; color: var(--text-muted); }
         .v-funnel-arrow { text-align: center; color: var(--text-muted); font-size: 16px; margin: 2px 0; }
         .v-funnel-conv { display: flex; align-items: center; gap: 8px; margin: 2px 0 2px 140px; }
-        .v-funnel-conv .conv-pct { font-size: 11px; font-weight: 700; color: var(--engen-dark); background: #e0f2f1; padding: 2px 8px; border-radius: 10px; }
+        .v-funnel-conv .conv-pct { font-size: 12px; font-weight: 700; color: var(--engen-dark); background: #e0f2f1; padding: 3px 10px; border-radius: 10px; }
         .v-funnel-conv .conv-arrow { color: var(--text-muted); font-size: 12px; }
 
         /* ======================== BEFORE/AFTER COMPARISON ======================== */
         .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 16px 0; border-radius: 12px; overflow: hidden; border: 2px solid var(--border); }
-        .ba-col { padding: 20px; }
+        .ba-col { padding: 28px; }
         .ba-col.before { background: #fde8e8; }
         .ba-col.after { background: #e0f7ef; }
         .ba-col-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
@@ -225,8 +235,8 @@
         .ba-col.after .ba-col-title { color: var(--engen-dark); }
         .ba-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
         .ba-item:last-child { border-bottom: none; }
-        .ba-metric { font-size: 12px; color: var(--text-secondary); }
-        .ba-value { font-size: 14px; font-weight: 800; }
+        .ba-metric { font-size: 14px; color: var(--text-secondary); }
+        .ba-value { font-size: 15px; font-weight: 800; }
         .ba-col.before .ba-value { color: #c62828; }
         .ba-col.after .ba-value { color: var(--engen-dark); }
 
@@ -255,7 +265,7 @@
 
         <div class="cover-content">
             <div class="cover-label">Playbook Comercial LMM</div>
-            <div class="cover-title">Playbook de Crecimiento<br>Lower Middle Market</div>
+            <div class="cover-title">Playbook de Crecimiento<br><span>Lower Middle Market</span></div>
             <div class="cover-subtitle">De 271 clientes a 400+ &mdash; La hoja de ruta para desbloquear el segmento</div>
             <div class="cover-divider"></div>
 
@@ -304,6 +314,10 @@
     <!-- TABLE OF CONTENTS                                             -->
     <!-- ============================================================ -->
     <div class="toc-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="toc-title">Contenido</div>
         <div class="toc-subtitle">Playbook Comercial LMM &mdash; Engen Capital 2026</div>
         <ul class="toc-list">
@@ -342,6 +356,10 @@
     <!-- DASHBOARD: SITUACI&Oacute;N ACTUAL LMM                        -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Situaci&oacute;n Actual</div>
             <div class="section-title">El segmento LMM hoy &mdash; Achievement YTD</div>
@@ -437,6 +455,10 @@
 
     <!-- BEFORE / AFTER -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Visi&oacute;n 12 Meses</div>
             <div class="section-title">Antes vs. Despu&eacute;s &mdash; El impacto del Playbook</div>
@@ -510,6 +532,10 @@
     <!-- PARTE 01: DIEZ HALLAZGOS ESTRAT&Eacute;GICOS                 -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Parte 01</div>
             <div class="section-title">Diez Hallazgos Estrat&eacute;gicos</div>
@@ -548,6 +574,10 @@
 
     <!-- Hallazgos 4-6 -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="finding-card">
             <div class="finding-header">
                 <div class="finding-number">4</div>
@@ -599,6 +629,10 @@
 
     <!-- Hallazgos 7-8 -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="finding-card">
             <div class="finding-header">
                 <div class="finding-number">7</div>
@@ -656,6 +690,10 @@
 
     <!-- Hallazgo 10 -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="finding-card">
             <div class="finding-header">
                 <div class="finding-number">10</div>
@@ -696,6 +734,10 @@
     <!-- PARTE 02: PLAYBOOK POR ETAPA DE LA TUBER&Iacute;A              -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Parte 02</div>
             <div class="section-title">Playbook por Etapa de la Tuber&iacute;a</div>
@@ -721,6 +763,10 @@
     <!-- ETAPA 1: PLANEACI&Oacute;N COMERCIAL                          -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="stage-header">
             <div class="stage-badge">1</div>
             <div>
@@ -761,6 +807,10 @@
     <!-- ETAPA 2: GENERACI&Oacute;N DE DEMANDA                         -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="stage-header">
             <div class="stage-badge">2</div>
             <div>
@@ -803,6 +853,10 @@
     <!-- ETAPA 3: CONVERSI&Oacute;N Y PERFILAMIENTO                     -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="stage-header">
             <div class="stage-badge">3</div>
             <div>
@@ -845,6 +899,10 @@
     <!-- ETAPA 4: SUSCRIPCI&Oacute;N Y APROBACI&Oacute;N                -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="stage-header">
             <div class="stage-badge" style="background: var(--engen-dark);">4</div>
             <div>
@@ -898,6 +956,10 @@
     <!-- ETAPA 5: DISPOSICI&Oacute;N DE SOLUCIONES                      -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="stage-header">
             <div class="stage-badge" style="background: #00796b;">5</div>
             <div>
@@ -941,6 +1003,10 @@
     <!-- ETAPA 6: CAPITAL HUMANO                                       -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="stage-header">
             <div class="stage-badge" style="background: #00B388;">6</div>
             <div>
@@ -983,6 +1049,10 @@
     <!-- PARTE 03: RESUMEN EJECUTIVO DE METAS                          -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Parte 03</div>
             <div class="section-title">Resumen Ejecutivo de Metas</div>
@@ -1031,6 +1101,10 @@
     <!-- PARTE 04: PLAN DE PROYECTO — METODOLOG&Iacute;A LCG              -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Parte 04</div>
             <div class="section-title">Plan de Proyecto &mdash; Metodolog&iacute;a LCG</div>
@@ -1171,6 +1245,10 @@
     <!-- PLAN DE PROYECTO (cont.) — CHANGE MANAGEMENT                  -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Parte 04 &mdash; Continuaci&oacute;n</div>
             <div class="section-title">Growth Management &amp; Modelo de Gobierno</div>
@@ -1317,6 +1395,10 @@
     <!-- PLAN DE PROYECTO (cont.) — INVERSI&Oacute;N & EQUIPO            -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
         <div class="section-header">
             <div class="section-number">Parte 04 &mdash; Inversi&oacute;n</div>
             <div class="section-title">Dimensionamiento del Proyecto</div>
