@@ -221,6 +221,105 @@
 
         h3 { font-size: 20px; font-weight: 800; color: var(--lcg-dark); margin: 28px 0 14px; }
         h4 { font-size: 16px; font-weight: 700; color: var(--amber-dark); margin: 20px 0 10px; }
+
+        /* ======================== MOBILE RESPONSIVE ======================== */
+        @media (max-width: 900px) {
+            .cover { padding: 40px 24px; min-height: 100vh; }
+            .cover h1 { font-size: 32px; }
+            .cover-sub { font-size: 15px; }
+            .cover-stats { flex-wrap: wrap; gap: 20px; }
+            .cover-stat-num { font-size: 32px; }
+            .cover-logos img { height: 32px; }
+            .cover-logos img:last-child { height: 48px; }
+            .cover-footer { flex-direction: column; gap: 8px; }
+
+            .content-page { padding: 28px 20px !important; margin: 0 8px 16px !important; max-width: 100% !important; }
+            .section-title { font-size: 24px; }
+            .section-header { margin-bottom: 24px; }
+            h3 { font-size: 17px; }
+            h4 { font-size: 14px; }
+            p, .chapter-intro { font-size: 14px; }
+
+            .page-logos img:first-child { height: 22px; }
+            .page-logos img:last-child { height: 28px; }
+            .page-logos { margin-bottom: 16px; padding-bottom: 10px; }
+
+            /* KPI Banner stack */
+            .kpi-banner { flex-direction: column; gap: 10px; }
+            .kpi-item { min-width: 100%; }
+            .kpi-value { font-size: 28px; }
+
+            /* Macro map scroll */
+            .macro-map { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .macro-step { min-width: 80px; font-size: 9px; padding: 8px 4px; }
+
+            /* Finding cards */
+            .finding-card { padding: 18px; }
+            .finding-title { font-size: 15px; }
+            .finding-text { font-size: 13px; }
+            .finding-icon { width: 30px; height: 30px; font-size: 14px; }
+
+            /* Verbatim */
+            .verbatim { padding: 16px 18px; }
+            .verbatim-text { font-size: 13px; padding-left: 16px; }
+            .verbatim-source { font-size: 11px; padding-left: 16px; }
+
+            /* Tables horizontal scroll */
+            table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            th { font-size: 11px; padding: 8px 10px; white-space: nowrap; }
+            td { font-size: 12px; padding: 8px 10px; }
+
+            /* Two col stack */
+            .two-col { grid-template-columns: 1fr !important; }
+
+            /* Method grid */
+            .method-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+            /* Gauge row */
+            .gauge-row { flex-direction: column; }
+            .gauge-mini { min-width: 100%; }
+
+            /* Process flow scroll */
+            .process-flow { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .process-step { min-width: 100px; font-size: 11px; padding: 12px 8px; }
+
+            /* Highlight box */
+            .highlight-box { padding: 20px; }
+            .highlight-box h3 { font-size: 17px; }
+            .highlight-box .hl-stat { font-size: 28px; }
+
+            /* Callouts */
+            .callout { padding: 14px 16px; }
+            .callout p { font-size: 13px; }
+
+            /* Comparison bars */
+            .comp-bar-label { font-size: 10px; }
+
+            /* Tags */
+            .tag { font-size: 10px; }
+
+            /* Timeline */
+            .timeline { padding-left: 18px; }
+
+            /* Inline grids */
+            div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+            div[style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+            div[style*="grid-template-columns: 1fr 1fr;"] { grid-template-columns: 1fr !important; }
+
+            /* Print button */
+            .print-btn { bottom: 16px; right: 16px; padding: 10px 18px; font-size: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .cover { padding: 32px 18px; }
+            .cover h1 { font-size: 26px; }
+            .content-page { padding: 20px 14px !important; margin: 0 4px 12px !important; }
+            .section-title { font-size: 20px; }
+            h3 { font-size: 15px; }
+            .method-grid { grid-template-columns: 1fr !important; }
+            .macro-step { min-width: 70px; font-size: 8px; }
+            .kpi-value { font-size: 24px; }
+        }
     </style>
 </head>
 <body>
