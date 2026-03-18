@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook Comercial LMM — Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body { font-size: 9pt; background: white !important; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+
+        /* ======================== COVER ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #004D40 50%, #00B388 100%);
+            color: white; padding: 60px; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: space-between;
+            position: relative; overflow: hidden;
+        }
+        .cover-page::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .cover-logos img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logos img:last-child { height: 65px; border-radius: 6px; filter: none; }
+        .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+        .cover-label { font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+        .cover-title { font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 40px; }
+        .cover-divider { width: 80px; height: 3px; background: rgba(255,255,255,0.4); margin-bottom: 30px; }
+        .cover-stats { display: flex; gap: 32px; margin-bottom: 40px; }
+        .cover-stat { text-align: center; }
+        .cover-stat-value { font-size: 36px; font-weight: 800; }
+        .cover-stat-label { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
+        .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .cover-meta-label { color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; font-size: 13px; }
+        .cover-footer { position: relative; z-index: 1; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.4); }
+
+        /* ======================== TOC ======================== */
+        .toc-page { padding: 60px; }
+        .toc-title { font-size: 28px; font-weight: 700; color: var(--lcg-navy); margin-bottom: 8px; }
+        .toc-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 40px; }
+        .toc-list { list-style: none; }
+        .toc-item { display: flex; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .toc-number { font-size: 28px; font-weight: 800; color: var(--lcg-accent); width: 50px; flex-shrink: 0; }
+        .toc-text { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+        .toc-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        /* ======================== CONTENT ======================== */
+        .content-page { padding: 50px 60px; }
+        .section-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 3px solid var(--lcg-navy); }
+        .section-number { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-accent); margin-bottom: 8px; }
+        .section-title { font-size: 26px; font-weight: 700; color: var(--lcg-navy); line-height: 1.3; }
+        h3 { font-size: 16px; font-weight: 700; color: var(--lcg-blue); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--engen-green); }
+        p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner { display: flex; gap: 12px; margin: 16px 0; }
+        .kpi-item { flex: 1; background: var(--bg-light); border-radius: 10px; padding: 16px; text-align: center; border-top: 3px solid var(--lcg-accent); }
+        .kpi-value { font-size: 28px; font-weight: 800; color: var(--lcg-navy); }
+        .kpi-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+        .kpi-item.green { border-top-color: var(--engen-green); }
+        .kpi-item.green .kpi-value { color: var(--engen-dark); }
+        .kpi-item.orange { border-top-color: var(--warning); }
+        .kpi-item.orange .kpi-value { color: #e65100; }
+        .kpi-item.red { border-top-color: var(--danger); }
+        .kpi-item.red .kpi-value { color: #c62828; }
+
+        /* ======================== FINDING CARDS ======================== */
+        .finding-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+        .finding-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+        .finding-number { width: 44px; height: 44px; border-radius: 50%; background: var(--lcg-navy); color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+        .finding-title { font-size: 15px; font-weight: 700; color: var(--lcg-navy); border: none; padding: 0; margin: 0; }
+        .finding-kpi { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+        .kpi-blue { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+        .kpi-red { background: #fde8e8; color: #c62828; }
+        .kpi-orange { background: #fff3e0; color: #e65100; }
+        .kpi-green { background: #e0f2f1; color: var(--engen-dark); }
+        .finding-text { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ======================== PIPELINE FUNNEL ======================== */
+        .pipeline-funnel { display: flex; align-items: stretch; gap: 2px; margin: 24px 0; }
+        .pipeline-stage { flex: 1; text-align: center; padding: 14px 6px; color: white; font-size: 10px; font-weight: 700; line-height: 1.3; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+        .pipeline-stage:first-child { border-radius: 8px 0 0 8px; }
+        .pipeline-stage:last-child { border-radius: 0 8px 8px 0; }
+        .pipeline-stage .stage-num { font-size: 18px; font-weight: 800; }
+
+        /* ======================== STAGE SECTION ======================== */
+        .stage-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--engen-green); }
+        .stage-badge { width: 48px; height: 48px; border-radius: 50%; background: var(--engen-green); color: white; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; flex-shrink: 0; }
+        .stage-title { font-size: 20px; font-weight: 700; color: var(--lcg-navy); border: none; padding: 0; margin: 0; }
+        .stage-subtitle { font-size: 13px; color: var(--text-muted); font-weight: 400; }
+
+        /* ======================== ACTION ITEMS ======================== */
+        .action-list { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 12px 0; }
+        .action-item { display: flex; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: flex-start; }
+        .action-item:last-child { border-bottom: none; }
+        .action-item:nth-child(odd) { background: var(--bg-light); }
+        .action-num { width: 24px; height: 24px; border-radius: 50%; background: var(--engen-green); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+        .action-title { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+        .action-desc { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 16px 0; }
+        .callout-label { font-size: 11px; font-weight: 700; color: var(--lcg-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .callout-green { background: #e0f7ef; border-left-color: var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+        .callout-orange { background: #fff3e0; border-left-color: #e65100; }
+        .callout-orange .callout-label { color: #e65100; }
+        .callout-red { background: #fde8e8; border-left-color: #c62828; }
+        .callout-red .callout-label { color: #c62828; }
+        .callout-navy { background: #e8edf5; border-left-color: var(--lcg-navy); }
+        .callout-navy .callout-label { color: var(--lcg-navy); }
+
+        /* ======================== TABLES ======================== */
+        table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0; }
+        thead th { background: var(--lcg-navy); color: white; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.5px; }
+        tbody td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+        tbody tr:hover { background: var(--bg-light); }
+        .table-highlight { font-weight: 700; color: var(--text-primary); }
+
+        /* ======================== METRICS TABLE ======================== */
+        .metrics-table { border: 2px solid var(--engen-green); border-radius: 10px; overflow: hidden; margin: 16px 0; }
+        .metrics-table thead th { background: var(--engen-dark); }
+        .metrics-table .metric-delta { font-weight: 800; }
+        .delta-up { color: var(--engen-green); }
+        .delta-down { color: #c62828; }
+
+        /* ======================== RISK BOX ======================== */
+        .risk-box { background: linear-gradient(135deg, #0B1F3F 0%, #004D40 100%); color: white; border-radius: 12px; padding: 32px; margin: 24px 0; }
+        .risk-box h3 { color: var(--engen-green); border-left-color: rgba(255,255,255,0.3); font-size: 18px; margin-top: 0; }
+        .risk-box p { color: rgba(255,255,255,0.85); }
+        .risk-box .risk-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+        .risk-box .risk-num { background: var(--engen-green); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+
+        /* ======================== TAGS ======================== */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.3px; }
+        .tag-green { background: #e0f7ef; color: var(--engen-dark); }
+        .tag-red { background: #fde8e8; color: #c62828; }
+        .tag-orange { background: #fff3e0; color: #e65100; }
+        .tag-blue { background: var(--lcg-light-blue); color: var(--lcg-accent); }
+
+        .page-source { font-size: 10px; color: var(--text-muted); margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+<div class="document">
+
+    <!-- ============================================================ -->
+    <!-- COVER PAGE                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page">
+        <div class="cover-logos">
+            <img src="https://londoncg.com/build/q-BVvHCl8k.webp" alt="London Consulting Group" style="height: 45px; filter: brightness(0) invert(1);">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQHxKJGe-KdQxQ/company-logo_200_200/company-logo_200_200/0/1719870419704/engen_capital_logo?e=2147483647&v=beta&t=vY-mCqJWiQxJmHd-gKiQJCb0U5GqM0LcGCX3lKaC8DQ" alt="Engen Capital" style="height: 65px; border-radius: 6px; filter: none;">
+        </div>
+
+        <div class="cover-content">
+            <div class="cover-label">Playbook Comercial LMM</div>
+            <div class="cover-title">Playbook de Crecimiento<br>Lower Middle Market</div>
+            <div class="cover-subtitle">De 271 clientes a 400+ &mdash; La hoja de ruta para desbloquear el segmento</div>
+            <div class="cover-divider"></div>
+
+            <div class="cover-stats">
+                <div class="cover-stat">
+                    <div class="cover-stat-value">10</div>
+                    <div class="cover-stat-label">Hallazgos Estrat&eacute;gicos</div>
+                </div>
+                <div class="cover-stat">
+                    <div class="cover-stat-value">6</div>
+                    <div class="cover-stat-label">Etapas del Pipeline</div>
+                </div>
+                <div class="cover-stat">
+                    <div class="cover-stat-value">47</div>
+                    <div class="cover-stat-label">Acciones Espec&iacute;ficas</div>
+                </div>
+            </div>
+
+            <div class="cover-meta">
+                <div>
+                    <div class="cover-meta-label">Base de an&aacute;lisis</div>
+                    <div class="cover-meta-value">+20 entrevistas de campo + datos internos Engen</div>
+                </div>
+                <div>
+                    <div class="cover-meta-label">Fecha</div>
+                    <div class="cover-meta-value">Marzo 2026</div>
+                </div>
+                <div>
+                    <div class="cover-meta-label">Preparado por</div>
+                    <div class="cover-meta-value">London Consulting Group</div>
+                </div>
+                <div>
+                    <div class="cover-meta-label">Clasificaci&oacute;n</div>
+                    <div class="cover-meta-value">Confidencial &mdash; Uso Interno</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            <span>&copy; 2026 London Consulting Group</span>
+            <span>Documento de trabajo &mdash; Pre-Diagn&oacute;stico LCG</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TABLE OF CONTENTS                                             -->
+    <!-- ============================================================ -->
+    <div class="toc-page page-break">
+        <div class="toc-title">Contenido</div>
+        <div class="toc-subtitle">Playbook Comercial LMM &mdash; Engen Capital 2026</div>
+        <ul class="toc-list">
+            <li class="toc-item">
+                <span class="toc-number">01</span>
+                <div>
+                    <div class="toc-text">Diez Hallazgos Estrat&eacute;gicos</div>
+                    <div class="toc-desc">Conclusiones macro del pre-diagn&oacute;stico basadas en +20 entrevistas y datos internos</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">02</span>
+                <div>
+                    <div class="toc-text">Playbook por Etapa de la Tuber&iacute;a</div>
+                    <div class="toc-desc">6 etapas: Planeaci&oacute;n &rarr; Demanda &rarr; Conversi&oacute;n &rarr; Suscripci&oacute;n &rarr; Disposici&oacute;n &rarr; Capital Humano</div>
+                </div>
+            </li>
+            <li class="toc-item">
+                <span class="toc-number">03</span>
+                <div>
+                    <div class="toc-text">Resumen Ejecutivo de Metas</div>
+                    <div class="toc-desc">Tabla consolidada de m&eacute;tricas objetivo + Nota sobre la tesis de riesgo</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PARTE 01: DIEZ HALLAZGOS ESTRAT&Eacute;GICOS                 -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Parte 01</div>
+            <div class="section-title">Diez Hallazgos Estrat&eacute;gicos</div>
+        </div>
+
+        <!-- Hallazgo 1 -->
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">1</div>
+                <div class="finding-title">Mercado enorme, penetraci&oacute;n m&iacute;nima</div>
+            </div>
+            <div class="finding-kpi kpi-blue">271 de 24,500 = 1.1% penetraci&oacute;n</div>
+            <p class="finding-text">De ~24,500 empresas LMM asset-intensive ($50M-$500M ventas), Engen tiene <strong>271 clientes activos</strong>. El CRM identifica ~12,000 empresas (~50% del universo) &mdash; hay al menos <strong>12,500 empresas que ni siquiera est&aacute;n en el radar</strong>. El Tier 1 (Manufactura ~8,500 + Transporte ~3,200 + Construcci&oacute;n ~2,200) agrupa ~13,900 empresas con m&aacute;xima propensi&oacute;n ABL. La oportunidad no es incremental &mdash; es un mercado pr&aacute;cticamente virgen.</p>
+        </div>
+
+        <!-- Hallazgo 2 -->
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">2</div>
+                <div class="finding-title">Contracci&oacute;n de NEAs en FY25 mientras competidores crecen</div>
+            </div>
+            <div class="finding-kpi kpi-red">Engen -2.3% vs. Start +52%, Value +43%, Banorte +28%</div>
+            <p class="finding-text">Engen registr&oacute; <strong>-2.3% en NEAs totales</strong> ($15.5K &rarr; $15.2K MDP). Start Banregio acumul&oacute; +52% en tres a&ntilde;os, Value Arrendadora creci&oacute; +43% en 2024, AyF Banorte +28.3%. El LMM subi&oacute; su participaci&oacute;n en el mix (19.3% &rarr; 23.5%), pero sobre una base total que se encoge. <strong>El problema no es el mercado &mdash; es la m&aacute;quina comercial.</strong></p>
+        </div>
+
+        <!-- Hallazgo 3 -->
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">3</div>
+                <div class="finding-title">Fuerza de ventas en declive</div>
+            </div>
+            <div class="finding-kpi kpi-red">28 &rarr; 22 originadores (-21%)</div>
+            <p class="finding-text">La fuerza productiva (vendedores con +6 meses) cay&oacute; de 28 a 22 entre 2024 y 2025. Hay <strong>5 vacantes abiertas</strong> con contrataci&oacute;n lenta. Cada vacante representa <strong>~$46M MDP en volumen per c&aacute;pita no generado</strong>. La rotaci&oacute;n impacta originadores nuevos (-3) y low performers (-5), con saldo neto negativo.</p>
+        </div>
+    </div>
+
+    <!-- Hallazgos 4-6 -->
+    <div class="content-page page-break">
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">4</div>
+                <div class="finding-title">Prospecci&oacute;n sin disciplina operativa ni m&eacute;tricas</div>
+            </div>
+            <div class="finding-kpi kpi-orange">Solo 24% de prospectos han sido &ldquo;tocados&rdquo;</div>
+            <p class="finding-text">No existe est&aacute;ndar de contactos/d&iacute;a, ni m&eacute;tricas de actividad, ni registro obligatorio en Salesforce. La prospecci&oacute;n se registra con post-its y calendarios personales. Los l&iacute;deres no tienen visibilidad real de los esfuerzos diarios de cada originador.</p>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">5</div>
+                <div class="finding-title">Citas caen -10%, oportunidades caen -17%</div>
+            </div>
+            <table>
+                <thead>
+                    <tr><th>M&eacute;trica</th><th>2024</th><th>2025</th><th>&Delta;</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="table-highlight">Citas totales LMM</td><td>5,113</td><td>4,582</td><td style="color: #c62828; font-weight: 700;">-10%</td></tr>
+                    <tr><td class="table-highlight">Oportunidades totales</td><td>1,353</td><td>1,126</td><td style="color: #c62828; font-weight: 700;">-17%</td></tr>
+                    <tr><td class="table-highlight">Citas per c&aacute;pita</td><td>84</td><td>85</td><td style="color: var(--engen-dark);">+1%</td></tr>
+                    <tr><td class="table-highlight">Oportunidades per c&aacute;pita</td><td>22</td><td>21</td><td style="color: #c62828; font-weight: 700;">-6%</td></tr>
+                    <tr><td class="table-highlight">Citas digitales</td><td>255</td><td>215</td><td style="color: #c62828; font-weight: 700;">-16%</td></tr>
+                </tbody>
+            </table>
+            <p class="finding-text">Las citas per c&aacute;pita se mantienen (+1%), confirmando que <strong>la ca&iacute;da es de volumen de fuerza, no de productividad individual</strong>. La conversi&oacute;n de oportunidades per c&aacute;pita cae -6%, se&ntilde;alando degradaci&oacute;n en calidad del pipeline.</p>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">6</div>
+                <div class="finding-title">Tiempos de aprobaci&oacute;n muy por encima de SLAs</div>
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Producto</th><th>Meta (d&iacute;as)</th><th>Real (d&iacute;as)</th><th>Desviaci&oacute;n</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="table-highlight">Fast Application</td><td>4</td><td style="font-weight: 800; color: #c62828;">15.9</td><td><span class="tag tag-red">4.0x</span></td></tr>
+                    <tr><td class="table-highlight">Param&eacute;trico</td><td>3</td><td style="font-weight: 800; color: #c62828;">24.4</td><td><span class="tag tag-red">8.1x</span></td></tr>
+                    <tr><td class="table-highlight">LMM Corto</td><td>7</td><td style="font-weight: 800; color: #c62828;">33.7</td><td><span class="tag tag-red">4.8x</span></td></tr>
+                    <tr><td class="table-highlight">Estudio Full</td><td>12</td><td style="font-weight: 800; color: #e65100;">30.6</td><td><span class="tag tag-orange">2.6x</span></td></tr>
+                </tbody>
+            </table>
+            <p class="finding-text">El Param&eacute;trico &mdash; dise&ntilde;ado para ser el caballo de batalla del segmento &mdash; <strong>solo representa el 9% del volumen</strong>. El mayor componente de los retrasos es el &ldquo;tiempo comercial&rdquo; (expedientes incompletos, rebotes).</p>
+        </div>
+    </div>
+
+    <!-- Hallazgos 7-8 -->
+    <div class="content-page page-break">
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">7</div>
+                <div class="finding-title">70% de Takedowns rechazados al menos una vez</div>
+            </div>
+            <div class="kpi-banner">
+                <div class="kpi-item red"><div class="kpi-value">38.5</div><div class="kpi-label">D&iacute;as promedio takedown</div></div>
+                <div class="kpi-item red"><div class="kpi-value">70%</div><div class="kpi-label">Rechazados 1+ vez</div></div>
+                <div class="kpi-item orange"><div class="kpi-value">55%</div><div class="kpi-label">En &uacute;ltimos 4 d&iacute;as del mes</div></div>
+                <div class="kpi-item orange"><div class="kpi-value">65%</div><div class="kpi-label">Con waiver o post-funding</div></div>
+            </div>
+            <p class="finding-text">25 d&iacute;as solo en la fase pre-Toll Gate 1 (65% del tiempo total). Retrabajo promedio: aprobaci&oacute;n de facturas <strong>2 veces</strong>, liberaci&oacute;n de documentos a firma <strong>2.6 veces</strong>. No existe gesti&oacute;n formal de causas ra&iacute;z para reducir retrabajos.</p>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">8</div>
+                <div class="finding-title">Concentraci&oacute;n de fin de mes deteriora predictibilidad</div>
+            </div>
+            <div class="callout callout-orange">
+                <div class="callout-label">C&iacute;rculo vicioso identificado</div>
+                <p style="font-size: 12px;">Oportunidades no sinceras inflan el pipeline &rarr; bajo volumen de citas genera dependencia de deals avanzados &rarr; l&iacute;deres se concentran en venta directa para asegurar cierres (en lugar de supervisar y desarrollar equipos) &rarr; <strong>55% de deals se procesan en los &uacute;ltimos 4 d&iacute;as h&aacute;biles del mes</strong>, de los cuales 60% est&aacute;n pendientes de aprobaci&oacute;n Riesgo/AML.</p>
+            </div>
+        </div>
+
+        <!-- Hallazgo 9 -->
+        <div class="finding-card" style="border: 2px solid var(--lcg-navy);">
+            <div class="finding-header">
+                <div class="finding-number" style="background: var(--engen-dark);">9</div>
+                <div class="finding-title" style="font-size: 16px;">Aprobaci&oacute;n LMM en 66% &mdash; oportunidad de abrir la llave de riesgo</div>
+            </div>
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value">66%</div><div class="kpi-label">Aprobaci&oacute;n LMM</div></div>
+                <div class="kpi-item green"><div class="kpi-value">78%</div><div class="kpi-label">Aprobaci&oacute;n Core</div></div>
+                <div class="kpi-item orange"><div class="kpi-value">3.8%</div><div class="kpi-label">CV &gt;30 d&iacute;as LMM</div></div>
+                <div class="kpi-item"><div class="kpi-value">25.5%</div><div class="kpi-label">Watchlist (93 GEs, $587M)</div></div>
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Indicador</th><th>Valor</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="table-highlight">Calificaci&oacute;n promedio LMM</td><td>OR13 (YTD)</td></tr>
+                    <tr><td class="table-highlight">Ticket aprobado vs. fondeado</td><td>$12.0M vs. $7.75M (gap $4.25M)</td></tr>
+                    <tr><td class="table-highlight">% fondeado vs. aprobado</td><td>55.3% (baja desde 60.5% en FYE 2024)</td></tr>
+                    <tr><td class="table-highlight">CV &gt;90 d&iacute;as</td><td>$86.7M MXN</td></tr>
+                </tbody>
+            </table>
+            <div class="callout callout-navy" style="margin-top: 12px;">
+                <div class="callout-label">Tesis central</div>
+                <p style="font-size: 12px; font-weight: 600;">La meta NO es bajar la cartera vencida. La meta es definir cu&aacute;nto incremento de CV est&aacute; dispuesto a tolerar a cambio de cu&aacute;nto volumen incremental. La CV del segmento LMM probablemente suba de 3.8% hacia 4.5%-5.5% &mdash; y eso est&aacute; bien si el margen incremental lo justifica.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hallazgo 10 -->
+    <div class="content-page page-break">
+        <div class="finding-card">
+            <div class="finding-header">
+                <div class="finding-number">10</div>
+                <div class="finding-title">NPS de 90.2% pero el cuello de botella es tiempo de aprobaci&oacute;n</div>
+            </div>
+            <div class="kpi-banner">
+                <div class="kpi-item green"><div class="kpi-value">90.2%</div><div class="kpi-label">NPS acumulado 12 meses</div></div>
+                <div class="kpi-item red"><div class="kpi-value">70%</div><div class="kpi-label">Score tiempo aprobaci&oacute;n</div></div>
+                <div class="kpi-item green"><div class="kpi-value">87%</div><div class="kpi-label">Facilidad de firma</div></div>
+                <div class="kpi-item green"><div class="kpi-value">94%</div><div class="kpi-label">Cumplimiento expectativas</div></div>
+            </div>
+            <p class="finding-text">El tiempo de aprobaci&oacute;n crediticia obtiene el score m&aacute;s bajo de todo el journey del cliente (70%). Solo 0.7% detractores en NPS global. Esto confirma que la <strong>velocidad de respuesta crediticia es el principal diferenciador competitivo</strong> que Engen necesita mejorar para el LMM, que es inherentemente &ldquo;time-sensitive&rdquo;.</p>
+        </div>
+
+        <!-- Resumen visual de los 10 hallazgos -->
+        <h3>Mapa de hallazgos</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
+            <div style="background: var(--lcg-light-blue); padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--lcg-accent);">
+                <div style="font-size: 10px; font-weight: 700; color: var(--lcg-accent); margin-bottom: 4px;">MERCADO &amp; POSICI&Oacute;N</div>
+                <div style="font-size: 11px;"><strong>1.</strong> 1.1% penetraci&oacute;n &bull; <strong>2.</strong> NEAs -2.3%</div>
+            </div>
+            <div style="background: #fff3e0; padding: 10px 14px; border-radius: 8px; border-left: 3px solid #e65100;">
+                <div style="font-size: 10px; font-weight: 700; color: #e65100; margin-bottom: 4px;">FUERZA COMERCIAL</div>
+                <div style="font-size: 11px;"><strong>3.</strong> 22 de 28 &bull; <strong>4.</strong> 24% tocados &bull; <strong>5.</strong> Citas -10%</div>
+            </div>
+            <div style="background: #fde8e8; padding: 10px 14px; border-radius: 8px; border-left: 3px solid #c62828;">
+                <div style="font-size: 10px; font-weight: 700; color: #c62828; margin-bottom: 4px;">F&Aacute;BRICA INTERNA</div>
+                <div style="font-size: 11px;"><strong>6.</strong> SLAs 4-8x &bull; <strong>7.</strong> 70% rechazos &bull; <strong>8.</strong> Fin de mes</div>
+            </div>
+            <div style="background: #e0f2f1; padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--engen-green);">
+                <div style="font-size: 10px; font-weight: 700; color: var(--engen-dark); margin-bottom: 4px;">RIESGO &amp; CLIENTE</div>
+                <div style="font-size: 11px;"><strong>9.</strong> Aprobaci&oacute;n 66% vs 78% &bull; <strong>10.</strong> NPS 90% pero 70% en tiempo</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PARTE 02: PLAYBOOK POR ETAPA DE LA TUBER&Iacute;A              -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Parte 02</div>
+            <div class="section-title">Playbook por Etapa de la Tuber&iacute;a</div>
+        </div>
+
+        <!-- Funnel visual -->
+        <div class="pipeline-funnel">
+            <div class="pipeline-stage" style="background: #0B1F3F;"><div class="stage-num">1</div>Planeaci&oacute;n<br>Comercial</div>
+            <div class="pipeline-stage" style="background: #163a5f;"><div class="stage-num">2</div>Generaci&oacute;n<br>de Demanda</div>
+            <div class="pipeline-stage" style="background: #1e4d7a;"><div class="stage-num">3</div>Conversi&oacute;n y<br>Perfilamiento</div>
+            <div class="pipeline-stage" style="background: #004D40;"><div class="stage-num">4</div>Suscripci&oacute;n y<br>Aprobaci&oacute;n</div>
+            <div class="pipeline-stage" style="background: #00796b;"><div class="stage-num">5</div>Disposici&oacute;n de<br>Soluciones</div>
+            <div class="pipeline-stage" style="background: #00B388;"><div class="stage-num">6</div>Capital<br>Humano</div>
+        </div>
+
+        <div class="callout callout-green">
+            <div class="callout-label">C&oacute;mo leer este Playbook</div>
+            <p style="font-size: 12px;">Cada etapa contiene: <strong>Diagn&oacute;stico</strong> (qu&eacute; encontramos), <strong>Acciones</strong> (qu&eacute; hacer) y <strong>M&eacute;tricas objetivo</strong> (c&oacute;mo medir). Las acciones son espec&iacute;ficas, no aspiracionales. Las metas son indicativas y deben validarse en la fase de An&aacute;lisis Exhaustivo.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ETAPA 1: PLANEACI&Oacute;N COMERCIAL                          -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="stage-header">
+            <div class="stage-badge">1</div>
+            <div>
+                <div class="stage-title">Planeaci&oacute;n Comercial</div>
+                <div class="stage-subtitle">Ir por M&aacute;s y Mejores Empresas</div>
+            </div>
+        </div>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">Diagn&oacute;stico</div>
+            <p style="font-size: 12px; margin: 0;">Universo LMM: ~24,500 empresas. CRM: ~12,000 (50%). Clientes activos: 271 (1.1%). Account sets contaminados con empresas &lt;$50M. Clientes nuevos cayeron <strong>-28%</strong> en 2025 (186&rarr;133). Corredores con oportunidad: Baj&iacute;o (~3,400 empresas) y Noroeste (~2,600).</p>
+        </div>
+
+        <h3>Acciones</h3>
+        <div class="action-list">
+            <div class="action-item"><div class="action-num">1</div><div><div class="action-title">Completar el CRM</div><div class="action-desc">Incorporar las ~12,500 empresas LMM faltantes. Priorizar Tier 1 (~13,900 en Manufactura, Transporte, Construcci&oacute;n). Fuentes: INEGI Censos 2024, DENUE, CANACINTRA, ANPACT.</div></div></div>
+            <div class="action-item"><div class="action-num">2</div><div><div class="action-title">Depurar account sets</div><div class="action-desc">Eliminar empresas &lt;$50M ventas. Enfocar la parte superior del LMM ($250M-$500M) para incrementar ticket promedio.</div></div></div>
+            <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Scoring de prospectos</div><div class="action-desc">Modelo que priorice por tama&ntilde;o, sector asset-intensive, historial crediticio y regi&oacute;n.</div></div></div>
+            <div class="action-item"><div class="action-num">4</div><div><div class="action-title">Recontactar propuestas ganadas no cerradas</div><div class="action-desc">Hay pipeline hist&oacute;rico en Salesforce que no se recicla sistem&aacute;ticamente.</div></div></div>
+            <div class="action-item"><div class="action-num">5</div><div><div class="action-title">Mapear corredores industriales</div><div class="action-desc">Evaluar expansi&oacute;n a 3-4 oficinas regionales (Baj&iacute;o + Noroeste) que cubrir&iacute;a ~70% del universo direccionable.</div></div></div>
+            <div class="action-item"><div class="action-num">6</div><div><div class="action-title">Visitas a clientes existentes</div><div class="action-desc">Los 271 clientes LMM activos son la fuente m&aacute;s inmediata de cross-sell (factoraje, OFS) y referidos.</div></div></div>
+        </div>
+
+        <div class="metrics-table">
+            <table style="margin: 0;">
+                <thead><tr><th>M&eacute;trica</th><th>Actual</th><th>Meta 12M</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Empresas en CRM LMM</td><td>~12,000</td><td style="font-weight: 800; color: var(--engen-dark);">~20,000</td></tr>
+                    <tr><td class="table-highlight">Penetraci&oacute;n clientes activos</td><td>271 (1.1%)</td><td style="font-weight: 800; color: var(--engen-dark);">400+ (1.6%)</td></tr>
+                    <tr><td class="table-highlight">% account set en rango target</td><td>~50% est.</td><td style="font-weight: 800; color: var(--engen-dark);">&gt;85%</td></tr>
+                    <tr><td class="table-highlight">Clientes nuevos/a&ntilde;o</td><td>133</td><td style="font-weight: 800; color: var(--engen-dark);">180+</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ETAPA 2: GENERACI&Oacute;N DE DEMANDA                         -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="stage-header">
+            <div class="stage-badge">2</div>
+            <div>
+                <div class="stage-title">Generaci&oacute;n de Demanda</div>
+                <div class="stage-subtitle">Incrementar Volumen y Calidad de Citas</div>
+            </div>
+        </div>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">Diagn&oacute;stico</div>
+            <p style="font-size: 12px; margin: 0;">Citas totales LMM: 4,582 (<strong>-10%</strong>). Digital: 215 citas (5% del total). Sin est&aacute;ndar de actividad diaria. Registro informal (post-its). Sin mapeo de expos/ferias. Falta proceso multi-touch. Marketing: $13MDP presupuesto.</p>
+        </div>
+
+        <h3>Acciones</h3>
+        <div class="action-list">
+            <div class="action-item"><div class="action-num">1</div><div><div class="action-title">Est&aacute;ndar de actividad diaria</div><div class="action-desc">M&iacute;nimo 30 empresas contactadas/d&iacute;a por originador con registro obligatorio en Salesforce. Definir franjas horarias.</div></div></div>
+            <div class="action-item"><div class="action-num">2</div><div><div class="action-title">Cadencia multi-touch documentada</div><div class="action-desc">D1 correo &rarr; D3 LinkedIn &rarr; D5 llamada &rarr; D8 contenido de valor. Templates por industria.</div></div></div>
+            <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Investigaci&oacute;n previa obligatoria</div><div class="action-desc">Antes de contacto: perfil empresa, decisor, gancho relevante (CAPEX, vencimiento activos, importaciones).</div></div></div>
+            <div class="action-item"><div class="action-num">4</div><div><div class="action-title">Escalar canal digital</div><div class="action-desc">215 citas/a&ntilde;o con $13MDP es bajo ROI. Evaluar conversi&oacute;n por campa&ntilde;a y redirigir inversi&oacute;n.</div></div></div>
+            <div class="action-item"><div class="action-num">5</div><div><div class="action-title">Calendario maestro de expos</div><div class="action-desc">Fecha, industria, # empresas target, originadores asignados, meta de citas post-evento.</div></div></div>
+            <div class="action-item"><div class="action-num">6</div><div><div class="action-title">Reactivar prospectos dormidos</div><div class="action-desc">De ~12,000 empresas en CRM, solo 24% contactadas. Hay <strong>~9,000 prospectos sin tocar</strong>.</div></div></div>
+            <div class="action-item"><div class="action-num">7</div><div><div class="action-title">Visibilidad de actividad en Salesforce</div><div class="action-desc">L&iacute;deres deben ver actividades de prospecci&oacute;n en tiempo real. Hoy no tienen esa visibilidad.</div></div></div>
+        </div>
+
+        <div class="metrics-table">
+            <table style="margin: 0;">
+                <thead><tr><th>M&eacute;trica</th><th>Actual</th><th>Meta 12M</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Citas totales LMM/a&ntilde;o</td><td>4,582</td><td style="font-weight: 800; color: var(--engen-dark);">5,500+</td></tr>
+                    <tr><td class="table-highlight">Citas per c&aacute;pita/a&ntilde;o</td><td>85</td><td style="font-weight: 800; color: var(--engen-dark);">120+</td></tr>
+                    <tr><td class="table-highlight">Citas digitales/a&ntilde;o</td><td>215 (5%)</td><td style="font-weight: 800; color: var(--engen-dark);">500+ (9%)</td></tr>
+                    <tr><td class="table-highlight">% prospectos contactados</td><td>24%</td><td style="font-weight: 800; color: var(--engen-dark);">&gt;60%</td></tr>
+                    <tr><td class="table-highlight">Registro Salesforce</td><td>Informal</td><td style="font-weight: 800; color: var(--engen-dark);">100% obligatorio</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ETAPA 3: CONVERSI&Oacute;N Y PERFILAMIENTO                     -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="stage-header">
+            <div class="stage-badge">3</div>
+            <div>
+                <div class="stage-title">Conversi&oacute;n y Perfilamiento</div>
+                <div class="stage-subtitle">Crear Oportunidades Reales</div>
+            </div>
+        </div>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">Diagn&oacute;stico</div>
+            <p style="font-size: 12px; margin: 0;">Oportunidades cayeron <strong>-17%</strong> (1,353&rarr;1,126). Conversi&oacute;n cita&rarr;oportunidad: ~24.5%. Pipeline al 47% de meta YTD. Fondeo al 27%. Gross Margin al 11%. Baja predictibilidad. L&iacute;deres como vendedores. Engen Way inconsistente. Deal size $8.9M (+13%).</p>
+        </div>
+
+        <h3>Acciones</h3>
+        <div class="action-list">
+            <div class="action-item"><div class="action-num">1</div><div><div class="action-title">Criterios de calificaci&oacute;n obligatorios</div><div class="action-desc">Necesidad confirmada, decisor identificado, presupuesto, timeline, tipo de activo. Sin campos completos, no se registra oportunidad.</div></div></div>
+            <div class="action-item"><div class="action-num">2</div><div><div class="action-title">Depuraci&oacute;n quincenal de pipeline</div><div class="action-desc">Oportunidades &gt;90 d&iacute;as: clasificar como perdida o dormida con causa ra&iacute;z.</div></div></div>
+            <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Framework pre-cita (Engen Way reforzado)</div><div class="action-desc">Hip&oacute;tesis de cr&eacute;dito, activos target, estructura financiera, oportunidad REFI, multiproducto.</div></div></div>
+            <div class="action-item"><div class="action-num">4</div><div><div class="action-title">Revisi&oacute;n semanal de pipeline</div><div class="action-desc">Aging promedio, probabilidad ponderada, conversi&oacute;n por stage, raz&oacute;n de p&eacute;rdida por originador.</div></div></div>
+            <div class="action-item"><div class="action-num">5</div><div><div class="action-title">Estrategia multiproducto desde primera cita</div><div class="action-desc">Evaluar factoraje + OFS + arrendamiento para maximizar wallet share. Declarado pero no ejecutado.</div></div></div>
+            <div class="action-item"><div class="action-num">6</div><div><div class="action-title">Redistribuir tiempo de l&iacute;deres</div><div class="action-desc">M&aacute;ximo 30% venta directa, 70% coaching. El rol del l&iacute;der es que sus originadores cierren.</div></div></div>
+            <div class="action-item"><div class="action-num">7</div><div><div class="action-title">Enfoque parte alta LMM ($250M-$500M)</div><div class="action-desc">Incrementa ticket promedio y productividad. Cada deal cerrado vale m&aacute;s.</div></div></div>
+        </div>
+
+        <div class="metrics-table">
+            <table style="margin: 0;">
+                <thead><tr><th>M&eacute;trica</th><th>Actual</th><th>Meta 12M</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Conversi&oacute;n cita &rarr; opp</td><td>~24.5%</td><td style="font-weight: 800; color: var(--engen-dark);">&gt;30%</td></tr>
+                    <tr><td class="table-highlight">Oportunidades/a&ntilde;o LMM</td><td>1,126</td><td style="font-weight: 800; color: var(--engen-dark);">1,500+</td></tr>
+                    <tr><td class="table-highlight">Aging promedio pipeline</td><td>No medido</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;60 d&iacute;as</td></tr>
+                    <tr><td class="table-highlight">Deal size promedio Iniciativa</td><td>$8.9M</td><td style="font-weight: 800; color: var(--engen-dark);">$11M+</td></tr>
+                    <tr><td class="table-highlight">Tiempo l&iacute;der coaching vs venta</td><td>~50/50</td><td style="font-weight: 800; color: var(--engen-dark);">70/30</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ETAPA 4: SUSCRIPCI&Oacute;N Y APROBACI&Oacute;N                -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="stage-header">
+            <div class="stage-badge" style="background: var(--engen-dark);">4</div>
+            <div>
+                <div class="stage-title">Suscripci&oacute;n y Aprobaci&oacute;n</div>
+                <div class="stage-subtitle">Velocidad + Apertura Controlada de Riesgo</div>
+            </div>
+        </div>
+
+        <div class="callout callout-red">
+            <div class="callout-label">Diagn&oacute;stico</div>
+            <p style="font-size: 12px; margin: 0;">Tiempos 2.6x-8.1x SLAs en todos los productos. Param&eacute;trico solo 9% volumen. Aprobaci&oacute;n Core 78%, LMM 66% (12pp gap). OR13 YTD. Ticket aprobado $12M vs fondeado $7.75M (gap $4.25M). % fondeado/aprobado baj&oacute; de 60.5% a 55.3%. CV &gt;30d: 3.8%. Watchlist: 93 GEs, $587M (25.5%).</p>
+        </div>
+
+        <h3>Acciones para acelerar tiempos</h3>
+        <div class="action-list">
+            <div class="action-item"><div class="action-num">1</div><div><div class="action-title">Migrar &gt;50% de casos al Param&eacute;trico</div><div class="action-desc">Redise&ntilde;ar criterios para que sea v&iacute;a default en operaciones &lt;$500K USD. Hoy solo canaliza 9%.</div></div></div>
+            <div class="action-item"><div class="action-num">2</div><div><div class="action-title">Checklist simplificado</div><div class="action-desc">Reducir documentos HO1 (Fast: 10&rarr;8, Param&eacute;trico/Corto: 12&rarr;9). La propuesta interna ya existe.</div></div></div>
+            <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Eliminar re-solicitud de informaci&oacute;n</div><div class="action-desc">Cuestionarios de cr&eacute;dito repiten preguntas. Crear flujo de informaci&oacute;n continuo.</div></div></div>
+            <div class="action-item"><div class="action-num">4</div><div><div class="action-title">Dashboards de SLA en tiempo real</div><div class="action-desc">Indicadores hoy llegan mensuales. Cr&eacute;dito y Comercial necesitan visibilidad diaria.</div></div></div>
+            <div class="action-item"><div class="action-num">5</div><div><div class="action-title">Gesti&oacute;n causa ra&iacute;z en retrabajos</div><div class="action-desc">Top 3 causas explican ~80% rechazos. Metas de reducci&oacute;n trimestrales.</div></div></div>
+            <div class="action-item"><div class="action-num">6</div><div><div class="action-title">Expediente completo antes de ingreso</div><div class="action-desc">ISC verifica completitud con checklist antes de enviar a Cr&eacute;dito, no despu&eacute;s.</div></div></div>
+        </div>
+
+        <h3>Acciones para abrir la llave de riesgo</h3>
+        <div class="action-list">
+            <div class="action-item"><div class="action-num" style="background: var(--lcg-navy);">1</div><div><div class="action-title">An&aacute;lisis costo-beneficio formal</div><div class="action-desc">Ingreso incremental (Gross Margin) por punto % de aprobaci&oacute;n vs. costo esperado de provisiones. Usar datos hist&oacute;ricos de loss given default por rango OR.</div></div></div>
+            <div class="action-item"><div class="action-num" style="background: var(--lcg-navy);">2</div><div><div class="action-title">Apetito de riesgo expl&iacute;cito para LMM</div><div class="action-desc">CV actual 3.8% &rarr; tolerar <strong>4.5%-5.5%</strong> si el volumen incremental lo justifica. Decisi&oacute;n del Comit&eacute; de Cr&eacute;dito con n&uacute;meros.</div></div></div>
+            <div class="action-item"><div class="action-num" style="background: var(--lcg-navy);">3</div><div><div class="action-title">Bucket de riesgo controlado</div><div class="action-desc">Operaciones OR14-OR16, tickets &lt;$200K USD. Mayor spread. Kill switch si CV bucket &gt;7%.</div></div></div>
+            <div class="action-item"><div class="action-num" style="background: var(--lcg-navy);">4</div><div><div class="action-title">Pre-Approval con dientes</div><div class="action-desc">Monto indicativo que el originador pueda usar en negociaci&oacute;n. Cr&eacute;dito honra indicativo salvo hallazgo material.</div></div></div>
+            <div class="action-item"><div class="action-num" style="background: var(--lcg-navy);">5</div><div><div class="action-title">REFIs como fuente de volumen seguro</div><div class="action-desc">Activos identificados, historial de pago existe, relaci&oacute;n probada. Pilar estrat&eacute;gico 2026 &mdash; asegurar meta y tracking.</div></div></div>
+            <div class="action-item"><div class="action-num" style="background: var(--lcg-navy);">6</div><div><div class="action-title">Subir meta aprobaci&oacute;n LMM a 78-80%</div><div class="action-desc">~30-40 operaciones adicionales/a&ntilde;o &times; $12M ticket = ~$360-$480M MDP en aprobaciones incrementales.</div></div></div>
+            <div class="action-item"><div class="action-num" style="background: var(--lcg-navy);">7</div><div><div class="action-title">Fortalecer Recovery y Watchlist</div><div class="action-desc">93 GEs en Watchlist ($587M, 25.5%). Si se abre la llave, el dique debe ser m&aacute;s fuerte.</div></div></div>
+        </div>
+
+        <div class="metrics-table">
+            <table style="margin: 0;">
+                <thead><tr><th>M&eacute;trica</th><th>Actual</th><th>Meta 12M</th><th>Nota</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Tiempo Fast Application</td><td>15.9 d&iacute;as</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;6 d&iacute;as</td><td>-62%</td></tr>
+                    <tr><td class="table-highlight">Tiempo Param&eacute;trico</td><td>24.4 d&iacute;as</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;5 d&iacute;as</td><td>-80%</td></tr>
+                    <tr><td class="table-highlight">% volumen v&iacute;a Param&eacute;trico</td><td>9%</td><td style="font-weight: 800; color: var(--engen-dark);">&gt;40%</td><td>Cambio de mix</td></tr>
+                    <tr><td class="table-highlight">Tasa aprobaci&oacute;n LMM</td><td>66%</td><td style="font-weight: 800; color: var(--engen-dark);">78-80%</td><td>Al nivel Core</td></tr>
+                    <tr><td class="table-highlight">CV &gt;30d LMM</td><td>3.8%</td><td style="font-weight: 800; color: #e65100;">4.5-5.5%</td><td>Incremento controlado</td></tr>
+                    <tr><td class="table-highlight">Gap aprobado/fondeado</td><td>44.7%</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;35%</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ETAPA 5: DISPOSICI&Oacute;N DE SOLUCIONES                      -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="stage-header">
+            <div class="stage-badge" style="background: #00796b;">5</div>
+            <div>
+                <div class="stage-title">Disposici&oacute;n de Soluciones</div>
+                <div class="stage-subtitle">Reducir Tiempo de Fondeo y Rechazos</div>
+            </div>
+        </div>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">Diagn&oacute;stico</div>
+            <p style="font-size: 12px; margin: 0;">Takedown: 38.5 d&iacute;as (25 pre-TG1). 70% rechazados 1+ vez (algunos 6+ rechazos). 55% en &uacute;ltimos 4 d&iacute;as. 65% con waiver. Retrabajo facturas 2x, docs 2.6x. LMM requiere m&aacute;s documentaci&oacute;n que Core pese a tickets menores. Mesa de Control sin indicadores real-time.</p>
+        </div>
+
+        <h3>Acciones</h3>
+        <div class="action-list">
+            <div class="action-item"><div class="action-num">1</div><div><div class="action-title">&ldquo;Ready-to-submit&rdquo; checklist obligatorio</div><div class="action-desc">ISC verifica completitud contra checklist antes de ingreso a Mesa de Control.</div></div></div>
+            <div class="action-item"><div class="action-num">2</div><div><div class="action-title">Clasificar y atacar causas de rechazo</div><div class="action-desc">Dashboard top 5 causas por producto. Las top 3 explican ~80%. Metas trimestrales.</div></div></div>
+            <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Desconcentrar fin de mes</div><div class="action-desc">Incentivos por fondeo antes del d&iacute;a 20. Penalizaci&oacute;n en compensaci&oacute;n para &uacute;ltima semana.</div></div></div>
+            <div class="action-item"><div class="action-num">4</div><div><div class="action-title">Estandarizar documentaci&oacute;n legal</div><div class="action-desc">Plantillas pre-aprobadas para los 5 tipos de estructura m&aacute;s comunes del LMM.</div></div></div>
+            <div class="action-item"><div class="action-num">5</div><div><div class="action-title">Simplificar requisitos LMM vs. Core</div><div class="action-desc">Si es menor ticket y mayor volumen, requisitos documentales deben ser proporcionales.</div></div></div>
+            <div class="action-item"><div class="action-num">6</div><div><div class="action-title">Mesa de Control con SLAs visibles</div><div class="action-desc">Indicadores en tiempo real con authority para escalar casos bloqueados &gt;48 horas.</div></div></div>
+            <div class="action-item"><div class="action-num">7</div><div><div class="action-title">Fortalecer mancuerna ISC-Originador</div><div class="action-desc">Donde la relaci&oacute;n est&aacute; afianzada, las operaciones fluyen. Minimizar rotaci&oacute;n de asignaciones.</div></div></div>
+        </div>
+
+        <div class="metrics-table">
+            <table style="margin: 0;">
+                <thead><tr><th>M&eacute;trica</th><th>Actual</th><th>Meta 12M</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Tiempo total Takedown</td><td>38.5 d&iacute;as</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;25 d&iacute;as</td></tr>
+                    <tr><td class="table-highlight">Tiempo pre-TG1</td><td>25 d&iacute;as</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;12 d&iacute;as</td></tr>
+                    <tr><td class="table-highlight">% TDs rechazados</td><td>70%</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;40%</td></tr>
+                    <tr><td class="table-highlight">% fondeo &uacute;ltimos 4 d&iacute;as</td><td>55%</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;35%</td></tr>
+                    <tr><td class="table-highlight">Retrabajo facturas</td><td>2 veces</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;1.2 veces</td></tr>
+                    <tr><td class="table-highlight">Retrabajo docs a firma</td><td>2.6 veces</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;1.5 veces</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ETAPA 6: CAPITAL HUMANO                                       -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="stage-header">
+            <div class="stage-badge" style="background: #00B388;">6</div>
+            <div>
+                <div class="stage-title">Capital Humano y Compensaciones</div>
+                <div class="stage-subtitle">Perfil, Retenci&oacute;n y Desarrollo</div>
+            </div>
+        </div>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">Diagn&oacute;stico</div>
+            <p style="font-size: 12px; margin: 0;">22 productivos + 5 vacantes. Sueldos LMM ($60K) cerca de Core. SIC complejo (originadores no lo entienden). Pago incentivos con <strong>hasta 3 meses de retraso</strong>. Capacitaciones &ldquo;para cumplir&rdquo;. 12 salidas en 2025 (+20% rotaci&oacute;n). Perfil pide experiencia bancaria pero falta habilidad de prospecci&oacute;n activa.</p>
+        </div>
+
+        <h3>Acciones</h3>
+        <div class="action-list">
+            <div class="action-item"><div class="action-num">1</div><div><div class="action-title">Redefinir perfil de originador LMM</div><div class="action-desc">Hunter + financiero b&aacute;sico. An&aacute;lisis de EEFF se soporta con herramienta; la capacidad de generar demanda no se puede sistematizar.</div></div></div>
+            <div class="action-item"><div class="action-num">2</div><div><div class="action-title">Empoderar l&iacute;deres en contrataci&oacute;n</div><div class="action-desc">Time-to-hire actual es demasiado largo. Cada semana de vacante = ~$900K MDP en volumen perdido.</div></div></div>
+            <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Simplificar esquema SIC</div><div class="action-desc">M&aacute;ximo 3 variables claras. Publicar simulador online sin errores. El SIC actual tiene demasiadas capas.</div></div></div>
+            <div class="action-item"><div class="action-num">4</div><div><div class="action-title">Pagar incentivos dentro de 30 d&iacute;as</div><div class="action-desc">Un originador que no sabe cu&aacute;nto va a cobrar durante 3 meses es un originador desmotivado.</div></div></div>
+            <div class="action-item"><div class="action-num">5</div><div><div class="action-title">Certificaci&oacute;n trimestral Engen Way</div><div class="action-desc">Evaluaci&oacute;n pr&aacute;ctica con role-playing, no solo te&oacute;rica. Vincular a componente del bono.</div></div></div>
+            <div class="action-item"><div class="action-num">6</div><div><div class="action-title">Programa de mentoring High &rarr; New</div><div class="action-desc">Originadores High asignados a New durante primeros 6 meses. Hoy el acompa&ntilde;amiento es informal.</div></div></div>
+            <div class="action-item"><div class="action-num">7</div><div><div class="action-title">Cubrir 5 vacantes en m&aacute;ximo 60 d&iacute;as</div><div class="action-desc">Cada posici&oacute;n abierta cuesta ~$46M MDP anuales en volumen per c&aacute;pita no generado.</div></div></div>
+        </div>
+
+        <div class="metrics-table">
+            <table style="margin: 0;">
+                <thead><tr><th>M&eacute;trica</th><th>Actual</th><th>Meta 12M</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Originadores productivos</td><td>22</td><td style="font-weight: 800; color: var(--engen-dark);">27+</td></tr>
+                    <tr><td class="table-highlight">Vacantes abiertas</td><td>5</td><td style="font-weight: 800; color: var(--engen-dark);">0</td></tr>
+                    <tr><td class="table-highlight">Time-to-hire</td><td>No medido</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;45 d&iacute;as</td></tr>
+                    <tr><td class="table-highlight">Rotaci&oacute;n anual</td><td>12 (2025)</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;6</td></tr>
+                    <tr><td class="table-highlight">Pago de incentivos</td><td>Hasta 3 meses</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;30 d&iacute;as post-Q</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PARTE 03: RESUMEN EJECUTIVO DE METAS                          -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Parte 03</div>
+            <div class="section-title">Resumen Ejecutivo de Metas</div>
+        </div>
+
+        <div class="metrics-table">
+            <table style="margin: 0;">
+                <thead>
+                    <tr><th style="width: 30%;">Dimensi&oacute;n</th><th style="width: 22%;">Actual</th><th style="width: 22%;">Meta 12M</th><th style="width: 26%;">Impacto</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="table-highlight">Penetraci&oacute;n LMM</td><td>271 clientes (1.1%)</td><td style="font-weight: 800; color: var(--engen-dark);">400+ (1.6%)</td><td><span class="tag tag-green">+48% clientes</span></td></tr>
+                    <tr><td class="table-highlight">Citas LMM/a&ntilde;o</td><td>4,582</td><td style="font-weight: 800; color: var(--engen-dark);">5,500+</td><td><span class="tag tag-green">+20% top of funnel</span></td></tr>
+                    <tr><td class="table-highlight">Oportunidades/a&ntilde;o</td><td>1,126</td><td style="font-weight: 800; color: var(--engen-dark);">1,500+</td><td><span class="tag tag-green">+33% pipeline</span></td></tr>
+                    <tr><td class="table-highlight">Tiempo Fast Application</td><td>15.9 d&iacute;as</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;6 d&iacute;as</td><td><span class="tag tag-green">-62% velocidad</span></td></tr>
+                    <tr><td class="table-highlight">% volumen v&iacute;a Param&eacute;trico</td><td>9%</td><td style="font-weight: 800; color: var(--engen-dark);">&gt;40%</td><td><span class="tag tag-blue">Cambio de mix</span></td></tr>
+                    <tr style="background: #e8f7f2;"><td class="table-highlight" style="font-size: 13px;">Aprobaci&oacute;n LMM</td><td style="font-size: 15px; font-weight: 800;">66%</td><td style="font-weight: 800; font-size: 15px; color: var(--engen-dark);">78-80%</td><td><span class="tag tag-green">Al nivel de Core</span></td></tr>
+                    <tr style="background: #fff3e0;"><td class="table-highlight" style="font-size: 13px;">CV &gt;30d LMM</td><td style="font-size: 15px; font-weight: 800;">3.8%</td><td style="font-weight: 800; font-size: 15px; color: #e65100;">4.5-5.5%</td><td><span class="tag tag-orange">Incremento controlado</span></td></tr>
+                    <tr><td class="table-highlight">% TDs rechazados</td><td>70%</td><td style="font-weight: 800; color: var(--engen-dark);">&lt;40%</td><td><span class="tag tag-green">-43% fricci&oacute;n</span></td></tr>
+                    <tr><td class="table-highlight">Originadores productivos</td><td>22 (+5 vacantes)</td><td style="font-weight: 800; color: var(--engen-dark);">27+ (0 vacantes)</td><td><span class="tag tag-green">+23% capacidad</span></td></tr>
+                    <tr><td class="table-highlight">Volumen LMM Iniciativa</td><td>$1,021M MDP est.</td><td style="font-weight: 800; color: var(--engen-dark);">$1,400M+ MDP</td><td><span class="tag tag-green">+37% volumen</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RISK THESIS -->
+        <div class="risk-box">
+            <h3>Nota sobre la Tesis de Riesgo</h3>
+            <p style="margin: 12px 0;">Este Playbook propone expl&iacute;citamente <strong>subir la tasa de aprobaci&oacute;n LMM del 66% al 78-80%</strong>, aceptando como consecuencia un <strong>incremento de la cartera vencida &gt;30 d&iacute;as del 3.8% hacia 4.5%-5.5%</strong>.</p>
+            <p style="margin: 12px 0;">Esto NO es un error. Es la tesis central: en un segmento con OR promedio 13-14, aprobar m&aacute;s genera m&aacute;s volumen Y m&aacute;s riesgo. La clave es que el ingreso incremental (~30-40 operaciones extra &times; $12M ticket) supere el costo de provisiones y p&eacute;rdidas incrementales.</p>
+            <p style="margin: 16px 0 8px; font-weight: 700; color: var(--engen-green);">Para ejecutar responsablemente:</p>
+            <div class="risk-item"><div class="risk-num">1</div><div style="font-size: 12px;">An&aacute;lisis formal de loss given default por rango OR con datos hist&oacute;ricos de Engen</div></div>
+            <div class="risk-item"><div class="risk-num">2</div><div style="font-size: 12px;">Bucket de riesgo controlado con techo de exposici&oacute;n y kill switch</div></div>
+            <div class="risk-item"><div class="risk-num">3</div><div style="font-size: 12px;">Monitoreo mensual de performance del bucket incremental vs. cartera existente</div></div>
+            <div class="risk-item"><div class="risk-num">4</div><div style="font-size: 12px;">Fortalecimiento del equipo de Recovery para Watchlist ($587M) y volumen incremental</div></div>
+            <div class="risk-item"><div class="risk-num">5</div><div style="font-size: 12px;">Aprobaci&oacute;n expl&iacute;cita del Comit&eacute; de Cr&eacute;dito con apetito de riesgo documentado</div></div>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--engen-green); font-size: 13px;">Sin estos controles, abrir la llave ser&iacute;a irresponsable. Con ellos, es la palanca de crecimiento m&aacute;s directa que tiene Engen en LMM.</p>
+        </div>
+
+        <div class="page-source" style="margin-top: 24px; text-align: center; font-style: italic;">
+            Documento de trabajo &mdash; Las metas son indicativas y deben validarse en la fase de An&aacute;lisis Exhaustivo del proyecto LCG.
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
