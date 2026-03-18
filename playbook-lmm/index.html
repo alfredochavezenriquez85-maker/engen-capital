@@ -180,6 +180,57 @@
         .tag-blue { background: var(--lcg-light-blue); color: var(--lcg-accent); }
 
         .page-source { font-size: 10px; color: var(--text-muted); margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+        /* ======================== ACHIEVEMENT GAUGES ======================== */
+        .gauge-row { display: flex; gap: 16px; margin: 20px 0; }
+        .gauge-card { flex: 1; background: white; border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid var(--border); position: relative; overflow: hidden; }
+        .gauge-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+        .gauge-card.red::before { background: linear-gradient(90deg, #c62828, #e74c5e); }
+        .gauge-card.orange::before { background: linear-gradient(90deg, #e65100, #F5A623); }
+        .gauge-card.green::before { background: linear-gradient(90deg, var(--engen-dark), var(--engen-green)); }
+        .gauge-value { font-size: 42px; font-weight: 900; line-height: 1; }
+        .gauge-card.red .gauge-value { color: #c62828; }
+        .gauge-card.orange .gauge-value { color: #e65100; }
+        .gauge-card.green .gauge-value { color: var(--engen-dark); }
+        .gauge-label { font-size: 12px; font-weight: 700; color: var(--text-primary); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .gauge-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+        .gauge-bar { height: 8px; background: #eee; border-radius: 4px; margin-top: 10px; overflow: hidden; }
+        .gauge-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+
+        /* ======================== VISUAL FUNNEL (vertical) ======================== */
+        .v-funnel { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 20px auto; max-width: 700px; }
+        .v-funnel-step { display: flex; align-items: center; gap: 16px; width: 100%; }
+        .v-funnel-bar-wrap { flex: 1; position: relative; }
+        .v-funnel-bar { height: 44px; border-radius: 6px; display: flex; align-items: center; padding: 0 16px; color: white; font-weight: 700; font-size: 13px; position: relative; transition: width 0.5s; }
+        .v-funnel-bar .bar-num { font-size: 20px; font-weight: 900; margin-right: 8px; }
+        .v-funnel-meta { width: 140px; text-align: right; flex-shrink: 0; }
+        .v-funnel-meta .meta-rate { font-size: 14px; font-weight: 800; }
+        .v-funnel-meta .meta-label { font-size: 10px; color: var(--text-muted); }
+        .v-funnel-arrow { text-align: center; color: var(--text-muted); font-size: 16px; margin: 2px 0; }
+        .v-funnel-conv { display: flex; align-items: center; gap: 8px; margin: 2px 0 2px 140px; }
+        .v-funnel-conv .conv-pct { font-size: 11px; font-weight: 700; color: var(--engen-dark); background: #e0f2f1; padding: 2px 8px; border-radius: 10px; }
+        .v-funnel-conv .conv-arrow { color: var(--text-muted); font-size: 12px; }
+
+        /* ======================== BEFORE/AFTER COMPARISON ======================== */
+        .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 16px 0; border-radius: 12px; overflow: hidden; border: 2px solid var(--border); }
+        .ba-col { padding: 20px; }
+        .ba-col.before { background: #fde8e8; }
+        .ba-col.after { background: #e0f7ef; }
+        .ba-col-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+        .ba-col.before .ba-col-title { color: #c62828; }
+        .ba-col.after .ba-col-title { color: var(--engen-dark); }
+        .ba-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .ba-item:last-child { border-bottom: none; }
+        .ba-metric { font-size: 12px; color: var(--text-secondary); }
+        .ba-value { font-size: 14px; font-weight: 800; }
+        .ba-col.before .ba-value { color: #c62828; }
+        .ba-col.after .ba-value { color: var(--engen-dark); }
+
+        /* ======================== HERO STAT ======================== */
+        .hero-stat { background: linear-gradient(135deg, var(--lcg-navy), var(--engen-dark)); color: white; border-radius: 16px; padding: 32px; text-align: center; margin: 20px 0; }
+        .hero-stat .hero-num { font-size: 64px; font-weight: 900; line-height: 1; }
+        .hero-stat .hero-label { font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.7); margin-top: 8px; }
+        .hero-stat .hero-sub { font-size: 13px; color: var(--engen-green); margin-top: 4px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -270,6 +321,161 @@
                 </div>
             </li>
         </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- DASHBOARD: SITUACI&Oacute;N ACTUAL LMM                        -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Situaci&oacute;n Actual</div>
+            <div class="section-title">El segmento LMM hoy &mdash; Achievement YTD</div>
+        </div>
+
+        <div class="gauge-row">
+            <div class="gauge-card red">
+                <div class="gauge-value">46%</div>
+                <div class="gauge-label">Citas</div>
+                <div class="gauge-sub">4,582 de ~10,000 meta</div>
+                <div class="gauge-bar"><div class="gauge-fill" style="width: 46%; background: linear-gradient(90deg, #c62828, #e74c5e);"></div></div>
+            </div>
+            <div class="gauge-card orange">
+                <div class="gauge-value">86%</div>
+                <div class="gauge-label">Oportunidades</div>
+                <div class="gauge-sub">1,126 generadas</div>
+                <div class="gauge-bar"><div class="gauge-fill" style="width: 86%; background: linear-gradient(90deg, #e65100, #F5A623);"></div></div>
+            </div>
+            <div class="gauge-card red">
+                <div class="gauge-value">47%</div>
+                <div class="gauge-label">Pipeline</div>
+                <div class="gauge-sub">$2,899M de meta</div>
+                <div class="gauge-bar"><div class="gauge-fill" style="width: 47%; background: linear-gradient(90deg, #c62828, #e74c5e);"></div></div>
+            </div>
+            <div class="gauge-card red">
+                <div class="gauge-value">27%</div>
+                <div class="gauge-label">Fondeo</div>
+                <div class="gauge-sub">$227M de meta YTD</div>
+                <div class="gauge-bar"><div class="gauge-fill" style="width: 27%; background: linear-gradient(90deg, #c62828, #e74c5e);"></div></div>
+            </div>
+            <div class="gauge-card red">
+                <div class="gauge-value">11%</div>
+                <div class="gauge-label">Gross Margin</div>
+                <div class="gauge-sub">$51M de meta</div>
+                <div class="gauge-bar"><div class="gauge-fill" style="width: 11%; background: linear-gradient(90deg, #c62828, #e74c5e);"></div></div>
+            </div>
+        </div>
+
+        <h3>Funnel de conversi&oacute;n &mdash; Actual vs. Meta</h3>
+
+        <!-- Visual funnel -->
+        <div class="v-funnel">
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate">24,500</div><div class="meta-label">Universo LMM</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 100%; background: linear-gradient(90deg, var(--lcg-navy), var(--lcg-blue));"><span class="bar-num">24.5K</span> empresas asset-intensive</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">49% en CRM</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate">~12,000</div><div class="meta-label">En CRM Salesforce</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 85%; background: linear-gradient(90deg, #163a5f, #1e4d7a);"><span class="bar-num">12K</span> identificadas</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">24% contactados</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate">4,582</div><div class="meta-label">Citas realizadas</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 55%; background: linear-gradient(90deg, #1e4d7a, #2E6DB4);"><span class="bar-num">4,582</span> citas (-10%)</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">24.5% conversi&oacute;n</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate">1,126</div><div class="meta-label">Oportunidades</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 38%; background: linear-gradient(90deg, var(--engen-dark), #00796b);"><span class="bar-num">1,126</span> opps (-17%)</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">66% aprobaci&oacute;n</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate" style="color: #e65100;">~236</div><div class="meta-label">Aprobadas</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 18%; background: linear-gradient(90deg, #00796b, var(--engen-green));"><span class="bar-num">~236</span> aprobadas</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">55.3% se fondea</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate" style="color: #c62828;">55</div><div class="meta-label">Fondeadas (3.1%)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 8%; min-width: 80px; background: linear-gradient(90deg, #c62828, #e74c5e);"><span class="bar-num">55</span></div></div>
+            </div>
+        </div>
+
+        <div class="hero-stat">
+            <div class="hero-num">3.1%</div>
+            <div class="hero-label">Tasa de cierre del pipeline LMM &mdash; 97 de cada 100 oportunidades no se convierten en negocio</div>
+            <div class="hero-sub">Meta del Playbook: elevar a &gt;5% con acciones en las 6 etapas</div>
+        </div>
+    </div>
+
+    <!-- BEFORE / AFTER -->
+    <div class="content-page page-break">
+        <div class="section-header">
+            <div class="section-number">Visi&oacute;n 12 Meses</div>
+            <div class="section-title">Antes vs. Despu&eacute;s &mdash; El impacto del Playbook</div>
+        </div>
+
+        <div class="ba-grid">
+            <div class="ba-col before">
+                <div class="ba-col-title">Hoy (Mar 2026)</div>
+                <div class="ba-item"><span class="ba-metric">Penetraci&oacute;n LMM</span><span class="ba-value">271 cl. (1.1%)</span></div>
+                <div class="ba-item"><span class="ba-metric">Originadores productivos</span><span class="ba-value">22 (+5 vacantes)</span></div>
+                <div class="ba-item"><span class="ba-metric">Citas/a&ntilde;o</span><span class="ba-value">4,582 (-10%)</span></div>
+                <div class="ba-item"><span class="ba-metric">Oportunidades/a&ntilde;o</span><span class="ba-value">1,126 (-17%)</span></div>
+                <div class="ba-item"><span class="ba-metric">Tasa aprobaci&oacute;n</span><span class="ba-value">66%</span></div>
+                <div class="ba-item"><span class="ba-metric">Fast Application</span><span class="ba-value">15.9 d&iacute;as (4x SLA)</span></div>
+                <div class="ba-item"><span class="ba-metric">% v&iacute;a Param&eacute;trico</span><span class="ba-value">9%</span></div>
+                <div class="ba-item"><span class="ba-metric">TDs rechazados</span><span class="ba-value">70%</span></div>
+                <div class="ba-item"><span class="ba-metric">Fondeo &uacute;lt. 4 d&iacute;as</span><span class="ba-value">55%</span></div>
+                <div class="ba-item"><span class="ba-metric">NEAs YoY</span><span class="ba-value">-2.3%</span></div>
+            </div>
+            <div class="ba-col after">
+                <div class="ba-col-title">Meta (Mar 2027)</div>
+                <div class="ba-item"><span class="ba-metric">Penetraci&oacute;n LMM</span><span class="ba-value">400+ cl. (1.6%)</span></div>
+                <div class="ba-item"><span class="ba-metric">Originadores productivos</span><span class="ba-value">27+ (0 vacantes)</span></div>
+                <div class="ba-item"><span class="ba-metric">Citas/a&ntilde;o</span><span class="ba-value">5,500+ (+20%)</span></div>
+                <div class="ba-item"><span class="ba-metric">Oportunidades/a&ntilde;o</span><span class="ba-value">1,500+ (+33%)</span></div>
+                <div class="ba-item"><span class="ba-metric">Tasa aprobaci&oacute;n</span><span class="ba-value">78-80%</span></div>
+                <div class="ba-item"><span class="ba-metric">Fast Application</span><span class="ba-value">&lt;6 d&iacute;as (-62%)</span></div>
+                <div class="ba-item"><span class="ba-metric">% v&iacute;a Param&eacute;trico</span><span class="ba-value">&gt;40%</span></div>
+                <div class="ba-item"><span class="ba-metric">TDs rechazados</span><span class="ba-value">&lt;40%</span></div>
+                <div class="ba-item"><span class="ba-metric">Fondeo &uacute;lt. 4 d&iacute;as</span><span class="ba-value">&lt;35%</span></div>
+                <div class="ba-item"><span class="ba-metric">Volumen LMM Iniciativa</span><span class="ba-value">$1,400M+ (+37%)</span></div>
+            </div>
+        </div>
+
+        <!-- Funnel AFTER comparison -->
+        <h3>Funnel proyectado a 12 meses</h3>
+        <div class="v-funnel">
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">20,000</div><div class="meta-label">En CRM (de 12K)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 100%; background: linear-gradient(90deg, var(--lcg-navy), var(--lcg-blue));"><span class="bar-num">20K</span> en CRM (+67%)</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">&gt;60% contactados (de 24%)</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">5,500+</div><div class="meta-label">Citas (+20%)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 65%; background: linear-gradient(90deg, #1e4d7a, #2E6DB4);"><span class="bar-num">5,500</span> citas</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">&gt;30% conversi&oacute;n (de 24.5%)</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">1,500+</div><div class="meta-label">Oportunidades (+33%)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 45%; background: linear-gradient(90deg, var(--engen-dark), #00796b);"><span class="bar-num">1,500</span> opps</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">78-80% aprobaci&oacute;n (de 66%)</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">~400</div><div class="meta-label">Aprobadas (+70%)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 28%; background: linear-gradient(90deg, #00796b, var(--engen-green));"><span class="bar-num">~400</span> aprobadas</div></div>
+            </div>
+            <div class="v-funnel-conv"><span class="conv-arrow">&darr;</span><span class="conv-pct">&gt;65% fondeo (de 55.3%)</span></div>
+            <div class="v-funnel-step">
+                <div class="v-funnel-meta"><div class="meta-rate" style="color: var(--engen-dark);">~130+</div><div class="meta-label">Fondeadas (&gt;5%)</div></div>
+                <div class="v-funnel-bar-wrap"><div class="v-funnel-bar" style="width: 16%; min-width: 100px; background: linear-gradient(90deg, var(--engen-dark), var(--engen-green));"><span class="bar-num">130+</span> fondeos</div></div>
+            </div>
+        </div>
+
+        <div class="callout callout-green">
+            <div class="callout-label">Impacto acumulado</div>
+            <p style="font-size: 13px; margin: 0;"><strong>De 55 fondeos/a&ntilde;o a 130+ fondeos/a&ntilde;o</strong> (+136%). De $373M fondeados a <strong>$1,400M+ MDP</strong> (+275%). Todo esto con un incremento controlado de CV del 3.8% al 4.5-5.5%. El retorno supera ampliamente el riesgo.</p>
+        </div>
     </div>
 
     <!-- ============================================================ -->
