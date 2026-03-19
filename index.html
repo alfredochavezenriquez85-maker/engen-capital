@@ -2761,6 +2761,169 @@
         </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 05-B: WATERFALL FBKF 2024                            -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Secci&oacute;n 05-B</div>
+            <div class="section-title">Mercado de Financiamiento de Activos &mdash; 2024</div>
+        </div>
+
+        <p style="margin-bottom: 6px;">Inversi&oacute;n fija bruta de capital nominal 2024 en MDD | Fuente: INEGI (TODFBKF 2024, publicado dic. 2025)</p>
+
+        <!-- Badges -->
+        <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+            <span style="display: inline-block; background: var(--lcg-light-blue); color: var(--lcg-navy); font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px;">2023: $437,517 &rarr; 2024: $465,830 MDD (+6.5%)</span>
+            <span style="display: inline-block; background: #e8f5e9; color: var(--engen-dark); font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px;">&#9650; Mercado potencial: $207,698 &rarr; $221,230 MDD (+6.5%)</span>
+        </div>
+
+        <!-- WATERFALL CHART CSS-only -->
+        <div style="background: white; border: 1px solid #e0e0e0; border-radius: 10px; padding: 32px 28px 20px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: flex-end; gap: 0; height: 280px; position: relative;">
+                <!-- Líneas guía horizontales -->
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 30px; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none;">
+                    <div style="border-bottom: 1px dashed #e0e0e0; font-size: 9px; color: #999; text-align: right; padding-right: 4px;">$500K</div>
+                    <div style="border-bottom: 1px dashed #e0e0e0; font-size: 9px; color: #999; text-align: right; padding-right: 4px;">$400K</div>
+                    <div style="border-bottom: 1px dashed #e0e0e0; font-size: 9px; color: #999; text-align: right; padding-right: 4px;">$300K</div>
+                    <div style="border-bottom: 1px dashed #e0e0e0; font-size: 9px; color: #999; text-align: right; padding-right: 4px;">$200K</div>
+                    <div style="border-bottom: 1px dashed #e0e0e0; font-size: 9px; color: #999; text-align: right; padding-right: 4px;">$100K</div>
+                    <div style="font-size: 9px; color: #999; text-align: right; padding-right: 4px;">$0</div>
+                </div>
+
+                <!-- Bar 1: Inversión bruta — full height = 465,830 / 500,000 * 250px = 233px -->
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px; position: relative; z-index: 1;">
+                    <div style="font-size: 13px; font-weight: 800; color: var(--lcg-navy); margin-bottom: 4px;">$465,830</div>
+                    <div style="background: var(--lcg-navy); width: 70%; height: 233px; border-radius: 4px 4px 0 0;"></div>
+                    <div style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-top: 6px; text-align: center; line-height: 1.2;">Inversi&oacute;n<br>Bruta</div>
+                </div>
+
+                <!-- Bar 2: (-) Gobierno y O&G — 134,000 / 500,000 * 250 = 67px, floating from top -->
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px; position: relative; z-index: 1;">
+                    <div style="font-size: 12px; font-weight: 700; color: #c62828; margin-bottom: 4px;">&minus;$134,000</div>
+                    <div style="display: flex; flex-direction: column; height: 233px; width: 70%;">
+                        <!-- Transparent spacer (remaining after subtraction) -->
+                        <div style="flex: 0 0 67px;"></div>
+                        <!-- Red bar -->
+                        <div style="background: #ef5350; flex: 0 0 67px; border-radius: 4px; opacity: 0.85;"></div>
+                        <!-- Transparent connector (height of remaining stack) -->
+                        <div style="flex: 1; border-left: 2px dashed #ccc; margin-left: calc(50% - 1px);"></div>
+                    </div>
+                    <div style="font-size: 10px; font-weight: 600; color: var(--text-secondary); margin-top: 6px; text-align: center; line-height: 1.2;">Gobierno<br>y O&amp;G</div>
+                </div>
+
+                <!-- Bar 3: (-) Industrias no atractivas — 45,000 / 500,000 * 250 = 22.5px -->
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px; position: relative; z-index: 1;">
+                    <div style="font-size: 12px; font-weight: 700; color: #c62828; margin-bottom: 4px;">&minus;$45,000</div>
+                    <div style="display: flex; flex-direction: column; height: 233px; width: 70%;">
+                        <div style="flex: 0 0 67px;"></div>
+                        <div style="flex: 0 0 67px;"></div>
+                        <div style="background: #ef5350; flex: 0 0 23px; border-radius: 4px; opacity: 0.7;"></div>
+                        <div style="flex: 1; border-left: 2px dashed #ccc; margin-left: calc(50% - 1px);"></div>
+                    </div>
+                    <div style="font-size: 10px; font-weight: 600; color: var(--text-secondary); margin-top: 6px; text-align: center; line-height: 1.2;">Ind. no<br>atractivas <sup>(1)</sup></div>
+                </div>
+
+                <!-- Bar 4: (-) Micro y pequeñas — 65,600 / 500,000 * 250 = 33px -->
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px; position: relative; z-index: 1;">
+                    <div style="font-size: 12px; font-weight: 700; color: #c62828; margin-bottom: 4px;">&minus;$65,600</div>
+                    <div style="display: flex; flex-direction: column; height: 233px; width: 70%;">
+                        <div style="flex: 0 0 67px;"></div>
+                        <div style="flex: 0 0 67px;"></div>
+                        <div style="flex: 0 0 23px;"></div>
+                        <div style="background: #ef5350; flex: 0 0 33px; border-radius: 4px; opacity: 0.6;"></div>
+                        <div style="flex: 1; border-left: 2px dashed #ccc; margin-left: calc(50% - 1px);"></div>
+                    </div>
+                    <div style="font-size: 10px; font-weight: 600; color: var(--text-secondary); margin-top: 6px; text-align: center; line-height: 1.2;">Micro y<br>peque&ntilde;as <sup>(2)</sup></div>
+                </div>
+
+                <!-- Bar 5: (=) Mercado potencial — 221,230 / 500,000 * 250 = 111px -->
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px; position: relative; z-index: 1;">
+                    <div style="font-size: 13px; font-weight: 800; color: var(--engen-dark); margin-bottom: 4px;">$221,230</div>
+                    <div style="background: linear-gradient(135deg, var(--engen-dark), var(--engen-green)); width: 70%; height: 111px; border-radius: 4px 4px 0 0; border: 2px solid var(--engen-dark);"></div>
+                    <div style="font-size: 11px; font-weight: 700; color: var(--engen-dark); margin-top: 6px; text-align: center; line-height: 1.2;">Mercado<br>Potencial</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notas -->
+        <div class="page-source" style="margin-top: 4px;">
+            <strong>Notas:</strong><br>
+            <sup>(1)</sup> Agricultura, miner&iacute;a met&aacute;lica, textil, papel, alimentos perecederos.<br>
+            <sup>(2)</sup> Empresas con activos &lt;$5M USD. Estimados 2024 aplicando misma estructura porcentual que 2023 sobre FBKF INEGI nominal.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 05-C: EVOLUCI&Oacute;N FBKF 2023–2025                     -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Secci&oacute;n 05-C</div>
+            <div class="section-title">Inversi&oacute;n Fija Bruta de Capital &mdash; Evoluci&oacute;n 2023&ndash;2025</div>
+        </div>
+
+        <p style="margin-bottom: 20px;">Total nominal en MDD | Mercado de financiamiento de activos</p>
+
+        <!-- BAR CHART: 3 barras verticales -->
+        <div style="background: white; border: 1px solid #e0e0e0; border-radius: 10px; padding: 32px 40px 20px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: flex-end; justify-content: center; gap: 48px; height: 300px; padding-bottom: 40px;">
+
+                <!-- 2023: $437,517 — height = 437/466 * 240 = 225px -->
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div style="font-size: 14px; font-weight: 800; color: var(--lcg-navy); margin-bottom: 6px;">$437,517</div>
+                    <div style="background: var(--lcg-navy); width: 120px; height: 225px; border-radius: 6px 6px 0 0; display: flex; align-items: center; justify-content: center;">
+                    </div>
+                    <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-top: 8px;">2023</div>
+                </div>
+
+                <!-- 2024: $465,830 — height = 465/466 * 240 = 240px -->
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div style="font-size: 14px; font-weight: 800; color: var(--engen-dark); margin-bottom: 6px;">$465,830</div>
+                    <div style="background: linear-gradient(135deg, var(--engen-dark), var(--engen-green)); width: 120px; height: 240px; border-radius: 6px 6px 0 0; border: 2px solid var(--engen-dark); position: relative;">
+                        <span style="position: absolute; top: -24px; right: -10px; background: #e8f5e9; color: var(--engen-dark); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px;">+6.5%</span>
+                    </div>
+                    <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-top: 8px;">2024</div>
+                </div>
+
+                <!-- 2025: $432,000 — height = 432/466 * 240 = 222px -->
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div style="font-size: 14px; font-weight: 800; color: #c62828; margin-bottom: 6px;">$432,000</div>
+                    <div style="background: repeating-linear-gradient(135deg, #e0e0e0, #e0e0e0 8px, #bdbdbd 8px, #bdbdbd 16px); width: 120px; height: 222px; border-radius: 6px 6px 0 0; border: 2px dashed #999; position: relative;">
+                        <span style="position: absolute; top: -24px; right: -10px; background: #ffebee; color: #c62828; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px;">&minus;7.3%</span>
+                        <span style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px; white-space: nowrap;">ESTIMADO</span>
+                    </div>
+                    <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-top: 8px;">2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="growth-insight" style="background: #fff3e0; border-left-color: #e65100;">
+            <span class="icon">&#9888;</span>
+            <div>
+                <strong>2025 marca una reversi&oacute;n de la tendencia.</strong>
+                Tras un crecimiento de +6.5% en 2024, la inversi&oacute;n fija bruta acumula una ca&iacute;da de &minus;7.3% en el periodo ene&ndash;nov 2025. Esto implica que el mercado de financiamiento de activos podr&iacute;a contraerse de $221K a ~$205K MDD en mercado potencial. <strong>Para Engen, esto refuerza la urgencia de capturar share ahora &mdash; antes de que el pastel se achique.</strong>
+            </div>
+        </div>
+
+        <div class="page-source" style="margin-top: 16px;">
+            <strong>Fuentes:</strong><br>
+            <strong>2023 &amp; 2024:</strong> INEGI &mdash; Tablas Origen-Destino FBKF 2024. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/tod/TODFBKF2024_RR.pdf" target="_blank" style="color: var(--lcg-accent); border-bottom: 1px dotted;">Publicaci&oacute;n dic. 2025 (PDF)</a><br>
+            <strong>2025 estimado:</strong> Ca&iacute;da acumulada &minus;7.3% ene&ndash;nov 2025 (INEGI v&iacute;a Aristegui Noticias). <a href="https://aristeguinoticias.com/0502/mexico/la-inversion-fija-bruta-de-mexico-cae-un-6-4-interanual-inegi/" target="_blank" style="color: var(--lcg-accent); border-bottom: 1px dotted;">Aristegui Noticias, feb. 2026</a><br>
+            <em>Nota: Cifra anual oficial 2025 disponible en publicaci&oacute;n INEGI dic. 2026.</em>
+        </div>
+    </div>
+
     <!-- SECTION 05 - PAGE 2: MARKET SHARE + COMPETITIVE LANDSCAPE -->
     <div class="content-page page-break">
         <div class="page-logos">
