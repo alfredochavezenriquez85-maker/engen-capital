@@ -318,7 +318,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- PAGE 1: POR QU&Eacute; FASE 0                                -->
+    <!-- PAGE 1: POR QU&Eacute; FASE 0 — VISUAL                       -->
     <!-- ============================================================ -->
     <div class="content-page page-break">
         <div class="page-logos">
@@ -331,14 +331,117 @@
             <div class="section-title">&iquest;Por qu&eacute; definir esto antes del proyecto?</div>
         </div>
 
-        <div class="context-banner">
-            <div class="banner-label">&#9888; La premisa</div>
-            <div class="banner-text">
-                El roadmap de <strong>Desarrollo de Soluciones LMM</strong> contempla 8+ proyectos en paralelo (VP Funnel, Prospección, Factoraje, Crédito IA, Marketing, Capital Humano&hellip;) con el objetivo de <strong>duplicar la cartera LMM en 5 a&ntilde;os</strong>. Pero todos esos proyectos dan por sentado que ya est&aacute;n resueltas tres definiciones que <strong>hoy no existen con claridad</strong>:
-            </div>
-        </div>
+        <!-- SVG: Visual del problema actual -->
+        <svg viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; margin: 8px 0 24px; border-radius: 16px; overflow: hidden;">
+            <defs>
+                <linearGradient id="bg-dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#16213e"/></linearGradient>
+                <linearGradient id="grad-oferta" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E65100"/><stop offset="100%" stop-color="#F59E0B"/></linearGradient>
+                <linearGradient id="grad-bolilla" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a4a7a"/><stop offset="100%" stop-color="#2E6DB4"/></linearGradient>
+                <linearGradient id="grad-baguette" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5B21B6"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient>
+                <linearGradient id="grad-project" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#003D2D"/><stop offset="100%" stop-color="#009672"/></linearGradient>
+                <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <marker id="arrow-gray" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/></marker>
+                <marker id="arrow-gold" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#FCD34D"/></marker>
+            </defs>
+            <!-- Background -->
+            <rect width="1200" height="320" fill="url(#bg-dark)" rx="16"/>
+            <!-- Subtle grid -->
+            <g opacity="0.04" stroke="white" stroke-width="1">
+                <line x1="0" y1="80" x2="1200" y2="80"/><line x1="0" y1="160" x2="1200" y2="160"/><line x1="0" y1="240" x2="1200" y2="240"/>
+                <line x1="200" y1="0" x2="200" y2="320"/><line x1="400" y1="0" x2="400" y2="320"/><line x1="600" y1="0" x2="600" y2="320"/><line x1="800" y1="0" x2="800" y2="320"/><line x1="1000" y1="0" x2="1000" y2="320"/>
+            </g>
 
-        <!-- Three Pillars -->
+            <!-- Title -->
+            <text x="40" y="38" fill="#FCD34D" font-family="Archivo,sans-serif" font-size="11" font-weight="700" letter-spacing="3" text-transform="uppercase">EL PROBLEMA HOY</text>
+            <text x="40" y="62" fill="white" font-family="DM Serif Text,Georgia,serif" font-size="22">Todo el LMM pasa por el mismo proceso &mdash; y eso no funciona</text>
+
+            <!-- KPI Cards Row -->
+            <!-- KPI 1 -->
+            <rect x="40" y="84" width="165" height="80" rx="10" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+            <text x="122" y="114" fill="#FCA5A5" font-family="Archivo,sans-serif" font-size="28" font-weight="900" text-anchor="middle">8.1x</text>
+            <text x="122" y="134" fill="rgba(255,255,255,0.5)" font-family="Archivo,sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="1">SOBRE SLA</text>
+            <text x="122" y="152" fill="rgba(255,255,255,0.35)" font-family="Archivo,sans-serif" font-size="10" text-anchor="middle">Param&eacute;trico: 24.4 d&iacute;as</text>
+            <!-- KPI 2 -->
+            <rect x="220" y="84" width="165" height="80" rx="10" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+            <text x="302" y="114" fill="#FCA5A5" font-family="Archivo,sans-serif" font-size="28" font-weight="900" text-anchor="middle">70%</text>
+            <text x="302" y="134" fill="rgba(255,255,255,0.5)" font-family="Archivo,sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="1">TDs RECHAZADOS</text>
+            <text x="302" y="152" fill="rgba(255,255,255,0.35)" font-family="Archivo,sans-serif" font-size="10" text-anchor="middle">Al menos 1 vez</text>
+            <!-- KPI 3 -->
+            <rect x="400" y="84" width="165" height="80" rx="10" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" stroke-width="1.5"/>
+            <text x="482" y="114" fill="#FCD34D" font-family="Archivo,sans-serif" font-size="28" font-weight="900" text-anchor="middle">9%</text>
+            <text x="482" y="134" fill="rgba(255,255,255,0.5)" font-family="Archivo,sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="1">V&Iacute;A PARAM&Eacute;TRICO</text>
+            <text x="482" y="152" fill="rgba(255,255,255,0.35)" font-family="Archivo,sans-serif" font-size="10" text-anchor="middle">Deber&iacute;a ser &gt;50%</text>
+            <!-- KPI 4 -->
+            <rect x="580" y="84" width="165" height="80" rx="10" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" stroke-width="1.5"/>
+            <text x="662" y="114" fill="#FCD34D" font-family="Archivo,sans-serif" font-size="28" font-weight="900" text-anchor="middle">66%</text>
+            <text x="662" y="134" fill="rgba(255,255,255,0.5)" font-family="Archivo,sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="1">APROBACI&Oacute;N LMM</text>
+            <text x="662" y="152" fill="rgba(255,255,255,0.35)" font-family="Archivo,sans-serif" font-size="10" text-anchor="middle">Core aprueba 78%</text>
+
+            <!-- Causa raiz box -->
+            <rect x="780" y="84" width="380" height="80" rx="10" fill="rgba(252,211,77,0.08)" stroke="rgba(252,211,77,0.25)" stroke-width="1.5"/>
+            <text x="800" y="108" fill="#FCD34D" font-family="Archivo,sans-serif" font-size="11" font-weight="800" letter-spacing="2">CAUSA RA&Iacute;Z</text>
+            <text x="800" y="128" fill="rgba(255,255,255,0.8)" font-family="Archivo,sans-serif" font-size="13" font-weight="500">El LMM se opera como un &ldquo;mini-Core&rdquo;:</text>
+            <text x="800" y="148" fill="rgba(255,255,255,0.6)" font-family="Archivo,sans-serif" font-size="12">mismo proceso, mismos docs, mismos tiempos.</text>
+
+            <!-- FLOW: Fase 0 sequence -->
+            <text x="40" y="200" fill="#FCD34D" font-family="Archivo,sans-serif" font-size="11" font-weight="700" letter-spacing="3">LA SOLUCI&Oacute;N: DEFINIR ANTES DE CONSTRUIR</text>
+
+            <!-- Step 1: Oferta de Valor -->
+            <rect x="40" y="216" width="220" height="76" rx="12" fill="url(#grad-oferta)" filter="url(#glow)"/>
+            <text x="68" y="244" fill="white" font-family="Archivo,sans-serif" font-size="15" font-weight="800">Oferta de Valor</text>
+            <text x="68" y="262" fill="rgba(255,255,255,0.7)" font-family="Archivo,sans-serif" font-size="11">&iquest;Qu&eacute; prometemos al LMM?</text>
+            <text x="68" y="280" fill="rgba(255,255,255,0.5)" font-family="Archivo,sans-serif" font-size="10">Velocidad + Simplicidad + Industria</text>
+            <text x="54" y="252" fill="white" font-family="Archivo,sans-serif" font-size="18">&#9670;</text>
+
+            <!-- Arrow 1 -->
+            <line x1="268" y1="254" x2="310" y2="234" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)" stroke-dasharray="4,3"/>
+            <line x1="268" y1="254" x2="310" y2="274" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)" stroke-dasharray="4,3"/>
+
+            <!-- Step 2a: Bolillas -->
+            <rect x="318" y="212" width="260" height="36" rx="10" fill="url(#grad-bolilla)"/>
+            <circle cx="338" cy="230" r="8" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="338" cy="230" r="4" fill="white"/>
+            <text x="354" y="235" fill="white" font-family="Archivo,sans-serif" font-size="13" font-weight="700">F&aacute;brica Bolillas</text>
+            <text x="494" y="235" fill="rgba(255,255,255,0.6)" font-family="Archivo,sans-serif" font-size="11">&le;15MM USD</text>
+
+            <!-- Step 2b: Baguettes -->
+            <rect x="318" y="256" width="260" height="36" rx="10" fill="url(#grad-baguette)"/>
+            <circle cx="338" cy="274" r="8" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="338" cy="274" r="5" fill="white"/>
+            <text x="354" y="279" fill="white" font-family="Archivo,sans-serif" font-size="13" font-weight="700">F&aacute;brica Baguettes</text>
+            <text x="504" y="279" fill="rgba(255,255,255,0.6)" font-family="Archivo,sans-serif" font-size="11">&gt;15MM USD</text>
+
+            <!-- Volume labels -->
+            <rect x="586" y="216" width="56" height="28" rx="6" fill="rgba(46,109,180,0.3)"/>
+            <text x="614" y="234" fill="#93C5FD" font-family="Archivo,sans-serif" font-size="11" font-weight="700" text-anchor="middle">~70%</text>
+            <rect x="586" y="260" width="56" height="28" rx="6" fill="rgba(139,92,246,0.3)"/>
+            <text x="614" y="278" fill="#C4B5FD" font-family="Archivo,sans-serif" font-size="11" font-weight="700" text-anchor="middle">~30%</text>
+
+            <!-- Arrow 2 -->
+            <line x1="650" y1="234" x2="690" y2="254" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)" stroke-dasharray="4,3"/>
+            <line x1="650" y1="274" x2="690" y2="254" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)" stroke-dasharray="4,3"/>
+
+            <!-- Big arrow to project -->
+            <rect x="698" y="226" width="56" height="56" rx="28" fill="rgba(252,211,77,0.15)" stroke="#FCD34D" stroke-width="2"/>
+            <text x="726" y="260" fill="#FCD34D" font-family="Archivo,sans-serif" font-size="22" font-weight="900" text-anchor="middle">&#8594;</text>
+
+            <!-- Step 3: Project -->
+            <rect x="780" y="216" width="380" height="76" rx="12" fill="url(#grad-project)" filter="url(#glow)"/>
+            <text x="810" y="242" fill="white" font-family="Archivo,sans-serif" font-size="16" font-weight="800">Proyecto Desarrollo LMM</text>
+            <text x="810" y="262" fill="rgba(255,255,255,0.7)" font-family="Archivo,sans-serif" font-size="12">VP Funnel &bull; Prospecci&oacute;n &bull; Factoraje &bull; Cr&eacute;dito IA</text>
+            <text x="810" y="280" fill="rgba(255,255,255,0.5)" font-family="Archivo,sans-serif" font-size="12">Marketing &bull; Capital Humano &bull; Buy &bull; Funnel</text>
+            <!-- 2X badge -->
+            <rect x="1098" y="224" width="48" height="28" rx="6" fill="#FCD34D"/>
+            <text x="1122" y="243" fill="#1a1a2e" font-family="Archivo,sans-serif" font-size="15" font-weight="900" text-anchor="middle">2X</text>
+            <text x="1122" y="266" fill="rgba(255,255,255,0.4)" font-family="Archivo,sans-serif" font-size="9" font-weight="600" text-anchor="middle" letter-spacing="1">5 A&Ntilde;OS</text>
+
+            <!-- Labels -->
+            <text x="140" y="308" fill="rgba(255,255,255,0.3)" font-family="Archivo,sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="2">FASE 0</text>
+            <text x="460" y="308" fill="rgba(255,255,255,0.3)" font-family="Archivo,sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="2">FASE 0</text>
+            <text x="960" y="308" fill="rgba(255,255,255,0.3)" font-family="Archivo,sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="2">ROADMAP DEL PROYECTO</text>
+        </svg>
+
+        <!-- Three Pillars — cards más compactos debajo del SVG -->
         <div class="pillars-grid">
             <div class="pillar-card pillar-oferta">
                 <div class="pillar-icon">&#9670;</div>
@@ -355,7 +458,7 @@
                 <div class="pillar-title">F&aacute;brica de Bolillas</div>
                 <div class="pillar-subtitle">&le; 15 MM USD</div>
                 <div class="pillar-desc">
-                    Operaciones de <strong>alto volumen y ticket menor</strong>. Requieren proceso estandarizado, r&aacute;pido y con m&iacute;nima intervenci&oacute;n manual. El Param&eacute;trico deber&iacute;a ser la v&iacute;a default. Hoy solo canaliza el 9% del volumen.
+                    Operaciones de <strong>alto volumen y ticket menor</strong>. Proceso estandarizado, r&aacute;pido y con m&iacute;nima intervenci&oacute;n manual. El Param&eacute;trico como v&iacute;a default.
                 </div>
                 <div class="pillar-tag">~70% del volumen LMM esperado</div>
             </div>
@@ -365,40 +468,15 @@
                 <div class="pillar-title">F&aacute;brica de Baguettes</div>
                 <div class="pillar-subtitle">&gt; 15 MM USD</div>
                 <div class="pillar-desc">
-                    Operaciones de <strong>mayor ticket y complejidad</strong>. Requieren an&aacute;lisis m&aacute;s profundo pero sin llegar al proceso de Core. Es el &ldquo;LMM premium&rdquo; &mdash; m&aacute;s personalizado, pero a&uacute;n con velocidad competitiva.
+                    Operaciones de <strong>mayor ticket y complejidad</strong>. An&aacute;lisis m&aacute;s profundo pero sin llegar a Core. &ldquo;LMM premium&rdquo; &mdash; personalizado con velocidad competitiva.
                 </div>
                 <div class="pillar-tag">~30% del volumen, ~50% del monto</div>
             </div>
         </div>
 
-        <!-- Flow diagram -->
-        <div class="flow-container">
-            <div class="flow-title">Secuencia l&oacute;gica: sin Fase 0, el proyecto construye sobre arena</div>
-            <div class="flow-steps">
-                <div class="flow-step flow-step-oferta">
-                    &#9670; Oferta de Valor
-                    <div class="step-sub">Definir primero</div>
-                </div>
-                <div class="flow-arrow">&rarr;</div>
-                <div class="flow-step flow-step-bolilla">
-                    &#9679; F&aacute;brica Bolillas
-                    <div class="step-sub">&le;15 MM USD</div>
-                </div>
-                <div class="flow-step flow-step-baguette" style="margin-left: -8px;">
-                    &#11044; F&aacute;brica Baguettes
-                    <div class="step-sub">&gt;15 MM USD</div>
-                </div>
-                <div class="flow-arrow">&rarr;</div>
-                <div class="flow-step flow-step-project">
-                    &#9654; Proyecto LMM
-                    <div class="step-sub">Roadmap completo</div>
-                </div>
-            </div>
-        </div>
-
         <div class="callout callout-orange">
             <div class="callout-label">&#9888; Riesgo de no hacer Fase 0</div>
-            <p style="margin: 0;">Sin estas definiciones, cada &aacute;rea interpret&aacute; el LMM a su manera: Comercial vende promesas que Cr&eacute;dito no puede cumplir en tiempo, Operaciones procesa bolillas como baguettes (y viceversa), y el cliente recibe una experiencia inconsistente. <strong>El proyecto terminar&iacute;a optimizando un proceso que no est&aacute; dise&ntilde;ado.</strong></p>
+            <p style="margin: 0;">Sin estas definiciones, cada &aacute;rea interpreta el LMM a su manera: Comercial vende promesas que Cr&eacute;dito no puede cumplir en tiempo, Operaciones procesa bolillas como baguettes (y viceversa), y el cliente recibe una experiencia inconsistente. <strong>El proyecto terminar&iacute;a optimizando un proceso que no est&aacute; dise&ntilde;ado.</strong></p>
         </div>
 
         <div class="page-source">Fuente: Pre-Diagn&oacute;stico LCG (Marzo 2026) &mdash; +20 entrevistas con equipo Engen Capital</div>
