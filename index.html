@@ -2965,7 +2965,7 @@
         <p>Las ~24,500 empresas de la p&aacute;gina anterior representan el universo <strong>te&oacute;rico</strong>: todas las medianas asset-intensive de M&eacute;xico. Pero no todas son clientes reales para Engen. Al aplicar <strong>5 filtros de elegibilidad</strong> progresivos, el mercado direccionable se acota a <strong>~10,200 empresas</strong> &mdash; un n&uacute;mero m&aacute;s realista y accionable.</p>
 
         <!-- SVG FUNNEL VISUAL -->
-        <svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" style="width:100%; margin: 16px 0 20px; border-radius: 16px; overflow: hidden;">
+        <svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" style="width:100%; margin: 16px 0 20px; border-radius: 16px; overflow: hidden;">
             <defs>
                 <linearGradient id="fu-bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0%" stop-color="#0B1F3F"/><stop offset="100%" stop-color="#1A3A6B"/></linearGradient>
                 <linearGradient id="fu-bar1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2E6DB4"/><stop offset="100%" stop-color="#4a8fd4"/></linearGradient>
@@ -2975,106 +2975,117 @@
                 <linearGradient id="fu-bar5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#004D40"/><stop offset="100%" stop-color="#00796B"/></linearGradient>
                 <linearGradient id="fu-final" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#E65100"/><stop offset="100%" stop-color="#F59E0B"/></linearGradient>
             </defs>
-            <rect width="1200" height="520" fill="url(#fu-bg)" rx="16"/>
+            <rect width="1200" height="680" fill="url(#fu-bg)" rx="16"/>
             <!-- Grid lines -->
-            <g opacity="0.04" stroke="white" stroke-width="1">
-                <line x1="340" y1="0" x2="340" y2="520"/><line x1="0" y1="90" x2="1200" y2="90"/><line x1="0" y1="160" x2="1200" y2="160"/><line x1="0" y1="230" x2="1200" y2="230"/><line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="370" x2="1200" y2="370"/><line x1="0" y1="440" x2="1200" y2="440"/>
+            <g opacity="0.03" stroke="white" stroke-width="1">
+                <line x1="140" y1="0" x2="140" y2="680"/>
             </g>
 
             <!-- Title -->
-            <text x="40" y="38" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif" font-size="11" font-weight="700" letter-spacing="3">FUNNEL DE ELEGIBILIDAD</text>
-            <text x="40" y="64" fill="white" font-family="Playfair Display,Georgia,serif" font-size="24" font-weight="700">De 24,500 a ~10,200 empresas direccionables</text>
+            <text x="40" y="42" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif" font-size="12" font-weight="700" letter-spacing="3">FUNNEL DE ELEGIBILIDAD</text>
+            <text x="40" y="74" fill="white" font-family="Playfair Display,Georgia,serif" font-size="26" font-weight="700">De 24,500 a ~10,200 empresas direccionables</text>
 
             <!-- ===== ROW 0: Base ===== -->
-            <rect x="350" y="90" width="810" height="52" rx="8" fill="url(#fu-bar1)" opacity="0.95"/>
-            <text x="366" y="122" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Universo total asset-intensive: medianas $50M-$500M MXN en 7 sectores</text>
-            <text x="1130" y="122" fill="white" font-family="Inter,sans-serif" font-size="22" font-weight="900" text-anchor="end">24,500</text>
-            <!-- Label -->
-            <text x="330" y="110" fill="rgba(255,255,255,0.35)" font-family="Inter,sans-serif" font-size="10" font-weight="600" text-anchor="end" letter-spacing="1">BASE</text>
-            <text x="330" y="124" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Sin filtros</text>
+            <!-- Label left -->
+            <text x="130" y="120" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="11" font-weight="700" text-anchor="end" letter-spacing="1">BASE</text>
+            <text x="130" y="136" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Sin filtros</text>
+            <!-- Bar -->
+            <rect x="150" y="108" width="780" height="44" rx="8" fill="url(#fu-bar1)" opacity="0.95"/>
+            <text x="170" y="136" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Universo total asset-intensive: medianas $50M-$500M MXN en 7 sectores</text>
+            <!-- Number outside bar -->
+            <text x="950" y="138" fill="white" font-family="Inter,sans-serif" font-size="26" font-weight="900">24,500</text>
 
             <!-- Arrow connector -->
-            <text x="755" y="156" fill="rgba(255,255,255,0.2)" font-family="Inter,sans-serif" font-size="16" text-anchor="middle">&#9660;</text>
+            <text x="540" y="170" fill="rgba(255,255,255,0.15)" font-family="Inter,sans-serif" font-size="14" text-anchor="middle">&#9660;</text>
 
             <!-- ===== ROW 1: Subsectores ===== -->
-            <rect x="350" y="160" width="680" height="52" rx="8" fill="url(#fu-bar2)" opacity="0.95"/>
-            <text x="366" y="192" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Subsectores de m&aacute;xima intensidad CAPEX dentro de cada sector</text>
-            <text x="1000" y="192" fill="white" font-family="Inter,sans-serif" font-size="22" font-weight="900" text-anchor="end">~18,400</text>
+            <text x="130" y="198" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="11" font-weight="700" text-anchor="end" letter-spacing="1">FILTRO 1</text>
+            <text x="130" y="214" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Subsector CAPEX</text>
+            <!-- Bar -->
+            <rect x="150" y="186" width="640" height="44" rx="8" fill="url(#fu-bar2)" opacity="0.95"/>
+            <text x="170" y="214" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Subsectores de m&aacute;xima intensidad CAPEX</text>
+            <!-- Number -->
+            <text x="810" y="216" fill="white" font-family="Inter,sans-serif" font-size="26" font-weight="900">~18,400</text>
             <!-- Delta -->
-            <rect x="1040" y="168" width="120" height="36" rx="6" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-            <text x="1100" y="191" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-6,100</text>
-            <!-- Label -->
-            <text x="330" y="180" fill="rgba(255,255,255,0.35)" font-family="Inter,sans-serif" font-size="10" font-weight="600" text-anchor="end" letter-spacing="1">FILTRO 1</text>
-            <text x="330" y="194" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Subsector CAPEX</text>
+            <rect x="950" y="194" width="100" height="30" rx="6" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+            <text x="1000" y="214" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-6,100</text>
+            <text x="1070" y="214" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="11">-25%</text>
 
             <!-- Arrow -->
-            <text x="690" y="226" fill="rgba(255,255,255,0.2)" font-family="Inter,sans-serif" font-size="16" text-anchor="middle">&#9660;</text>
+            <text x="470" y="248" fill="rgba(255,255,255,0.15)" font-family="Inter,sans-serif" font-size="14" text-anchor="middle">&#9660;</text>
 
-            <!-- ===== ROW 2: Tama&ntilde;o ajustado ===== -->
-            <rect x="350" y="230" width="565" height="52" rx="8" fill="url(#fu-bar3)" opacity="0.95"/>
-            <text x="366" y="262" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Rango de ventas ajustado: $100M&ndash;$500M MXN (upper LMM)</text>
-            <text x="885" y="262" fill="white" font-family="Inter,sans-serif" font-size="22" font-weight="900" text-anchor="end">~14,700</text>
+            <!-- ===== ROW 2: Tama&ntilde;o ===== -->
+            <text x="130" y="278" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="11" font-weight="700" text-anchor="end" letter-spacing="1">FILTRO 2</text>
+            <text x="130" y="294" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Tama&ntilde;o empresa</text>
+            <!-- Bar -->
+            <rect x="150" y="266" width="520" height="44" rx="8" fill="url(#fu-bar3)" opacity="0.95"/>
+            <text x="170" y="294" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Ventas $100M&ndash;$500M MXN (upper LMM)</text>
+            <!-- Number -->
+            <text x="690" y="296" fill="white" font-family="Inter,sans-serif" font-size="26" font-weight="900">~14,700</text>
             <!-- Delta -->
-            <rect x="930" y="238" width="120" height="36" rx="6" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-            <text x="990" y="261" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-3,700</text>
-            <!-- Label -->
-            <text x="330" y="250" fill="rgba(255,255,255,0.35)" font-family="Inter,sans-serif" font-size="10" font-weight="600" text-anchor="end" letter-spacing="1">FILTRO 2</text>
-            <text x="330" y="264" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Tama&ntilde;o empresa</text>
+            <rect x="830" y="274" width="100" height="30" rx="6" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+            <text x="880" y="294" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-3,700</text>
+            <text x="950" y="294" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="11">-20%</text>
 
             <!-- Arrow -->
-            <text x="632" y="296" fill="rgba(255,255,255,0.2)" font-family="Inter,sans-serif" font-size="16" text-anchor="middle">&#9660;</text>
+            <text x="410" y="328" fill="rgba(255,255,255,0.15)" font-family="Inter,sans-serif" font-size="14" text-anchor="middle">&#9660;</text>
 
             <!-- ===== ROW 3: Geograf&iacute;a ===== -->
-            <rect x="350" y="300" width="490" height="52" rx="8" fill="url(#fu-bar4)" opacity="0.95"/>
-            <text x="366" y="332" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Geograf&iacute;a con cobertura Engen (15 estados principales)</text>
-            <text x="810" y="332" fill="white" font-family="Inter,sans-serif" font-size="22" font-weight="900" text-anchor="end">~12,400</text>
+            <text x="130" y="358" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="11" font-weight="700" text-anchor="end" letter-spacing="1">FILTRO 3</text>
+            <text x="130" y="374" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Cobertura geogr.</text>
+            <!-- Bar -->
+            <rect x="150" y="346" width="430" height="44" rx="8" fill="url(#fu-bar4)" opacity="0.95"/>
+            <text x="170" y="374" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">15 estados con cobertura Engen</text>
+            <!-- Number -->
+            <text x="600" y="376" fill="white" font-family="Inter,sans-serif" font-size="26" font-weight="900">~12,400</text>
             <!-- Delta -->
-            <rect x="855" y="308" width="120" height="36" rx="6" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-            <text x="915" y="331" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-2,300</text>
-            <!-- Label -->
-            <text x="330" y="320" fill="rgba(255,255,255,0.35)" font-family="Inter,sans-serif" font-size="10" font-weight="600" text-anchor="end" letter-spacing="1">FILTRO 3</text>
-            <text x="330" y="334" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Cobertura geogr.</text>
+            <rect x="740" y="354" width="100" height="30" rx="6" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+            <text x="790" y="374" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-2,300</text>
+            <text x="860" y="374" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="11">-16%</text>
 
             <!-- Arrow -->
-            <text x="595" y="366" fill="rgba(255,255,255,0.2)" font-family="Inter,sans-serif" font-size="16" text-anchor="middle">&#9660;</text>
+            <text x="365" y="408" fill="rgba(255,255,255,0.15)" font-family="Inter,sans-serif" font-size="14" text-anchor="middle">&#9660;</text>
 
             <!-- ===== ROW 4: Antig&uuml;edad ===== -->
-            <rect x="350" y="370" width="430" height="52" rx="8" fill="url(#fu-bar5)" opacity="0.95"/>
-            <text x="366" y="402" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Antig&uuml;edad &ge;5 a&ntilde;os operando (historial demostrable)</text>
-            <text x="750" y="402" fill="white" font-family="Inter,sans-serif" font-size="22" font-weight="900" text-anchor="end">~10,800</text>
+            <text x="130" y="438" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="11" font-weight="700" text-anchor="end" letter-spacing="1">FILTRO 4</text>
+            <text x="130" y="454" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Antig&uuml;edad</text>
+            <!-- Bar -->
+            <rect x="150" y="426" width="360" height="44" rx="8" fill="url(#fu-bar5)" opacity="0.95"/>
+            <text x="170" y="454" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">&ge;5 a&ntilde;os operando</text>
+            <!-- Number -->
+            <text x="530" y="456" fill="white" font-family="Inter,sans-serif" font-size="26" font-weight="900">~10,800</text>
             <!-- Delta -->
-            <rect x="795" y="378" width="120" height="36" rx="6" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-            <text x="855" y="401" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-1,600</text>
-            <!-- Label -->
-            <text x="330" y="390" fill="rgba(255,255,255,0.35)" font-family="Inter,sans-serif" font-size="10" font-weight="600" text-anchor="end" letter-spacing="1">FILTRO 4</text>
-            <text x="330" y="404" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Antig&uuml;edad</text>
+            <rect x="670" y="434" width="100" height="30" rx="6" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+            <text x="720" y="454" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-1,600</text>
+            <text x="790" y="454" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="11">-13%</text>
 
             <!-- Arrow -->
-            <text x="565" y="436" fill="rgba(255,255,255,0.2)" font-family="Inter,sans-serif" font-size="16" text-anchor="middle">&#9660;</text>
+            <text x="330" y="488" fill="rgba(255,255,255,0.15)" font-family="Inter,sans-serif" font-size="14" text-anchor="middle">&#9660;</text>
 
             <!-- ===== ROW 5: Final — Credit-ready ===== -->
-            <rect x="350" y="440" width="370" height="58" rx="10" fill="url(#fu-final)" filter="url(#glow)"/>
-            <text x="370" y="468" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="700">Sin alertas negativas en Bur&oacute; / sin restricciones legales</text>
-            <text x="688" y="476" fill="white" font-family="Inter,sans-serif" font-size="28" font-weight="900" text-anchor="end">~10,200</text>
+            <text x="130" y="518" fill="#FCD34D" font-family="Inter,sans-serif" font-size="11" font-weight="800" text-anchor="end" letter-spacing="1">FILTRO 5</text>
+            <text x="130" y="534" fill="rgba(255,255,255,0.35)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Credit-ready</text>
+            <!-- Bar -->
+            <rect x="150" y="504" width="310" height="50" rx="10" fill="url(#fu-final)"/>
+            <text x="170" y="534" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="700">Sin alertas Bur&oacute; / legales</text>
+            <!-- Number -->
+            <text x="480" y="538" fill="white" font-family="Inter,sans-serif" font-size="32" font-weight="900">~10,200</text>
             <!-- Delta -->
-            <rect x="735" y="450" width="120" height="36" rx="6" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-            <text x="795" y="473" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-600</text>
-            <!-- Label -->
-            <text x="330" y="462" fill="#FCD34D" font-family="Inter,sans-serif" font-size="10" font-weight="700" text-anchor="end" letter-spacing="1">FILTRO 5</text>
-            <text x="330" y="476" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">Credit-ready</text>
+            <rect x="620" y="514" width="100" height="30" rx="6" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+            <text x="670" y="534" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="13" font-weight="800" text-anchor="middle">-600</text>
+            <text x="740" y="534" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="11">-6%</text>
 
             <!-- Conversion badge -->
-            <rect x="900" y="450" width="260" height="48" rx="10" fill="rgba(252,211,77,0.1)" stroke="#FCD34D" stroke-width="1.5"/>
-            <text x="910" y="470" fill="#FCD34D" font-family="Inter,sans-serif" font-size="11" font-weight="800" letter-spacing="1">CONVERSI&Oacute;N TOTAL</text>
-            <text x="1070" y="472" fill="white" font-family="Inter,sans-serif" font-size="20" font-weight="900">42%</text>
-            <text x="910" y="488" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="10">10,200 de 24,500 empresas pasan todos los filtros</text>
+            <rect x="150" y="590" width="560" height="64" rx="12" fill="rgba(252,211,77,0.08)" stroke="#FCD34D" stroke-width="1.5"/>
+            <text x="180" y="618" fill="#FCD34D" font-family="Inter,sans-serif" font-size="12" font-weight="800" letter-spacing="2">CONVERSI&Oacute;N TOTAL</text>
+            <text x="400" y="620" fill="white" font-family="Inter,sans-serif" font-size="28" font-weight="900">42%</text>
+            <text x="180" y="640" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="12">10,200 de 24,500 empresas pasan los 5 filtros &mdash; este es el mercado real de Engen en LMM</text>
 
-            <!-- % reduction labels on right -->
-            <text x="1175" y="192" fill="rgba(255,255,255,0.3)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">-25%</text>
-            <text x="1175" y="262" fill="rgba(255,255,255,0.3)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">-20%</text>
-            <text x="1175" y="332" fill="rgba(255,255,255,0.3)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">-16%</text>
-            <text x="1175" y="402" fill="rgba(255,255,255,0.3)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">-13%</text>
-            <text x="1175" y="472" fill="rgba(255,255,255,0.3)" font-family="Inter,sans-serif" font-size="10" text-anchor="end">-6%</text>
+            <!-- Side annotation -->
+            <rect x="780" y="590" width="380" height="64" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="800" y="616" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="12" font-weight="600">Con 271 clientes activos hoy:</text>
+            <text x="800" y="638" fill="#FCD34D" font-family="Inter,sans-serif" font-size="14" font-weight="800">Penetraci&oacute;n real = 2.7% (no 1.1%)</text>
+            <text x="1040" y="638" fill="rgba(255,255,255,0.3)" font-family="Inter,sans-serif" font-size="12">271 / 10,200</text>
         </svg>
 
         <!-- DETALLE DE CADA FILTRO -->
