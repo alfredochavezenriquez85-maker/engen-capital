@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 0 — Definiciones Fundamentales LMM | Engen Capital</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Archivo:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --lcg-dark: #003D2D;
+            --lcg-teal: #009672;
+            --lcg-mint: #31EB97;
+            --lcg-sage: #CDDCC9;
+            --lcg-accent: #009672;
+            --lcg-light-blue: #EAF5EE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1D1D1B;
+            --text-secondary: #4a4a4a;
+            --text-muted: #7a7a7a;
+            --border: #CDDCC9;
+            --bg-light: #F3F3F3;
+            --bg-card: #ffffff;
+            --bolilla-color: #2E6DB4;
+            --bolilla-light: #EBF3FB;
+            --bolilla-dark: #1a4a7a;
+            --baguette-color: #8B5CF6;
+            --baguette-light: #F3EEFF;
+            --baguette-dark: #5B21B6;
+            --oferta-color: #E65100;
+            --oferta-light: #FFF3E0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body { background: white !important; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { min-height: 100vh; page-break-after: always; }
+            .content-page { break-inside: avoid; padding: 48px 64px; box-shadow: none; border-radius: 0; }
+        }
+
+        body {
+            font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #f0f2ee;
+        }
+
+        .page-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid #eee; }
+        .page-logos img:first-child { height: 28px; filter: brightness(0.2); opacity: 0.8; }
+        .page-logos img:last-child { height: 36px; border-radius: 4px; opacity: 0.8; }
+
+        /* ======================== COVER ======================== */
+        .cover-page {
+            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, var(--bolilla-color) 100%);
+            color: white; padding: 80px 72px; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: space-between;
+            position: relative; overflow: hidden;
+        }
+        .cover-page::before { content: ''; position: absolute; top: -20%; right: -10%; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%); }
+        .cover-page::after { content: ''; position: absolute; bottom: -15%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(46,109,180,0.2) 0%, transparent 70%); border-radius: 50%; }
+        .cover-logos { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; margin-bottom: 80px; }
+        .cover-logos img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logos img:last-child { height: 65px; border-radius: 6px; filter: none; }
+        .cover-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+        .cover-label { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FCD34D; margin-bottom: 16px; }
+        .cover-title { font-family: 'DM Serif Text', Georgia, serif; font-size: 50px; font-weight: 400; line-height: 1.1; margin-bottom: 20px; }
+        .cover-title span { color: #FCD34D; }
+        .cover-subtitle { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 48px; max-width: 650px; line-height: 1.7; }
+        .cover-divider { width: 80px; height: 3px; background: #FCD34D; margin-bottom: 30px; opacity: 0.6; }
+        .cover-pills { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+        .cover-pill { padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .cover-pill-oferta { background: rgba(230,81,0,0.2); border: 1px solid rgba(230,81,0,0.4); color: #FCD34D; }
+        .cover-pill-bolilla { background: rgba(46,109,180,0.25); border: 1px solid rgba(46,109,180,0.5); color: #93C5FD; }
+        .cover-pill-baguette { background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); color: #C4B5FD; }
+        .cover-pill .pill-icon { font-size: 20px; }
+        .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .cover-meta-label { color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; font-size: 14px; }
+        .cover-footer { position: relative; z-index: 1; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 60px; }
+
+        /* ======================== CONTENT ======================== */
+        @media screen {
+            .content-page { max-width: 1340px; margin: 0 auto 28px; background: white; border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 56px 72px; }
+        }
+
+        .section-header { margin-bottom: 36px; padding-bottom: 18px; border-bottom: 3px solid var(--lcg-teal); }
+        .section-number { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lcg-teal); margin-bottom: 8px; }
+        .section-title { font-family: 'DM Serif Text', serif; font-size: 34px; font-weight: 400; color: var(--lcg-dark); line-height: 1.2; }
+        h3 { font-size: 20px; font-weight: 800; color: var(--lcg-dark); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--lcg-teal); }
+        p { font-size: 15px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.7; }
+
+        /* ======================== CONTEXT BANNER ======================== */
+        .context-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 16px; padding: 32px; margin-bottom: 32px; color: white;
+            position: relative; overflow: hidden;
+        }
+        .context-banner::after {
+            content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 40%;
+            background: linear-gradient(135deg, transparent 0%, rgba(252,211,77,0.08) 100%);
+        }
+        .context-banner .banner-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #FCD34D; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; }
+        .context-banner .banner-text { font-size: 16px; color: rgba(255,255,255,0.85); line-height: 1.8; position: relative; z-index: 1; }
+        .context-banner .banner-text strong { color: white; }
+
+        /* ======================== THREE PILLARS ======================== */
+        .pillars-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 24px 0; }
+        .pillar-card {
+            border-radius: 14px; padding: 28px; position: relative; overflow: hidden;
+            border: 2px solid; min-height: 220px;
+        }
+        .pillar-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+        }
+        .pillar-oferta { border-color: var(--oferta-color); background: var(--oferta-light); }
+        .pillar-oferta::before { background: linear-gradient(90deg, #E65100, #F59E0B); }
+        .pillar-bolilla { border-color: var(--bolilla-color); background: var(--bolilla-light); }
+        .pillar-bolilla::before { background: linear-gradient(90deg, #1a4a7a, #2E6DB4); }
+        .pillar-baguette { border-color: var(--baguette-color); background: var(--baguette-light); }
+        .pillar-baguette::before { background: linear-gradient(90deg, #5B21B6, #8B5CF6); }
+        .pillar-icon { font-size: 36px; margin-bottom: 12px; }
+        .pillar-title { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+        .pillar-oferta .pillar-title { color: var(--oferta-color); }
+        .pillar-bolilla .pillar-title { color: var(--bolilla-dark); }
+        .pillar-baguette .pillar-title { color: var(--baguette-dark); }
+        .pillar-subtitle { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .pillar-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+        .pillar-tag { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; margin-top: 10px; }
+        .pillar-oferta .pillar-tag { background: rgba(230,81,0,0.15); color: var(--oferta-color); }
+        .pillar-bolilla .pillar-tag { background: rgba(46,109,180,0.15); color: var(--bolilla-dark); }
+        .pillar-baguette .pillar-tag { background: rgba(139,92,246,0.15); color: var(--baguette-dark); }
+
+        /* ======================== AREA MATRIX ======================== */
+        .area-section { margin: 32px 0; }
+        .area-header {
+            display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+            padding: 16px 24px; border-radius: 12px;
+            background: linear-gradient(135deg, var(--lcg-dark), #00523B); color: white;
+        }
+        .area-icon { font-size: 28px; }
+        .area-title { font-size: 20px; font-weight: 800; }
+        .area-subtitle { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 400; }
+
+        .factory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .factory-card {
+            border-radius: 12px; padding: 24px; border: 2px solid;
+            position: relative; overflow: hidden;
+        }
+        .factory-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+        }
+        .factory-bolilla { border-color: rgba(46,109,180,0.3); background: white; }
+        .factory-bolilla::before { background: var(--bolilla-color); }
+        .factory-baguette { border-color: rgba(139,92,246,0.3); background: white; }
+        .factory-baguette::before { background: var(--baguette-color); }
+        .factory-label {
+            font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+        }
+        .factory-bolilla .factory-label { color: var(--bolilla-dark); }
+        .factory-baguette .factory-label { color: var(--baguette-dark); }
+        .factory-list { list-style: none; }
+        .factory-list li {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.6;
+            padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex; gap: 10px; align-items: flex-start;
+        }
+        .factory-list li:last-child { border-bottom: none; }
+        .factory-list .li-bullet {
+            width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; flex-shrink: 0;
+        }
+        .factory-bolilla .li-bullet { background: var(--bolilla-color); }
+        .factory-baguette .li-bullet { background: var(--baguette-color); }
+        .factory-list strong { color: var(--text-primary); }
+
+        /* ======================== OFERTA CARD ======================== */
+        .oferta-card {
+            background: var(--oferta-light); border: 2px solid var(--oferta-color);
+            border-radius: 12px; padding: 24px; margin-bottom: 16px;
+            position: relative; overflow: hidden;
+        }
+        .oferta-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #E65100, #F59E0B);
+        }
+        .oferta-card .factory-label { color: var(--oferta-color); }
+        .oferta-card .li-bullet { background: var(--oferta-color); }
+
+        /* ======================== COMPARISON TABLE ======================== */
+        .compare-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        .compare-table thead th {
+            padding: 14px 16px; text-align: left; font-weight: 700; font-size: 12px;
+            letter-spacing: 1px; text-transform: uppercase; color: white;
+        }
+        .compare-table thead th:first-child { background: var(--lcg-dark); border-radius: 8px 0 0 0; }
+        .compare-table thead th:nth-child(2) { background: var(--bolilla-dark); }
+        .compare-table thead th:nth-child(3) { background: var(--baguette-dark); border-radius: 0 8px 0 0; }
+        .compare-table tbody td {
+            padding: 12px 16px; border-bottom: 1px solid #eee; vertical-align: top;
+        }
+        .compare-table tbody tr:hover { background: #fafafa; }
+        .compare-table .dim-label { font-weight: 700; color: var(--text-primary); font-size: 14px; }
+        .compare-table .bolilla-cell { background: rgba(46,109,180,0.04); }
+        .compare-table .baguette-cell { background: rgba(139,92,246,0.04); }
+
+        /* ======================== FLOW DIAGRAM ======================== */
+        .flow-container {
+            background: linear-gradient(135deg, #fafafa, #f0f2ee);
+            border-radius: 16px; padding: 32px; margin: 24px 0;
+            border: 1px solid var(--border);
+        }
+        .flow-title { font-size: 16px; font-weight: 800; color: var(--lcg-dark); margin-bottom: 20px; text-align: center; }
+        .flow-steps { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+        .flow-step {
+            padding: 14px 20px; border-radius: 10px; text-align: center;
+            font-size: 13px; font-weight: 600; min-width: 140px;
+            position: relative;
+        }
+        .flow-step-oferta { background: var(--oferta-light); color: var(--oferta-color); border: 2px solid var(--oferta-color); }
+        .flow-step-bolilla { background: var(--bolilla-light); color: var(--bolilla-dark); border: 2px solid var(--bolilla-color); }
+        .flow-step-baguette { background: var(--baguette-light); color: var(--baguette-dark); border: 2px solid var(--baguette-color); }
+        .flow-step-project { background: var(--lcg-light-blue); color: var(--lcg-dark); border: 2px solid var(--lcg-teal); }
+        .flow-step .step-sub { font-size: 11px; font-weight: 400; color: var(--text-muted); margin-top: 4px; }
+        .flow-arrow { font-size: 20px; color: var(--text-muted); padding: 0 8px; }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 20px 0; }
+        .callout-label { font-size: 12px; font-weight: 700; color: var(--lcg-accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+        .callout-orange { background: #fff3e0; border-left-color: #e65100; }
+        .callout-orange .callout-label { color: #e65100; }
+
+        .page-source { font-size: 12px; color: var(--text-muted); margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border); }
+
+        /* ======================== MOBILE ======================== */
+        @media (max-width: 900px) {
+            .cover-page { padding: 40px 24px; }
+            .cover-title { font-size: 32px; }
+            .cover-subtitle { font-size: 15px; }
+            .cover-pills { flex-direction: column; }
+            .cover-meta { grid-template-columns: 1fr; }
+            .cover-logos img { height: 32px; }
+            .cover-logos img:last-child { height: 48px; }
+            .content-page { padding: 28px 20px !important; margin: 0 8px 16px !important; }
+            .section-title { font-size: 24px; }
+            h3 { font-size: 17px; }
+            .pillars-grid { grid-template-columns: 1fr; }
+            .factory-grid { grid-template-columns: 1fr; }
+            .compare-table { display: block; overflow-x: auto; }
+            .flow-steps { flex-direction: column; gap: 8px; }
+            .flow-arrow { transform: rotate(90deg); }
+            .area-header { flex-direction: column; text-align: center; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- COVER PAGE                                                    -->
+    <!-- ============================================================ -->
+    <div class="cover-page">
+        <div class="cover-logos">
+            <div>
+                <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group" style="height: 45px; filter: brightness(0) invert(1);" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:4px;&quot;>London Consulting Group</span>'">
+            </div>
+            <div>
+                <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" style="height: 65px; border-radius: 6px;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:14px;font-weight:600;color:#00B388;letter-spacing:1px;&quot;>engen capital</span>'">
+            </div>
+        </div>
+
+        <div class="cover-content">
+            <div class="cover-label">Fase 0 &mdash; Prerrequisito del Proyecto</div>
+            <div class="cover-title">Definiciones<br>Fundamentales <span>LMM</span></div>
+            <div class="cover-subtitle">Antes de ejecutar el roadmap de soluciones, hay que responder tres preguntas: &iquest;qu&eacute; vendemos?, &iquest;c&oacute;mo procesamos lo peque&ntilde;o? y &iquest;c&oacute;mo procesamos lo grande?</div>
+            <div class="cover-divider"></div>
+
+            <div class="cover-pills">
+                <div class="cover-pill cover-pill-oferta">
+                    <span class="pill-icon">&#9670;</span> Oferta de Valor LMM
+                </div>
+                <div class="cover-pill cover-pill-bolilla">
+                    <span class="pill-icon">&#9679;</span> F&aacute;brica de Bolillas &le;15 MM USD
+                </div>
+                <div class="cover-pill cover-pill-baguette">
+                    <span class="pill-icon">&#11044;</span> F&aacute;brica de Baguettes &gt;15 MM USD
+                </div>
+            </div>
+
+            <div class="cover-meta">
+                <div>
+                    <div class="cover-meta-label">Contexto</div>
+                    <div class="cover-meta-value">Prerrequisito para Desarrollo de Soluciones LMM</div>
+                </div>
+                <div>
+                    <div class="cover-meta-label">Fecha</div>
+                    <div class="cover-meta-value">Marzo 2026</div>
+                </div>
+                <div>
+                    <div class="cover-meta-label">Preparado por</div>
+                    <div class="cover-meta-value">London Consulting Group</div>
+                </div>
+                <div>
+                    <div class="cover-meta-label">Clasificaci&oacute;n</div>
+                    <div class="cover-meta-value">Confidencial &mdash; Uso Interno</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            <span>&copy; 2026 London Consulting Group</span>
+            <span>Fase 0 &mdash; Definiciones Fundamentales LMM</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 1: POR QU&Eacute; FASE 0                                -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Fase 0</div>
+            <div class="section-title">&iquest;Por qu&eacute; definir esto antes del proyecto?</div>
+        </div>
+
+        <div class="context-banner">
+            <div class="banner-label">&#9888; La premisa</div>
+            <div class="banner-text">
+                El roadmap de <strong>Desarrollo de Soluciones LMM</strong> contempla 8+ proyectos en paralelo (VP Funnel, Prospección, Factoraje, Crédito IA, Marketing, Capital Humano&hellip;) con el objetivo de <strong>duplicar la cartera LMM en 5 a&ntilde;os</strong>. Pero todos esos proyectos dan por sentado que ya est&aacute;n resueltas tres definiciones que <strong>hoy no existen con claridad</strong>:
+            </div>
+        </div>
+
+        <!-- Three Pillars -->
+        <div class="pillars-grid">
+            <div class="pillar-card pillar-oferta">
+                <div class="pillar-icon">&#9670;</div>
+                <div class="pillar-title">Oferta de Valor</div>
+                <div class="pillar-subtitle">&iquest;Qu&eacute; vendemos al LMM?</div>
+                <div class="pillar-desc">
+                    La propuesta de valor diferenciada para el segmento mid-market. No es lo mismo que Core con ticket chico &mdash; es una <strong>promesa distinta</strong>: velocidad, simplicidad, productos empaquetados, experiencia digital.
+                </div>
+                <div class="pillar-tag">Aplica a ambas f&aacute;bricas</div>
+            </div>
+
+            <div class="pillar-card pillar-bolilla">
+                <div class="pillar-icon">&#9679;</div>
+                <div class="pillar-title">F&aacute;brica de Bolillas</div>
+                <div class="pillar-subtitle">&le; 15 MM USD</div>
+                <div class="pillar-desc">
+                    Operaciones de <strong>alto volumen y ticket menor</strong>. Requieren proceso estandarizado, r&aacute;pido y con m&iacute;nima intervenci&oacute;n manual. El Param&eacute;trico deber&iacute;a ser la v&iacute;a default. Hoy solo canaliza el 9% del volumen.
+                </div>
+                <div class="pillar-tag">~70% del volumen LMM esperado</div>
+            </div>
+
+            <div class="pillar-card pillar-baguette">
+                <div class="pillar-icon">&#11044;</div>
+                <div class="pillar-title">F&aacute;brica de Baguettes</div>
+                <div class="pillar-subtitle">&gt; 15 MM USD</div>
+                <div class="pillar-desc">
+                    Operaciones de <strong>mayor ticket y complejidad</strong>. Requieren an&aacute;lisis m&aacute;s profundo pero sin llegar al proceso de Core. Es el &ldquo;LMM premium&rdquo; &mdash; m&aacute;s personalizado, pero a&uacute;n con velocidad competitiva.
+                </div>
+                <div class="pillar-tag">~30% del volumen, ~50% del monto</div>
+            </div>
+        </div>
+
+        <!-- Flow diagram -->
+        <div class="flow-container">
+            <div class="flow-title">Secuencia l&oacute;gica: sin Fase 0, el proyecto construye sobre arena</div>
+            <div class="flow-steps">
+                <div class="flow-step flow-step-oferta">
+                    &#9670; Oferta de Valor
+                    <div class="step-sub">Definir primero</div>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-step flow-step-bolilla">
+                    &#9679; F&aacute;brica Bolillas
+                    <div class="step-sub">&le;15 MM USD</div>
+                </div>
+                <div class="flow-step flow-step-baguette" style="margin-left: -8px;">
+                    &#11044; F&aacute;brica Baguettes
+                    <div class="step-sub">&gt;15 MM USD</div>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-step flow-step-project">
+                    &#9654; Proyecto LMM
+                    <div class="step-sub">Roadmap completo</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout callout-orange">
+            <div class="callout-label">&#9888; Riesgo de no hacer Fase 0</div>
+            <p style="margin: 0;">Sin estas definiciones, cada &aacute;rea interpret&aacute; el LMM a su manera: Comercial vende promesas que Cr&eacute;dito no puede cumplir en tiempo, Operaciones procesa bolillas como baguettes (y viceversa), y el cliente recibe una experiencia inconsistente. <strong>El proyecto terminar&iacute;a optimizando un proceso que no est&aacute; dise&ntilde;ado.</strong></p>
+        </div>
+
+        <div class="page-source">Fuente: Pre-Diagn&oacute;stico LCG (Marzo 2026) &mdash; +20 entrevistas con equipo Engen Capital</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 2: OFERTA DE VALOR                                       -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header" style="border-bottom-color: var(--oferta-color);">
+            <div class="section-number" style="color: var(--oferta-color);">Definici&oacute;n 1</div>
+            <div class="section-title">Oferta de Valor LMM &mdash; &iquest;Qu&eacute; vendemos?</div>
+        </div>
+
+        <p>La oferta de valor es el <strong>paraguas estrat&eacute;gico</strong> que define c&oacute;mo Engen se posiciona ante el mid-market. No es una lista de productos &mdash; es la <strong>promesa</strong> que cada &aacute;rea debe cumplir de manera coordinada. Hoy Engen opera el LMM como un &ldquo;Core chiquito&rdquo;, y eso diluye su diferenciador.</p>
+
+        <div class="context-banner" style="background: linear-gradient(135deg, #4a1c00, #7a3000);">
+            <div class="banner-label" style="color: #FCD34D;">&#9670; La promesa LMM que hay que definir</div>
+            <div class="banner-text">
+                <strong>&ldquo;Financiamiento empresarial con velocidad de fintech, respaldo de instituci&oacute;n y conocimiento de tu industria.&rdquo;</strong><br><br>
+                Esto se traduce en: respuesta en d&iacute;as (no semanas), expediente simple, productos empaquetados, y un originador que entiende tu sector.
+            </div>
+        </div>
+
+        <h3>&iquest;Qu&eacute; debe definir cada &aacute;rea para la Oferta de Valor?</h3>
+
+        <!-- COMERCIAL -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128188;</span>
+                <div>
+                    <div class="area-title">Comercial / Originaci&oacute;n</div>
+                    <div class="area-subtitle">C&oacute;mo se comunica y vende la promesa</div>
+                </div>
+            </div>
+            <div class="oferta-card">
+                <div class="factory-label">&#9670; Definiciones de oferta de valor</div>
+                <ul class="factory-list">
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Pitch diferenciado LMM vs. competencia:</strong> no es &ldquo;somos grandes como banco&rdquo; sino &ldquo;somos r&aacute;pidos como fintech con la solidez de 30 a&ntilde;os&rdquo;</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Materiales por sector:</strong> fichas de valor para los 7 sectores Tier 1 (Manufactura, Transporte, Construcci&oacute;n, Alimentos, Qu&iacute;mica, Log&iacute;stica, Energ&iacute;a) &mdash; cada una con lenguaje del cliente, no del banco</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>SLA comercial expl&iacute;cito:</strong> &ldquo;Te damos respuesta en X d&iacute;as h&aacute;biles o menos&rdquo; &mdash; hoy no existe esa promesa hacia el cliente</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Paquetes producto predefinidos:</strong> combinaciones de arrendamiento + factoraje + cr&eacute;dito listas para presentar, no arm-as-you-go</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CR&Eacute;DITO / RIESGO -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128202;</span>
+                <div>
+                    <div class="area-title">Cr&eacute;dito / Riesgo</div>
+                    <div class="area-subtitle">C&oacute;mo soporta la promesa de velocidad</div>
+                </div>
+            </div>
+            <div class="oferta-card">
+                <div class="factory-label">&#9670; Definiciones de oferta de valor</div>
+                <ul class="factory-list">
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Apetito de riesgo LMM documentado:</strong> &iquest;qu&eacute; OR m&aacute;ximo aceptamos? &iquest;qu&eacute; % de CV estamos dispuestos a tolerar? (tesis: de 3.8% a 4.5-5.5%)</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Criterios de elegibilidad claros y p&uacute;blicos:</strong> que Comercial sepa de antemano qu&eacute; s&iacute; pasa y qu&eacute; no, sin sorpresas</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Pre-Approval con dientes:</strong> si la herramienta dice &ldquo;aprobable hasta $X&rdquo;, que Cr&eacute;dito honre ese indicativo salvo hallazgo material</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Meta de aprobaci&oacute;n: 78-80%</strong> (al nivel de Core), alineada con la tesis de crecimiento</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- OPERACIONES -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#9881;</span>
+                <div>
+                    <div class="area-title">Operaciones / Mesa de Control</div>
+                    <div class="area-subtitle">C&oacute;mo entrega la experiencia prometida</div>
+                </div>
+            </div>
+            <div class="oferta-card">
+                <div class="factory-label">&#9670; Definiciones de oferta de valor</div>
+                <ul class="factory-list">
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Tiempo de fondeo comprometido:</strong> el cliente debe saber cu&aacute;nto tarda desde que firma hasta que tiene el dinero/activo</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Documentaci&oacute;n proporcional:</strong> LMM no puede pedir lo mismo que Core. Definir checklist m&iacute;nimo viable por tipo de operaci&oacute;n</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Experiencia digital del cliente:</strong> &iquest;qu&eacute; puede hacer el cliente en l&iacute;nea? (seguimiento, firma, subir documentos)</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TECNOLOG&Iacute;A -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128187;</span>
+                <div>
+                    <div class="area-title">Tecnolog&iacute;a</div>
+                    <div class="area-subtitle">C&oacute;mo habilita la promesa</div>
+                </div>
+            </div>
+            <div class="oferta-card">
+                <div class="factory-label">&#9670; Definiciones de oferta de valor</div>
+                <ul class="factory-list">
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Capacidad de Cr&eacute;dito IA:</strong> &iquest;qu&eacute; puede automatizar hoy vs. qu&eacute; requiere desarrollo? &iquest;Cu&aacute;l es el roadmap realista?</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Portal del cliente LMM:</strong> visibilidad punta a punta del estatus de su operaci&oacute;n &mdash; diferenciador real vs. competencia</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Integraci&oacute;n Salesforce:</strong> un solo lugar donde Comercial, Cr&eacute;dito y Ops ven lo mismo del cliente</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CAPITAL HUMANO -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128101;</span>
+                <div>
+                    <div class="area-title">Capital Humano</div>
+                    <div class="area-subtitle">Qui&eacute;n entrega la promesa</div>
+                </div>
+            </div>
+            <div class="oferta-card">
+                <div class="factory-label">&#9670; Definiciones de oferta de valor</div>
+                <ul class="factory-list">
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Perfil de originador LMM redefinido:</strong> hunter con conocimiento financiero b&aacute;sico (no analista con habilidades comerciales)</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>Capacitaci&oacute;n en la promesa:</strong> cada originador debe poder articular el diferenciador LMM en 30 segundos</div></li>
+                    <li><span class="li-bullet" style="background: var(--oferta-color);"></span><div><strong>SIC alineado con la promesa:</strong> compensar velocidad de cierre, no solo volumen &mdash; premiar al que fondea r&aacute;pido</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-source">Fuente: Pre-Diagn&oacute;stico LCG &mdash; S&iacute;ntesis de +20 entrevistas de campo</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 3: F&Aacute;BRICAS &mdash; COMPARATIVO POR &Aacute;REA  -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header" style="border-bottom-color: var(--bolilla-color);">
+            <div class="section-number" style="color: var(--bolilla-color);">Definici&oacute;n 2 &amp; 3</div>
+            <div class="section-title">Dos F&aacute;bricas, Un Segmento &mdash; Bolillas vs. Baguettes</div>
+        </div>
+
+        <p>El error actual es procesar <strong>todas las operaciones LMM con el mismo flujo</strong>. Una operaci&oacute;n de $3 MM USD no puede llevar el mismo proceso que una de $25 MM USD. La distinci&oacute;n Bolillas/Baguettes define <strong>dos l&iacute;neas de producci&oacute;n paralelas</strong> dentro del mismo segmento.</p>
+
+        <!-- Comparison Table -->
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Dimensi&oacute;n</th>
+                    <th style="width: 39%;">&#9679; Bolillas &le;15 MM USD</th>
+                    <th style="width: 39%;">&#11044; Baguettes &gt;15 MM USD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="dim-label">Filosof&iacute;a</td>
+                    <td class="bolilla-cell">Volumen &times; velocidad. &ldquo;Conveyor belt&rdquo; &mdash; estandarizado, r&aacute;pido, predecible</td>
+                    <td class="baguette-cell">Valor &times; relaci&oacute;n. &ldquo;Artesanal eficiente&rdquo; &mdash; personalizado pero sin complejidad de Core</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Ticket t&iacute;pico</td>
+                    <td class="bolilla-cell"><strong>$2M - $15M USD</strong> (~$40M - $300M MXN)</td>
+                    <td class="baguette-cell"><strong>$15M - $50M+ USD</strong> (~$300M - $1,000M MXN)</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Volumen esperado</td>
+                    <td class="bolilla-cell"><strong>~70%</strong> de operaciones LMM</td>
+                    <td class="baguette-cell"><strong>~30%</strong> de operaciones, ~50% del monto</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Tiempo objetivo</td>
+                    <td class="bolilla-cell"><strong>5-7 d&iacute;as h&aacute;biles</strong> de solicitud a aprobaci&oacute;n</td>
+                    <td class="baguette-cell"><strong>12-18 d&iacute;as h&aacute;biles</strong> de solicitud a aprobaci&oacute;n</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">V&iacute;a de suscripci&oacute;n</td>
+                    <td class="bolilla-cell"><strong>Param&eacute;trico / Fast Application</strong> como v&iacute;a default</td>
+                    <td class="baguette-cell"><strong>Estudio Full simplificado</strong> (LMM Corto mejorado)</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Nivel de an&aacute;lisis</td>
+                    <td class="bolilla-cell">Scoring autom&aacute;tico + validaci&oacute;n documental m&iacute;nima</td>
+                    <td class="baguette-cell">An&aacute;lisis financiero + visita + comit&eacute;, pero sin nivel Core</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Documentaci&oacute;n</td>
+                    <td class="bolilla-cell"><strong>8 documentos m&aacute;x.</strong> Checklist cerrado, sin excepciones</td>
+                    <td class="baguette-cell"><strong>12-15 documentos.</strong> Checklist extendido con flexibilidad controlada</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Decisi&oacute;n de cr&eacute;dito</td>
+                    <td class="bolilla-cell">SUW + DUW con autonomía hasta OR13</td>
+                    <td class="baguette-cell">MDUW + CRO para operaciones &gt;threshold o alto riesgo</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <div class="callout-label">&#128161; El criterio de corte: 15 MM USD</div>
+            <p style="margin:0;">El ticket fondeado promedio LMM actual es <strong>$7.75M MXN</strong> (~$380K USD). El ticket aprobado promedio es <strong>$12M MXN</strong> (~$600K USD). El corte en 15 MM USD (~$300M MXN) separa claramente el grueso de operaciones (Bolillas) del segmento superior que requiere m&aacute;s atenci&oacute;n (Baguettes). Este umbral debe validarse con datos hist&oacute;ricos de distribuci&oacute;n de tickets.</p>
+        </div>
+
+        <div class="page-source">Fuente: Playbook Comercial LMM &mdash; Datos de suscripci&oacute;n y aprobaci&oacute;n 2024-2025</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 4: COMERCIAL                                             -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Por &Aacute;rea</div>
+            <div class="section-title">Qu&eacute; significa Bolillas vs. Baguettes en cada &aacute;rea</div>
+        </div>
+
+        <!-- COMERCIAL -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128188;</span>
+                <div>
+                    <div class="area-title">Comercial / Originaci&oacute;n</div>
+                    <div class="area-subtitle">C&oacute;mo prospecta, califica y presenta cada f&aacute;brica</div>
+                </div>
+            </div>
+
+            <div class="factory-grid">
+                <div class="factory-card factory-bolilla">
+                    <div class="factory-label">&#9679; F&aacute;brica de Bolillas &le;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Prospecci&oacute;n por volumen:</strong> 30+ contactos/d&iacute;a, cadencia multi-touch automatizada, enfoque en Tier 1 asset-intensive</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Calificaci&oacute;n r&aacute;pida:</strong> 3 criterios go/no-go (tama&ntilde;o, sector, antig&uuml;edad). Si cumple, entra al Param&eacute;trico sin m&aacute;s</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Presentaci&oacute;n estandarizada:</strong> propuesta generada autom&aacute;ticamente con tasa indicativa desde primera cita</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Cross-sell inmediato:</strong> factoraje + arrendamiento como paquete, no como productos separados</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Ciclo de venta target:</strong> &lt;15 d&iacute;as de primera cita a ingreso de solicitud</div></li>
+                    </ul>
+                </div>
+
+                <div class="factory-card factory-baguette">
+                    <div class="factory-label">&#11044; F&aacute;brica de Baguettes &gt;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Prospecci&oacute;n consultiva:</strong> research previo profundo, identificaci&oacute;n de decisores m&uacute;ltiples (CFO + CEO + Ops)</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Calificaci&oacute;n estrat&eacute;gica:</strong> an&aacute;lisis de wallet share, potencial de REFI, flujo de activos, historial crediticio</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Presentaci&oacute;n a la medida:</strong> propuesta con estructura financiera espec&iacute;fica, an&aacute;lisis de beneficio fiscal, escenarios</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Multiproducto como estrategia:</strong> mapear toda la necesidad financiera del cliente, no solo la operaci&oacute;n inmediata</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Ciclo de venta target:</strong> &lt;30 d&iacute;as de primera cita a ingreso, con pre-approval en d&iacute;a 5</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CR&Eacute;DITO / RIESGO -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128202;</span>
+                <div>
+                    <div class="area-title">Cr&eacute;dito / Suscripci&oacute;n / Riesgo</div>
+                    <div class="area-subtitle">C&oacute;mo analiza, aprueba y gestiona el riesgo cada f&aacute;brica</div>
+                </div>
+            </div>
+
+            <div class="factory-grid">
+                <div class="factory-card factory-bolilla">
+                    <div class="factory-label">&#9679; F&aacute;brica de Bolillas &le;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>V&iacute;a Param&eacute;trica como default:</strong> todo lo que quepa en el modelo pasa por scoring autom&aacute;tico. Meta: &gt;50% del volumen</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Documentos HO1 reducidos:</strong> m&aacute;ximo 8 documentos, checklist cerrado sin excepciones</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Autonomía SUW:</strong> el suscriptor de primera l&iacute;nea puede aprobar hasta OR13 sin escalamiento</div></li>
+                        <li><span class="li-bullet"></span><div><strong>SLA inviolable:</strong> 5 d&iacute;as h&aacute;biles m&aacute;ximo de ingreso a dictamen &mdash; con semáforo visible</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Bucket de riesgo controlado:</strong> OR14-OR16 con tickets &lt;$200K USD, mayor spread, kill switch si CV &gt;7%</div></li>
+                    </ul>
+                </div>
+
+                <div class="factory-card factory-baguette">
+                    <div class="factory-label">&#11044; F&aacute;brica de Baguettes &gt;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Estudio Full simplificado:</strong> an&aacute;lisis de EEFF + visita + comit&eacute;, pero sin la profundidad de Core</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Documentos ampliados pero acotados:</strong> 12-15 documentos con justificaci&oacute;n clara de cada requerimiento</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Escalamiento a MDUW/CRO:</strong> operaciones &gt;threshold o calificaci&oacute;n &gt;OR14 suben a decisi&oacute;n de segundo nivel</div></li>
+                        <li><span class="li-bullet"></span><div><strong>SLA diferenciado:</strong> 12-15 d&iacute;as h&aacute;biles de ingreso a dictamen &mdash; m&aacute;s holgado pero a&uacute;n competitivo</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Pre-Approval vinculante:</strong> monto indicativo que Cr&eacute;dito honra salvo hallazgo material</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPERACIONES -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#9881;</span>
+                <div>
+                    <div class="area-title">Operaciones / Mesa de Control / Legal</div>
+                    <div class="area-subtitle">C&oacute;mo procesa y fondea cada f&aacute;brica</div>
+                </div>
+            </div>
+
+            <div class="factory-grid">
+                <div class="factory-card factory-bolilla">
+                    <div class="factory-label">&#9679; F&aacute;brica de Bolillas &le;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Contratos estandarizados:</strong> plantillas pre-aprobadas para las 3-4 estructuras m&aacute;s comunes, sin personalizaci&oacute;n</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Disposici&oacute;n express:</strong> del dictamen al fondeo en &lt;10 d&iacute;as h&aacute;biles (vs. 38.5 actuales)</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Cero waivers:</strong> si no cumple el checklist, no entra. Pero el checklist es simple</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Seguros y garant&iacute;as simplificados:</strong> sin seguro de vida, garant&iacute;a solo sobre el activo financiado</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Firma digital:</strong> todo el proceso de firma en l&iacute;nea &mdash; sin necesidad de presencia f&iacute;sica</div></li>
+                    </ul>
+                </div>
+
+                <div class="factory-card factory-baguette">
+                    <div class="factory-label">&#11044; F&aacute;brica de Baguettes &gt;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Contratos con personalizaci&oacute;n controlada:</strong> base estandarizada + cl&aacute;usulas opcionales predefinidas</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Disposici&oacute;n estructurada:</strong> del dictamen al fondeo en &lt;20 d&iacute;as h&aacute;biles</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Waivers limitados:</strong> m&aacute;ximo 1 waiver por operaci&oacute;n, pre-aprobado en comit&eacute;</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Garant&iacute;as proporcionales:</strong> activo + garant&iacute;a adicional solo si OR &gt;14</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Firma h&iacute;brida:</strong> documentos principales en digital, garant&iacute;as ante notario si aplica</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-source">Fuente: Playbook Comercial LMM &mdash; Etapas 4 y 5 (Suscripci&oacute;n y Disposici&oacute;n)</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 5: TECNOLOG&Iacute;A + CAPITAL HUMANO                    -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Por &Aacute;rea (cont.)</div>
+            <div class="section-title">Tecnolog&iacute;a y Capital Humano en cada F&aacute;brica</div>
+        </div>
+
+        <!-- TECNOLOG&Iacute;A -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128187;</span>
+                <div>
+                    <div class="area-title">Tecnolog&iacute;a / Sistemas</div>
+                    <div class="area-subtitle">Qu&eacute; habilita cada l&iacute;nea de producci&oacute;n</div>
+                </div>
+            </div>
+
+            <div class="factory-grid">
+                <div class="factory-card factory-bolilla">
+                    <div class="factory-label">&#9679; F&aacute;brica de Bolillas &le;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Cr&eacute;dito IA como motor principal:</strong> scoring, validaci&oacute;n documental y pre-aprobaci&oacute;n autom&aacute;tica &mdash; intervenci&oacute;n humana solo en excepciones</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Portal self-service:</strong> el cliente sube documentos, firma, y da seguimiento sin contactar al originador</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Salesforce con flujo automatizado:</strong> de prospecci&oacute;n a fondeo en un solo pipeline, con alertas de SLA</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Cotizador instant&aacute;neo:</strong> el originador genera propuesta con tasa indicativa en &lt;5 minutos durante la cita</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Dashboards de SLA en tiempo real:</strong> sem&aacute;foros de cumplimiento visibles para Comercial, Cr&eacute;dito y Ops</div></li>
+                    </ul>
+                </div>
+
+                <div class="factory-card factory-baguette">
+                    <div class="factory-label">&#11044; F&aacute;brica de Baguettes &gt;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Cr&eacute;dito IA como soporte:</strong> pre-screening y generaci&oacute;n de ficha de cr&eacute;dito, pero con an&aacute;lisis humano de EEFF</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Portal con visibilidad:</strong> el cliente ve el estatus pero interact&uacute;a con su originador asignado</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Salesforce con workflow diferenciado:</strong> etapas adicionales (pre-approval, visita, comit&eacute;) con tracking separado</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Modelador financiero:</strong> herramienta que permite armar escenarios de estructuraci&oacute;n en cita con el cliente</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Gestor documental inteligente:</strong> checklist din&aacute;mico que se adapta al tipo de estructura y riesgo</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPITAL HUMANO -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128101;</span>
+                <div>
+                    <div class="area-title">Capital Humano / Compensaciones</div>
+                    <div class="area-subtitle">Qui&eacute;n opera cada f&aacute;brica y c&oacute;mo se les compensa</div>
+                </div>
+            </div>
+
+            <div class="factory-grid">
+                <div class="factory-card factory-bolilla">
+                    <div class="factory-label">&#9679; F&aacute;brica de Bolillas &le;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Perfil &ldquo;Hunter&rdquo;:</strong> prospecci&oacute;n activa como competencia #1, conocimiento financiero b&aacute;sico suficiente para presentar productos estandarizados</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Volumen de actividad alto:</strong> 30+ contactos/d&iacute;a, 120+ citas/a&ntilde;o, m&eacute;tricas de actividad como KPI principal</div></li>
+                        <li><span class="li-bullet"></span><div><strong>SIC simple:</strong> compensaci&oacute;n basada en # de operaciones fondeadas + velocidad de cierre. M&aacute;ximo 3 variables</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Carrera:</strong> originador Bolillas con buen desempe&ntilde;o puede migrar a Baguettes como ascenso natural</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Ratio ISC:Originador:</strong> 1 ISC puede soportar 3-4 originadores por volumen estandarizado</div></li>
+                    </ul>
+                </div>
+
+                <div class="factory-card factory-baguette">
+                    <div class="factory-label">&#11044; F&aacute;brica de Baguettes &gt;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Perfil &ldquo;Consultor Financiero&rdquo;:</strong> capacidad de estructurar, leer EEFF, negociar con CFOs, proponer soluciones multiproducto</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Calidad sobre volumen:</strong> 15-20 contactos/d&iacute;a de alta calidad, relaciones de mediano plazo con decisores</div></li>
+                        <li><span class="li-bullet"></span><div><strong>SIC con componente de monto:</strong> compensaci&oacute;n basada en volumen fondeado ($) + gross margin. Aceleradores por REFI y multiproducto</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Experiencia requerida:</strong> m&iacute;nimo 2-3 a&ntilde;os en financiamiento empresarial o banca corporativa PyME</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Ratio ISC:Originador:</strong> 1 ISC por cada 2 originadores por mayor complejidad documental</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARKETING -->
+        <div class="area-section">
+            <div class="area-header">
+                <span class="area-icon">&#128226;</span>
+                <div>
+                    <div class="area-title">Marketing / Generaci&oacute;n de Demanda</div>
+                    <div class="area-subtitle">C&oacute;mo alimenta cada f&aacute;brica con prospectos</div>
+                </div>
+            </div>
+
+            <div class="factory-grid">
+                <div class="factory-card factory-bolilla">
+                    <div class="factory-label">&#9679; F&aacute;brica de Bolillas &le;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Campa&ntilde;as digitales masivas:</strong> Google Ads, LinkedIn Ads, contenido sectorial &mdash; embudo digital end-to-end</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Webinars por sector:</strong> eventos digitales de 30 min con contenido de valor + call to action directo</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Landing pages por producto:</strong> &ldquo;Obt&eacute;n tu cotizaci&oacute;n en 5 minutos&rdquo; con formulario integrado a Salesforce</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Presencia en expos masivas:</strong> ferias con alta densidad de empresas Tier 1 (ANPACT, CANACINTRA, FABTECH)</div></li>
+                    </ul>
+                </div>
+
+                <div class="factory-card factory-baguette">
+                    <div class="factory-label">&#11044; F&aacute;brica de Baguettes &gt;15 MM USD</div>
+                    <ul class="factory-list">
+                        <li><span class="li-bullet"></span><div><strong>Account-Based Marketing:</strong> contenido personalizado para las top 200 empresas del segmento superior</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Thought leadership:</strong> whitepapers, casos de &eacute;xito detallados, participaci&oacute;n en foros de CFOs</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Eventos ejecutivos:</strong> desayunos con 15-20 CFOs por regi&oacute;n, contenido de alto nivel</div></li>
+                        <li><span class="li-bullet"></span><div><strong>Alianzas con referidores:</strong> despachos contables, abogados corporativos, consultores de M&A</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-source">Fuente: Playbook Comercial LMM &mdash; Etapas 2 y 6 (Generaci&oacute;n de Demanda y Capital Humano)</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 6: RESUMEN Y SIGUIENTE PASO                              -->
+    <!-- ============================================================ -->
+    <div class="content-page page-break">
+        <div class="page-logos">
+            <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#003D2D;opacity:0.5;&quot;>London Consulting Group</span>'">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital" onerror="this.outerHTML='<span style=&quot;font-size:11px;font-weight:600;color:#00B388;&quot;>engen capital</span>'">
+        </div>
+
+        <div class="section-header" style="border-bottom-color: #FCD34D;">
+            <div class="section-number" style="color: var(--oferta-color);">Resumen</div>
+            <div class="section-title">Matriz de Definiciones &mdash; Checklist de Fase 0</div>
+        </div>
+
+        <p>Antes de arrancar el roadmap de Desarrollo de Soluciones LMM, estas son las <strong>definiciones que cada &aacute;rea debe tener resueltas</strong>. Sin ellas, los proyectos construyen sobre supuestos no validados.</p>
+
+        <table class="compare-table" style="margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th style="width: 16%; background: var(--lcg-dark); border-radius: 8px 0 0 0;">&Aacute;rea</th>
+                    <th style="width: 28%; background: var(--oferta-color);">&#9670; Oferta de Valor</th>
+                    <th style="width: 28%; background: var(--bolilla-dark);">&#9679; Bolillas &le;15MM</th>
+                    <th style="width: 28%; background: var(--baguette-dark); border-radius: 0 8px 0 0;">&#11044; Baguettes &gt;15MM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="dim-label">Comercial</td>
+                    <td style="background: rgba(230,81,0,0.04);">Pitch diferenciado, SLA al cliente, paquetes producto</td>
+                    <td class="bolilla-cell">Cadencia de volumen, calificaci&oacute;n go/no-go, propuesta autom&aacute;tica</td>
+                    <td class="baguette-cell">Prospecci&oacute;n consultiva, pre-approval, propuesta a la medida</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Cr&eacute;dito</td>
+                    <td style="background: rgba(230,81,0,0.04);">Apetito de riesgo documentado, meta 78-80% aprobaci&oacute;n</td>
+                    <td class="bolilla-cell">Param&eacute;trico como default, 8 docs, SUW con autonom&iacute;a OR13</td>
+                    <td class="baguette-cell">Estudio Full simplificado, 12-15 docs, escalamiento MDUW/CRO</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Operaciones</td>
+                    <td style="background: rgba(230,81,0,0.04);">Tiempo de fondeo comprometido, experiencia digital</td>
+                    <td class="bolilla-cell">Contratos est&aacute;ndar, cero waivers, firma digital, &lt;10d fondeo</td>
+                    <td class="baguette-cell">Personalizaci&oacute;n controlada, 1 waiver m&aacute;x, firma h&iacute;brida, &lt;20d</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Tecnolog&iacute;a</td>
+                    <td style="background: rgba(230,81,0,0.04);">Roadmap Cr&eacute;dito IA, portal cliente, integraci&oacute;n Salesforce</td>
+                    <td class="bolilla-cell">IA como motor, portal self-service, cotizador instant&aacute;neo</td>
+                    <td class="baguette-cell">IA como soporte, modelador financiero, gestor documental</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Capital Humano</td>
+                    <td style="background: rgba(230,81,0,0.04);">Perfil redefinido, capacitaci&oacute;n en promesa, SIC alineado</td>
+                    <td class="bolilla-cell">Hunter, 30+ contactos/d&iacute;a, SIC por # ops, ratio ISC 1:4</td>
+                    <td class="baguette-cell">Consultor financiero, calidad &gt; vol, SIC por $, ratio ISC 1:2</td>
+                </tr>
+                <tr>
+                    <td class="dim-label">Marketing</td>
+                    <td style="background: rgba(230,81,0,0.04);">Posicionamiento LMM diferenciado del Core</td>
+                    <td class="bolilla-cell">Campa&ntilde;as digitales masivas, webinars, expos Tier 1</td>
+                    <td class="baguette-cell">ABM, thought leadership, eventos ejecutivos, referidores</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Next Steps -->
+        <div style="background: linear-gradient(135deg, var(--lcg-dark), #00523B); border-radius: 16px; padding: 32px; margin-top: 28px; color: white;">
+            <h3 style="color: var(--lcg-mint); border-left-color: rgba(255,255,255,0.3); font-size: 18px; margin-top: 0;">&#9654; Siguiente paso: del Checklist al Dise&ntilde;o</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 16px;">
+                <div>
+                    <div style="font-size: 36px; font-weight: 900; color: var(--lcg-mint);">1</div>
+                    <div style="font-size: 14px; font-weight: 700; margin-bottom: 6px;">Validar el corte</div>
+                    <div style="font-size: 13px; color: rgba(255,255,255,0.7);">Confirmar que 15 MM USD es el umbral correcto con datos hist&oacute;ricos de distribuci&oacute;n de tickets</div>
+                </div>
+                <div>
+                    <div style="font-size: 36px; font-weight: 900; color: var(--lcg-mint);">2</div>
+                    <div style="font-size: 14px; font-weight: 700; margin-bottom: 6px;">Definir la promesa</div>
+                    <div style="font-size: 13px; color: rgba(255,255,255,0.7);">Workshop con Direcci&oacute;n + Comercial + Riesgo para aterrizar la oferta de valor en un one-pager</div>
+                </div>
+                <div>
+                    <div style="font-size: 36px; font-weight: 900; color: var(--lcg-mint);">3</div>
+                    <div style="font-size: 14px; font-weight: 700; margin-bottom: 6px;">Dise&ntilde;ar las f&aacute;bricas</div>
+                    <div style="font-size: 13px; color: rgba(255,255,255,0.7);">Mapear procesos as-is y dise&ntilde;ar to-be para cada l&iacute;nea con SLAs, responsables y herramientas</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top: 24px;">
+            <div class="callout-label">&#128161; Nota sobre nomenclatura</div>
+            <p style="margin:0;"><strong>Bolillas</strong> y <strong>Baguettes</strong> son nombres internos de trabajo &mdash; al cliente se comunican como &ldquo;LMM Express&rdquo; y &ldquo;LMM Estructurado&rdquo; (o la nomenclatura que Engen defina). Lo importante es que la organizaci&oacute;n entienda que <strong>son dos l&iacute;neas de producci&oacute;n distintas</strong> dentro del mismo segmento.</p>
+        </div>
+
+        <div class="page-source">Fuente: S&iacute;ntesis de Pre-Diagn&oacute;stico LCG + Playbook Comercial LMM &mdash; Marzo 2026</div>
+    </div>
+
+</body>
+</html>
