@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista Director Comercial: Oportunidades LMM &mdash; Engen Capital | London Consulting Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --lcg-navy: #0B1F3F;
+            --lcg-blue: #1A3A6B;
+            --lcg-accent: #2E6DB4;
+            --lcg-light-blue: #E8F0FE;
+            --engen-green: #00B388;
+            --engen-dark: #004D40;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --border: #e0e4ea;
+            --bg-light: #f7f8fb;
+            --bg-card: #ffffff;
+            --success: #00B388;
+            --warning: #F5A623;
+            --danger: #E74C5E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 0; }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body { font-size: 9pt; background: white !important; margin: 0; padding: 0; }
+            .document { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            .cover-page { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+            .content-page { padding: 40px 50px; }
+            table { font-size: 8pt; page-break-inside: avoid; break-inside: avoid; }
+            thead { display: table-header-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            h2 { font-size: 16pt; }
+            h3 { font-size: 11pt; page-break-after: avoid; break-after: avoid; }
+            .section-header { page-break-after: avoid; break-after: avoid; }
+            .kpi-banner, .callout, .opp-card, .finding-card { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #eef1f5;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ======================== COVER PAGE ======================== */
+        .cover-page {
+            background: linear-gradient(135deg, #0B1F3F 0%, #1A3A6B 60%, #2E6DB4 100%);
+            color: white;
+            padding: 60px 60px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(46, 109, 180, 0.08);
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 179, 136, 0.06);
+        }
+
+        .cover-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo-lcg img { height: 45px; filter: brightness(0) invert(1); }
+        .cover-logo-engen img { height: 65px; border-radius: 6px; }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cover-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--engen-green);
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--engen-green);
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cover-meta-item { font-size: 13px; }
+        .cover-meta-label { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .cover-meta-value { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+        .cover-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ======================== CONTENT PAGES ======================== */
+        .content-page {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-lcg-sm { height: 28px; }
+        .logo-engen-sm { height: 36px; border-radius: 4px; }
+        .header-divider { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--lcg-navy);
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lcg-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--lcg-navy);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--lcg-blue);
+            margin: 28px 0 14px;
+            padding-left: 12px;
+            border-left: 3px solid var(--engen-green);
+        }
+
+        p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ======================== KPI BANNER ======================== */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--lcg-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .kpi-item {
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .kpi-item:last-child { border-right: none; }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+        .kpi-value.green { color: var(--engen-green); }
+        .kpi-value.red { color: var(--danger); }
+        .kpi-value.amber { color: var(--warning); }
+
+        .kpi-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======================== TABLES ======================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        thead th {
+            background: var(--lcg-navy);
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .table-highlight { font-weight: 600; color: var(--lcg-navy); }
+
+        tr:nth-child(even) { background: var(--bg-light); }
+
+        /* ======================== FINDING CARD ======================== */
+        .finding-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--danger);
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .finding-card.green { border-left-color: var(--engen-green); }
+        .finding-card.amber { border-left-color: var(--warning); }
+        .finding-card.blue { border-left-color: var(--lcg-accent); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .finding-title { font-size: 13px; font-weight: 700; color: var(--lcg-navy); flex: 1; }
+
+        .finding-dimension {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .finding-dimension.comercial { background: #e3f2fd; color: #1565c0; }
+        .finding-dimension.proceso { background: #fff3e0; color: #e65100; }
+        .finding-dimension.cultural { background: #fce4ec; color: #c62828; }
+        .finding-dimension.oportunidad { background: #e8f5e9; color: #2e7d32; }
+
+        .finding-body {
+            padding: 14px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .finding-evidence {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* ======================== VERBATIM ======================== */
+        .verbatim {
+            background: linear-gradient(135deg, #fafbfc, #f5f6f8);
+            border-left: 4px solid var(--lcg-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+
+        .verbatim-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .verbatim-text::before { content: '\201C'; font-size: 28px; color: var(--lcg-accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+
+        .verbatim-source {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ======================== OPPORTUNITY CARD ======================== */
+        .opp-card {
+            background: white;
+            border: 2px solid var(--engen-green);
+            border-radius: 10px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .opp-header {
+            background: linear-gradient(135deg, var(--engen-dark), #00796B);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opp-number {
+            font-size: 28px;
+            font-weight: 900;
+            opacity: 0.3;
+            margin-right: 16px;
+        }
+
+        .opp-title {
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .opp-priority {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .opp-priority.alta { background: rgba(231,76,94,0.9); }
+        .opp-priority.media { background: rgba(245,166,35,0.9); }
+
+        .opp-body {
+            padding: 20px;
+        }
+
+        .opp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+        }
+
+        .opp-section-label:first-child { margin-top: 0; }
+
+        .opp-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .opp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opp-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .opp-bullets li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--engen-green);
+            font-weight: 700;
+        }
+
+        .opp-impact {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .opp-impact-item {
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .opp-impact-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+        }
+
+        .opp-impact-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ======================== CALLOUTS ======================== */
+        .callout {
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .callout-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .callout-green { background: #e8f5e9; border-left: 4px solid var(--engen-green); }
+        .callout-green .callout-label { color: var(--engen-dark); }
+
+        .callout-amber { background: #fff3e0; border-left: 4px solid #e65100; }
+        .callout-amber .callout-label { color: #e65100; }
+
+        .callout-blue { background: var(--lcg-light-blue); border-left: 4px solid var(--lcg-accent); }
+        .callout-blue .callout-label { color: var(--lcg-navy); }
+
+        .callout-red { background: #fce4ec; border-left: 4px solid var(--danger); }
+        .callout-red .callout-label { color: #c62828; }
+
+        /* ======================== PROCESS MAP ======================== */
+        .process-map {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 130px;
+            background: var(--bg-light);
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            border-right: 2px solid white;
+        }
+
+        .process-step:first-child { border-radius: 8px 0 0 8px; }
+        .process-step:last-child { border-radius: 0 8px 8px 0; border-right: none; }
+
+        .process-step.bottleneck { background: #fce4ec; border-bottom: 3px solid var(--danger); }
+        .process-step.ok { background: #e8f5e9; border-bottom: 3px solid var(--engen-green); }
+        .process-step.warning { background: #fff3e0; border-bottom: 3px solid var(--warning); }
+
+        .process-step-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .process-step-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .process-step-detail {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .process-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            padding: 0 2px;
+        }
+
+        /* ======================== EXEC CARDS ======================== */
+        .exec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .exec-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--lcg-accent);
+        }
+
+        .exec-card.green { border-left-color: var(--engen-green); }
+        .exec-card.orange { border-left-color: var(--warning); }
+        .exec-card.red { border-left-color: var(--danger); }
+
+        .exec-card-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .exec-card-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--lcg-navy);
+            margin-bottom: 4px;
+        }
+
+        .exec-card-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .exec-card-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <!-- ============================================================ -->
+        <!-- COVER PAGE                                                     -->
+        <!-- ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-logos">
+                <div class="cover-logo-lcg">
+                    <img src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="London Consulting Group">
+                </div>
+                <div class="cover-logo-engen">
+                    <img src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen Capital">
+                </div>
+            </div>
+
+            <div class="cover-content">
+                <div class="cover-label">Prediagn&oacute;stico &mdash; Entrevista de Campo</div>
+                <h1 class="cover-title">Director Comercial: Feedback<br>sobre Oportunidades LMM</h1>
+                <p class="cover-subtitle">Sesi&oacute;n de presentaci&oacute;n de hallazgos y reacci&oacute;n del Director Comercial &mdash; validaci&oacute;n, matices y prioridades desde la trinchera comercial</p>
+                <div class="cover-divider"></div>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Cliente</div>
+                        <div class="cover-meta-value">Engen Capital</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fuente principal</div>
+                        <div class="cover-meta-value">Maurizzio Piva, Director Comercial General</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Fecha de entrevista</div>
+                        <div class="cover-meta-value">25 de marzo de 2026 &mdash; ~100 min presencial</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Elabor&oacute;</div>
+                        <div class="cover-meta-value">Alfredo Ch&aacute;vez &mdash; London Consulting Group</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-footer">
+                <span>London Consulting Group &copy; 2026</span>
+                <span>Confidencial &mdash; Uso interno LCG</span>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 01: RESUMEN EJECUTIVO                                  -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 01</div>
+                <div class="section-title">Resumen Ejecutivo</div>
+            </div>
+
+            <p>Este documento sintetiza el feedback de <strong>Maurizzio Piva, Director Comercial General de Engen Capital</strong>, durante la sesi&oacute;n de presentaci&oacute;n de hallazgos del prediagn&oacute;stico realizada el 25 de marzo de 2026 (~100 minutos, presencial). LCG present&oacute; el inventario de oportunidades por &aacute;rea y Maurizzio reaccion&oacute; con matices, validaciones y propuestas concretas desde su posici&oacute;n como l&iacute;der del &aacute;rea comercial. La conversaci&oacute;n cubri&oacute; el dimensionamiento del mercado, la efectividad de la fuerza de ventas, el concepto de &ldquo;f&aacute;brica de bolillos vs. f&aacute;brica de baguettes&rdquo;, los tiempos de originaci&oacute;n y la propuesta de proyecto.</p>
+
+            <div class="kpi-banner">
+                <div class="kpi-item"><div class="kpi-value red">-10%</div><div class="kpi-label">Citas LMM 2025 vs 2024</div></div>
+                <div class="kpi-item"><div class="kpi-value red">-20%</div><div class="kpi-label">Oportunidades LMM absol.</div></div>
+                <div class="kpi-item"><div class="kpi-value amber">5%</div><div class="kpi-label">Citas de origen digital</div></div>
+                <div class="kpi-item"><div class="kpi-value green">15%</div><div class="kpi-label">Conversi&oacute;n Opp &rarr; Cierre</div></div>
+            </div>
+
+            <div class="exec-grid">
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Feedback clave</div>
+                    <div class="exec-card-value">M&aacute;s citas + mejor calidad</div>
+                    <div class="exec-card-desc">Maurizzio coincide en que el esfuerzo en la calle est&aacute;, pero &ldquo;no est&aacute;n encontrando la carnita&rdquo;. Necesitan subir calidad de prospecto y ampliar volumen simult&aacute;neamente.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Feedback clave</div>
+                    <div class="exec-card-value">Dos f&aacute;bricas diferenciadas</div>
+                    <div class="exec-card-desc">Valida el concepto de separar la operaci&oacute;n en una &ldquo;f&aacute;brica de bolillos&rdquo; (alto volumen, estandarizada) y una &ldquo;f&aacute;brica de baguettes&rdquo; (operaciones m&aacute;s estructuradas, artesanal pero eficiente).</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Feedback cr&iacute;tico</div>
+                    <div class="exec-card-value">Perfil comercial equivocado</div>
+                    <div class="exec-card-desc">Reconoce que se piden demasiadas caracter&iacute;sticas t&eacute;cnicas al contratar. El mercado de Tijuana o ciudades peque&ntilde;as no ofrece esos perfiles: &ldquo;te tienes que adaptar al mercado, no al mercado a ti&rdquo;.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Feedback cr&iacute;tico</div>
+                    <div class="exec-card-value">C&iacute;rculo vicioso de gesti&oacute;n</div>
+                    <div class="exec-card-desc">Los l&iacute;deres bajan un escal&oacute;n a operar por la presi&oacute;n del n&uacute;mero. No les da vida para desarrollar gente. &ldquo;Es un c&iacute;rculo vicioso que hay que romper.&rdquo;</div>
+                </div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Tesis central del Director Comercial</div>
+                <p>Maurizzio no niega los hallazgos &mdash; los matiza y los ancla en la realidad operativa. Su postura es clara: <strong>el esfuerzo comercial est&aacute; pero la efectividad no</strong>. Necesitan simultaneamente <strong>(1) mayor precisi&oacute;n en la prospecci&oacute;n</strong>, <strong>(2) un proceso de originaci&oacute;n m&aacute;s &aacute;gil para el segmento</strong>, y <strong>(3) romper el c&iacute;rculo vicioso donde los l&iacute;deres operan en vez de gestionar</strong>. Valida la necesidad de intervenci&oacute;n externa y coincide con el roadmap de 40 semanas propuesto por LCG.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 02: DIMENSIONAMIENTO Y CALIDAD DEL MERCADO             -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 02</div>
+                <div class="section-title">Dimensionamiento y calidad del mercado</div>
+            </div>
+
+            <p>Durante la presentaci&oacute;n del dimensionamiento de mercado, Maurizzio aport&oacute; matices relevantes sobre las fuentes de datos, la calidad de la informaci&oacute;n disponible y la necesidad de depurar el universo de prospectos antes de escalar el esfuerzo comercial.</p>
+
+            <h3>Universo de empresas LMM: los n&uacute;meros y sus l&iacute;mites</h3>
+
+            <table>
+                <thead><tr><th>Segmento</th><th>Rango facturaci&oacute;n</th><th>Empresas estimadas</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Low Market</td><td>$20 &ndash; $50 MDP</td><td>~35,000</td></tr>
+                    <tr><td class="table-highlight">Low-Mid Market (target)</td><td>$50 &ndash; $500 MDP</td><td>~25,000</td></tr>
+                    <tr><td class="table-highlight">Mid Market</td><td>$500 &ndash; $3,500 MDP</td><td>~6,000</td></tr>
+                    <tr><td class="table-highlight">Upper / Core</td><td>&gt;$3,500 MDP</td><td>~1,000</td></tr>
+                </tbody>
+            </table>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Calidad de datos del CRM: 11,740 empresas cargadas, muchas sin depurar</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    El CRM tiene 11,740 empresas de LMM, pero Alejandro (Marketing) indica que tiene ~10,000 m&aacute;s sin cargar. Sin embargo, <strong>la depuraci&oacute;n es insuficiente</strong>: hay empresas sin nombre de contacto, sin tel&eacute;fono, sin datos b&aacute;sicos. Una empresa sin el nombre del director &ldquo;ni siquiera nos cuenta como empresa depurada&rdquo;. Maurizzio valida que <strong>hay mucho trabajo de vigencia pendiente</strong> en los account sets.
+                </div>
+                <div class="finding-evidence">Evidencia: Datos CRM Engen + comentarios de Alejandro (Mkt) y Maurizzio Piva</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Una empresa que no tiene el nombre del director, con su correo y toda su informaci&oacute;n, ni siquiera nos cuenta como empresa depurada. Porque entonces &iquest;a qui&eacute;n le voy a hablar? &iquest;Al guardia de Bimbo?</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, sobre la calidad del account set</div>
+            </div>
+
+            <h3>Fuentes de datos y sus limitaciones</h3>
+
+            <table>
+                <thead><tr><th>Fuente</th><th>Utilidad</th><th>Limitaci&oacute;n</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">INEGI</td><td>Cuadrar grandes n&uacute;meros</td><td>Registros duplicados (ej: Bimbo con 17 f&aacute;bricas, centros de distribuci&oacute;n, razones sociales)</td></tr>
+                    <tr><td class="table-highlight">DB Hoovers / ZoomInfo</td><td>Mejor calidad de datos</td><td>Cobertura limitada en mid-market mexicano</td></tr>
+                    <tr><td class="table-highlight">LinkedIn + agentes IA</td><td>Enriquecimiento de contactos</td><td>Funciona para cruzar datos, no como fuente primaria</td></tr>
+                    <tr><td class="table-highlight">Web scraping / prensa</td><td>Foros industriales, reportes</td><td>Requiere curar manualmente</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Filtros de elegibilidad: de 24,000 a ~10,000</h3>
+
+            <p>LCG present&oacute; un ejercicio de acotamiento del universo aplicando filtros de elegibilidad. Maurizzio valid&oacute; la l&oacute;gica pero ajust&oacute; el criterio de antig&uuml;edad (de 5 a&ntilde;os propuestos a 3 a&ntilde;os). Los filtros incluyen: sectores de m&aacute;xima intensidad CAPEX, rango de ventas desde $100 MDP, geograf&iacute;a en 15 estados principales, antig&uuml;edad mayor a 3 a&ntilde;os, y alertas negativas en bur&oacute; de cr&eacute;dito.</p>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>El mercado es grande &mdash; eso no est&aacute; en discusi&oacute;n. Lo que Maurizzio confirma es que <strong>el problema est&aacute; en la calidad de la inteligencia comercial</strong>: saber a qui&eacute;n llamar, tener datos de contacto reales, depurar empresas que no califican. Escalar el volumen de llamadas sin resolver esto ser&iacute;a &ldquo;llamarle a la tlapalera que vende 5 millones al a&ntilde;o&rdquo;.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 03: EFECTIVIDAD COMERCIAL — CITAS Y CONVERSION         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 03</div>
+                <div class="section-title">Efectividad comercial: citas, oportunidades y conversi&oacute;n</div>
+            </div>
+
+            <p>La presentaci&oacute;n de los n&uacute;meros de generaci&oacute;n de demanda deton&oacute; una de las discusiones m&aacute;s ricas de la sesi&oacute;n. Maurizzio valid&oacute; los datos y ofreci&oacute; su perspectiva sobre las causas y las acciones necesarias.</p>
+
+            <h3>La ca&iacute;da en citas y oportunidades</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Citas LMM (absoluto)</div>
+                    <div class="exec-card-value">-10%</div>
+                    <div class="exec-card-desc">Ca&iacute;da en generaci&oacute;n de citas LMM 2025 vs 2024. Equipo de Roberto -3% absoluto pero +23% per c&aacute;pita. Equipo de Eduardo cay&oacute;.</div>
+                </div>
+                <div class="exec-card red">
+                    <div class="exec-card-label">Oportunidades LMM (absoluto)</div>
+                    <div class="exec-card-value">-20%</div>
+                    <div class="exec-card-desc">A pesar del crecimiento per c&aacute;pita en citas (+23%), la conversi&oacute;n a oportunidades no se reflej&oacute; en esa magnitud.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Originadores productivos</div>
+                    <div class="exec-card-value">22 &rarr; 26</div>
+                    <div class="exec-card-desc">Se perdieron vendedores en 2025, pero hoy ya hay 26 con &gt;6 meses. La rotaci&oacute;n afect&oacute; significativamente la curva.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Conversi&oacute;n Opp &rarr; Cierre</div>
+                    <div class="exec-card-value">15%</div>
+                    <div class="exec-card-desc">Maurizzio destac&oacute; que un 15% es positivo: &ldquo;fuera 25, verdad, pero un 15 no est&aacute; mal&rdquo;. El deal size viene al alza.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">El esfuerzo en la calle est&aacute;. Nada m&aacute;s que no est&aacute;n encontrando la carnita.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, sobre la efectividad de la prospecci&oacute;n</div>
+            </div>
+
+            <h3>La ecuaci&oacute;n de Maurizzio: calidad + cantidad</h3>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">Se necesitan las dos palancas, no una sola</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    Maurizzio rechaza la dicotom&iacute;a &ldquo;calidad o cantidad&rdquo;. Su postura: <strong>necesitan ambas simult&aacute;neamente</strong>. Subir calidad de prospecci&oacute;n (mejores cuentas, mejor inteligencia) y ampliar capacidad (m&aacute;s citas, m&aacute;s gente). Pero advierte: si pones un escritorio de telemarketing que genere 3 citas m&aacute;s por semana al vendedor, &ldquo;va a estar topado en capacidad&rdquo;. <strong>Hay que ampliar el equipo en ambos lados.</strong>
+                </div>
+                <div class="finding-evidence">Evidencia: Discusi&oacute;n directa durante presentaci&oacute;n de hallazgos</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">O le sube la calidad, o le sube la cantidad... necesitamos por m&aacute;s citas, definitivamente. Tienes que ampliar el equipo a los 2 lados.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial</div>
+            </div>
+
+            <h3>La meta de citas: gen&eacute;rica, sin inteligencia</h3>
+
+            <p>Maurizzio reconoce que la meta de 3 citas por semana por vendedor es un n&uacute;mero gen&eacute;rico: no diferencia entre un vendedor maduro con portafolio (que deber&iacute;a tener 1-2) y un vendedor nuevo que deber&iacute;a tener 5. No hay inteligencia detr&aacute;s del n&uacute;mero.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Es un n&uacute;mero gen&eacute;rico de decir: yo necesito que salgas 3 a la semana. Pero no hay una inteligencia. Un vendedor ya maduro con portafolio &iquest;donde est&aacute;n 3, est&aacute;n 2, una? Uno que es nuevo &iquest;donde est&aacute;n 5?</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, sobre la falta de diferenciaci&oacute;n en metas</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Convergencia con hallazgos de campo</div>
+                <p>Los datos de campo confirman la narrativa: vendedoras con una cita por semana, 24% del account set &ldquo;tocado&rdquo; sin claridad de qu&eacute; significa &ldquo;tocado&rdquo;, 55% del takedown concentrado en los &uacute;ltimos 3 d&iacute;as del mes, y solo 5% de citas originadas por canal digital. <strong>El modelo actual depende casi exclusivamente del esfuerzo individual del vendedor</strong>, sin inteligencia de prospecci&oacute;n ni disciplina de registro.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 04: GESTION DE SUPERVISIÓN Y CIRCULO VICIOSO           -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 04</div>
+                <div class="section-title">Gesti&oacute;n de supervisi&oacute;n y el c&iacute;rculo vicioso</div>
+            </div>
+
+            <p>Uno de los hallazgos m&aacute;s importantes de la sesi&oacute;n fue la <strong>validaci&oacute;n expl&iacute;cita de Maurizzio</strong> del c&iacute;rculo vicioso detectado en la gesti&oacute;n de los l&iacute;deres comerciales (Team Leaders). Lejos de negarlo, lo describi&oacute; con claridad y reconoci&oacute; que es un patr&oacute;n que afecta la efectividad de toda la cadena comercial.</p>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">L&iacute;deres que operan en vez de gestionar: un c&iacute;rculo vicioso reconocido</div>
+                    <div class="finding-dimension cultural">Cultural</div>
+                </div>
+                <div class="finding-body">
+                    El diagn&oacute;stico de campo mostr&oacute; que los l&iacute;deres no dedican tiempo al coaching ni al desarrollo de sus vendedores. Se bajan a operar: van en el carro con el vendedor mientras atienden tr&aacute;mites de la operativa. No les da tiempo de preparar reuniones de calidad. El resultado: vendedores que &ldquo;llenan su d&iacute;a como mejor pueden&rdquo;, sin tubera suficiente, sin pegarle al n&uacute;mero, y m&aacute;s estr&eacute;s en las reuniones semanales.
+                </div>
+                <div class="finding-evidence">Evidencia: Observaci&oacute;n directa en juntas de revisi&oacute;n + validaci&oacute;n de Maurizzio Piva</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Yo lo veo hoy como un c&iacute;rculo vicioso que hay que romper. Todo el negocio est&aacute; tan estresado con el n&uacute;mero que todos se bajan un escal&oacute;n a operar y pues no les da la vida y el tiempo de dedicarle calidad.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, validando el hallazgo de campo</div>
+            </div>
+
+            <h3>El c&iacute;rculo vicioso mapeado</h3>
+
+            <div class="process-map">
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 1</div>
+                    <div class="process-step-title">Presi&oacute;n por n&uacute;mero</div>
+                    <div class="process-step-detail">El negocio estresado con la meta</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 2</div>
+                    <div class="process-step-title">L&iacute;deres bajan a operar</div>
+                    <div class="process-step-detail">Se meten a vender, atender tr&aacute;mites</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step warning">
+                    <div class="process-step-label">Paso 3</div>
+                    <div class="process-step-title">Sin coaching</div>
+                    <div class="process-step-detail">No hay tiempo para desarrollar vendedores</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 4</div>
+                    <div class="process-step-title">Baja productividad</div>
+                    <div class="process-step-detail">Menos tubera, menos cierres</div>
+                </div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step bottleneck">
+                    <div class="process-step-label">Paso 5</div>
+                    <div class="process-step-title">M&aacute;s presi&oacute;n</div>
+                    <div class="process-step-detail">Y el ciclo se repite</div>
+                </div>
+            </div>
+
+            <h3>Team Leaders: la capa m&aacute;s delgada</h3>
+
+            <p>De los 4 Team Leaders actuales, 3 son nuevos y de esos 3, uno era originador (no viene de management). Los otros 2 vienen de fuera y no traen el &ldquo;chip de l&iacute;der&rdquo;. Maurizzio reconoce que carecen de herramientas de management.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">O sea, carecen de muchas herramientas de management. Hoy es como la capa m&aacute;s delgada.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, sobre los Team Leaders</div>
+            </div>
+
+            <h3>Roberto Zacatenco: potencial estrat&eacute;gico atrapado en la operaci&oacute;n</h3>
+
+            <p>Maurizzio destac&oacute; que Roberto (Director LMM) conoce y cree en la metodolog&iacute;a. Pero la realidad operativa no le permite ser estrat&eacute;gico &mdash; la rotaci&oacute;n de Team Leaders, la presi&oacute;n por resultados y la operativa diaria lo mantienen en modo apaga-fuegos.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Me habl&oacute; tantas veces de la metodolog&iacute;a, del Engen Way... el tema es como que hay una dislocaci&oacute;n: sirve ac&aacute; abajo, pero entre lo que &eacute;l trae y lo que finalmente le terminan sacando...</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, sobre Roberto Zacatenco</div>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>La validaci&oacute;n de Maurizzio sobre el c&iacute;rculo vicioso es <strong>la se&ntilde;al m&aacute;s clara de apertura al cambio</strong>. No est&aacute; defendiendo el status quo &mdash; est&aacute; reconociendo un patr&oacute;n estructural que necesita intervenci&oacute;n. La clave est&aacute; en los Team Leaders: <strong>fortalecer esta capa con herramientas de gesti&oacute;n rompe el c&iacute;rculo</strong>. Es el mismo enfoque que funcion&oacute; en HDI Seguros con la transformaci&oacute;n de la capa gerencial.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 05: PERFIL COMERCIAL — EL DEBATE                       -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 05</div>
+                <div class="section-title">Perfil comercial: el debate abierto</div>
+            </div>
+
+            <p>Durante la sesi&oacute;n se abord&oacute; directamente el perfil de contrataci&oacute;n de originadores. Maurizzio reconoci&oacute; el problema y lo contextualiz&oacute; con la realidad del mercado laboral.</p>
+
+            <div class="finding-card amber">
+                <div class="finding-header">
+                    <div class="finding-title">12 caracter&iacute;sticas vs. realidad del mercado laboral</div>
+                    <div class="finding-dimension comercial">Comercial</div>
+                </div>
+                <div class="finding-body">
+                    La descripci&oacute;n de puesto actual pide ~12 caracter&iacute;sticas: t&eacute;cnica financiera avanzada, capacidad de negociaci&oacute;n, liderazgo, process kills, disciplina, y m&aacute;s. Maurizzio reconoce que esto es irreal: &ldquo;vas a Tijuana, en 50 candidatos con suerte encuentras uno&rdquo;. El perfil exige un &ldquo;ingeniero de la NASA&rdquo; cuando el mercado ofrece talento diferente.
+                </div>
+                <div class="finding-evidence">Evidencia: Discusi&oacute;n directa con Maurizzio + revisi&oacute;n del descriptor de puesto</div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">T&uacute; te tienes que adaptar al mercado, no al mercado a ti. Si no, pues no valen esas personas.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, sobre la dificultad de reclutar con el perfil actual</div>
+            </div>
+
+            <h3>Lo que Maurizzio propone priorizar</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Perfil actual (12 requisitos)</div>
+                    <div class="exec-card-value">T&eacute;cnico financiero + todo</div>
+                    <div class="exec-card-desc">T&eacute;cnica financiera avanzada, an&aacute;lisis, c&aacute;lculo de tasas, liderazgo, negociaci&oacute;n, disciplina, conocimiento de industria... &ldquo;12 caracter&iacute;sticas, te juro que eran unas 12.&rdquo;</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Perfil propuesto por Maurizzio</div>
+                    <div class="exec-card-value">Drive comercial + inteligencia</div>
+                    <div class="exec-card-desc">Empuje, capacidad de abrir puertas, negociaci&oacute;n, disciplina, ambici&oacute;n, responsabilidad. &ldquo;Yo les ense&ntilde;o aqu&iacute;&rdquo; la parte t&eacute;cnica. Si le simplificas el proceso, el perfil comercial puede operar.</div>
+                </div>
+            </div>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Quiero que me traigan la gente que realmente tenga el empuje, que sean inteligentes, que sean ambiciosos, que sean disciplinados, que sean responsables, y yo les ense&ntilde;o aqu&iacute;.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial</div>
+            </div>
+
+            <h3>El v&iacute;nculo perfil &ndash; proceso</h3>
+
+            <p>Maurizzio hace una conexi&oacute;n cr&iacute;tica: si simplificas el proceso de originaci&oacute;n (la &ldquo;f&aacute;brica de bolillos&rdquo;), un perfil m&aacute;s comercial <strong>puede funcionar</strong>. Pero si el perfil comercial puro se mete en la m&aacute;quina actual (la f&aacute;brica que era de bolillos y ahora son &ldquo;mini cores&rdquo;), <strong>se lo chupa el proceso</strong>.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Si este chef full comercial se atora hoy en la m&aacute;quina que era de bolillos &mdash; por eso ya no son bolillos y son mini cores &mdash; ah&iacute; se lo chupa el proceso.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial</div>
+            </div>
+
+            <div class="callout callout-amber">
+                <div class="callout-label">Convergencia CEO + Director Comercial</div>
+                <p>Es notable que <strong>Maurizzio y Juan Pablo coinciden</strong> en este diagn&oacute;stico: el perfil actual est&aacute; sobre-cargado de requisitos t&eacute;cnicos. Pero Maurizzio agrega una condici&oacute;n que el CEO no menciona: <strong>el cambio de perfil solo funciona si cambias el proceso</strong>. Si metes un vendedor puro en el proceso actual, se atasca. Esto refuerza que la intervenci&oacute;n debe ser simult&aacute;nea: perfil + proceso + oferta de valor.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 06: FABRICA DE BOLILLOS VS BAGUETTES                   -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 06</div>
+                <div class="section-title">F&aacute;brica de Bolillos vs. F&aacute;brica de Baguettes</div>
+            </div>
+
+            <p>El concepto central de la propuesta de LCG es la <strong>diferenciaci&oacute;n de dos carriles de operaci&oacute;n</strong> para el segmento LMM. Maurizzio no solo valid&oacute; el concepto sino que lo enriqueci&oacute; con matices operativos.</p>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">F&aacute;brica de Bolillos</div>
+                    <div class="exec-card-value">Alto volumen, estandarizada</div>
+                    <div class="exec-card-desc">Productos de anaquel. Ticket menor. Proceso estandarizado, r&aacute;pido, m&iacute;nima intervenci&oacute;n manual. V&iacute;a de suscripci&oacute;n param&eacute;trica. Punta a punta en &lt;4 d&iacute;as. Se espera el 80% de las transacciones en volumen.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">F&aacute;brica de Baguettes</div>
+                    <div class="exec-card-value">Artesanal pero eficiente</div>
+                    <div class="exec-card-desc">Operaciones con mayor customizaci&oacute;n. Tickets m&aacute;s grandes. Requiere doble click sin la complejidad del Core. Perfil de vendedor y proceso diferenciados del bolillo.</div>
+                </div>
+            </div>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Validaci&oacute;n: ambos carriles deben existir simult&aacute;neamente</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    Juan Pablo y Maurizzio coinciden: <strong>no es un carril u otro &mdash; son caminos que suman</strong>. La historia de Engen es que empezaron con este concepto pero terminaron convirti&eacute;ndose en un &ldquo;mini core&rdquo;. LCG propone re-separar las operaciones con claridad en tickets, volumen, tiempos, perfiles y v&iacute;as de suscripci&oacute;n.
+                </div>
+                <div class="finding-evidence">Evidencia: Discusi&oacute;n directa con Juan Pablo y Maurizzio durante la presentaci&oacute;n</div>
+            </div>
+
+            <h3>Lo que hay que definir</h3>
+
+            <table>
+                <thead><tr><th>Dimensi&oacute;n</th><th>F&aacute;brica de Bolillos</th><th>F&aacute;brica de Baguettes</th><th>Estado</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Rango de tickets</td><td>Por definir (hasta ~$10M)</td><td>Por definir (&gt;$10M)</td><td style="color: var(--warning); font-weight: 700;">Pendiente</td></tr>
+                    <tr><td class="table-highlight">V&iacute;a de suscripci&oacute;n</td><td>Param&eacute;trica / Fast Application</td><td>Estudio corto / personalizado</td><td style="color: var(--warning); font-weight: 700;">En progreso</td></tr>
+                    <tr><td class="table-highlight">Perfil de vendedor</td><td>Comercial puro + soporte</td><td>Perfil h&iacute;brido</td><td style="color: var(--danger); font-weight: 700;">Sin definir</td></tr>
+                    <tr><td class="table-highlight">Tiempos punta a punta</td><td>&lt;4 d&iacute;as</td><td>Por definir</td><td style="color: var(--danger); font-weight: 700;">Sin definir</td></tr>
+                    <tr><td class="table-highlight">% transacciones esperado</td><td>80%</td><td>20%</td><td style="color: var(--warning); font-weight: 700;">Estimado</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Los cambios que ya est&aacute;n en curso</h3>
+
+            <p>Engen ya est&aacute; ejecutando cambios en la v&iacute;a param&eacute;trica: el Fast Application subir&aacute; hasta $10 MDP, el estudio corto hasta $20 MDP, y se eliminan operaciones menores a $3 MDP. El param&eacute;trico (que hab&iacute;a bajado al 9% del volumen porque &ldquo;lo empezaron a dejar de usar&rdquo;) se integra en el Fast Application con mejores criterios.</p>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Oportunidad concreta</div>
+                <p>Los cambios en la v&iacute;a param&eacute;trica ya est&aacute;n en movimiento. Lo que falta es <strong>el dise&ntilde;o integral</strong>: c&oacute;mo se conecta el perfil del vendedor, la inteligencia de prospecci&oacute;n, los criterios de asignaci&oacute;n (&iquest;qui&eacute;n lleva qu&eacute;?), la gesti&oacute;n diferenciada, y los KPIs espec&iacute;ficos de cada f&aacute;brica. Esto es exactamente el alcance del proyecto LCG propuesto.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 07: PROCESO DE ORIGINACIÓN — TIEMPOS Y RETRABAJOS      -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 07</div>
+                <div class="section-title">Proceso de originaci&oacute;n: tiempos, retrabajos y la experiencia del cliente</div>
+            </div>
+
+            <p>Los datos de tiempos de aprobaci&oacute;n generaron una discusi&oacute;n intensa sobre la experiencia del cliente y la &ldquo;dislocaci&oacute;n&rdquo; entre lo que espera el consejo y lo que el proceso entrega.</p>
+
+            <h3>Tiempos reales de aprobaci&oacute;n LMM (2025)</h3>
+
+            <table>
+                <thead><tr><th>V&iacute;a de entrada</th><th>D&iacute;as h&aacute;biles promedio</th><th>% Volumen</th><th>Observaci&oacute;n</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Fast Application</td><td style="color: var(--danger); font-weight: 700;">16 d&iacute;as (&asymp;4 semanas)</td><td>~85%</td><td>&ldquo;No termina siendo tan fast&rdquo;</td></tr>
+                    <tr><td class="table-highlight">Param&eacute;trico</td><td style="color: var(--danger); font-weight: 700;">24 d&iacute;as</td><td>9%</td><td>Volumen cay&oacute; porque &ldquo;lo dejaron de usar&rdquo;</td></tr>
+                    <tr><td class="table-highlight">Estudio Corto</td><td style="color: var(--warning); font-weight: 700;">33 d&iacute;as</td><td>~5%</td><td>Incluye casos que fallaron param&eacute;trico</td></tr>
+                    <tr><td class="table-highlight">Estudio Full (Core)</td><td>Similar al corto</td><td>~1%</td><td>Pr&aacute;cticamente el mismo tiempo</td></tr>
+                </tbody>
+            </table>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-title">70% de retrabajos en primera etapa de documentaci&oacute;n</div>
+                    <div class="finding-dimension proceso">Proceso</div>
+                </div>
+                <div class="finding-body">
+                    Pr&aacute;cticamente <strong>7 de cada 10 expedientes</strong> que entran a riesgo se retrabajan. Las idas y vueltas entre el vendedor, el cliente y el &aacute;rea de riesgo consumen la mayor parte del tiempo. El equipo de Liliana (disposici&oacute;n) tambi&eacute;n reporta 40 d&iacute;as punta a punta y 70% de retrabajos, con casos que llegan a 6 meses.
+                </div>
+                <div class="finding-evidence">Evidencia: Datos del &aacute;rea de riesgo + equipo de Liliana (disposici&oacute;n)</div>
+            </div>
+
+            <h3>La dislocaci&oacute;n que detecta Juan Pablo</h3>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Donde est&aacute; dislocado el concepto es: el consejo dice esto deber&iacute;a pasar mucho m&aacute;s fluido. Y el resultado es que no fluye igual. Porque el equipo comercial no tiene las habilidades suficientes, y porque el funnel en el que pasa internamente se tropiezan algunas cosas.</div>
+                <div class="verbatim-source">&mdash; Juan Pablo Loperena, CEO, durante la discusi&oacute;n de tiempos</div>
+            </div>
+
+            <h3>El tiempo comercial es el m&aacute;s grande</h3>
+
+            <p>Maurizzio se&ntilde;al&oacute; algo cr&iacute;tico al ver las barras de tiempo: <strong>la barra comercial (interacci&oacute;n con el cliente, recopilaci&oacute;n de documentos) es la m&aacute;s grande</strong>. No es solo el tiempo de cr&eacute;dito &mdash; es todo el ir y venir de la solicitud al cliente, la interacci&oacute;n, la recopilaci&oacute;n. A ojos del cliente, el proceso total es lo que importa.</p>
+
+            <div class="verbatim">
+                <div class="verbatim-text">Necesitas todo este tiempo para poder ejecutar 4, 5 millones de pesos. Y entonces ah&iacute; es donde empuja el equipo comercial a buscar las operaciones m&aacute;s grandes, porque si no, no le da para llegar al n&uacute;mero.</div>
+                <div class="verbatim-source">&mdash; Maurizzio Piva, Director Comercial, sobre el incentivo perverso del proceso</div>
+            </div>
+
+            <div class="callout callout-red">
+                <div class="callout-label">Incentivo perverso detectado</div>
+                <p>Si el proceso tarda lo mismo para una operaci&oacute;n de $4M que para una de $40M, el vendedor racionalmente <strong>busca operaciones m&aacute;s grandes para justificar el esfuerzo</strong>. Esto explica por qu&eacute; el LMM termin&oacute; convirti&eacute;ndose en &ldquo;mini core&rdquo;: el proceso empuja a los vendedores hacia arriba en ticket, no hacia el volumen que el segmento requiere. <strong>Romper este incentivo perverso es clave para que la f&aacute;brica de bolillos funcione.</strong></p>
+            </div>
+
+            <h3>Indicadores en tiempo real: la brecha de visibilidad</h3>
+
+            <p>Federico (Riesgos) se&ntilde;al&oacute; que el &aacute;rea de calidad manda indicadores, pero <strong>no existen indicadores en tiempo real para monitorear casos en riesgo</strong> de incumplimiento de SLA. Luis Padilla (Tecnolog&iacute;a) est&aacute; trabajando en esto pero tuvo que acotar alcance &mdash; estar&aacute; en mayo, pero no con todos los procesos. El punta a punta desde la confirmaci&oacute;n verbal hasta el fondeo (estimado en ~210 d&iacute;as) hoy <strong>no se puede medir completo</strong>.</p>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Lectura LCG</div>
+                <p>La tecnolog&iacute;a no es el cuello de botella &mdash; Luis Padilla tiene capacidad. Lo que falta es <strong>definir qu&eacute; medir y con qu&eacute; est&aacute;ndares</strong>. Empezar con 5 indicadores b&aacute;sicos e ir construyendo. La disciplina de medici&oacute;n tiene que ir de la mano con la simplificaci&oacute;n del proceso, no despu&eacute;s de ella.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 08: PROPUESTA DE PROYECTO Y NEXT STEPS                 -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Secci&oacute;n 08</div>
+                <div class="section-title">Propuesta de proyecto y siguientes pasos</div>
+            </div>
+
+            <p>La sesi&oacute;n cerr&oacute; con la discusi&oacute;n de la propuesta de proyecto a 40 semanas y la meta de crecimiento. Hubo convergencia en los puntos clave.</p>
+
+            <h3>Meta de crecimiento: &ldquo;2X es alcanzable&rdquo;</h3>
+
+            <div class="finding-card green">
+                <div class="finding-header">
+                    <div class="finding-title">Consenso en duplicar la originaci&oacute;n LMM</div>
+                    <div class="finding-dimension oportunidad">Oportunidad</div>
+                </div>
+                <div class="finding-body">
+                    Juan Pablo valid&oacute; que <strong>duplicar la originaci&oacute;n LMM (2X) es realista</strong> dada la cantidad de empresas con las que trabajan. No se comprometi&oacute; en timeline (&ldquo;no s&eacute; si 3 a&ntilde;os, 2 y medio&rdquo;) pero s&iacute; en la ambici&oacute;n: regresar a crecimientos del 20%+ y doblar el tama&ntilde;o del negocio. Maurizzio coincide: hay mercado de sobra, el freno es la capacidad de captura.
+                </div>
+                <div class="finding-evidence">Evidencia: Validaci&oacute;n directa de Juan Pablo durante la sesi&oacute;n</div>
+            </div>
+
+            <h3>Estructura del proyecto propuesto</h3>
+
+            <table>
+                <thead><tr><th>Componente</th><th>Detalle</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Duraci&oacute;n</td><td>40 semanas &mdash; tiempo m&iacute;nimo para cristalizar adopci&oacute;n y resultados</td></tr>
+                    <tr><td class="table-highlight">Equipo LCG</td><td>1 Gerente de proyecto + 1 consultor comercial + 1 consultor riesgos + 1 consultor gente (parcial) + directores LCG</td></tr>
+                    <tr><td class="table-highlight">Equipo Engen</td><td>&Aacute;rea comercial + riesgos + calidad/procesos (Alberto Elena) &mdash; rol activo y protag&oacute;nico</td></tr>
+                    <tr><td class="table-highlight">Comit&eacute; semanal</td><td>Directores Engen + equipo LCG + c&eacute;lula &aacute;gil por &aacute;rea</td></tr>
+                    <tr><td class="table-highlight">Metodolog&iacute;a</td><td>Primeras 4 semanas de diagn&oacute;stico profundo + dise&ntilde;o del playbook + implementaci&oacute;n en 2 tiempos</td></tr>
+                    <tr><td class="table-highlight">ROI esperado</td><td>El proyecto se paga m&iacute;nimo 1X en el primer a&ntilde;o. Con 10% incremental sobre $1,600M = $160M adicionales = &gt;$16M en margen directo. Ratio 3-4:1 vs inversi&oacute;n.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Enfoque en dos tiempos</h3>
+
+            <div class="exec-grid">
+                <div class="exec-card green">
+                    <div class="exec-card-label">Tiempo 1: Quick wins + higi&eacute;nicos</div>
+                    <div class="exec-card-value">Arranque inmediato</div>
+                    <div class="exec-card-desc">Sin esperar el modelo completo: eliminar fricciones innecesarias, disciplina de coaching, simplificar lo que ya se puede, empezar a medir con lo que hay. Quick wins que generan tracci&oacute;n.</div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-card-label">Tiempo 2: Modelo nuevo</div>
+                    <div class="exec-card-value">Prender la nueva copiadora</div>
+                    <div class="exec-card-desc">Redise&ntilde;o integral: f&aacute;brica de bolillos + f&aacute;brica de baguettes, nuevas estructuras, nuevos perfiles, nuevas aprobaciones, nuevas herramientas. Prende el modelo mejorado.</div>
+                </div>
+            </div>
+
+            <h3>Siguientes pasos acordados</h3>
+
+            <table>
+                <thead><tr><th>Fecha</th><th>Acci&oacute;n</th><th>Responsable</th></tr></thead>
+                <tbody>
+                    <tr><td class="table-highlight">Semana del 31 marzo</td><td>LCG elabora playbook detallado y propuesta econ&oacute;mica</td><td>Alfredo Ch&aacute;vez / H&eacute;ctor Rivas</td></tr>
+                    <tr><td class="table-highlight">Semana Santa</td><td>Reposo &mdash; equipo Engen de vacaciones</td><td>&mdash;</td></tr>
+                    <tr><td class="table-highlight">Lunes 13 abril, 4pm</td><td>Presentaci&oacute;n de propuesta econ&oacute;mica a Juan Pablo (presencial Monterrey)</td><td>LCG + Juan Pablo + Fernando Garza</td></tr>
+                    <tr><td class="table-highlight">Post-presentaci&oacute;n</td><td>Revisi&oacute;n del consejo y decisi&oacute;n de arranque</td><td>Juan Pablo / Consejo Engen</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Se&ntilde;ales positivas de cierre</div>
+                <p>La sesi&oacute;n cerr&oacute; con <strong>tono constructivo y de urgencia compartida</strong>. Juan Pablo habl&oacute; de &ldquo;revolucionar esta m&aacute;quina para que saque 6,000&rdquo;, de redise&ntilde;ar el equipo comercial completo si es necesario, y de que el back-office tambi&eacute;n tiene que moverse. Maurizzio valid&oacute; cada hallazgo con matices operativos, sin defensividad. Fernando Garza (Riesgos) particip&oacute; activamente. Se acord&oacute; fecha espec&iacute;fica de presentaci&oacute;n de propuesta: <strong>lunes 13 de abril a las 4pm en Monterrey</strong>. La presentaci&oacute;n pasar&aacute; primero por el escrutinio de Fernando antes de llegar a Juan Pablo.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 09: CONCLUSION                                         -->
+        <!-- ============================================================ -->
+        <div class="content-page page-break">
+            <div class="page-header-logos">
+                <img class="logo-lcg-sm" src="https://londoncg.com/hs-fs/hubfs/Logo4%20(1).png?width=580&height=230&name=Logo4%20(1).png" alt="LCG">
+                <span class="header-divider">Confidencial</span>
+                <img class="logo-engen-sm" src="https://media.licdn.com/dms/image/v2/D560BAQFRvO6_QVMe9Q/company-logo_200_200/company-logo_200_200/0/1667315038892/engencapital_logo?e=2147483647&v=beta&t=HrLurn5lsSdDl3ygUZQUzMhJPfD9VA7tLA0J5chgwE8" alt="Engen">
+            </div>
+
+            <div class="section-header">
+                <div class="section-number">Conclusi&oacute;n</div>
+                <div class="section-title">Director Comercial validado como aliado de la transformaci&oacute;n</div>
+            </div>
+
+            <p>La sesi&oacute;n con Maurizzio Piva fue reveladora: <strong>el Director Comercial no est&aacute; a la defensiva</strong>. Reconoce los problemas, aporta matices operativos que enriquecen el diagn&oacute;stico, y coincide con la necesidad de intervenci&oacute;n. Su postura es pragm&aacute;tica: el esfuerzo est&aacute; pero la efectividad no, y hace falta romper c&iacute;rculos viciosos que &eacute;l mismo puede describir con precisi&oacute;n.</p>
+
+            <div class="exec-grid">
+                <div class="exec-card red">
+                    <div class="exec-card-label">Hallazgo validado</div>
+                    <div class="exec-card-value">C&iacute;rculo vicioso de gesti&oacute;n</div>
+                    <div class="exec-card-desc">L&iacute;deres bajan a operar &rarr; no desarrollan gente &rarr; baja productividad &rarr; m&aacute;s presi&oacute;n &rarr; repite. Maurizzio lo reconoce expl&iacute;citamente.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo validado</div>
+                    <div class="exec-card-value">Perfil sobre-exigido</div>
+                    <div class="exec-card-desc">12 requisitos para un puesto que el mercado no ofrece. Necesitan drive comercial + inteligencia, y ense&ntilde;ar lo t&eacute;cnico internamente.</div>
+                </div>
+                <div class="exec-card orange">
+                    <div class="exec-card-label">Hallazgo validado</div>
+                    <div class="exec-card-value">Proceso = incentivo perverso</div>
+                    <div class="exec-card-desc">Si el proceso tarda igual para $4M que para $40M, el vendedor busca operaciones grandes. LMM termin&oacute; siendo &ldquo;mini core&rdquo;.</div>
+                </div>
+                <div class="exec-card green">
+                    <div class="exec-card-label">Hallazgo validado</div>
+                    <div class="exec-card-value">2X es alcanzable</div>
+                    <div class="exec-card-desc">Mercado de sobra (24,000+ empresas), conversi&oacute;n actual &iacute;nfima, deal size al alza. Duplicar originaci&oacute;n es cuesti&oacute;n de ejecuci&oacute;n, no de mercado.</div>
+                </div>
+            </div>
+
+            <div class="callout callout-green">
+                <div class="callout-label">Implicaci&oacute;n para LCG</div>
+                <p>Maurizzio Piva es un <strong>aliado cr&iacute;tico para la implementaci&oacute;n</strong>. A diferencia de lo que podr&iacute;a esperarse de un Director Comercial al que le presentan un diagn&oacute;stico de oportunidades en su &aacute;rea, no se puso a la defensiva. Enriqueci&oacute; cada punto con perspectiva operativa. Su matiz m&aacute;s valioso: <strong>cambiar el perfil sin cambiar el proceso no funciona</strong>. Esto le da a LCG el mandate para una intervenci&oacute;n integral &mdash; no una pieza suelta. La f&oacute;rmula ganadora que &eacute;l mismo valida es: pipeline robusto + calibraci&oacute;n inteligente + ofertas de valor diferenciadas + m&eacute;tricas claras.</p>
+            </div>
+
+            <div class="callout callout-blue">
+                <div class="callout-label">Siguiente paso</div>
+                <p>Elaborar el playbook detallado de las 40 semanas y la propuesta econ&oacute;mica para presentaci&oacute;n el <strong>lunes 13 de abril a las 4pm en Monterrey</strong>. La propuesta debe pasar primero por Fernando Garza para su revisi&oacute;n antes de llegar a Juan Pablo. El caso de negocio: con un 10% de incremento sobre $1,600M de originaci&oacute;n LMM, el proyecto se paga 3-4X en el primer a&ntilde;o.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
